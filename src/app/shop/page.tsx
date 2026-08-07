@@ -156,6 +156,13 @@ function ShopContent() {
   const [minRating, setMinRating] = useState<number>(0);
   const [inStockOnly, setInStockOnly] = useState(false);
 
+  const urlCategory = params.get("category");
+  const [prevUrlCategory, setPrevUrlCategory] = useState(urlCategory);
+  if (urlCategory !== prevUrlCategory) {
+    setPrevUrlCategory(urlCategory);
+    setCategory(urlCategory || "All");
+  }
+
   const brands = useMemo(() => {
     const set = new Set<string>();
     for (const p of products) if (!p.miniStore && p.brand) set.add(p.brand);

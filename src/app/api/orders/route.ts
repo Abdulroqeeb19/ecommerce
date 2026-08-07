@@ -1,9 +1,8 @@
 import { NextResponse } from "next/server";
-import { addOrder, listOrders, getDb } from "@/lib/server/store";
+import { addOrder, listOrders, listProducts, redeemCoupon } from "@/lib/server/store";
 import { currentUser, requireRole } from "@/lib/server/auth";
 import { notifyOrderPlaced } from "@/lib/server/notify";
 import { rateLimit } from "@/lib/server/rateLimit";
-import { isValidOrderStatus } from "@/lib/server/orderValidation";
 import { uid, orderNumber } from "@/lib/utils";
 import type { CustomerInfo, Order, OrderItem } from "@/lib/types";
 
@@ -28,7 +27,7 @@ export async function GET() {
   const user = await currentUser();
   const denied = requireRole(user, ["admin", "manager"]);
   if (denied) return denied;
-  return NextResponse.json(listOrders());
+  return NextResponse.json(await listOrders());
 }
 
 export async function POST(req: Request) {
@@ -50,10 +49,10 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Order contains too many items" }, { status: 400 });
   }
 
-  const db = getDb();
+  const db = await listProducts();
 
   const items: OrderItem[] = [];
-  const catalog = new Map(db.products.map((p) => [p.id, p]));
+  const catalog = new Map(db.map((p) => [p.id, p]));
 
   for (const raw of b.items) {
     const it = raw as Partial<OrderItem>;
@@ -82,7 +81,18 @@ export async function POST(req: Request) {
   }
 
   const channel = b.channel === "school" ? "school" : "online";
-  const total = items.reduce((sum, it) => sum + it.price * it.qty, 0);
+  const subtotal = items.reduce((sum, it) => sum + it.price * it.qty, 0);
+
+  const couponCode = typeof b.couponCode === "string" ? b.couponCode.trim().toUpperCase().slice(0, 40) : undefined;
+  let discount = 0;
+  if (couponCode) {
+    const result = await redeemCoupon(couponCode, subtotal);
+    if (!result) {
+      return NextResponse.json({ error: "Coupon is invalid, expired, or does not apply to this order" }, { status: 400 });
+    }
+    discount = result.discount;
+  }
+  const total = Math.max(0, Math.round((subtotal - discount) * 100) / 100);
 
   const order: Order = {
     id: typeof b.id === "string" ? b.id : uid("ord"),
@@ -93,13 +103,15 @@ export async function POST(req: Request) {
     channel,
     customer: sanitizeCustomer(b.customer),
     source: channel === "school" ? "mini-store" : "web",
+    couponCode,
+    discount: discount || undefined,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     synced: true
   };
 
   try {
-    const saved = addOrder(order);
+    const saved = await addOrder(order);
     const result = await notifyOrderPlaced(saved);
     return NextResponse.json({ ...saved, notifications: result }, { status: 201 });
   } catch (e) {

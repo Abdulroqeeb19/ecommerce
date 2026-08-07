@@ -31,7 +31,8 @@ export function PwaRegister() {
         await deferredPrompt.prompt();
         setDeferredPrompt(null);
       }}
-      className="inline-flex items-center gap-2 rounded-lg bg-primary-600 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-primary-700"
+      className="btn-gold px-4 py-2 text-sm font-semibold"
+      style={{ background: "var(--gold-gradient)", color: "var(--ink)" }}
     >
       <Download className="h-4 w-4" />
       Install App

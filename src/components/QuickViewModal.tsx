@@ -20,7 +20,7 @@ export function QuickViewModal({ product, onClose }: { product: Product; onClose
     <div className="fixed inset-0 z-[70] flex items-center justify-center p-4" onClick={onClose}>
       <div className="absolute inset-0 bg-slateink/60 backdrop-blur-sm animate-fade-in" />
       <div
-        className="relative z-10 w-full max-w-3xl bg-white dark:bg-slate-900 rounded-2xl shadow-2xl grid md:grid-cols-2 animate-slide-up max-h-[90vh] overflow-y-auto"
+        className="relative z-10 w-full max-w-3xl bg-white dark:bg-navy-800 rounded-2xl shadow-2xl grid md:grid-cols-2 animate-slide-up max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -74,7 +74,7 @@ export function QuickViewModal({ product, onClose }: { product: Product; onClose
                 toast("Added to cart");
                 onClose();
               }}
-              className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg bg-primary-600 hover:bg-primary-700 text-white font-semibold px-4 py-2.5 text-sm"
+              className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold text-slateink transition-all hover:-translate-y-0.5" style={{ background: "var(--gold-gradient)" }}
             >
               <ShoppingCart className="h-4 w-4" /> Add to Cart
             </button>

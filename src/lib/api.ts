@@ -1,5 +1,3 @@
-import type { Product } from "./types";
-
 const API = process.env.NEXT_PUBLIC_API_URL || "/api";
 
 export async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
@@ -27,6 +25,7 @@ export interface SyncResult {
   pushed: number;
   pulled: number;
   failed: number;
+  conflicts: number;
   errors: string[];
 }
 

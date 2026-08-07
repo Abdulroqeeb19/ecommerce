@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
@@ -12,6 +12,7 @@ import { useToast } from "@/store/toast";
 import { formatPrice, cx, CURRENCY_RATES } from "@/lib/utils";
 import { useCurrency } from "@/store/currency";
 import { RatingStars } from "@/components/RatingStars";
+import { ReviewSection } from "@/components/ReviewSection";
 import { ProductCard } from "@/components/ProductCard";
 
 const TABS = ["Description", "Specifications", "Reviews"] as const;
@@ -29,11 +30,13 @@ export default function ProductDetailPage() {
   const product = products.find((p) => p.slug === slug);
   const [qty, setQty] = useState(1);
   const [tab, setTab] = useState<(typeof TABS)[number]>("Description");
+  const [prevSlug, setPrevSlug] = useState(slug);
 
-  useEffect(() => {
+  if (prevSlug !== slug) {
+    setPrevSlug(slug);
     setQty(1);
     setTab("Description");
-  }, [slug]);
+  }
 
   if (!product) {
     return (
@@ -180,31 +183,7 @@ export default function ProductDetailPage() {
               ))}
             </div>
           )}
-          {tab === "Reviews" && (
-            <div className="space-y-5 max-w-3xl">
-              {[4.9, 4.5].map((r, i) => (
-                <div key={i} className="rounded-lg bg-slate-50 dark:bg-slate-800 p-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="h-9 w-9 rounded-full bg-primary-600 text-white flex items-center justify-center font-bold text-sm">
-                        {["A", "M", "K"][i]}
-                      </div>
-                      <div>
-                        <p className="text-sm font-bold text-slateink dark:text-white">{["Adaeze O.", "Michael T.", "Kemi A."][i]}</p>
-                        <RatingStars rating={r} size={12} />
-                      </div>
-                    </div>
-                    <span className="text-xs text-slate-400 dark:text-slate-500">Verified purchase</span>
-                  </div>
-                  <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
-                    {i === 0 && "Exactly as described. Fast delivery and the quality exceeded my expectations for the office."}
-                    {i === 1 && "Great value for money. Packaging was professional and the device works flawlessly."}
-                    {i === 2 && "Ordered through the school mini-store on Monday and it arrived the same week. Impressive service!"}
-                  </p>
-                </div>
-              ))}
-            </div>
-          )}
+          {tab === "Reviews" && <ReviewSection productId={product.id} />}
         </div>
       </div>
 

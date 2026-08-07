@@ -14,19 +14,20 @@ import { ProductImage } from "./ProductImage";
 import { QuickViewModal } from "./QuickViewModal";
 
 export function ProductCard({ product }: { product: Product }) {
-  const { add } = useCart();
+  const { items, add, remove } = useCart();
   const { has, toggle } = useWishlist();
   const { has: inCompare, toggle: toggleCompare } = useCompare();
   const { toast } = useToast();
   const [quickView, setQuickView] = useState(false);
   const [imageKey, setImageKey] = useState(0);
 
+  const inCart = items.some((i) => i.id === product.id);
   const lowStock = product.stock > 0 && product.stock <= 10;
   const outOfStock = product.stock <= 0;
 
   return (
     <>
-      <div className="group relative bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-card overflow-hidden hover:shadow-hover hover:-translate-y-0.5 transition-all">
+      <div className="group relative bg-white dark:bg-navy-800 rounded-xl border border-slate-200 dark:border-navy-700 shadow-card overflow-hidden hover:shadow-hover hover:-translate-y-0.5 transition-all">
         <Link href={`/product/${product.slug}`} className="block">
           <div className="relative aspect-square overflow-hidden bg-slatebg dark:bg-slate-800">
             <ProductImage
@@ -56,23 +57,22 @@ export function ProductCard({ product }: { product: Product }) {
               </span>
             )}
           </div>
-          <div className="p-4">
-            <p className="text-[11px] font-semibold uppercase tracking-wide text-primary-600 dark:text-primary-400">{product.category}</p>
-            <h3 className="mt-1 text-sm font-bold text-slateink dark:text-white line-clamp-2 min-h-[2.5rem] group-hover:text-primary-700">
-              {product.title}
+          <div className="p-3 sm:p-4">
+            <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wide text-primary-600 dark:text-primary-400">{product.category}</p>
+            <h3 className="mt-1 text-xs sm:text-sm font-bold text-slateink dark:text-white line-clamp-2 min-h-[2.1rem] sm:min-h-[2.5rem] group-hover:text-primary-700">              {product.title}
             </h3>
-            <div className="mt-2 flex items-center justify-between">
-              <RatingStars rating={product.rating} reviews={product.reviews} />
-              <span className="text-xs text-slate-400 dark:text-slate-500">{outOfStock ? "Sold out" : `${product.stock} left`}</span>
+            <div className="mt-1.5 sm:mt-2 flex items-center justify-between gap-1">
+              <div className="min-w-0"><RatingStars rating={product.rating} reviews={product.reviews} size={12} /></div>
+              <span className="text-[10px] sm:text-xs text-slate-400 dark:text-slate-500 shrink-0">{outOfStock ? "Sold out" : `${product.stock} left`}</span>
             </div>
-            <div className="mt-2.5 flex items-baseline gap-2">
-              <span className="font-display text-lg font-extrabold text-slateink dark:text-white">{formatPrice(product.price)}</span>
-              {product.oldPrice && <span className="text-xs text-slate-400 line-through">{formatPrice(product.oldPrice)}</span>}
+            <div className="mt-1.5 sm:mt-2.5 flex items-baseline gap-1.5 sm:gap-2">
+              <span className="font-display text-base sm:text-lg font-extrabold text-slateink dark:text-white">{formatPrice(product.price)}</span>
+              {product.oldPrice && <span className="text-[10px] sm:text-xs text-slate-400 line-through">{formatPrice(product.oldPrice)}</span>}
             </div>
           </div>
         </Link>
 
-        <div className="absolute inset-x-0 bottom-0 translate-y-0 lg:translate-y-full lg:group-hover:translate-y-0 transition-transform duration-300 bg-white/95 dark:bg-slate-900/95 backdrop-blur border-t border-slate-100 dark:border-slate-800 px-4 py-3">
+        <div className="absolute inset-x-0 bottom-0 translate-y-0 lg:translate-y-full lg:group-hover:translate-y-0 transition-transform duration-300 bg-white/95 dark:bg-navy-800/95 backdrop-blur border-t border-slate-100 dark:border-navy-700 px-3 sm:px-4 py-2.5 sm:py-3">
           <div className="grid grid-cols-4 gap-1">
             <button
               onClick={() => {
@@ -81,7 +81,7 @@ export function ProductCard({ product }: { product: Product }) {
               }}
               title="Wishlist"
               aria-label="Toggle wishlist"
-              className={`flex items-center justify-center rounded-lg p-2 transition-colors ${
+              className={`flex items-center justify-center rounded-lg p-1.5 sm:p-2 transition-colors ${
                 has(product.id) ? "text-red-500 bg-red-50" : "text-slate-500 dark:text-slate-300 dark:hover:bg-slate-800"
               }`}
             >
@@ -94,28 +94,35 @@ export function ProductCard({ product }: { product: Product }) {
               }}
               title="Compare"
               aria-label="Toggle compare"
-              className={`flex items-center justify-center rounded-lg p-2 transition-colors ${
-                inCompare(product.id) ? "text-skyline-500 bg-skyline-50" : "text-slate-500 dark:text-slate-300 dark:hover:bg-slate-800"
+              className={`flex items-center justify-center rounded-lg p-1.5 sm:p-2 transition-colors ${
+                inCompare(product.id) ? "text-gold-500 bg-gold-50" : "text-slate-500 dark:text-slate-300 dark:hover:bg-slate-800"
               }`}
             >
               <GitCompareArrows className="h-4 w-4" />
             </button>
-            <button onClick={() => setQuickView(true)} title="Quick View" aria-label="Quick view" className="flex items-center justify-center rounded-lg p-2 text-slate-500 dark:text-slate-300 dark:hover:bg-slate-800 transition-colors">
+            <button onClick={() => setQuickView(true)} title="Quick View" aria-label="Quick view" className="flex items-center justify-center rounded-lg p-1.5 sm:p-2 text-slate-500 dark:text-slate-300 dark:hover:bg-slate-800 transition-colors">
               <Eye className="h-4 w-4" />
             </button>
             <button
               onClick={() => {
                 if (outOfStock) return;
-                add(product, 1);
-                toast("Added to cart");
+                if (inCart) {
+                  remove(product.id);
+                  toast("Removed from cart");
+                } else {
+                  add(product, 1);
+                  toast("Added to cart");
+                }
                 setImageKey((k) => k + 1);
               }}
-              title="Add to Cart"
-              aria-label="Add to cart"
+              title={inCart ? "Remove from Cart" : "Add to Cart"}
+              aria-label={inCart ? "Remove from cart" : "Add to cart"}
               disabled={outOfStock}
-              className="flex items-center justify-center rounded-lg bg-primary-600 text-white p-2 hover:bg-primary-700 transition-colors disabled:opacity-40"
+              className={`flex items-center justify-center rounded-lg p-1.5 sm:p-2 transition-colors disabled:opacity-40 ${
+                inCart ? "bg-emerald-600 text-white hover:bg-emerald-700" : "bg-primary-500 text-slateink hover:bg-primary-400"
+              }`}
             >
-              <ShoppingCart className="h-4 w-4" />
+              <ShoppingCart className={`h-4 w-4 ${inCart ? "fill-white" : ""}`} />
             </button>
           </div>
         </div>

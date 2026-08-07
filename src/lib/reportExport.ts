@@ -1,17 +1,5 @@
-import ExcelJS from "exceljs";
-import jsPDF from "jspdf";
-import autoTable from "jspdf-autotable";
-import { Document, Packer, Paragraph, TextRun, Table, TableCell, TableRow, HeadingLevel, AlignmentType, WidthType } from "docx";
 import type { Order, SalesReportRow, ReportGranularity } from "./types";
 import { formatPrice } from "./utils";
-
-function reportData(rows: SalesReportRow[]) {
-  return [
-    ["Period", "Orders", "Units Sold", "Revenue (USD)"],
-    ...rows.map((r) => [r.period, String(r.orders), String(r.unitsSold), String(r.revenue)]),
-    ["TOTAL", String(rows.reduce((s, r) => s + r.orders, 0)), String(rows.reduce((s, r) => s + r.unitsSold, 0)), String(rows.reduce((s, r) => s + r.revenue, 0))]
-  ];
-}
 
 function triggerDownload(blob: Blob, filename: string) {
   const url = URL.createObjectURL(blob);
@@ -64,10 +52,11 @@ export function buildReportRows(orders: Order[], granularity: ReportGranularity)
 }
 
 export async function exportToExcel(rows: SalesReportRow[], granularity: ReportGranularity) {
+  const ExcelJS = (await import("exceljs")).default;
   const wb = new ExcelJS.Workbook();
   const ws = wb.addWorksheet("Sales Report");
 
-  const header = ws.addRow(["Gadget Hub - Sales Report"]);
+  const header = ws.addRow(["AYINDEDUNNY ENTERPRISE - Sales Report"]);
   header.eachCell((c) => {
     c.font = { bold: true, size: 14, color: { argb: "1D4ED8" } };
   });
@@ -94,7 +83,7 @@ export async function exportToExcel(rows: SalesReportRow[], granularity: ReportG
   });
 
   const buffer = await wb.xlsx.writeBuffer();
-  triggerDownload(new Blob([buffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }), `gadget-hub-${granularity}-report-${Date.now()}.xlsx`);
+  triggerDownload(new Blob([buffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }), `ayindedunny-enterprise-${granularity}-report-${Date.now()}.xlsx`);
 }
 
 export function exportToCsv(rows: SalesReportRow[], granularity: ReportGranularity) {
@@ -105,15 +94,16 @@ export function exportToCsv(rows: SalesReportRow[], granularity: ReportGranulari
     ["TOTAL", String(rows.reduce((s, r) => s + r.orders, 0)), String(rows.reduce((s, r) => s + r.unitsSold, 0)), String(rows.reduce((s, r) => s + r.revenue, 0))].map(esc).join(",")
   ];
   const blob = new Blob(["\uFEFF" + lines.join("\r\n")], { type: "text/csv;charset=utf-8;" });
-  triggerDownload(blob, `gadget-hub-${granularity}-report-${Date.now()}.csv`);
+  triggerDownload(blob, `ayindedunny-enterprise-${granularity}-report-${Date.now()}.csv`);
 }
 
-export function exportToPdf(rows: SalesReportRow[], granularity: ReportGranularity) {
+export async function exportToPdf(rows: SalesReportRow[], granularity: ReportGranularity) {
+  const [{ default: jsPDF }, { default: autoTable }] = await Promise.all([import("jspdf"), import("jspdf-autotable")]);
   const doc = new jsPDF();
   const totalRevenue = rows.reduce((s, r) => s + r.revenue, 0);
   doc.setFontSize(18);
   doc.setTextColor(29, 78, 216);
-  doc.text("Gadget Hub - Sales Report", 14, 22);
+  doc.text("AYINDEDUNNY ENTERPRISE - Sales Report", 14, 22);
   doc.setFontSize(11);
   doc.setTextColor(15, 23, 42);
   doc.text(`Granularity: ${granularity.toUpperCase()}`, 14, 32);
@@ -129,10 +119,11 @@ export function exportToPdf(rows: SalesReportRow[], granularity: ReportGranulari
     headStyles: { fillColor: [29, 78, 216] },
     footStyles: { fillColor: [15, 23, 42] }
   });
-  doc.save(`gadget-hub-${granularity}-report-${Date.now()}.pdf`);
+  doc.save(`ayindedunny-enterprise-${granularity}-report-${Date.now()}.pdf`);
 }
 
 export async function exportToDocx(rows: SalesReportRow[], granularity: ReportGranularity) {
+  const { Document, Packer, Paragraph, TextRun, Table, TableCell, TableRow, HeadingLevel, AlignmentType, WidthType } = await import("docx");
   const totalRevenue = rows.reduce((s, r) => s + r.revenue, 0);
 
   const doc = new Document({
@@ -142,7 +133,7 @@ export async function exportToDocx(rows: SalesReportRow[], granularity: ReportGr
           new Paragraph({
             heading: HeadingLevel.HEADING_1,
             alignment: AlignmentType.CENTER,
-            children: [new TextRun({ text: "Gadget Hub - Sales Report", bold: true })],
+            children: [new TextRun({ text: "AYINDEDUNNY ENTERPRISE - Sales Report", bold: true })],
           }),
           new Paragraph({
             alignment: AlignmentType.CENTER,
@@ -186,7 +177,7 @@ export async function exportToDocx(rows: SalesReportRow[], granularity: ReportGr
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = `gadget-hub-${granularity}-report-${Date.now()}.docx`;
+  a.download = `ayindedunny-enterprise-${granularity}-report-${Date.now()}.docx`;
   a.click();
   URL.revokeObjectURL(url);
 }

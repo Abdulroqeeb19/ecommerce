@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useMounted } from "@/hooks/useMounted";
 import { countdownTo } from "@/lib/utils";
 
 function pad(n: number) {
@@ -8,10 +9,8 @@ function pad(n: number) {
 }
 
 export function CountdownTimer({ target }: { target: Date }) {
-  const [mounted, setMounted] = useState(false);
+  const mounted = useMounted();
   const [cd, setCd] = useState(() => countdownTo(target));
-
-  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     const id = setInterval(() => setCd(countdownTo(target)), 1000);

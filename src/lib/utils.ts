@@ -95,6 +95,23 @@ export function isOrderingDay(grade: string): boolean {
   return false;
 }
 
+export interface EmergencyOpenWindow {
+  grade: string;
+  until: string;
+  note?: string;
+  openedBy?: string;
+  createdAt: string;
+}
+
+export function isEmergencyOpenFor(grade: string, windows: EmergencyOpenWindow[]): boolean {
+  const now = Date.now();
+  const active = (windows || []).filter((w) => new Date(w.until).getTime() > now);
+  return (
+    active.some((w) => w.grade === grade) ||
+    active.some((w) => w.grade === "ALL")
+  );
+}
+
 export function nextOrderingDate(grade: string): Date {
   const map: Record<string, number> = { JSS1: 1, JSS2: 2, JSS3: 3 };
   const target = map[grade] ?? 1;

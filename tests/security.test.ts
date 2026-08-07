@@ -62,6 +62,41 @@ describe("productValidation", () => {
     });
     expect(value.specs!.length).toBe(1);
   });
+
+  it("accepts a base64 image data URL and passes timestamps through", () => {
+    const { value, error } = validateProductInput({
+      ...valid,
+      image: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA",
+      createdAt: "2026-01-01T00:00:00.000Z",
+      updatedAt: "2026-01-02T00:00:00.000Z"
+    });
+    expect(error).toBeUndefined();
+    expect(value.image).toBe("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA");
+    expect(value.updatedAt).toBe("2026-01-02T00:00:00.000Z");
+    expect(value.createdAt).toBe("2026-01-01T00:00:00.000Z");
+  });
+
+  it("rejects an arbitrary (non-image) data URL", () => {
+    const { error } = validateProductInput({ ...valid, image: "data:text/html;base64,PHNjcmlwdD4=" });
+    expect(error).toBeDefined();
+  });
+
+  it("rejects an oversized base64 data URL", () => {
+    const { error } = validateProductInput({ ...valid, image: `data:image/png;base64,${"A".repeat(5 * 1024 * 1024)}` });
+    expect(error).toBeDefined();
+  });
+
+  it("accepts /images/ and https image references but rejects arbitrary strings", () => {
+    expect(validateProductInput({ ...valid, image: "/images/products/x.svg" }).error).toBeUndefined();
+    expect(validateProductInput({ ...valid, image: "https://cdn.example.com/img.png" }).error).toBeUndefined();
+    expect(validateProductInput({ ...valid, image: "../../etc/passwd" }).error).toBeDefined();
+  });
+
+  it("validates supplyType strictly", () => {
+    expect(validateProductInput({ ...valid, supplyType: "grocery" }).value.supplyType).toBe("grocery");
+    expect(validateProductInput({ ...valid, supplyType: "supplies" }).value.supplyType).toBe("supplies");
+    expect(validateProductInput({ ...valid, supplyType: "evil" }).value.supplyType).toBeUndefined();
+  });
 });
 
 describe("order status validation", () => {

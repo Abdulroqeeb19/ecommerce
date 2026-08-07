@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
+import { type ReactNode, useEffect } from "react";
 import { AuthProvider } from "./auth";
 import { CartProvider } from "./cart";
 import { WishlistProvider } from "./wishlist";
@@ -9,15 +9,14 @@ import { ToastProvider, useToast } from "./toast";
 import { CurrencyProvider, useCurrency } from "./currency";
 import { ThemeProvider } from "./theme";
 import { useOnline } from "@/hooks/useOnline";
+import { useMounted } from "@/hooks/useMounted";
 import { syncAll } from "@/lib/sync";
 import { setActiveCurrency } from "@/lib/utils";
 import { Wifi, WifiOff } from "lucide-react";
 
 function ConnectionBanner() {
   const online = useOnline();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
+  const mounted = useMounted();
 
   if (!mounted || online) return null;
   return (
@@ -37,10 +36,24 @@ function SyncWatcher() {
         .then((r) => {
           if (r.pushed > 0) toast(`Synced ${r.pushed} pending change${r.pushed > 1 ? "s" : ""} to the cloud`);
           if (r.failed > 0) toast(`${r.failed} items failed to sync`, "error");
+          if (r.conflicts > 0) toast(`${r.conflicts} sync conflict${r.conflicts > 1 ? "s" : ""} need review`, "error");
         })
         .catch(() => {});
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [online]);
+
+  useEffect(() => {
+    if (!online) return;
+    const id = window.setInterval(() => {
+      syncAll()
+        .then((r) => {
+          if (r.failed > 0) return;
+          if (r.pushed === 0) window.clearInterval(id);
+        })
+        .catch(() => {});
+    }, 20000);
+    return () => window.clearInterval(id);
   }, [online]);
 
   return null;

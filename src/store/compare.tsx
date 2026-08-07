@@ -1,8 +1,6 @@
 "use client";
 
 import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from "react";
-import { useLiveQuery } from "dexie-react-hooks";
-import { db, setWishlist } from "@/lib/db";
 import type { Product } from "@/lib/types";
 
 interface CompareContextValue {

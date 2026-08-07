@@ -88,7 +88,6 @@ function roundedRect(x, y, w, h, r, px, py) {
 function makeIcon(size, { maskable = false, shape = "square" } = {}) {
   const c1 = hex("#1D4ED8");
   const c2 = hex("#0EA5E9");
-  const c3 = hex("#172554");
   return encodePng(size, (x, y) => {
     const u = x / (size - 1);
     const v = y / (size - 1);

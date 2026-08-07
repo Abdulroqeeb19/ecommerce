@@ -1,6 +1,5 @@
-import { Document, Packer, Paragraph, TextRun, HeadingLevel, Table, TableRow, TableCell, WidthType, AlignmentType, BorderStyle } from "docx";
+import { Document, Packer, Paragraph, TextRun, HeadingLevel, Table, TableRow, TableCell, WidthType, AlignmentType } from "docx";
 import fs from "fs";
-import path from "path";
 
 const outFile = "C:\\Users\\user\\Desktop\\2in1 Ecommerce\\deliverables\\Gadget-Hub-Status-Report.docx";
 
@@ -115,7 +114,7 @@ const pages = [
       "Products management (add/edit/delete, image upload, offline sync)",
       "Mini-Store catalog tab with school-supplies / groceries scoping",
       "Orders: status updates, cloud pull, CSV export",
-      "Reports: Excel / PDF / Word export, granularity & range filters",
+      "Reports: Excel / PDF / Word export, granularity and range filters",
       "Multi-channel notifications (Telegram, WhatsApp, Email, SMS)",
     ],
   },
@@ -182,9 +181,9 @@ const doc = new Document({
         bullet("Offline-first architecture \u2014 all product, cart, wishlist, order and admin data persists in local IndexedDB and syncs to the cloud when online"),
         bullet("Multi-currency pricing (NGN default; USD / GBP / EUR) with live conversion throughout"),
         bullet("Dark / light theme toggle with full styling in both modes"),
-        bullet("Authentication & roles \u2014 admin, three mini-store managers, and customers"),
-        bullet("School mini-store with grade-based ordering windows and manager controls"),
-        bullet("Admin back-office \u2014 dashboard, product & mini-store catalog management, orders, sales reports (Excel/PDF/Word), and multi-channel notifications"),
+        bullet("Authentication and roles \u2014 admin, three mini-store managers, and customers"),
+        bullet("Mini-store for schools with grade-based ordering windows and manager controls"),
+        bullet("Admin back-office \u2014 dashboard, product and mini-store catalog management, orders, sales reports (Excel/PDF/Word), and multi-channel notifications"),
         bullet("PWA-ready responsive layout across mobile, tablet and desktop"),
 
         H1("4. Tech Stack"),

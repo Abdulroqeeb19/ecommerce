@@ -3,7 +3,6 @@
 import { useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { Plus, Pencil, Trash2, ImageUp, X, RefreshCw, UploadCloud } from "lucide-react";
-import { useLiveQuery } from "dexie-react-hooks";
 import { db, queueOperation } from "@/lib/db";
 import { useToast } from "@/store/toast";
 import { useProducts } from "@/lib/catalog";
@@ -26,6 +25,7 @@ interface FormState {
   image: string;
   specs: ProductSpec[];
   miniStore: boolean;
+  featured: boolean;
   supplyType: "supplies" | "grocery" | "";
 }
 
@@ -45,6 +45,7 @@ const emptyForm: FormState = {
   image: "",
   specs: [{ label: "", value: "" }],
   miniStore: false,
+  featured: false,
   supplyType: ""
 };
 
@@ -87,6 +88,7 @@ export function AdminProducts({ miniOnly = false }: { miniOnly?: boolean }) {
       image: p.image,
       specs: p.specs.length ? p.specs : [{ label: "", value: "" }],
       miniStore: Boolean(p.miniStore),
+      featured: Boolean(p.featured),
       supplyType: (p.supplyType as "supplies" | "grocery" | "") || ""
     });
   };
@@ -116,7 +118,7 @@ export function AdminProducts({ miniOnly = false }: { miniOnly?: boolean }) {
       slug: slugify(form.title),
       title: form.title,
       category: form.category,
-      brand: form.brand || "Gadget Hub",
+      brand: form.brand || "AYINDEDUNNY ENTERPRISE",
       price: Number(form.price),
       oldPrice: form.oldPrice ? Number(form.oldPrice) : undefined,
       stock: Number(form.stock) || 0,
@@ -128,7 +130,7 @@ export function AdminProducts({ miniOnly = false }: { miniOnly?: boolean }) {
       specs: form.specs.filter((s) => s.label && s.value),
       badge: form.badge || undefined,
       tags: [form.category.toLowerCase(), isMini ? "mini-store" : "admin"],
-      featured: false,
+      featured: form.featured,
       miniStore: isMini || form.miniStore,
       supplyType,
       createdAt: form.id ? new Date(now).toISOString() : now,
@@ -138,10 +140,16 @@ export function AdminProducts({ miniOnly = false }: { miniOnly?: boolean }) {
     await db.products.put(product);
     await queueOperation(isNew ? "create-product" : "update-product", product as unknown as Record<string, unknown>);
     const r = await syncAll();
-    toast(
-      `Saved locally${r.pushed ? ` and synced (${r.pushed})` : " — queued for sync"}`,
-      r.failed ? "error" : "success"
-    );
+    if (r.conflicts) {
+      toast(`Saved locally, but a conflict was detected — review it in the Sync tab.`, "error");
+    } else if (r.failed) {
+      toast(`Saved locally and queued — ${r.failed} change${r.failed !== 1 ? "s" : ""} could not sync yet.`, "error");
+    } else {
+      toast(
+        `Saved locally${r.pushed ? ` and synced (${r.pushed})` : " — queued for sync"}`,
+        r.failed ? "error" : "success"
+      );
+    }
     setForm(null);
   };
 
@@ -361,6 +369,16 @@ export function AdminProducts({ miniOnly = false }: { miniOnly?: boolean }) {
                 <label className="label">Badge (e.g. LOW STOCK / 16GB RAM)</label>
                 <input className="input" value={form.badge} onChange={(e) => setForm({ ...form, badge: e.target.value })} />
               </div>
+
+              <label className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-200 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={form.featured}
+                  onChange={(e) => setForm({ ...form, featured: e.target.checked })}
+                  className="accent-primary-600 h-4 w-4"
+                />
+                Show in Featured Tech and Gadget (home page)
+              </label>
 
               <div>
                 <label className="label">Short Description</label>

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { findUserByEmail, createSession, SESSION_TTL_MS } from "@/lib/server/store";
 import { cookies } from "next/headers";
-import { authCookieName } from "@/lib/server/auth";
+import { authCookieName, publicUser } from "@/lib/server/auth";
 import { rateLimit } from "@/lib/server/rateLimit";
 
 export async function POST(req: Request) {
@@ -24,12 +24,12 @@ export async function POST(req: Request) {
   const { email, password } = body ?? {};
   if (!email || !password) return NextResponse.json({ error: "Email and password are required" }, { status: 400 });
 
-  const user = findUserByEmail(String(email).toLowerCase());
+  const user = await findUserByEmail(String(email).toLowerCase());
   if (!user || !user.passwordHash || !bcrypt.compareSync(password, user.passwordHash)) {
     return NextResponse.json({ error: "Invalid email or password" }, { status: 401 });
   }
 
-  const token = createSession(user.id);
+  const token = await createSession(user.id);
   (await cookies()).set(authCookieName(), token, {
     httpOnly: true,
     sameSite: "lax",
@@ -38,6 +38,5 @@ export async function POST(req: Request) {
     maxAge: Math.floor(SESSION_TTL_MS / 1000)
   });
 
-  const { passwordHash, ...safe } = user;
-  return NextResponse.json({ user: safe });
+  return NextResponse.json({ user: publicUser(user) });
 }

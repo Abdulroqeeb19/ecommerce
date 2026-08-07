@@ -8,8 +8,6 @@ import { useToast } from "@/store/toast";
 import { formatPrice, formatDateTime, cx } from "@/lib/utils";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "@/lib/db";
-import type { Order } from "@/lib/types";
-
 const STATUS_STYLES: Record<string, string> = {
   pending: "bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300",
   processing: "bg-skyline-50 dark:bg-skyline-900/40 text-skyline-600 dark:text-skyline-300",
@@ -26,6 +24,8 @@ export default function AccountPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [grade, setGrade] = useState("");
+  const [school, setSchool] = useState("");
   const [busy, setBusy] = useState(false);
 
   const localOrders = useLiveQuery(() => db.orders.toArray(), [], []);
@@ -43,7 +43,10 @@ export default function AccountPage() {
         toast("Welcome back!");
       } else {
         if (!name.trim()) throw new Error("Please enter your name");
-        await register(name, email, password);
+        await register(name, email, password, {
+          ...(grade ? { grade } : {}),
+          ...(school.trim() ? { school: school.trim() } : {})
+        });
         toast("Account created successfully!");
       }
     } catch (err) {
@@ -60,20 +63,37 @@ export default function AccountPage() {
           <h1 className="font-display text-2xl font-extrabold text-slateink dark:text-white flex items-center gap-2">
             <User className="h-6 w-6 text-primary-600" /> My Account
           </h1>
-          <div className="mt-5 grid grid-cols-2 rounded-lg bg-slate-100 dark:bg-slate-800 p-1 text-sm font-semibold">
-            <button onClick={() => setMode("login")} className={cx("rounded-md py-2 transition-colors", mode === "login" ? "bg-white dark:bg-slate-900 text-primary-700 dark:text-primary-400 shadow" : "text-slate-500 dark:text-slate-400")}>
+          <div className="mt-5 grid grid-cols-2 rounded-lg bg-slate-100 dark:bg-navy-900 p-1 text-sm font-semibold">
+            <button onClick={() => setMode("login")} className={cx("rounded-md py-2 transition-colors", mode === "login" ? "bg-white dark:bg-navy-800 text-primary-700 dark:text-primary-400 shadow" : "text-slate-500 dark:text-slate-400")}>
               Login
             </button>
-            <button onClick={() => setMode("register")} className={cx("rounded-md py-2 transition-colors", mode === "register" ? "bg-white dark:bg-slate-900 text-primary-700 dark:text-primary-400 shadow" : "text-slate-500 dark:text-slate-400")}>
+            <button onClick={() => setMode("register")} className={cx("rounded-md py-2 transition-colors", mode === "register" ? "bg-white dark:bg-navy-800 text-primary-700 dark:text-primary-400 shadow" : "text-slate-500 dark:text-slate-400")}>
               Register
             </button>
           </div>
           <form onSubmit={submit} className="mt-6 space-y-4">
             {mode === "register" && (
-              <div>
-                <label className="label">Full Name</label>
-                <input className="input" value={name} onChange={(e) => setName(e.target.value)} placeholder="Jane Doe" />
-              </div>
+              <>
+                <div>
+                  <label className="label">Full Name</label>
+                  <input className="input" value={name} onChange={(e) => setName(e.target.value)} placeholder="Jane Doe" />
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="label">Grade (optional)</label>
+                    <select className="input" value={grade} onChange={(e) => setGrade(e.target.value)}>
+                      <option value="">Select grade</option>
+                      <option value="JSS1">JSS1</option>
+                      <option value="JSS2">JSS2</option>
+                      <option value="JSS3">JSS3</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="label">School (optional)</label>
+                    <input className="input" value={school} onChange={(e) => setSchool(e.target.value)} placeholder="Your school" />
+                  </div>
+                </div>
+              </>
             )}
             <div>
               <label className="label">Email</label>
@@ -88,7 +108,7 @@ export default function AccountPage() {
             </button>
           </form>
           <p className="mt-4 text-xs text-slate-400 dark:text-slate-500 text-center">
-            Demo accounts: admin@gadgetstore.com / Admin@12345 · customer@gadgetstore.com / customer123
+            Demo accounts: admin@gadgetstore.com / Admin@12345 · customer@gadgetstore.com / Cust!B2CSRE8NqH2meDzS
           </p>
         </div>
       </div>
@@ -117,6 +137,12 @@ export default function AccountPage() {
             )}>
               {user.role}
             </span>
+            {(user.grade || user.school) && (
+              <span className="mt-1 inline-flex flex-wrap items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+                {user.grade && <span className="rounded-full bg-primary-50 dark:bg-primary-900/40 px-2 py-0.5 font-semibold text-primary-700 dark:text-primary-300">{user.grade}</span>}
+                {user.school && <span className="rounded-full bg-skyline-50 dark:bg-skyline-900/40 px-2 py-0.5 font-semibold text-skyline-600 dark:text-skyline-300">{user.school}</span>}
+              </span>
+            )}
           </div>
         </div>
         <div className="flex items-center gap-2">

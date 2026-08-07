@@ -32,7 +32,21 @@ export function validateProductInput(raw: unknown): { value: Partial<Product>; e
     return { value: {}, error: "Category is required" };
   }
 
-  const image = typeof b.image === "string" ? b.image.slice(0, 1000) : "";
+  const image = typeof b.image === "string" ? b.image : "";
+  if (image) {
+    const isDataUrl = image.startsWith("data:image/");
+    const isLocalPath = image.startsWith("/images/");
+    const isAbsolute = image.startsWith("http://") || image.startsWith("https://");
+    if (!isDataUrl && !isLocalPath && !isAbsolute) {
+      return { value: {}, error: "Image must be a valid /images/ path, absolute URL, or base64 data URL" };
+    }
+    if (isDataUrl && image.length > 4 * 1024 * 1024) {
+      return { value: {}, error: "Image data URL is too large (max 4MB)" };
+    }
+    if (!isDataUrl && image.length > 1000) {
+      return { value: {}, error: "Image reference is too long" };
+    }
+  }
 
   const specs: ProductSpec[] = Array.isArray(b.specs)
     ? b.specs
@@ -75,7 +89,10 @@ export function validateProductInput(raw: unknown): { value: Partial<Product>; e
       badge: typeof b.badge === "string" ? b.badge.slice(0, 40) : undefined,
       featured: Boolean(b.featured),
       tags,
-      miniStore: Boolean(b.miniStore)
+      miniStore: Boolean(b.miniStore),
+      supplyType: b.supplyType === "grocery" || b.supplyType === "supplies" ? b.supplyType : undefined,
+      createdAt: typeof b.createdAt === "string" ? b.createdAt.slice(0, 40) : undefined,
+      updatedAt: typeof b.updatedAt === "string" ? b.updatedAt.slice(0, 40) : undefined
     }
   };
 }

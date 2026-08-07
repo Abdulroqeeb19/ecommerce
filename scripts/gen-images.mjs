@@ -31,7 +31,7 @@ const PRODUCTS = [
   ["school-backpack-45l", "School Backpack", "School"],
   ["ballpoint-pens-pack-12", "Ballpoint Pens", "School"],
   ["ruled-notebooks-pack-5", "Ruled Notebooks", "School"],
-  ["pencil-eraser-set", "Pencil & Eraser Set", "School"],
+  ["pencil-eraser-set", "Pencil and Eraser Set", "School"],
   ["rice-5kg-bag", "Rice 5kg", "Grocery"],
   ["instant-noodles-carton-12", "Instant Noodles", "Grocery"],
   ["vegetable-oil-1l", "Vegetable Oil", "Grocery"],

@@ -35,6 +35,7 @@ export function AdminReports() {
   const filtered = useMemo(() => {
     let list = [...(orders || [])].filter((o) => o.status !== "cancelled");
     if (range !== "all") {
+      // eslint-disable-next-line react-hooks/purity -- time-window filter, stable per range memo
       const cutoff = Date.now() - parseInt(range) * 86400000;
       list = list.filter((o) => new Date(o.createdAt).getTime() >= cutoff);
     }
@@ -68,8 +69,8 @@ export function AdminReports() {
   const doExport = async (kind: "xlsx" | "pdf" | "docx") => {
     setExporting(kind);
     try {
-      if (kind === "xlsx") exportToExcel(rows, granularity);
-      if (kind === "pdf") exportToPdf(rows, granularity);
+      if (kind === "xlsx") await exportToExcel(rows, granularity);
+      if (kind === "pdf") await exportToPdf(rows, granularity);
       if (kind === "docx") await exportToDocx(rows, granularity);
       toast("Report exported successfully");
     } catch (e) {

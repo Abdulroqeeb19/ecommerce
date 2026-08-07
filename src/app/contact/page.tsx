@@ -1,8 +1,9 @@
 ﻿"use client";
 
 import { useState } from "react";
-import { Mail, Phone, MapPin, Clock, Send, MessageCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Send, MessageCircle, Facebook, Instagram } from "lucide-react";
 import { useToast } from "@/store/toast";
+import { BRAND_NAME, BRAND_EMAIL, BRAND_PHONES, SLOGAN, MOTTO, FACEBOOK_URL, INSTAGRAM_URL, whatsappLink } from "@/lib/brand";
 
 export default function ContactPage() {
   const { toast } = useToast();
@@ -17,20 +18,18 @@ export default function ContactPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
       <div className="text-center max-w-xl mx-auto">
-        <h1 className="font-display text-3xl font-extrabold text-slateink dark:text-white">Contact Gadget Hub</h1>
+        <h1 className="font-display text-3xl font-extrabold text-slateink dark:text-white">Contact {BRAND_NAME}</h1>
         <div className="mt-2 h-1 w-14 mx-auto rounded-full bg-primary-600" />
-        <p className="mt-4 text-slate-500 dark:text-slate-400 text-sm">
-          Questions about orders, bulk corporate purchases or the school mini-store? We are here to help.
-        </p>
+        <p className="mt-4 text-slate-500 dark:text-slate-400 text-sm">{SLOGAN}.</p>
+        <p className="mt-2 text-primary-700 dark:text-primary-300 font-display font-semibold italic text-sm">&quot;{MOTTO}.&quot;</p>
       </div>
 
       <div className="mt-10 grid lg:grid-cols-3 gap-8">
         <div className="space-y-4">
           {[
-            { icon: Mail, title: "Email Support", lines: ["support@gadgetstore.com", "sales@gadgetstore.com"] },
-            { icon: Phone, title: "Hotline", lines: ["+234 800 000 0000", "Open 24/7"] },
-            { icon: MapPin, title: "Head Office", lines: ["12 Tech Avenue,", "Lagos, Nigeria"] },
-            { icon: Clock, title: "Operational Hours", lines: ["Open 24/7, every day", "School orders: Mon–Wed"] }
+            { icon: Mail, title: "Email", lines: [BRAND_EMAIL] },
+            { icon: Phone, title: "Phone / WhatsApp", lines: [...BRAND_PHONES] },
+            { icon: MapPin, title: "Location", lines: ["Shop 5 Opposite", "Nigerian Air Force Base Adewole,", "Ilorin, Kwara State"] }
           ].map(({ icon: Icon, title, lines }) => (
             <div key={title} className="card p-5 flex items-start gap-4">
               <div className="rounded-lg bg-primary-50 p-3 shrink-0">
@@ -44,6 +43,20 @@ export default function ContactPage() {
               </div>
             </div>
           ))}
+          <div className="card p-5">
+            <p className="font-bold text-slateink dark:text-white">Find us online</p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              <a href={FACEBOOK_URL} target="_blank" rel="noreferrer" className="btn-secondary !py-2 !px-3 text-sm">
+                <Facebook className="h-4 w-4" /> Facebook
+              </a>
+              <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className="btn-secondary !py-2 !px-3 text-sm">
+                <Instagram className="h-4 w-4" /> Instagram
+              </a>
+              <a href={whatsappLink(`Hello ${BRAND_NAME}, I have an enquiry.`)} target="_blank" rel="noreferrer" className="btn-primary !py-2 !px-3 text-sm">
+                <MessageCircle className="h-4 w-4" /> WhatsApp Us
+              </a>
+            </div>
+          </div>
         </div>
 
         <div className="lg:col-span-2 card p-8">
@@ -65,7 +78,7 @@ export default function ContactPage() {
                 <option>General enquiry</option>
                 <option>Order support</option>
                 <option>Bulk corporate orders</option>
-                <option>School mini-store</option>
+                <option>Mini-store for schools</option>
                 <option>Warranty and returns</option>
               </select>
             </div>

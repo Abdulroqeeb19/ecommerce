@@ -1,6 +1,6 @@
 "use client";
 
-import { GraduationCap, Truck, ShieldCheck, HeadphonesIcon, CalendarDays } from "lucide-react";
+import { Truck, ShieldCheck, HeadphonesIcon, CalendarDays } from "lucide-react";
 import { useCurrency } from "@/store/currency";
 import { CURRENCY_RATES } from "@/lib/utils";
 
@@ -8,7 +8,7 @@ const PERKS = [
   { icon: Truck, title: "Fast Delivery", key: "shipping" },
   { icon: ShieldCheck, title: "1-Year Warranty", key: "warranty" },
   { icon: HeadphonesIcon, title: "24/7 Support", key: "support" },
-  { icon: CalendarDays, title: "School Mini-Store", key: "school" }
+  { icon: CalendarDays, title: "Mini-Store for Schools", key: "school" }
 ];
 
 export function Perks() {
@@ -27,7 +27,7 @@ export function Perks() {
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
       {PERKS.map(({ icon: Icon, title, key }) => (
-        <div key={key} className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-4 flex items-start gap-3 shadow-card">
+        <div key={key} className="bg-white dark:bg-navy-800 rounded-xl border border-slate-200 dark:border-navy-700 p-4 flex items-start gap-3 shadow-card">
           <div className="rounded-lg bg-primary-50 dark:bg-primary-900/40 p-2.5">
             <Icon className="h-5 w-5 text-primary-600 dark:text-primary-400" />
           </div>

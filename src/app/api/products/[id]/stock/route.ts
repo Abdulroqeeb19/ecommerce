@@ -25,7 +25,7 @@ export async function PUT(req: Request, { params }: Ctx) {
     return NextResponse.json({ error: "Invalid stock value" }, { status: 400 });
   }
 
-  const product = updateStock(id, stock);
+  const product = await updateStock(id, stock);
   if (!product) return NextResponse.json({ error: "Product not found" }, { status: 404 });
   return NextResponse.json(product);
 }

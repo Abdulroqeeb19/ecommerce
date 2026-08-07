@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
 import crypto from "node:crypto";
 import bcrypt from "bcryptjs";
-import { getDb, saveDb, createSession, findUserByEmail, SESSION_TTL_MS } from "@/lib/server/store";
+import { createUser, createSession, findUserByEmail, SESSION_TTL_MS } from "@/lib/server/store";
 import { cookies } from "next/headers";
-import { authCookieName } from "@/lib/server/auth";
+import { authCookieName, publicUser } from "@/lib/server/auth";
 import { rateLimit } from "@/lib/server/rateLimit";
+import { GRADE_LABELS } from "@/lib/types";
 
 export async function POST(req: Request) {
   const rl = rateLimit(req, 10);
@@ -24,23 +25,24 @@ export async function POST(req: Request) {
   if (password.length > 128) return NextResponse.json({ error: "Password is too long" }, { status: 400 });
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254) return NextResponse.json({ error: "Invalid email address" }, { status: 400 });
 
-  if (findUserByEmail(email)) return NextResponse.json({ error: "An account with this email already exists" }, { status: 409 });
+  if (await findUserByEmail(email)) return NextResponse.json({ error: "An account with this email already exists" }, { status: 409 });
 
-  const db = getDb();
   const user = {
     id: `usr_${crypto.randomUUID()}`,
     name: String(name).slice(0, 120),
     email: String(email).toLowerCase(),
     passwordHash: bcrypt.hashSync(password, 12),
     role: "customer" as const,
-    grade,
-    school,
+    grade:
+      typeof grade === "string" && grade && (GRADE_LABELS as readonly string[]).includes(grade)
+        ? grade.slice(0, 40)
+        : undefined,
+    school: typeof school === "string" ? school.slice(0, 120) : undefined,
     createdAt: new Date().toISOString()
   };
-  db.users.push(user);
-  saveDb(db);
+  await createUser(user);
 
-  const token = createSession(user.id);
+  const token = await createSession(user.id);
   (await cookies()).set(authCookieName(), token, {
     httpOnly: true,
     sameSite: "lax",
@@ -49,6 +51,5 @@ export async function POST(req: Request) {
     maxAge: Math.floor(SESSION_TTL_MS / 1000)
   });
 
-  const { passwordHash, ...safe } = user;
-  return NextResponse.json({ user: safe }, { status: 201 });
+  return NextResponse.json({ user: publicUser(user) }, { status: 201 });
 }

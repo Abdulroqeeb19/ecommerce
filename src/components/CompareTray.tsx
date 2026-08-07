@@ -4,17 +4,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { X, GitCompareArrows } from "lucide-react";
 import { useCompare } from "@/store/compare";
-import { formatPrice } from "@/lib/utils";
 
 export function CompareTray() {
   const { products, count, toggle, clear } = useCompare();
   if (count === 0) return null;
 
   return (
-    <div className="fixed bottom-0 inset-x-0 z-50 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 shadow-[0_-8px_30px_rgba(15,23,42,0.12)]">
+    <div className="fixed bottom-0 inset-x-0 z-50 bg-white dark:bg-navy-800 border-t border-slate-200 dark:border-navy-700 shadow-[0_-8px_30px_rgba(15,23,42,0.12)]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-3 flex-wrap">
         <span className="flex items-center gap-2 text-sm font-bold text-slateink dark:text-white">
-          <GitCompareArrows className="h-5 w-5 text-skyline-500" /> Compare ({count})
+          <GitCompareArrows className="h-5 w-5 text-gold-500" /> Compare ({count})
         </span>
         <div className="flex items-center gap-2">
           {products.map((p) => (
@@ -39,7 +38,7 @@ export function CompareTray() {
           </button>
           <Link
             href="/compare"
-            className="rounded-lg bg-skyline-500 hover:bg-skyline-600 text-white text-sm font-bold px-5 py-2.5"
+            className="rounded-lg text-slateink text-sm font-bold px-5 py-2.5 transition-all hover:-translate-y-0.5" style={{ background: "var(--gold-gradient)" }}
           >
             Compare Now
           </Link>

@@ -15,3 +15,8 @@ data/notify-config.json
 .vercel
 *.tsbuildinfo
 next-env.d.ts
+
+# Working source asset folders (not shipped)
+client images/
+new images/
+deliverables/

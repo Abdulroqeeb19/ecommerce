@@ -1,15 +1,17 @@
 ﻿"use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { Lock, CreditCard, CheckCircle2, WifiOff, ArrowRight } from "lucide-react";
+import { Lock, CreditCard, CheckCircle2, WifiOff, ArrowRight, Ticket, X } from "lucide-react";
 import { useCart } from "@/store/cart";
 import { useAuth } from "@/store/auth";
 import { useToast } from "@/store/toast";
 import { useOnline } from "@/hooks/useOnline";
+import { useMounted } from "@/hooks/useMounted";
 import { formatPrice, orderNumber, uid } from "@/lib/utils";
+import { api } from "@/lib/api";
 import { placeOrder } from "@/lib/sync";
 import type { CustomerInfo, Order } from "@/lib/types";
 
@@ -19,15 +21,7 @@ export default function CheckoutPage() {
   const { toast } = useToast();
   const online = useOnline();
   const router = useRouter();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
-
-  useEffect(() => {
-    if (user) {
-      setForm((f) => ({ ...f, name: f.name || user.name || "", email: f.email || user.email || "" }));
-    }
-  }, [user]);
+  const mounted = useMounted();
 
   const [form, setForm] = useState<CustomerInfo>({
     name: user?.name || "",
@@ -36,11 +30,52 @@ export default function CheckoutPage() {
     address: "",
     note: ""
   });
+
+  const [prevUserEmail, setPrevUserEmail] = useState<string | null>(user?.email ?? null);
+  if (user && prevUserEmail !== user.email) {
+    setPrevUserEmail(user.email);
+    setForm((f) => ({ ...f, name: f.name || user.name || "", email: f.email || user.email || "" }));
+  }
+
   const [placing, setPlacing] = useState(false);
   const [placedOrder, setPlacedOrder] = useState<Order | null>(null);
 
+  const [couponCode, setCouponCode] = useState("");
+  const [appliedCoupon, setAppliedCoupon] = useState<string | null>(null);
+  const [couponDiscount, setCouponDiscount] = useState(0);
+  const [couponError, setCouponError] = useState("");
+  const [checkingCoupon, setCheckingCoupon] = useState(false);
+
   const delivery = subtotal >= 500 ? 0 : 25;
-  const total = subtotal + delivery;
+  const total = Math.max(0, Math.round((subtotal + delivery - couponDiscount) * 100) / 100);
+
+  const applyCoupon = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!couponCode.trim()) return;
+    setCheckingCoupon(true);
+    setCouponError("");
+    try {
+      const res = await api.post<{ code: string; discount: number; description?: string }>("/coupons/validate", {
+        code: couponCode,
+        subtotal
+      });
+      setAppliedCoupon(res.code);
+      setCouponDiscount(res.discount);
+    } catch (err) {
+      setAppliedCoupon(null);
+      setCouponDiscount(0);
+      setCouponError((err as Error).message);
+    } finally {
+      setCheckingCoupon(false);
+    }
+  };
+
+  const removeCoupon = () => {
+    setAppliedCoupon(null);
+    setCouponDiscount(0);
+    setCouponError("");
+    setCouponCode("");
+  };
 
   if (placedOrder) {
     return (
@@ -60,11 +95,16 @@ export default function CheckoutPage() {
                 <span className="font-semibold">{formatPrice(it.price * it.qty)}</span>
               </p>
             ))}
+            {placedOrder.discount ? (
+              <p className="flex justify-between text-emerald-600 font-semibold">
+                <span>Coupon {placedOrder.couponCode} discount</span>
+                <span>-{formatPrice(placedOrder.discount)}</span>
+              </p>
+            ) : null}
             <p className="flex justify-between font-bold text-slateink dark:text-white border-t border-slate-200 dark:border-slate-700 pt-2">
               <span>Total</span>
               <span>{formatPrice(placedOrder.total)}</span>
-            </p>
-          </div>
+            </p>          </div>
         </div>
         <div className="mt-8 flex justify-center gap-3">
           <Link href="/shop" className="btn-primary">Continue Shopping</Link>
@@ -105,6 +145,8 @@ export default function CheckoutPage() {
       channel: "online",
       customer: form,
       source: "web",
+      couponCode: appliedCoupon || undefined,
+      discount: couponDiscount || undefined,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
     };
@@ -201,6 +243,45 @@ export default function CheckoutPage() {
                 </div>
               ))}
             </div>
+            <div className="mt-4 border-t border-slate-200 dark:border-slate-800 pt-4">
+              {appliedCoupon ? (
+                <div className="flex items-center justify-between rounded-lg bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800 px-3 py-2 text-sm">
+                  <span className="font-semibold text-emerald-700 dark:text-emerald-400">
+                    <Ticket className="inline h-4 w-4 mr-1" />
+                    {appliedCoupon}
+                  </span>
+                  <button onClick={removeCoupon} className="text-emerald-700 dark:text-emerald-400 hover:text-emerald-900" aria-label="Remove coupon">
+                    <X className="h-4 w-4" />
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={applyCoupon} className="flex gap-2">
+                  <div className="relative flex-1">
+                    <Ticket className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+                    <input
+                      value={couponCode}
+                      onChange={(e) => { setCouponCode(e.target.value); setCouponError(""); }}
+                      placeholder="Coupon code"
+                      className="input pl-9 py-2 text-sm"
+                      maxLength={40}
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    disabled={checkingCoupon || !couponCode.trim()}
+                    className="rounded-lg border border-primary-200 dark:border-primary-800 text-primary-700 dark:text-primary-400 font-bold text-sm px-4 py-2 hover:bg-primary-50 dark:hover:bg-primary-900/40 disabled:opacity-50"
+                  >
+                    {checkingCoupon ? "..." : "Apply"}
+                  </button>
+                </form>
+              )}
+              {couponError && <p className="mt-2 text-xs text-red-600">{couponError}</p>}
+              {appliedCoupon && (
+                <p className="mt-2 text-xs text-emerald-600 font-semibold">
+                  You&apos;re saving {formatPrice(couponDiscount)} with {appliedCoupon}
+                </p>
+              )}
+            </div>
             <div className="mt-4 space-y-2 border-t border-slate-200 dark:border-slate-800 pt-4 text-sm">
               <div className="flex justify-between text-slate-600 dark:text-slate-300">
                 <span>Subtotal</span>
@@ -210,6 +291,12 @@ export default function CheckoutPage() {
                 <span>Delivery</span>
                 <span>{delivery === 0 ? <span className="text-emerald-600 font-semibold">FREE</span> : formatPrice(delivery)}</span>
               </div>
+              {couponDiscount > 0 && (
+                <div className="flex justify-between text-emerald-600 font-semibold">
+                  <span>Discount ({appliedCoupon})</span>
+                  <span>-{formatPrice(couponDiscount)}</span>
+                </div>
+              )}
               <div className="flex justify-between font-bold text-slateink dark:text-white text-base pt-2 border-t border-slate-200 dark:border-slate-800">
                 <span>Total</span>
                 <span>{formatPrice(total)}</span>

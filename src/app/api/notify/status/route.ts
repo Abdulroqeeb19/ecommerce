@@ -6,5 +6,5 @@ export async function GET() {
   const user = await currentUser();
   const denied = requireRole(user, ["admin", "manager"]);
   if (denied) return denied;
-  return NextResponse.json(channelStatus());
+  return NextResponse.json(await channelStatus());
 }

@@ -7,17 +7,17 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          50: "#eff6ff",
-          100: "#dbeafe",
-          200: "#bfdbfe",
-          300: "#93c5fd",
-          400: "#60a5fa",
-          500: "#3b82f6",
-          600: "#2563EB",
-          700: "#1D4ED8",
-          800: "#1e40af",
-          900: "#1e3a8a",
-          950: "#172554"
+          50: "#FBF7E9",
+          100: "#F6EDC9",
+          200: "#F1D27D",
+          300: "#E8C954",
+          400: "#DDBB3E",
+          500: "#E6B800",
+          600: "#D4AF37",
+          700: "#A67C1E",
+          800: "#8A6518",
+          900: "#6B4A12",
+          950: "#4C3410"
         },
         skyline: {
           50: "#f0f9ff",
@@ -36,8 +36,31 @@ const config: Config = {
           500: "#F59E0B",
           600: "#d97706"
         },
-        slatebg: "#F8FAFC",
-        slateink: "#0F172A"
+        gold: {
+          50: "#FBF7E9",
+          100: "#F6EDC9",
+          200: "#F1D27D",
+          300: "#E4C359",
+          400: "#D4AF37",
+          500: "#C19B2A",
+          600: "#A67C1E",
+          700: "#8A6518",
+          800: "#6B4A12",
+          900: "#4C3410"
+        },
+        navy: {
+          700: "#1D2835",
+          800: "#182230",
+          900: "#121A24",
+          950: "#0C121A"
+        },
+        brand: {
+          red: "#E63946",
+          green: "#2EC4B6",
+          muted: "#E0E0E0"
+        },
+        slatebg: "#F8F9FA",
+        slateink: "#121A24"
       },
       fontFamily: {
         sans: ["var(--font-inter)", "ui-sans-serif", "system-ui", "sans-serif"],

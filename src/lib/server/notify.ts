@@ -1,4 +1,5 @@
-import type { Order } from "../types";
+import { getSettings } from "./store";
+import type { NotificationSettings, Order } from "../types";
 
 function fmtItems(order: Order): string {
   return order.items.map((i) => `${i.qty}× ${i.title}`).join(", ");
@@ -14,35 +15,50 @@ function textFor(order: Order): string {
     `Items: ${fmtItems(order)}`,
     `Total: $${order.total.toFixed(2)}`,
     order.customer.note ? `Note: ${order.customer.note}` : "",
-    order.channel === "school" ? "Channel: 🏫 School Mini-Store" : "Channel: 🌐 Online"
+    order.channel === "school" ? "Channel: 🏫 Mini-Store for Schools" : "Channel: 🌐 Online"
   ]
     .filter(Boolean)
     .join("\n");
 }
 
-async function sendTelegram(text: string): Promise<boolean> {
-  const token = process.env.TELEGRAM_BOT_TOKEN;
-  const chatId = process.env.TELEGRAM_CHAT_ID;
-  if (!token || !chatId) return false;
-  const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+type Settings = NotificationSettings;
+
+async function loadSettings(): Promise<Settings> {
+  const stored = (await getSettings<NotificationSettings>("notifications")) || {};
+  return {
+    telegramBotToken: process.env.TELEGRAM_BOT_TOKEN ?? stored.telegramBotToken,
+    telegramChatId: process.env.TELEGRAM_CHAT_ID ?? stored.telegramChatId,
+    whatsappPhoneId: process.env.WHATSAPP_PHONE_ID ?? stored.whatsappPhoneId,
+    whatsappToken: process.env.WHATSAPP_TOKEN ?? stored.whatsappToken,
+    whatsappTo: process.env.WHATSAPP_TO ?? stored.whatsappTo,
+    sendgridApiKey: process.env.SENDGRID_API_KEY ?? stored.sendgridApiKey,
+    notifyEmailTo: process.env.NOTIFY_EMAIL_TO ?? stored.notifyEmailTo,
+    notifyEmailFrom: process.env.NOTIFY_EMAIL_FROM ?? stored.notifyEmailFrom ?? "orders@gadgetstore.com",
+    twilioAccountSid: process.env.TWILIO_ACCOUNT_SID ?? stored.twilioAccountSid,
+    twilioAuthToken: process.env.TWILIO_AUTH_TOKEN ?? stored.twilioAuthToken,
+    twilioFrom: process.env.TWILIO_FROM ?? stored.twilioFrom,
+    twilioTo: process.env.TWILIO_TO ?? stored.twilioTo
+  };
+}
+
+async function sendTelegram(text: string, s: Settings): Promise<boolean> {
+  if (!s.telegramBotToken || !s.telegramChatId) return false;
+  const res = await fetch(`https://api.telegram.org/bot${s.telegramBotToken}/sendMessage`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ chat_id: chatId, text, parse_mode: "Markdown" })
+    body: JSON.stringify({ chat_id: s.telegramChatId, text, parse_mode: "Markdown" })
   });
   return res.ok;
 }
 
-async function sendWhatsApp(text: string): Promise<boolean> {
-  const phoneId = process.env.WHATSAPP_PHONE_ID;
-  const token = process.env.WHATSAPP_TOKEN;
-  const to = process.env.WHATSAPP_TO;
-  if (!phoneId || !token || !to) return false;
-  const res = await fetch(`https://graph.facebook.com/v18.0/${phoneId}/messages`, {
+async function sendWhatsApp(text: string, s: Settings): Promise<boolean> {
+  if (!s.whatsappPhoneId || !s.whatsappToken || !s.whatsappTo) return false;
+  const res = await fetch(`https://graph.facebook.com/v18.0/${s.whatsappPhoneId}/messages`, {
     method: "POST",
-    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    headers: { Authorization: `Bearer ${s.whatsappToken}`, "Content-Type": "application/json" },
     body: JSON.stringify({
       messaging_product: "whatsapp",
-      to,
+      to: s.whatsappTo,
       type: "text",
       text: { body: text.replace(/\*/g, "") }
     })
@@ -50,34 +66,27 @@ async function sendWhatsApp(text: string): Promise<boolean> {
   return res.ok;
 }
 
-async function sendEmail(order: Order, text: string): Promise<boolean> {
-  const apiKey = process.env.SENDGRID_API_KEY;
-  const to = process.env.NOTIFY_EMAIL_TO;
-  const from = process.env.NOTIFY_EMAIL_FROM || "orders@gadgetstore.com";
-  if (!apiKey || !to) return false;
+async function sendEmail(order: Order, text: string, s: Settings): Promise<boolean> {
+  if (!s.sendgridApiKey || !s.notifyEmailTo) return false;
   const res = await fetch("https://api.sendgrid.com/v3/mail/send", {
     method: "POST",
-    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+    headers: { Authorization: `Bearer ${s.sendgridApiKey}`, "Content-Type": "application/json" },
     body: JSON.stringify({
-      personalizations: [{ to: [{ email: to }] }],
-      from: { email: from },
-      subject: `New Gadget Hub Order ${order.orderNumber} — $${order.total.toFixed(2)}`,
+      personalizations: [{ to: [{ email: s.notifyEmailTo }] }],
+      from: { email: s.notifyEmailFrom || "orders@gadgetstore.com" },
+      subject: `New AYINDEDUNNY ENTERPRISE Order ${order.orderNumber} — $${order.total.toFixed(2)}`,
       content: [{ type: "text/plain", value: text }]
     })
   });
   return res.ok;
 }
 
-async function sendSms(text: string): Promise<boolean> {
-  const sid = process.env.TWILIO_ACCOUNT_SID;
-  const token = process.env.TWILIO_AUTH_TOKEN;
-  const from = process.env.TWILIO_FROM;
-  const to = process.env.TWILIO_TO;
-  if (!sid || !token || !from || !to) return false;
-  const body = new URLSearchParams({ From: from, To: to, Body: text.replace(/\*/g, "") });
-  const res = await fetch(`https://api.twilio.com/2010-04-01/Accounts/${sid}/Messages.json`, {
+async function sendSms(text: string, s: Settings): Promise<boolean> {
+  if (!s.twilioAccountSid || !s.twilioAuthToken || !s.twilioFrom || !s.twilioTo) return false;
+  const body = new URLSearchParams({ From: s.twilioFrom, To: s.twilioTo, Body: text.replace(/\*/g, "") });
+  const res = await fetch(`https://api.twilio.com/2010-04-01/Accounts/${s.twilioAccountSid}/Messages.json`, {
     method: "POST",
-    headers: { Authorization: `Basic ${Buffer.from(`${sid}:${token}`).toString("base64")}`, "Content-Type": "application/x-www-form-urlencoded" },
+    headers: { Authorization: `Basic ${Buffer.from(`${s.twilioAccountSid}:${s.twilioAuthToken}`).toString("base64")}`, "Content-Type": "application/x-www-form-urlencoded" },
     body
   });
   return res.ok;
@@ -90,25 +99,27 @@ export interface ChannelStatus {
   sms: boolean;
 }
 
-export function channelStatus(): ChannelStatus {
+export async function channelStatus(): Promise<ChannelStatus> {
+  const s = await loadSettings();
   return {
-    telegram: Boolean(process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID),
-    whatsapp: Boolean(process.env.WHATSAPP_PHONE_ID && process.env.WHATSAPP_TOKEN),
-    email: Boolean(process.env.SENDGRID_API_KEY && process.env.NOTIFY_EMAIL_TO),
-    sms: Boolean(process.env.TWILIO_ACCOUNT_SID && process.env.TWILIO_AUTH_TOKEN && process.env.TWILIO_FROM && process.env.TWILIO_TO)
+    telegram: Boolean(s.telegramBotToken && s.telegramChatId),
+    whatsapp: Boolean(s.whatsappPhoneId && s.whatsappToken && s.whatsappTo),
+    email: Boolean(s.sendgridApiKey && s.notifyEmailTo),
+    sms: Boolean(s.twilioAccountSid && s.twilioAuthToken && s.twilioFrom && s.twilioTo)
   };
 }
 
 export async function notifyOrderPlaced(order: Order): Promise<{ delivered: string[]; failed: string[] }> {
   const text = textFor(order);
+  const s = await loadSettings();
   const delivered: string[] = [];
   const failed: string[] = [];
 
   const jobs: [string, () => Promise<boolean>][] = [
-    ["telegram", () => sendTelegram(text)],
-    ["whatsapp", () => sendWhatsApp(text)],
-    ["email", () => sendEmail(order, text)],
-    ["sms", () => sendSms(text)]
+    ["telegram", () => sendTelegram(text, s)],
+    ["whatsapp", () => sendWhatsApp(text, s)],
+    ["email", () => sendEmail(order, text, s)],
+    ["sms", () => sendSms(text, s)]
   ];
 
   for (const [name, fn] of jobs) {
@@ -124,12 +135,13 @@ export async function notifyOrderPlaced(order: Order): Promise<{ delivered: stri
 }
 
 export async function sendTestNotification(channel?: string): Promise<{ delivered: string[]; failed: string[] }> {
-  const text = `🧪 *Test Notification* — Gadget Hub notification channels are operational.\nTime: ${new Date().toLocaleString()}`;
+  const text = `🧪 *Test Notification* — AYINDEDUNNY ENTERPRISE notification channels are operational.\nTime: ${new Date().toLocaleString()}`;
+  const s = await loadSettings();
   const map: Record<string, () => Promise<boolean>> = {
-    telegram: () => sendTelegram(text),
-    whatsapp: () => sendWhatsApp(text),
-    email: () => sendEmail({} as Order, text.replace(/\*/g, "")),
-    sms: () => sendSms(text)
+    telegram: () => sendTelegram(text, s),
+    whatsapp: () => sendWhatsApp(text, s),
+    email: () => sendEmail({} as Order, text.replace(/\*/g, ""), s),
+    sms: () => sendSms(text, s)
   };
 
   const keys = channel && channel !== "all" ? [channel] : Object.keys(map);

@@ -28,7 +28,7 @@ export async function PUT(req: Request, { params }: Ctx) {
     return NextResponse.json({ error: "Invalid order status" }, { status: 400 });
   }
 
-  const updated = updateOrderStatus(id, body.status);
+  const updated = await updateOrderStatus(id, body.status);
   if (!updated) return NextResponse.json({ error: "Order not found" }, { status: 404 });
   return NextResponse.json(updated);
 }

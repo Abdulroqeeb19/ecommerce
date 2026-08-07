@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from "react";
 
 export interface CurrencyDef {
   code: string;
@@ -30,12 +30,11 @@ interface CurrencyContextValue {
 const CurrencyContext = createContext<CurrencyContextValue | null>(null);
 
 export function CurrencyProvider({ children }: { children: ReactNode }) {
-  const [code, setCode] = useState<string>(DEFAULT_CURRENCY);
-
-  useEffect(() => {
-    const saved = typeof window !== "undefined" ? window.localStorage.getItem(STORAGE_KEY) : null;
-    if (saved && CURRENCIES.some((c) => c.code === saved)) setCode(saved);
-  }, []);
+  const [code, setCode] = useState<string>(() => {
+    if (typeof window === "undefined") return DEFAULT_CURRENCY;
+    const saved = window.localStorage.getItem(STORAGE_KEY);
+    return saved && CURRENCIES.some((c) => c.code === saved) ? saved : DEFAULT_CURRENCY;
+  });
 
   const setCurrency = useCallback((next: string) => {
     setCode(next);

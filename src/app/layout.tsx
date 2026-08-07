@@ -1,5 +1,4 @@
 ﻿import type { Metadata, Viewport } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { AppProviders } from "@/store/providers";
 import { TopBar } from "@/components/TopBar";
 import { Header } from "@/components/Header";
@@ -8,18 +7,15 @@ import { CompareTray } from "@/components/CompareTray";
 import { PwaRegister } from "@/components/PwaRegister";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-jakarta", display: "swap" });
-
 export const metadata: Metadata = {
   title: {
-    default: "Gadget Hub — Electronics and Office Gadgets Store",
-    template: "%s | Gadget Hub"
+    default: "AYINDEDUNNY ENTERPRISE — Babies Wears, Electrical Materials and Kitchen",
+    template: "%s | AYINDEDUNNY ENTERPRISE"
   },
   description:
-    "Offline-first PWA e-commerce for electronics and office gadgets: laptops, printers, smart desk tech, power and backup. Includes a boarding school mini-store.",
+    "Offline-first PWA e-commerce for Babies Wears, Electrical Materials and Fittings, and Kitchen Utensils. Includes a mini-store for schools.",
   manifest: "/manifest.json",
-  applicationName: "Gadget Hub",
+  applicationName: "AYINDEDUNNY ENTERPRISE",
   icons: {
     icon: "/icons/icon-192.png",
     apple: "/icons/apple-touch-icon.png"
@@ -34,7 +30,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jakarta.variable}`}>
+    <html lang="en" className="font-sans">
       <head>
         <script
           dangerouslySetInnerHTML={{

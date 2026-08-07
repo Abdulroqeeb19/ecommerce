@@ -31,7 +31,6 @@ export function useProducts(): { products: Product[]; loading: boolean } {
     return () => {
       cancelled = true;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return { products: products || [], loading: false };

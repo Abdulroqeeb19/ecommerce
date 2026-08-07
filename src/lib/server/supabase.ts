@@ -1,0 +1,487 @@
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import crypto from "node:crypto";
+import bcrypt from "bcryptjs";
+import { SEED_PRODUCTS } from "../data";
+import { CATALOG_ITEMS, DEFAULT_CATEGORY_CARDS } from "../brand";
+import type { CatalogItem, CategoryCard, Coupon, Order, Product, Review, User } from "../types";
+
+export const SESSION_TTL_MS = 1000 * 60 * 60 * 24 * 7;
+
+const url = process.env.SUPABASE_URL;
+const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+let client: SupabaseClient | null = null;
+
+function getClient(): SupabaseClient {
+  if (!client) {
+    if (!url || !key) throw new Error("SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY must be set");
+    client = createClient(url, key, { auth: { persistSession: false } });
+  }
+  return client;
+}
+
+function rowToProduct(r: Record<string, unknown>): Product {
+  return r as unknown as Product;
+}
+
+function rowToUser(r: Record<string, unknown>): User {
+  return r as unknown as User;
+}
+
+function rowToOrder(r: Record<string, unknown>): Order {
+  const items = Array.isArray((r as { order_items?: unknown }).order_items)
+    ? (r as { order_items: Order["items"] }).order_items
+    : [];
+  const { order_items: _omitted, ...rest } = r as Record<string, unknown> & { order_items?: unknown };
+  void _omitted;
+  return { ...(rest as unknown as Order), items };
+}
+
+function rowToCoupon(r: Record<string, unknown>): Coupon {
+  return r as unknown as Coupon;
+}
+
+function rowToReview(r: Record<string, unknown>): Review {
+  return r as unknown as Review;
+}
+
+export async function ensureBootstrap() {
+  const sb = getClient();
+  const { count: productCount } = await sb.from("products").select("id", { count: "exact", head: true });
+  const { count: couponCount } = await sb.from("coupons").select("id", { count: "exact", head: true });
+  const { count: reviewCount } = await sb.from("reviews").select("id", { count: "exact", head: true });
+  const { data: existingUsers } = await sb.from("users").select("email");
+
+  const emailSet = new Set((existingUsers || []).map((u) => String(u.email).toLowerCase()));
+
+  if ((productCount || 0) === 0) {
+    const { data: deletedRows } = await sb.from("deleted_products").select("id");
+    const deleted = new Set((deletedRows || []).map((d) => String(d.id)));
+    const rows = SEED_PRODUCTS.filter((p) => !deleted.has(p.id)).map((p) => ({
+      ...p,
+      brand: p.brand ?? "",
+      price: p.price ?? 0,
+      stock: p.stock ?? 0,
+      rating: p.rating ?? 0,
+      reviews: p.reviews ?? 0,
+      image: p.image ?? "",
+      gallery: p.gallery ?? [],
+      shortDescription: p.shortDescription ?? "",
+      description: p.description ?? "",
+      specs: p.specs ?? [],
+      featured: p.featured ?? false,
+      tags: p.tags ?? [],
+      miniStore: p.miniStore ?? false
+    }));
+    if (rows.length) {
+      const { error } = await sb.from("products").upsert(rows, { onConflict: "id" });
+      if (error) console.error("Failed to seed products:", error.message);
+    }
+  }
+
+  const isProd = process.env.NODE_ENV === "production";
+  const adminEmail = (process.env.ADMIN_EMAIL || "admin@gadgetstore.com").toLowerCase();
+  const adminPassword = process.env.ADMIN_PASSWORD || "Admin@12345";
+  if (isProd && !process.env.ADMIN_PASSWORD) {
+    throw new Error("ADMIN_PASSWORD must be set in production");
+  }
+  if (!isProd && adminPassword === "Admin@12345") {
+    console.warn("[security] Default admin password is in use. Set ADMIN_PASSWORD for any shared deployment.");
+  }
+
+  const managerEmails = (process.env.MANAGER_EMAILS || "manager1@gadgetstore.com,manager2@gadgetstore.com,manager3@gadgetstore.com")
+    .split(",")
+    .map((e) => e.trim().toLowerCase())
+    .filter(Boolean)
+    .slice(0, 3);
+
+  const accounts: User[] = [];
+  if (!emailSet.has(adminEmail)) {
+    accounts.push({
+      id: "usr_admin",
+      name: "Store Owner",
+      email: adminEmail,
+      passwordHash: bcrypt.hashSync(adminPassword, 10),
+      role: "admin",
+      createdAt: new Date().toISOString()
+    });
+    emailSet.add(adminEmail);
+  }
+  managerEmails.forEach((email, i) => {
+    if (!emailSet.has(email)) {
+      accounts.push({
+        id: `usr_manager_${i + 1}`,
+        name: `Mini-Store Manager ${i + 1}`,
+        email,
+        passwordHash: bcrypt.hashSync(process.env.MANAGER_PASSWORD || "manager123", 10),
+        role: "manager",
+        createdAt: new Date().toISOString()
+      });
+      emailSet.add(email);
+    }
+  });
+  const customerEmail = "customer@gadgetstore.com";
+  if (!emailSet.has(customerEmail)) {
+    accounts.push({
+      id: "usr_customer",
+      name: "Demo Customer",
+      email: customerEmail,
+      passwordHash: bcrypt.hashSync(process.env.CUSTOMER_PASSWORD || "customer123", 10),
+      role: "customer",
+      createdAt: new Date().toISOString()
+    });
+  }
+  if (accounts.length) {
+    const { error } = await sb.from("users").upsert(accounts, { onConflict: "id" });
+    if (error) console.error("Failed to seed users:", error.message);
+  }
+
+  if ((reviewCount || 0) === 0) {
+    const { data: products } = await sb.from("products").select("id");
+    const sampleAuthors = ["Adaeze O.", "Michael T.", "Kemi A.", "Chidi E.", "Sarah B."];
+    const sampleComments = [
+      "Exactly as described. Fast delivery and the quality exceeded my expectations.",
+      "Great value for money. Packaging was professional and the device works flawlessly.",
+      "Ordered through the mini-store for schools on Monday and it arrived the same week. Impressive service!",
+      "Solid build quality. Would definitely recommend to colleagues.",
+      "Works as advertised. Setup was straightforward and support was helpful."
+    ];
+    const reviews: Review[] = [];
+    for (const p of products || []) {
+      for (let i = 0; i < 3; i++) {
+        reviews.push({
+          id: `rev_${p.id}_${i}`,
+          productId: p.id,
+          author: sampleAuthors[(i + (products || []).indexOf(p)) % sampleAuthors.length],
+          rating: [5, 4, 5][i % 3],
+          title: ["Great purchase", "Worth the money", "Very satisfied"][i % 3],
+          comment: sampleComments[i % sampleComments.length],
+          verified: true,
+          createdAt: new Date(Date.now() - (i + 1) * 86400000).toISOString()
+        });
+      }
+    }
+    if (reviews.length) {
+      const { error } = await sb.from("reviews").upsert(reviews, { onConflict: "id" });
+      if (error) console.error("Failed to seed reviews:", error.message);
+    }
+  }
+
+  if ((couponCount || 0) === 0) {
+    const coupons: Coupon[] = [
+      { id: "coup_welcome10", code: "WELCOME10", type: "percent", value: 10, minSubtotal: 0, maxDiscount: 100, active: true, used: 0, description: "10% off your first order (up to $100)" },
+      { id: "coup_save50", code: "SAVE50", type: "fixed", value: 50, minSubtotal: 200, active: true, used: 0, description: "$50 off orders over $200" },
+      { id: "coup_student15", code: "STUDENT15", type: "percent", value: 15, minSubtotal: 100, maxDiscount: 150, active: true, used: 0, description: "15% off for students (up to $150)" }
+    ];
+    const { error } = await sb.from("coupons").upsert(coupons, { onConflict: "id" });
+    if (error) console.error("Failed to seed coupons:", error.message);
+  }
+
+  const { count: cardCount } = await sb.from("category_cards").select("id", { count: "exact", head: true });
+  const { count: catalogCount } = await sb.from("catalog_items").select("id", { count: "exact", head: true });
+  if ((cardCount || 0) === 0) {
+    const { error } = await sb.from("category_cards").upsert(DEFAULT_CATEGORY_CARDS as unknown as Record<string, unknown>[], { onConflict: "id" });
+    if (error) console.error("Failed to seed category cards:", error.message);
+  }
+  if ((catalogCount || 0) === 0) {
+    const { error } = await sb.from("catalog_items").upsert(CATALOG_ITEMS as unknown as Record<string, unknown>[], { onConflict: "id" });
+    if (error) console.error("Failed to seed catalog items:", error.message);
+  }
+}
+
+let bootstrapPromise: Promise<void> | null = null;
+
+export function bootstrap(): Promise<void> {
+  if (!bootstrapPromise) bootstrapPromise = ensureBootstrap().catch((e) => console.error("Supabase bootstrap failed:", e));
+  return bootstrapPromise;
+}
+
+// --- Products ---
+
+export async function sbListProducts(): Promise<Product[]> {
+  await bootstrap();
+  const { data } = await getClient().from("products").select("*");
+  return (data || []).map(rowToProduct);
+}
+
+export async function sbGetProduct(idOrSlug: string): Promise<Product | undefined> {
+  await bootstrap();
+  const { data } = await getClient().from("products").select("*").or(`id.eq.${idOrSlug},slug.eq.${idOrSlug}`).limit(1).maybeSingle();
+  return data ? rowToProduct(data) : undefined;
+}
+
+export async function sbUpsertProduct(product: Product): Promise<Product> {
+  await bootstrap();
+  const { data, error } = await getClient().from("products").upsert(product as unknown as Record<string, unknown>, { onConflict: "id" }).select().single();
+  if (error) throw new Error(error.message);
+  return rowToProduct(data);
+}
+
+export async function sbUpsertProductIfFresh(
+  product: Product
+): Promise<{ ok: true; product: Product } | { ok: false; error: string; existing: Product }> {
+  await bootstrap();
+  const existing = await sbGetProduct(product.id);
+  if (existing && product.updatedAt && existing.updatedAt && existing.updatedAt > product.updatedAt) {
+    return { ok: false, error: "Conflict: this product was updated elsewhere after your last edit.", existing };
+  }
+  const saved = await sbUpsertProduct(product);
+  return { ok: true, product: saved };
+}
+
+export async function sbUpdateStock(id: string, stock: number): Promise<Product | undefined> {
+  await bootstrap();
+  const { data } = await getClient()
+    .from("products")
+    .update({ stock, updatedAt: new Date().toISOString() })
+    .eq("id", id)
+    .select()
+    .single();
+  return data ? rowToProduct(data) : undefined;
+}
+
+export async function sbDeleteProduct(id: string): Promise<boolean> {
+  await bootstrap();
+  const { error } = await getClient().from("products").delete().eq("id", id);
+  if (error) throw new Error(error.message);
+  await getClient().from("deleted_products").upsert({ id, deletedAt: new Date().toISOString() }, { onConflict: "id" });
+  return true;
+}
+
+// --- Users ---
+
+export async function sbFindUserByEmail(email: string): Promise<User | undefined> {
+  await bootstrap();
+  const { data } = await getClient().from("users").select("*").eq("email", email.toLowerCase()).maybeSingle();
+  return data ? rowToUser(data) : undefined;
+}
+
+export async function sbFindUserById(id: string): Promise<User | undefined> {
+  await bootstrap();
+  const { data } = await getClient().from("users").select("*").eq("id", id).maybeSingle();
+  return data ? rowToUser(data) : undefined;
+}
+
+export async function sbCreateUser(user: User): Promise<User> {
+  await bootstrap();
+  const { data, error } = await getClient().from("users").insert(user as unknown as Record<string, unknown>).select().single();
+  if (error) throw new Error(error.message);
+  return rowToUser(data);
+}
+
+// --- Sessions ---
+
+export async function sbCreateSession(userId: string): Promise<string> {
+  await bootstrap();
+  const token = crypto.randomBytes(32).toString("hex");
+  const { error } = await getClient().from("sessions").insert({ token, userId, expires: Date.now() + SESSION_TTL_MS });
+  if (error) throw new Error(error.message);
+  return token;
+}
+
+export async function sbGetSessionUser(token?: string): Promise<User | null> {
+  if (!token) return null;
+  await bootstrap();
+  const { data: session } = await getClient().from("sessions").select("*").eq("token", token).maybeSingle();
+  if (!session) return null;
+  if (session.expires < Date.now()) {
+    await getClient().from("sessions").delete().eq("token", token);
+    return null;
+  }
+  return (await sbFindUserById(session.userId)) || null;
+}
+
+export async function sbDestroySession(token?: string) {
+  if (!token) return;
+  await getClient().from("sessions").delete().eq("token", token);
+}
+
+// --- Orders ---
+
+export async function sbListOrders(): Promise<Order[]> {
+  await bootstrap();
+  const { data } = await getClient().from("orders").select("*, order_items(*)");
+  return (data || []).map(rowToOrder);
+}
+
+export async function sbAddOrder(order: Order): Promise<Order> {
+  await bootstrap();
+  const sb = getClient();
+  const { order_items: _omit, items, ...orderRow } = order as unknown as Record<string, unknown> & { items: Order["items"] };
+  void _omit;
+  const { error: orderErr } = await sb.from("orders").insert(orderRow);
+  if (orderErr) throw new Error(orderErr.message);
+  const itemRows = items.map((it) => ({ orderId: order.id, productId: it.productId, title: it.title, price: it.price, qty: it.qty }));
+  if (itemRows.length) {
+    const { error: itemErr } = await sb.from("order_items").insert(itemRows);
+    if (itemErr) throw new Error(itemErr.message);
+  }
+  for (const it of items) {
+    const p = await sb.from("products").select("stock").eq("id", it.productId).single();
+    const current = (p.data?.stock as number | undefined) ?? 0;
+    await sb.from("products").update({ stock: Math.max(0, current - it.qty) }).eq("id", it.productId);
+  }
+  return order;
+}
+
+export async function sbUpdateOrderStatus(id: string, status: Order["status"]): Promise<Order | undefined> {
+  await bootstrap();
+  const { data } = await getClient()
+    .from("orders")
+    .update({ status, updatedAt: new Date().toISOString() })
+    .eq("id", id)
+    .select("*, order_items(*)")
+    .single();
+  return data ? rowToOrder(data) : undefined;
+}
+
+// --- Reviews ---
+
+export async function sbListReviews(productId: string): Promise<Review[]> {
+  await bootstrap();
+  const { data } = await getClient().from("reviews").select("*").eq("productId", productId).order("createdAt", { ascending: false });
+  return (data || []).map(rowToReview);
+}
+
+export async function sbAddReview(review: Review): Promise<Review> {
+  await bootstrap();
+  const sb = getClient();
+  const { error } = await sb.from("reviews").insert(review);
+  if (error) throw new Error(error.message);
+  const { data: all } = await sb.from("reviews").select("rating").eq("productId", review.productId);
+  const ratings = (all || []).map((r) => r.rating as number);
+  if (ratings.length) {
+    const avg = Math.round((ratings.reduce((s, r) => s + r, 0) / ratings.length) * 10) / 10;
+    await sb.from("products").update({ rating: avg, reviews: ratings.length, updatedAt: new Date().toISOString() }).eq("id", review.productId);
+  }
+  return review;
+}
+
+export async function sbHasReviewed(productId: string, userId: string): Promise<boolean> {
+  await bootstrap();
+  const { data } = await getClient().from("reviews").select("id").eq("productId", productId).eq("userId", userId).limit(1).maybeSingle();
+  return !!data;
+}
+
+// --- Coupons ---
+
+export async function sbListCoupons(): Promise<Coupon[]> {
+  await bootstrap();
+  const { data } = await getClient().from("coupons").select("*");
+  return (data || []).map(rowToCoupon);
+}
+
+export async function sbValidateCoupon(code: string, subtotal: number): Promise<{ discount: number; coupon: Coupon } | null> {
+  await bootstrap();
+  const { data } = await getClient().from("coupons").select("*").eq("code", code.toUpperCase()).maybeSingle();
+  const coupon = data ? rowToCoupon(data) : undefined;
+  if (!coupon || !coupon.active) return null;
+  if (coupon.expiresAt && new Date(coupon.expiresAt).getTime() < Date.now()) return null;
+  if (typeof coupon.maxUses === "number" && coupon.used >= coupon.maxUses) return null;
+  if (subtotal < coupon.minSubtotal) return null;
+
+  let discount: number;
+  if (coupon.type === "percent") {
+    discount = (subtotal * coupon.value) / 100;
+    if (typeof coupon.maxDiscount === "number") discount = Math.min(discount, coupon.maxDiscount);
+  } else {
+    discount = coupon.value;
+  }
+  discount = Math.max(0, Math.min(discount, subtotal));
+  return { discount: Math.round(discount * 100) / 100, coupon };
+}
+
+export async function sbRedeemCoupon(code: string, subtotal: number): Promise<{ discount: number; coupon: Coupon } | null> {
+  const result = await sbValidateCoupon(code, subtotal);
+  if (!result) return null;
+  await getClient().from("coupons").update({ used: result.coupon.used + 1 }).eq("id", result.coupon.id);
+  return result;
+}
+
+// --- Wishlist ---
+
+export async function sbGetWishlistForUser(userId: string): Promise<string[]> {
+  await bootstrap();
+  const { data } = await getClient().from("wishlists").select("productId").eq("userId", userId);
+  return (data || []).map((r) => String(r.productId));
+}
+
+export async function sbSetWishlistForUser(userId: string, ids: string[]) {
+  await bootstrap();
+  const sb = getClient();
+  await sb.from("wishlists").delete().eq("userId", userId);
+  const rows = ids.slice(0, 500).filter((id, i, arr) => arr.indexOf(id) === i).map((productId) => ({ userId, productId }));
+  if (rows.length) {
+    const { error } = await sb.from("wishlists").insert(rows);
+    if (error) throw new Error(error.message);
+  }
+}
+
+// --- Settings (keyed rows storing jsonb) ---
+
+export async function sbGetSettings<T>(key: string): Promise<T | undefined> {
+  await bootstrap();
+  const { data } = await getClient().from("settings").select("value").eq("key", key).maybeSingle();
+  return data ? (data.value as T) : undefined;
+}
+
+export async function sbSetSettings<T>(key: string, value: T): Promise<T> {
+  await bootstrap();
+  const { error } = await getClient()
+    .from("settings")
+    .upsert({ key, value: value as unknown as Record<string, unknown>, updatedAt: new Date().toISOString() }, { onConflict: "key" });
+  if (error) throw new Error(error.message);
+  return value;
+}
+
+// --- Category cards (shop-by-category) ---
+
+export async function sbListCategoryCards(): Promise<CategoryCard[]> {
+  await bootstrap();
+  const { data } = await getClient()
+    .from("category_cards")
+    .select("*")
+    .order("sortOrder", { ascending: true });
+  return (data || []) as unknown as CategoryCard[];
+}
+
+export async function sbUpsertCategoryCard(card: CategoryCard): Promise<CategoryCard> {
+  await bootstrap();
+  const row = { ...card, updatedAt: new Date().toISOString() };
+  const { error } = await getClient().from("category_cards").upsert(row as unknown as Record<string, unknown>, { onConflict: "id" });
+  if (error) throw new Error(error.message);
+  return card;
+}
+
+export async function sbDeleteCategoryCard(id: string): Promise<boolean> {
+  await bootstrap();
+  const { error, data } = await getClient().from("category_cards").delete().eq("id", id).select("id");
+  if (error) throw new Error(error.message);
+  return Array.isArray(data) && data.length > 0;
+}
+
+// --- Catalog items ---
+
+export async function sbListCatalogItems(): Promise<CatalogItem[]> {
+  await bootstrap();
+  const { data } = await getClient()
+    .from("catalog_items")
+    .select("*")
+    .order("sortOrder", { ascending: true });
+  return (data || []) as unknown as CatalogItem[];
+}
+
+export async function sbUpsertCatalogItem(item: CatalogItem): Promise<CatalogItem> {
+  await bootstrap();
+  const row = { ...item, updatedAt: new Date().toISOString() };
+  const { error } = await getClient().from("catalog_items").upsert(row as unknown as Record<string, unknown>, { onConflict: "id" });
+  if (error) throw new Error(error.message);
+  return item;
+}
+
+export async function sbDeleteCatalogItem(id: string): Promise<boolean> {
+  await bootstrap();
+  const { error, data } = await getClient().from("catalog_items").delete().eq("id", id).select("id");
+  if (error) throw new Error(error.message);
+  return Array.isArray(data) && data.length > 0;
+}

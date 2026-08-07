@@ -7,8 +7,21 @@
   --primary-dark: #1d4ed8;
   --sky: #0ea5e9;
   --amber: #f59e0b;
-  --bg: #f8fafc;
-  --ink: #0f172a;
+
+  --bg-dark-primary: #121a24;
+  --bg-dark-gradient: linear-gradient(135deg, #182230 0%, #0c121a 100%);
+  --gold-light: #f1d27d;
+  --gold-medium: #d4af37;
+  --gold-dark: #a67c1e;
+  --gold-gradient: linear-gradient(90deg, #a67c1e 0%, #f1d27d 50%, #a67c1e 100%);
+  --accent-red: #e63946;
+  --accent-green: #2ec4b6;
+  --text-muted: #e0e0e0;
+
+  --bg: #f8f9fa;
+  --ink: #121a24;
+  --font-inter: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-jakarta: "Segoe UI", ui-sans-serif, system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
 }
 
 html {
@@ -24,7 +37,7 @@ body {
 }
 
 .dark body {
-  @apply bg-slate-950 text-slate-100;
+  @apply bg-navy-950 text-slate-100;
 }
 
 /* Custom scrollbar */
@@ -75,22 +88,35 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white shadow transition-colors hover:bg-primary-700 disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-slateink shadow transition-all hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50;
+    background: var(--gold-gradient);
+    box-shadow: 0 2px 12px rgba(212, 175, 55, 0.35);
+  }
+  .btn-primary:hover {
+    background: linear-gradient(90deg, #8a6518 0%, #d4af37 50%, #8a6518 100%);
   }
   .btn-outline {
     @apply inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-700 transition-colors hover:border-primary-500 hover:text-primary-700 dark:border-slate-600 dark:text-slate-200 dark:hover:border-primary-500 dark:hover:text-primary-400;
   }
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-slateink shadow transition-all hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50;
+    background: var(--gold-gradient);
+    box-shadow: 0 2px 12px rgba(212, 175, 55, 0.35);
+  }
+  .btn-gold:hover {
+    background: linear-gradient(90deg, #8a6518 0%, #d4af37 50%, #8a6518 100%);
+  }
   .input {
-    @apply w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slateink outline-none transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-slate-800;
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slateink outline-none transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-100 dark:border-navy-700 dark:bg-navy-800 dark:text-slate-100 dark:focus:ring-slate-800;
   }
   .label {
     @apply block text-sm font-medium text-slate-700 mb-1.5 dark:text-slate-300;
   }
   .card {
-    @apply bg-white rounded-xl border border-slate-200 shadow-card dark:bg-slate-900 dark:border-slate-800;
+    @apply bg-white rounded-xl border border-slate-200 shadow-card dark:bg-navy-800 dark:border-navy-700;
   }
   .table-th {
-    @apply px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-slate-500 bg-slate-50 dark:bg-slate-900 dark:text-slate-400;
+    @apply px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-slate-500 bg-slate-50 dark:bg-navy-800 dark:text-slate-400;
   }
   .table-td {
     @apply px-4 py-3 text-sm text-slate-700 dark:text-slate-200;

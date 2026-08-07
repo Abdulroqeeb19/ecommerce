@@ -1,25 +1,35 @@
 "use client";
 
-import { db, getPendingOps, markSynced, queueOperation, resetLocalCatalog, upsertProducts } from "./db";
-import { api, isOnline, type SyncResult, type OrderPayload } from "./api";
-import type { Order, Product } from "./types";
+import { clearSyncedOps, db, getPendingOps, markSynced, markOpError, markOpConflict, queueOperation, setSyncMeta, upsertProducts } from "./db";
+import { api, isOnline, type SyncResult } from "./api";
+import type { Order, Product, SyncQueueItem } from "./types";
 
 export async function pullCatalog(): Promise<number> {
   if (!isOnline()) return 0;
   try {
     const products = await api.get<Product[]>("/products");
     const deleted = new Set((await db.deletedProducts.toArray()).map((d) => d.id));
-    await upsertProducts(products.filter((p) => !deleted.has(p.id)));
-    return products.length;
+    const live = products.filter((p) => !deleted.has(p.id));
+    await upsertProducts(live);
+    const stale = await db.products.toArray().then((rows) =>
+      rows.filter((r) => !live.some((p) => p.id === r.id) && !deleted.has(r.id)).map((r) => r.id)
+    );
+    if (stale.length) await db.products.bulkDelete(stale);
+    return live.length;
   } catch {
     return 0;
   }
 }
 
-export async function pushQueue(): Promise<{ pushed: number; failed: number; errors: string[] }> {
+function isConflictError(e: unknown): boolean {
+  return (e as { message?: string })?.message?.toLowerCase().includes("conflict") ?? false;
+}
+
+export async function pushQueue(): Promise<{ pushed: number; failed: number; conflicts: number; errors: string[] }> {
   const pending = await getPendingOps();
   let pushed = 0;
   let failed = 0;
+  let conflicts = 0;
   const errors: string[] = [];
 
   for (const op of pending) {
@@ -53,17 +63,31 @@ export async function pushQueue(): Promise<{ pushed: number; failed: number; err
       await markSynced(op.id!);
       pushed++;
     } catch (e) {
-      failed++;
+      if (isConflictError(e)) {
+        conflicts++;
+        await markOpConflict(op.id!, (e as Error).message);
+      } else {
+        failed++;
+        await markOpError(op.id!, (e as Error).message);
+      }
       errors.push((e as Error).message);
     }
   }
-  return { pushed, failed, errors };
+  return { pushed, failed, conflicts, errors };
 }
 
 export async function syncAll(): Promise<SyncResult> {
   const push = await pushQueue();
   const pulled = await pullCatalog();
-  return { pushed: push.pushed, pulled, failed: push.failed, errors: push.errors };
+  await setSyncMeta(new Date().toISOString());
+  await clearSyncedOps();
+  return {
+    pushed: push.pushed,
+    pulled,
+    failed: push.failed,
+    conflicts: push.conflicts,
+    errors: push.errors
+  };
 }
 
 export function registerSyncHooks(onSync?: (r: SyncResult) => void) {
@@ -79,6 +103,13 @@ export function registerSyncHooks(onSync?: (r: SyncResult) => void) {
   window.addEventListener("online", handler);
   pullCatalog();
   return () => window.removeEventListener("online", handler);
+}
+
+export async function syncQueueSnapshot(): Promise<SyncQueueItem[]> {
+  const rows = await db.syncQueue.toArray();
+  return rows
+    .filter((r) => !r.synced)
+    .sort((a, b) => a.createdAt.localeCompare(b.createdAt));
 }
 
 export async function saveOrderOffline(order: Order) {
@@ -103,6 +134,8 @@ export async function placeOrder(order: Order) {
     channel: order.channel,
     source: order.source,
     status: order.status,
+    couponCode: order.couponCode,
+    discount: order.discount,
     createdAt: order.createdAt
   };
 

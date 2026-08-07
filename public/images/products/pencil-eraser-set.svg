@@ -31,6 +31,6 @@
   </g>
   <circle cx="540" cy="70" r="90" fill="#ffffff" opacity="0.06"/>
   <circle cx="70" cy="540" r="120" fill="#ffffff" opacity="0.06"/>
-  <text x="300" y="545" text-anchor="middle" font-family="'Segoe UI',sans-serif" font-size="30" font-weight="800" fill="#ffffff">Pencil & Eraser Set</text>
+  <text x="300" y="545" text-anchor="middle" font-family="'Segoe UI',sans-serif" font-size="30" font-weight="800" fill="#ffffff">Pencil and Eraser Set</text>
   <text x="300" y="575" text-anchor="middle" font-family="'Segoe UI',sans-serif" font-size="16" font-weight="500" fill="#e0f2fe" opacity="0.8">School</text>
 </svg>

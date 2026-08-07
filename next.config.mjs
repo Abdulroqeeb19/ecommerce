@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === "production";
 
-// Hash of the inline theme script in src/app/layout.tsx (kept in sync)
-const THEME_SCRIPT_HASH = "sha256-WzDTRdsbM1m71KstyYp6zMrHea41jdtyGjaeD8LenSw=";
-
+// NOTE: we intentionally avoid a script hash + nonce here. Next.js streams
+// inline RSC bootstrap scripts in varied form, so a fixed hash would force
+// 'unsafe-inline' to be ignored (per CSP rules) and break hydration.
+// Keeping script-src as 'self' + 'unsafe-inline' is required for the app to run.
 const csp = isProd
   ? [
       "default-src 'self'",
@@ -14,7 +15,7 @@ const csp = isProd
       "img-src 'self' data: blob:",
       "font-src 'self' data:",
       "style-src 'self' 'unsafe-inline'",
-      `script-src 'self' 'unsafe-inline' '${THEME_SCRIPT_HASH}'`,
+      "script-src 'self' 'unsafe-inline'",
       "connect-src 'self'",
       "worker-src 'self' blob:",
       "manifest-src 'self'"

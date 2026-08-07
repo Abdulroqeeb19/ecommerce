@@ -16,7 +16,7 @@ export function CartDrawer({ open, onClose }: { open: boolean; onClose: () => vo
         onClick={onClose}
       />
       <aside
-        className={`absolute right-0 top-0 h-full w-full max-w-md bg-white dark:bg-slate-900 shadow-2xl flex flex-col transition-transform duration-300 ${
+        className={`absolute right-0 top-0 h-full w-full max-w-md bg-white dark:bg-navy-800 shadow-2xl flex flex-col transition-transform duration-300 ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -37,7 +37,7 @@ export function CartDrawer({ open, onClose }: { open: boolean; onClose: () => vo
             <Link
               href="/shop"
               onClick={onClose}
-              className="mt-5 inline-flex items-center gap-2 rounded-lg bg-primary-600 text-white font-semibold px-5 py-2.5 text-sm hover:bg-primary-700"
+              className="mt-5 inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-slateink transition-all hover:-translate-y-0.5" style={{ background: "var(--gold-gradient)" }}
             >
               Browse Shop <ArrowRight className="h-4 w-4" />
             </Link>
@@ -82,7 +82,7 @@ export function CartDrawer({ open, onClose }: { open: boolean; onClose: () => vo
               <Link
                 href="/checkout"
                 onClick={onClose}
-                className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 text-sm"
+                className="w-full inline-flex items-center justify-center gap-2 rounded-lg py-3 text-sm font-bold text-slateink transition-all hover:-translate-y-0.5" style={{ background: "var(--gold-gradient)" }}
               >
                 Proceed to Checkout <ArrowRight className="h-4 w-4" />
               </Link>

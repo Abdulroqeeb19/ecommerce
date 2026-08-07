@@ -1,41 +1,55 @@
 ﻿"use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Laptop, Printer, Monitor, BatteryCharging, ArrowRight } from "lucide-react";
+import {
+  Laptop,
+  Printer,
+  Monitor,
+  BatteryCharging,
+  Utensils,
+  Plug,
+  Baby,
+  Package,
+  ArrowRight,
+  type LucideIcon
+} from "lucide-react";
+import { DEFAULT_CATEGORY_CARDS } from "@/lib/brand";
+import { api } from "@/lib/api";
+import type { CategoryCard } from "@/lib/types";
 
-const CAROUSEL = [
-  {
-    name: "LAPTOPS",
-    tagline: "Power for every workload",
-    href: "/shop?category=Laptops%20and%20Notebooks",
-    image: "/images/products/ultrabook-x15.svg",
-    icon: Laptop
-  },
-  {
-    name: "PRINTERS AND TONERS",
-    tagline: "Crisp documents on demand",
-    href: "/shop?category=Printers%20and%20Scanners",
-    image: "/images/products/officejet-pro-print.svg",
-    icon: Printer
-  },
-  {
-    name: "SMART DESK TECH",
-    tagline: "Elevate your workspace",
-    href: "/shop?category=Office%20Ergonomics",
-    image: "/images/products/standing-desk-dual.svg",
-    icon: Monitor
-  },
-  {
-    name: "POWER AND BACKUP",
-    tagline: "Stay online through outages",
-    href: "/shop?category=Power%20and%20UPS",
-    image: "/images/products/ups-1200va.svg",
-    icon: BatteryCharging
-  }
-];
+const ICONS: Record<string, LucideIcon> = {
+  laptop: Laptop,
+  printer: Printer,
+  monitor: Monitor,
+  battery: BatteryCharging,
+  utensils: Utensils,
+  plug: Plug,
+  baby: Baby
+};
+
+const ACTIVE_CATEGORY_IDS = ["card_kitchen", "card_electrical", "card_babies"];
 
 export function CategoryCarousel() {
+  const [cards, setCards] = useState<CategoryCard[]>(
+    DEFAULT_CATEGORY_CARDS.filter((c) => ACTIVE_CATEGORY_IDS.includes(c.id))
+  );
+
+  useEffect(() => {
+    let cancelled = false;
+    api
+      .get<CategoryCard[]>("/category-cards")
+      .then((list) => {
+        if (!cancelled && Array.isArray(list) && list.length)
+          setCards(list.filter((c) => c.active && ACTIVE_CATEGORY_IDS.includes(c.id)));
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   return (
     <div className="mt-14">
       <div className="flex items-center justify-between mb-5">
@@ -46,30 +60,33 @@ export function CategoryCarousel() {
           View all <ArrowRight className="h-4 w-4" />
         </Link>
       </div>
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {CAROUSEL.map((item) => (
-          <Link
-            key={item.name}
-            href={item.href}
-            className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-slateink to-primary-900 text-white shadow-card hover:shadow-hover transition-all hover:-translate-y-0.5"
-          >
-            <Image
-              src={item.image}
-              alt={item.name}
-              width={300}
-              height={220}
-              className="h-44 w-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slateink via-slateink/30 to-transparent" />
-            <div className="absolute bottom-0 inset-x-0 p-4">
-              <span className="flex items-center gap-2">
-                <item.icon className="h-4 w-4 text-skyline-400" />
-                <span className="font-display font-extrabold text-sm tracking-wide">{item.name}</span>
-              </span>
-              <p className="text-xs text-slate-300 mt-0.5">{item.tagline}</p>
-            </div>
-          </Link>
-        ))}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {cards.map((item) => {
+          const Icon = ICONS[item.icon] || Package;
+          return (
+            <Link
+              key={item.id || item.name}
+              href={item.href}
+              className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-slateink to-primary-900 text-white shadow-card hover:shadow-hover transition-all hover:-translate-y-0.5"
+            >
+              <Image
+                src={item.image}
+                alt={item.name}
+                width={300}
+                height={220}
+                className="h-44 w-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slateink via-slateink/30 to-transparent" />
+              <div className="absolute bottom-0 inset-x-0 p-4">
+                <span className="flex items-center gap-2">
+                  <Icon className="h-4 w-4 text-gold-500" />
+                  <span className="font-display font-extrabold text-sm tracking-wide">{item.name}</span>
+                </span>
+                <p className="text-xs text-slate-300 mt-0.5">{item.tagline}</p>
+              </div>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

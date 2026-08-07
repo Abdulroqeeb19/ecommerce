@@ -11,16 +11,15 @@ import {
   ShoppingCart,
   Lock,
   WifiOff,
-  CheckCircle2,
-  RefreshCw,
-  Package,
-  X
+  CheckCircle2
 } from "lucide-react";
 import { useProducts } from "@/lib/catalog";
 import { useOnline } from "@/hooks/useOnline";
+import { useMounted } from "@/hooks/useMounted";
 import { useToast } from "@/store/toast";
 import { useAuth } from "@/store/auth";
 import { CountdownTimer } from "@/components/CountdownTimer";
+import { MiniStorePanel } from "@/components/admin/MiniStorePanel";
 import {
   GRADE_LABELS,
   GRADE_SCHEDULE,
@@ -29,16 +28,17 @@ import {
 import {
   cx,
   formatPrice,
+  isEmergencyOpenFor,
   isOrderingDay,
   nextOrderingDate,
   orderNumber,
   todayDayIndex,
   uid,
-  weekdayName
+  weekdayName,
+  type EmergencyOpenWindow
 } from "@/lib/utils";
-import { placeOrder, syncAll } from "@/lib/sync";
-import { useLiveQuery } from "dexie-react-hooks";
-import { db } from "@/lib/db";
+import { placeOrder } from "@/lib/sync";
+import { api } from "@/lib/api";
 
 type BasketItem = { productId: string; title: string; price: number; qty: number };
 
@@ -47,9 +47,7 @@ export default function SchoolPage() {
   const online = useOnline();
   const { toast } = useToast();
   const { user, isManager } = useAuth();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
+  const mounted = useMounted();
 
   const [grade, setGrade] = useState<"JSS1" | "JSS2" | "JSS3">("JSS1");
   const [studentName, setStudentName] = useState("");
@@ -60,7 +58,19 @@ export default function SchoolPage() {
   const [placed, setPlaced] = useState<Order | null>(null);
   const [supplyFilter, setSupplyFilter] = useState<string>("All");
 
-  const orderingOpen = isOrderingDay(grade);
+  const [emergencyWindows, setEmergencyWindows] = useState<EmergencyOpenWindow[]>([]);
+
+  useEffect(() => {
+    api
+      .get<EmergencyOpenWindow[]>("/settings/store-open")
+      .then((list) => {
+        if (Array.isArray(list)) setEmergencyWindows(list);
+      })
+      .catch(() => {});
+  }, []);
+
+  const orderingOpen = isOrderingDay(grade) || isEmergencyOpenFor(grade, emergencyWindows);
+  const isEmergencyOpen = !isOrderingDay(grade) && isEmergencyOpenFor(grade, emergencyWindows);
   const nextDate = useMemo(() => nextOrderingDate(grade), [grade]);
 
   const miniProducts = useMemo(() => products.filter((p) => p.miniStore), [products]);
@@ -71,9 +81,6 @@ export default function SchoolPage() {
         : miniProducts.filter((p) => p.supplyType === (supplyFilter === "Groceries" ? "grocery" : "supplies")),
     [miniProducts, supplyFilter]
   );
-
-  const localOrders = useLiveQuery(() => db.orders.toArray(), [], []);
-  const schoolOrders = (localOrders || []).filter((o) => o.channel === "school").sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 
   const addItem = (p: { id: string; title: string; price: number }) => {
     setBasket((b) => {
@@ -131,11 +138,11 @@ export default function SchoolPage() {
         <div className="absolute -right-10 -top-10 h-52 w-52 rounded-full bg-white/10 blur-2xl" />
         <div className="relative">
           <span className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-wide">
-            <GraduationCap className="h-4 w-4" /> Boarding School Mini-Store
+            <GraduationCap className="h-4 w-4" /> Mini-Store for Schools
           </span>
-          <h1 className="mt-3 font-display text-2xl sm:text-4xl font-extrabold">Gadget Hub Mini-Store</h1>
+          <h1 className="mt-3 font-display text-2xl sm:text-4xl font-extrabold">AYINDEDUNNY ENTERPRISE Mini-Store</h1>
           <p className="mt-2 text-slate-200 max-w-2xl text-sm">
-            A synchronized ordering portal for boarding school students. Each grade orders on its designated day.
+            A synchronized ordering portal for schools. Each grade orders on its designated day.
             The portal is managed by exactly three authorized managers and works fully offline.
           </p>
           <div className="mt-5 flex items-center gap-2 text-xs font-semibold">
@@ -173,7 +180,7 @@ export default function SchoolPage() {
                 <CalendarDays className="h-4 w-4 text-primary-600" />
                 Ordering day: <span className="font-bold text-slateink dark:text-white">{GRADE_SCHEDULE[g]}</span>
               </p>
-              <p className="mt-2 text-xs text-slate-400 dark:text-slate-500">Students in {g} can place orders only on {GRADE_SCHEDULE[g]}s.</p>
+              <p className="mt-2 text-xs text-slate-400 dark:text-slate-500">Students in {g} order on {GRADE_SCHEDULE[g]}s, or on any day specially opened by the manager.</p>
             </button>
           );
         })}
@@ -191,6 +198,18 @@ export default function SchoolPage() {
             </p>
           </div>
           <CountdownTimer target={nextDate} />
+        </div>
+      ) : isEmergencyOpen ? (
+        <div className="mt-6 rounded-xl bg-skyline-700 text-white p-5 flex flex-col sm:flex-row sm:items-center gap-4 justify-between">
+          <div>
+            <p className="font-display font-extrabold text-lg flex items-center gap-2">
+              <CheckCircle2 className="h-5 w-5" /> Ordering temporarily open for {grade}!
+            </p>
+            <p className="text-sm text-skyline-100 mt-1">
+              The store has been specially opened today to accommodate students who missed their allotted ordering day.
+            </p>
+          </div>
+          <span className="rounded-lg bg-white/20 px-4 py-2 text-sm font-bold text-center">Emergency access active</span>
         </div>
       ) : (
         <div className="mt-6 rounded-xl bg-emerald-500 text-white p-5 flex flex-col sm:flex-row sm:items-center gap-4 justify-between">
@@ -257,10 +276,10 @@ export default function SchoolPage() {
                     )}
                   </div>
                   <div className="p-3">
-                    <p className="text-[10px] font-bold uppercase text-primary-600 dark:text-primary-400">{p.category}</p>
-                    <h3 className="text-xs font-bold text-slateink dark:text-white line-clamp-2 min-h-[2rem]">{p.title}</h3>
+                    <p className="text-[10px] sm:text-[11px] font-bold uppercase text-primary-600 dark:text-primary-400">{p.category}</p>
+                    <h3 className="text-xs sm:text-sm font-bold text-slateink dark:text-white line-clamp-2 min-h-[2.1rem] sm:min-h-[2.5rem]">{p.title}</h3>
                     <div className="mt-1 flex items-center justify-between">
-                      <span className="text-sm font-extrabold text-slateink dark:text-white">{formatPrice(p.price)}</span>
+                      <span className="text-base sm:text-lg font-extrabold text-slateink dark:text-white">{formatPrice(p.price)}</span>
                       {inBasket ? (
                         <div className="flex items-center gap-1">
                           <button onClick={() => changeQty(p.id, -1)} className="rounded bg-slate-100 dark:bg-slate-800 p-1 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700" aria-label="Remove one">
@@ -338,7 +357,7 @@ export default function SchoolPage() {
                 orderingOpen ? "bg-primary-600 hover:bg-primary-700 text-white" : "bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500"
               )}
             >
-              {placing ? "Placing order..." : orderingOpen ? `Place ${grade} Order` : `Closed until ${GRADE_SCHEDULE[grade]}`}
+              {placing ? "Placing order..." : orderingOpen ? (isEmergencyOpen ? `Place ${grade} Order (Emergency Open)` : `Place ${grade} Order`) : `Closed until ${GRADE_SCHEDULE[grade]}`}
             </button>
             {mounted && !online && (
               <p className="mt-3 flex items-center justify-center gap-1.5 text-xs text-amber-600">
@@ -351,7 +370,7 @@ export default function SchoolPage() {
             <h3 className="font-bold text-slateink dark:text-white text-sm">How it works</h3>
             <ol className="mt-3 space-y-2 text-xs text-slate-600 list-decimal list-inside">
               <li>Select your grade (JSS1 / JSS2 / JSS3).</li>
-              <li>Ordering is only open on your grade's designated day.</li>
+              <li>Ordering is open on your grade&apos;s designated day, or on a day specially opened by the manager.</li>
               <li>Add items to your order and submit with your name.</li>
               <li>The mini-store manager fulfils your order the same week.</li>
             </ol>
@@ -360,14 +379,14 @@ export default function SchoolPage() {
       </div>
 
       {/* Manager section */}
-      <section id="manager-login" className="mt-14 rounded-2xl border border-slate-200 bg-white dark:bg-slate-900 overflow-hidden">
+      <section id="manager-login" className="mt-14 rounded-2xl border border-slate-200 bg-white dark:bg-navy-800 overflow-hidden">
         <div className="bg-slateink text-white px-6 py-5 flex flex-wrap items-center justify-between gap-3">
           <div>
             <h2 className="font-display font-extrabold text-lg flex items-center gap-2">
               <ShieldCheck className="h-5 w-5 text-skyline-500" /> Mini-Store Manager Panel
             </h2>
             <p className="text-xs text-slate-400 mt-0.5">
-              Restricted to exactly three authorized managers (RBAC). Works offline â€” orders sync automatically.
+              Restricted to exactly three authorized managers (RBAC). Works offline — orders sync automatically.
             </p>
           </div>
           {isManager && (
@@ -379,78 +398,7 @@ export default function SchoolPage() {
 
         {isManager ? (
           <div className="p-6">
-            <div className="grid sm:grid-cols-3 gap-4 mb-6">
-              <div className="rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-4">
-                <p className="text-xs text-slate-500 font-semibold uppercase">Local Orders</p>
-                <p className="font-display text-2xl font-extrabold text-slateink dark:text-white">{schoolOrders.length}</p>
-              </div>
-              <div className="rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-4">
-                <p className="text-xs text-slate-500 font-semibold uppercase">Pending Sync</p>
-                <p className="font-display text-2xl font-extrabold text-amber-500">
-                  {schoolOrders.filter((o) => o.synced === false).length}
-                </p>
-              </div>
-              <div className="rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-4 flex flex-col justify-between">
-                <p className="text-xs text-slate-500 font-semibold uppercase">Sync Status</p>
-                <button
-                  onClick={async () => {
-                    const r = await syncAll();
-                    toast(`Sync complete: ${r.pushed} pushed, ${r.pulled} pulled${r.failed ? `, ${r.failed} failed` : ""}`, r.failed ? "error" : "success");
-                  }}
-                  className="btn-primary mt-2 text-xs"
-                >
-                  <RefreshCw className="h-4 w-4" /> Sync Now
-                </button>
-              </div>
-            </div>
-
-            <h3 className="font-bold text-slateink dark:text-white text-sm mb-3 flex items-center gap-2">
-              <Package className="h-4 w-4 text-primary-600" /> Recent Mini-Store Orders
-            </h3>
-            {schoolOrders.length === 0 ? (
-              <p className="text-sm text-slate-400 dark:text-slate-500">No orders recorded yet.</p>
-            ) : (
-              <div className="overflow-x-auto">
-                <table className="w-full min-w-[40rem] text-sm">
-                  <thead>
-                    <tr>
-                      <th className="table-th">Order #</th>
-                      <th className="table-th">Student</th>
-                      <th className="table-th">Grade</th>
-                      <th className="table-th">Items</th>
-                      <th className="table-th">Total</th>
-                      <th className="table-th">Synced</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {schoolOrders.slice(0, 15).map((o) => (
-                      <tr key={o.id} className="border-b border-slate-100">
-                        <td className="table-td font-bold text-slateink dark:text-white">{o.orderNumber}</td>
-                        <td className="table-td">{o.customer.name}</td>
-                        <td className="table-td">
-                          <span className="rounded-full bg-primary-50 text-primary-700 text-xs font-bold px-2 py-0.5">{o.customer.grade}</span>
-                        </td>
-                        <td className="table-td">
-                          {o.items.map((i) => `${i.qty}× ${i.title.split(" - ")[0]}`).join(", ")}
-                        </td>
-                        <td className="table-td font-bold">{formatPrice(o.total)}</td>
-                        <td className="table-td">
-                          {o.synced === false ? (
-                            <span className="inline-flex items-center gap-1 text-xs font-semibold text-amber-500">
-                              <WifiOff className="h-3.5 w-3.5" /> Pending
-                            </span>
-                          ) : (
-                            <span className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-600">
-                              <CheckCircle2 className="h-3.5 w-3.5" /> Synced
-                            </span>
-                          )}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
+            <MiniStorePanel />
           </div>
         ) : (
           <ManagerLogin />

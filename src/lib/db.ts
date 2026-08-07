@@ -1,7 +1,7 @@
 "use client";
 
 import Dexie, { type Table } from "dexie";
-import type { CartItem, Order, Product, SyncQueueItem, User } from "./types";
+import type { CartItem, Order, Product, SyncQueueItem } from "./types";
 
 export interface SyncedMeta {
   key: string;
@@ -80,8 +80,45 @@ export async function getPendingOps() {
   return db.syncQueue.filter((op) => !op.synced).toArray();
 }
 
+export async function getSyncMeta() {
+  const row = await db.meta.get("lastSyncAt");
+  return row?.value || null;
+}
+
+export async function setSyncMeta(iso: string) {
+  await db.meta.put({ key: "lastSyncAt", value: iso });
+}
+
 export async function markSynced(id: number) {
   await db.syncQueue.update(id, { synced: true });
+}
+
+export async function markOpError(id: number, message: string) {
+  const op = await db.syncQueue.get(id);
+  await db.syncQueue.update(id, {
+    error: message.slice(0, 500),
+    attempts: (op?.attempts || 0) + 1,
+    lastAttemptAt: new Date().toISOString()
+  });
+}
+
+export async function markOpConflict(id: number, message: string) {
+  const op = await db.syncQueue.get(id);
+  await db.syncQueue.update(id, {
+    conflicted: true,
+    error: message.slice(0, 500),
+    attempts: (op?.attempts || 0) + 1,
+    lastAttemptAt: new Date().toISOString()
+  });
+}
+
+export async function clearOpError(id: number) {
+  await db.syncQueue.update(id, { error: undefined, conflicted: false });
+}
+
+export async function clearSyncedOps() {
+  const synced = await db.syncQueue.filter((op) => op.synced).toArray();
+  await db.syncQueue.bulkDelete(synced.map((op) => op.id!).filter((id): id is number => typeof id === "number"));
 }
 
 export async function saveOrder(order: Order) {

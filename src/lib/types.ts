@@ -6,7 +6,10 @@ export type Category =
   | "Audio and Headphones"
   | "Monitors and Displays"
   | "Networking and Storage"
-  | "Power and UPS";
+  | "Power and UPS"
+  | "Kitchen Utensils"
+  | "Electrical Materials and Fittings"
+  | "Babies Wears";
 
 export const CATEGORIES: Category[] = [
   "Laptops and Notebooks",
@@ -16,13 +19,48 @@ export const CATEGORIES: Category[] = [
   "Audio and Headphones",
   "Monitors and Displays",
   "Networking and Storage",
-  "Power and UPS"
+  "Power and UPS",
+  "Kitchen Utensils",
+  "Electrical Materials and Fittings",
+  "Babies Wears"
 ];
 
 export interface ProductSpec {
   label: string;
   value: string;
 }
+
+export interface CategoryCard {
+  id: string;
+  name: string;
+  tagline: string;
+  href: string;
+  image: string;
+  icon: string;
+  sortOrder: number;
+  active: boolean;
+}
+
+export interface CatalogItem {
+  id: string;
+  name: string;
+  tag: string;
+  category: string;
+  image: string;
+  price?: number;
+  sortOrder: number;
+  active: boolean;
+}
+
+export const CATEGORY_CARD_ICONS = [
+  "laptop",
+  "printer",
+  "monitor",
+  "battery",
+  "utensils",
+  "plug",
+  "baby"
+] as const;
 
 export interface Product {
   id: string;
@@ -106,9 +144,37 @@ export interface Order {
   channel: "online" | "school";
   customer: CustomerInfo;
   source?: "web" | "mini-store";
+  couponCode?: string;
+  discount?: number;
   createdAt: string;
   updatedAt: string;
   synced?: boolean;
+}
+
+export interface Review {
+  id: string;
+  productId: string;
+  userId?: string;
+  author: string;
+  rating: number;
+  title?: string;
+  comment: string;
+  verified: boolean;
+  createdAt: string;
+}
+
+export interface Coupon {
+  id: string;
+  code: string;
+  type: "percent" | "fixed";
+  value: number;
+  minSubtotal: number;
+  maxDiscount?: number;
+  active: boolean;
+  maxUses?: number;
+  used: number;
+  expiresAt?: string;
+  description?: string;
 }
 
 export interface User {
@@ -128,6 +194,10 @@ export interface SyncQueueItem {
   payload: Record<string, unknown>;
   synced: boolean;
   createdAt: string;
+  error?: string;
+  attempts?: number;
+  conflicted?: boolean;
+  lastAttemptAt?: string;
 }
 
 export interface SalesReportRow {
@@ -146,6 +216,66 @@ export interface NotificationChannelStatus {
   email: boolean;
   sms: boolean;
 }
+
+export interface NotificationSettings {
+  telegramBotToken?: string;
+  telegramChatId?: string;
+  whatsappPhoneId?: string;
+  whatsappToken?: string;
+  whatsappTo?: string;
+  sendgridApiKey?: string;
+  notifyEmailTo?: string;
+  notifyEmailFrom?: string;
+  twilioAccountSid?: string;
+  twilioAuthToken?: string;
+  twilioFrom?: string;
+  twilioTo?: string;
+}
+
+export interface NotificationChannelConfig {
+  key: keyof NotificationChannelStatus;
+  name: string;
+  fields: { key: keyof NotificationSettings; label: string; placeholder: string; secret?: boolean }[];
+}
+
+export const NOTIFICATION_CHANNELS: NotificationChannelConfig[] = [
+  {
+    key: "telegram",
+    name: "Telegram Bot API",
+    fields: [
+      { key: "telegramBotToken", label: "Bot Token", placeholder: "123456:ABC-DEF...", secret: true },
+      { key: "telegramChatId", label: "Chat ID", placeholder: "-1001234567890" }
+    ]
+  },
+  {
+    key: "whatsapp",
+    name: "WhatsApp Business API",
+    fields: [
+      { key: "whatsappPhoneId", label: "Phone Number ID", placeholder: "1234567890" },
+      { key: "whatsappToken", label: "Access Token", placeholder: "EAA...", secret: true },
+      { key: "whatsappTo", label: "Recipient Number", placeholder: "+2348000000000" }
+    ]
+  },
+  {
+    key: "email",
+    name: "Email (SendGrid)",
+    fields: [
+      { key: "sendgridApiKey", label: "SendGrid API Key", placeholder: "SG.xxx", secret: true },
+      { key: "notifyEmailTo", label: "Recipient Email", placeholder: "orders@yourschool.com" },
+      { key: "notifyEmailFrom", label: "From Email", placeholder: "orders@gadgetstore.com" }
+    ]
+  },
+  {
+    key: "sms",
+    name: "SMS (Twilio)",
+    fields: [
+      { key: "twilioAccountSid", label: "Account SID", placeholder: "ACxxxxxxxx" },
+      { key: "twilioAuthToken", label: "Auth Token", placeholder: "your_auth_token", secret: true },
+      { key: "twilioFrom", label: "From Number", placeholder: "+1234567890" },
+      { key: "twilioTo", label: "To Number", placeholder: "+2348000000000" }
+    ]
+  }
+];
 
 export const GRADE_SCHEDULE: Record<string, string> = {
   JSS1: "Monday",

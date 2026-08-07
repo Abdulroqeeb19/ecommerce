@@ -1,17 +1,17 @@
 import { NextResponse } from "next/server";
-import { listProducts, upsertProduct } from "@/lib/server/store";
+import { listProducts, upsertProductIfFresh } from "@/lib/server/store";
 import { currentUser, requireRole } from "@/lib/server/auth";
 import { rateLimit } from "@/lib/server/rateLimit";
 import { validateProductInput } from "@/lib/server/productValidation";
 import type { Product } from "@/lib/types";
 
 export async function GET() {
-  return NextResponse.json(listProducts());
+  return NextResponse.json(await listProducts());
 }
 
 export async function POST(req: Request) {
   const user = await currentUser();
-  const denied = requireRole(user, ["admin"]);
+  const denied = requireRole(user, ["admin", "manager"]);
   if (denied) return denied;
 
   const rl = rateLimit(req, 60);
@@ -27,9 +27,17 @@ export async function POST(req: Request) {
   const { value, error } = validateProductInput(body);
   if (error) return NextResponse.json({ error }, { status: 400 });
 
+  const product = value as Product;
+  if (user?.role === "manager" && !product.miniStore) {
+    return NextResponse.json({ error: "Managers can only manage mini-store products" }, { status: 403 });
+  }
+
   try {
-    const product = upsertProduct(value as Product);
-    return NextResponse.json(product, { status: 200 });
+    const result = await upsertProductIfFresh(product);
+    if (!result.ok) {
+      return NextResponse.json({ error: result.error, existing: result.existing }, { status: 409 });
+    }
+    return NextResponse.json(result.product, { status: 200 });
   } catch (e) {
     console.error("Failed to save product:", e);
     return NextResponse.json({ error: "Product could not be saved" }, { status: 500 });

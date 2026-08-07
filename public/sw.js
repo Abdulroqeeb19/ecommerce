@@ -1,13 +1,13 @@
 /* GADGET HUB - Hand-rolled PWA Service Worker
    Cache-first for static assets, network-first for navigations & API. */
-const VERSION = "gadgethub-v1.0.0";
+const VERSION = "gadgethub-v1.0.2";
 const STATIC_CACHE = `${VERSION}-static`;
 const RUNTIME_CACHE = `${VERSION}-runtime`;
 
 const PRECACHE = [
   "/",
   "/manifest.json",
-  "/images/logo.svg",
+  "/images/logo.png",
   "/icons/icon-192.png",
   "/icons/icon-512.png",
   "/icons/icon-maskable-512.png"
@@ -69,18 +69,18 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
+  // Network-first for code chunks, CSS and everything else so dev recompiles
+  // are never served from a stale cache; falls back to cache when offline.
   event.respondWith(
-    caches.match(request).then(
-      (cached) =>
-        cached ||
-        fetch(request).then((res) => {
-          if (res.ok && url.origin === location.origin) {
-            const copy = res.clone();
-            caches.open(RUNTIME_CACHE).then((c) => c.put(request, copy));
-          }
-          return res;
-        })
-    )
+    fetch(request)
+      .then((res) => {
+        if (res.ok && !res.redirected) {
+          const copy = res.clone();
+          caches.open(RUNTIME_CACHE).then((c) => c.put(request, copy));
+        }
+        return res;
+      })
+      .catch(() => caches.match(request).then((cached) => cached || caches.match("/")))
   );
 });
 

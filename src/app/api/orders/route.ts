@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { addOrder, listOrders, listProducts, redeemCoupon } from "@/lib/server/store";
+import { addOrder, listOrders, listProducts, redeemCoupon, getManagerSchedule, managerForWeekday, findUserById } from "@/lib/server/store";
 import { currentUser, requireRole } from "@/lib/server/auth";
 import { notifyOrderPlaced } from "@/lib/server/notify";
 import { rateLimit } from "@/lib/server/rateLimit";
@@ -112,7 +112,18 @@ export async function POST(req: Request) {
 
   try {
     const saved = await addOrder(order);
-    const result = await notifyOrderPlaced(saved);
+    const schedule = await getManagerSchedule();
+    const dutyManagerId = managerForWeekday(schedule, new Date().getDay());
+    let dutyManagerName: string | undefined;
+    let dutyManagerEmail: string | undefined;
+    if (dutyManagerId) {
+      const manager = await findUserById(dutyManagerId);
+      if (manager && manager.role === "manager") {
+        dutyManagerName = manager.name;
+        dutyManagerEmail = manager.email;
+      }
+    }
+    const result = await notifyOrderPlaced(saved, { dutyManagerName, dutyManagerEmail });
     return NextResponse.json({ ...saved, notifications: result }, { status: 201 });
   } catch (e) {
     console.error("Failed to save order:", e);

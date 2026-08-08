@@ -290,3 +290,7 @@ export const ORDERING_DAYS: Record<number, string> = {
   2: "Tuesday",
   3: "Wednesday"
 };
+
+export const WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] as const;
+
+export type ManagerSchedule = Record<string, string>;

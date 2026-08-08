@@ -269,6 +269,12 @@ export async function sbCreateUser(user: User): Promise<User> {
   return rowToUser(data);
 }
 
+export async function sbListManagers(): Promise<User[]> {
+  await bootstrap();
+  const { data } = await getClient().from("users").select("*").eq("role", "manager");
+  return (data || []).map(rowToUser);
+}
+
 // --- Sessions ---
 
 export async function sbCreateSession(userId: string): Promise<string> {

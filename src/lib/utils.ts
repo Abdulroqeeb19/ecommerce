@@ -87,12 +87,15 @@ export function todayDayIndex(): number {
   return new Date().getDay();
 }
 
-export function isOrderingDay(grade: string): boolean {
-  const day = todayDayIndex();
-  if (grade === "JSS1") return day === 1;
-  if (grade === "JSS2") return day === 2;
-  if (grade === "JSS3") return day === 3;
-  return false;
+export const DEFAULT_ORDERING_SCHEDULE: Record<string, number> = { JSS1: 1, JSS2: 2, JSS3: 3 };
+
+export function gradeOrderingDay(grade: string, schedule: Record<string, number> = DEFAULT_ORDERING_SCHEDULE): number {
+  const day = schedule[grade];
+  return typeof day === "number" && day >= 0 && day <= 6 ? day : DEFAULT_ORDERING_SCHEDULE[grade] ?? -1;
+}
+
+export function isOrderingDay(grade: string, schedule: Record<string, number> = DEFAULT_ORDERING_SCHEDULE): boolean {
+  return todayDayIndex() === gradeOrderingDay(grade, schedule);
 }
 
 export interface EmergencyOpenWindow {
@@ -112,9 +115,8 @@ export function isEmergencyOpenFor(grade: string, windows: EmergencyOpenWindow[]
   );
 }
 
-export function nextOrderingDate(grade: string): Date {
-  const map: Record<string, number> = { JSS1: 1, JSS2: 2, JSS3: 3 };
-  const target = map[grade] ?? 1;
+export function nextOrderingDate(grade: string, schedule: Record<string, number> = DEFAULT_ORDERING_SCHEDULE): Date {
+  const target = gradeOrderingDay(grade, schedule);
   const now = new Date();
   const days = daysUntilNext(target, now);
   const next = new Date(now);

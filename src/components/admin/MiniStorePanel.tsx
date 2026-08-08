@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { RefreshCw, Plus, Minus, Package, ShoppingCart, CheckCircle2, Unlock, Lock } from "lucide-react";
+import { RefreshCw, Plus, Minus, Package, ShoppingCart, CheckCircle2, Unlock, Lock, ShieldCheck } from "lucide-react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db, queueOperation } from "@/lib/db";
 import { api, isOnline } from "@/lib/api";
@@ -9,7 +9,10 @@ import { useToast } from "@/store/toast";
 import { cx, formatDateTime, formatPrice } from "@/lib/utils";
 import type { EmergencyOpenWindow } from "@/lib/utils";
 import { useAuth } from "@/store/auth";
-import type { Order, OrderStatus, Product } from "@/lib/types";
+import type { Order, OrderStatus, Product, User } from "@/lib/types";
+import { OrderingScheduleEditor } from "./OrderingScheduleEditor";
+
+const WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 const STATUS_OPTIONS: OrderStatus[] = ["pending", "processing", "delivered", "cancelled"];
 
@@ -32,6 +35,9 @@ export function MiniStorePanel() {
   const [emerUntil, setEmerUntil] = useState<string>("");
   const [emerNote, setEmerNote] = useState<string>("");
   const [emerSaving, setEmerSaving] = useState(false);
+  const [managers, setManagers] = useState<User[]>([]);
+  const [schedule, setSchedule] = useState<Record<string, string>>({});
+  const [scheduleSaving, setScheduleSaving] = useState(false);
 
   const localOrders = useLiveQuery(() => db.orders.toArray(), [], []);
   const mergedOrders = useMemo(() => {
@@ -79,6 +85,29 @@ export function MiniStorePanel() {
       })
       .catch(() => {});
   }, []);
+
+  useEffect(() => {
+    api
+      .get<{ schedule: Record<string, string>; managers: User[] }>("/settings/manager-schedule")
+      .then((res) => {
+        if (res && typeof res.schedule === "object") setSchedule(res.schedule);
+        if (Array.isArray(res.managers)) setManagers(res.managers);
+      })
+      .catch(() => {});
+  }, []);
+
+  const saveSchedule = async () => {
+    setScheduleSaving(true);
+    try {
+      const res = await api.put<{ schedule: Record<string, string> }>("/settings/manager-schedule", { schedule });
+      if (res && typeof res.schedule === "object") setSchedule(res.schedule);
+      toast("Manager schedule saved");
+    } catch {
+      toast("Could not save the manager schedule.", "error");
+    } finally {
+      setScheduleSaving(false);
+    }
+  };
 
   const updateStatus = async (o: Order, status: OrderStatus) => {
     const updated: Order = { ...o, status, updatedAt: new Date().toISOString() };
@@ -178,6 +207,9 @@ export function MiniStorePanel() {
         </div>
       </div>
 
+      {/* Ordering days per grade */}
+      <OrderingScheduleEditor />
+
       {/* Emergency opening */}
       <div className="mb-6 rounded-2xl border border-amber-200 bg-amber-50 dark:bg-amber-900/20 dark:border-amber-800 p-5">
         <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
@@ -229,6 +261,49 @@ export function MiniStorePanel() {
         <button onClick={openEmergency} disabled={emerSaving} className="btn-primary mt-4 !py-2.5 text-sm">
           {emerSaving ? "Opening store..." : "Open store now"}
         </button>
+      </div>
+
+      {/* Manager duty schedule */}
+      <div className="mb-6 rounded-2xl border border-skyline-200 bg-skyline-50 dark:bg-skyline-900/20 dark:border-skyline-800 p-5">
+        <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+          <h3 className="font-bold text-slateink dark:text-white flex items-center gap-2">
+            <ShieldCheck className="h-5 w-5 text-skyline-600" /> Manager Duty Allotment
+          </h3>
+          <button onClick={saveSchedule} disabled={scheduleSaving} className="btn-outline !py-2 text-xs">
+            {scheduleSaving ? "Saving..." : "Save schedule"}
+          </button>
+        </div>
+        <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
+          Assign a manager to each day of the week. Order notifications received on a day are routed to that day&apos;s
+          allotted manager.
+        </p>
+        {managers.length === 0 ? (
+          <p className="text-sm text-slate-400 dark:text-slate-500 py-4">No manager accounts found. Create manager users to assign duty days.</p>
+        ) : (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {WEEKDAYS.map((day, idx) => {
+              const key = String(idx);
+              const current = schedule[key] || "";
+              return (
+                <div key={day} className="rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-3">
+                  <label className="label">{day}</label>
+                  <select
+                    value={current}
+                    onChange={(e) => setSchedule((prev) => ({ ...prev, [key]: e.target.value }))}
+                    className="input w-full py-2 text-sm"
+                  >
+                    <option value="">Unassigned</option>
+                    {managers.map((m) => (
+                      <option key={m.id} value={m.id}>
+                        {m.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       <div className="grid lg:grid-cols-2 gap-6">

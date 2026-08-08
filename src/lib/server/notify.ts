@@ -5,7 +5,7 @@ function fmtItems(order: Order): string {
   return order.items.map((i) => `${i.qty}× ${i.title}`).join(", ");
 }
 
-function textFor(order: Order): string {
+function textFor(order: Order, dutyManagerName?: string): string {
   return [
     `🛒 *GADGET HUB - New Order*`,
     `Order #: ${order.orderNumber}`,
@@ -15,7 +15,8 @@ function textFor(order: Order): string {
     `Items: ${fmtItems(order)}`,
     `Total: $${order.total.toFixed(2)}`,
     order.customer.note ? `Note: ${order.customer.note}` : "",
-    order.channel === "school" ? "Channel: 🏫 Mini-Store for Schools" : "Channel: 🌐 Online"
+    order.channel === "school" ? "Channel: 🏫 Mini-Store for Schools" : "Channel: 🌐 Online",
+    dutyManagerName ? `Duty Manager: ${dutyManagerName}` : ""
   ]
     .filter(Boolean)
     .join("\n");
@@ -66,15 +67,30 @@ async function sendWhatsApp(text: string, s: Settings): Promise<boolean> {
   return res.ok;
 }
 
-async function sendEmail(order: Order, text: string, s: Settings): Promise<boolean> {
-  if (!s.sendgridApiKey || !s.notifyEmailTo) return false;
+async function sendEmail(order: Order, text: string, s: Settings, toOverride?: string): Promise<boolean> {
+  if (!s.sendgridApiKey || !toOverride && !s.notifyEmailTo) return false;
   const res = await fetch("https://api.sendgrid.com/v3/mail/send", {
     method: "POST",
     headers: { Authorization: `Bearer ${s.sendgridApiKey}`, "Content-Type": "application/json" },
     body: JSON.stringify({
-      personalizations: [{ to: [{ email: s.notifyEmailTo }] }],
+      personalizations: [{ to: [{ email: toOverride || s.notifyEmailTo }] }],
       from: { email: s.notifyEmailFrom || "orders@gadgetstore.com" },
       subject: `New AYINDEDUNNY ENTERPRISE Order ${order.orderNumber} — $${order.total.toFixed(2)}`,
+      content: [{ type: "text/plain", value: text }]
+    })
+  });
+  return res.ok;
+}
+
+async function sendManagerEmail(order: Order, text: string, s: Settings, to: string): Promise<boolean> {
+  if (!s.sendgridApiKey) return false;
+  const res = await fetch("https://api.sendgrid.com/v3/mail/send", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${s.sendgridApiKey}`, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      personalizations: [{ to: [{ email: to }] }],
+      from: { email: s.notifyEmailFrom || "orders@gadgetstore.com" },
+      subject: `📋 Your duty day — New Order ${order.orderNumber} ($${order.total.toFixed(2)})`,
       content: [{ type: "text/plain", value: text }]
     })
   });
@@ -109,8 +125,11 @@ export async function channelStatus(): Promise<ChannelStatus> {
   };
 }
 
-export async function notifyOrderPlaced(order: Order): Promise<{ delivered: string[]; failed: string[] }> {
-  const text = textFor(order);
+export async function notifyOrderPlaced(
+  order: Order,
+  opts?: { dutyManagerName?: string; dutyManagerEmail?: string }
+): Promise<{ delivered: string[]; failed: string[] }> {
+  const text = textFor(order, opts?.dutyManagerName);
   const s = await loadSettings();
   const delivered: string[] = [];
   const failed: string[] = [];
@@ -118,9 +137,16 @@ export async function notifyOrderPlaced(order: Order): Promise<{ delivered: stri
   const jobs: [string, () => Promise<boolean>][] = [
     ["telegram", () => sendTelegram(text, s)],
     ["whatsapp", () => sendWhatsApp(text, s)],
-    ["email", () => sendEmail(order, text, s)],
+    ["email", () => sendEmail(order, text, s, opts?.dutyManagerEmail)],
     ["sms", () => sendSms(text, s)]
   ];
+
+  if (opts?.dutyManagerEmail) {
+    jobs.push([
+      "manager-email",
+      () => sendManagerEmail(order, text, s, opts.dutyManagerEmail as string)
+    ]);
+  }
 
   for (const [name, fn] of jobs) {
     try {

@@ -221,6 +221,11 @@ export async function createUser(user: User): Promise<User> {
   return user;
 }
 
+export async function listManagers(): Promise<User[]> {
+  if (USE_SUPABASE) return sb.sbListManagers();
+  return getDb().users.filter((u) => u.role === "manager");
+}
+
 export async function listProducts(): Promise<Product[]> {
   if (USE_SUPABASE) return sb.sbListProducts();
   return getDb().products;
@@ -433,6 +438,33 @@ export async function setSettings<T>(key: string, value: T): Promise<T> {
   db.settings[key] = value as NotificationSettings;
   saveDb(db);
   return value;
+}
+
+export const MANAGER_SCHEDULE_KEY = "managerSchedule";
+
+export async function getManagerSchedule(): Promise<Record<string, string>> {
+  const stored = await getSettings<Record<string, string>>(MANAGER_SCHEDULE_KEY);
+  return stored && typeof stored === "object" ? stored : {};
+}
+
+export async function setManagerSchedule(schedule: Record<string, string>) {
+  await setSettings(MANAGER_SCHEDULE_KEY, schedule);
+}
+
+export function managerForWeekday(schedule: Record<string, string>, dayIndex: number): string | null {
+  const id = schedule[String(dayIndex)];
+  return id && String(id).trim() ? String(id).trim() : null;
+}
+
+export const ORDERING_SCHEDULE_KEY = "orderingSchedule";
+
+export async function getOrderingSchedule(): Promise<Record<string, number>> {
+  const stored = await getSettings<Record<string, number>>(ORDERING_SCHEDULE_KEY);
+  return stored && typeof stored === "object" ? stored : {};
+}
+
+export async function setOrderingSchedule(schedule: Record<string, number>) {
+  await setSettings(ORDERING_SCHEDULE_KEY, schedule);
 }
 
 export async function listCategoryCards(): Promise<CategoryCard[]> {

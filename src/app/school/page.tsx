@@ -22,12 +22,12 @@ import { CountdownTimer } from "@/components/CountdownTimer";
 import { MiniStorePanel } from "@/components/admin/MiniStorePanel";
 import {
   GRADE_LABELS,
-  GRADE_SCHEDULE,
   type Order
 } from "@/lib/types";
 import {
   cx,
   formatPrice,
+  gradeOrderingDay,
   isEmergencyOpenFor,
   isOrderingDay,
   nextOrderingDate,
@@ -35,6 +35,7 @@ import {
   todayDayIndex,
   uid,
   weekdayName,
+  DEFAULT_ORDERING_SCHEDULE,
   type EmergencyOpenWindow
 } from "@/lib/utils";
 import { placeOrder } from "@/lib/sync";
@@ -46,10 +47,11 @@ export default function SchoolPage() {
   const { products } = useProducts();
   const online = useOnline();
   const { toast } = useToast();
-  const { user, isManager } = useAuth();
+  const { user, isManager, isAdmin } = useAuth();
   const mounted = useMounted();
 
   const [grade, setGrade] = useState<"JSS1" | "JSS2" | "JSS3">("JSS1");
+  const [orderSchedule, setOrderSchedule] = useState<Record<string, number>>({ ...DEFAULT_ORDERING_SCHEDULE });
   const [studentName, setStudentName] = useState("");
   const [studentSchool, setStudentSchool] = useState("");
   const [note, setNote] = useState("");
@@ -69,9 +71,20 @@ export default function SchoolPage() {
       .catch(() => {});
   }, []);
 
-  const orderingOpen = isOrderingDay(grade) || isEmergencyOpenFor(grade, emergencyWindows);
-  const isEmergencyOpen = !isOrderingDay(grade) && isEmergencyOpenFor(grade, emergencyWindows);
-  const nextDate = useMemo(() => nextOrderingDate(grade), [grade]);
+  useEffect(() => {
+    api
+      .get<{ schedule: Record<string, number> }>("/settings/order-schedule")
+      .then((res) => {
+        if (res && res.schedule && typeof res.schedule === "object") {
+          setOrderSchedule((prev) => ({ ...prev, ...res.schedule }));
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  const orderingOpen = isOrderingDay(grade, orderSchedule) || isEmergencyOpenFor(grade, emergencyWindows);
+  const isEmergencyOpen = !isOrderingDay(grade, orderSchedule) && isEmergencyOpenFor(grade, emergencyWindows);
+  const nextDate = useMemo(() => nextOrderingDate(grade, orderSchedule), [grade, orderSchedule]);
 
   const miniProducts = useMemo(() => products.filter((p) => p.miniStore), [products]);
   const catalog = useMemo(
@@ -160,7 +173,7 @@ export default function SchoolPage() {
       {/* Schedule */}
       <div className="mt-8 grid sm:grid-cols-3 gap-4">
         {GRADE_LABELS.map((g) => {
-          const active = todayDayIndex() === (g === "JSS1" ? 1 : g === "JSS2" ? 2 : 3);
+          const active = todayDayIndex() === gradeOrderingDay(g, orderSchedule);
           return (
             <button
               key={g}
@@ -173,14 +186,14 @@ export default function SchoolPage() {
               <div className="flex items-center justify-between">
                 <span className={cx("font-display font-extrabold text-lg", grade === g ? "text-primary-700 dark:text-primary-400" : "text-slateink dark:text-white")}>{g}</span>
                 <span className={cx("rounded-full px-2.5 py-1 text-[10px] font-bold uppercase", active ? "bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300" : "bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400")}>
-                  {active ? "Open today" : weekdayName(g === "JSS1" ? 1 : g === "JSS2" ? 2 : 3)}
+                  {active ? "Open today" : weekdayName(gradeOrderingDay(g, orderSchedule))}
                 </span>
               </div>
               <p className="mt-1 flex items-center gap-1.5 text-sm text-slate-500">
                 <CalendarDays className="h-4 w-4 text-primary-600" />
-                Ordering day: <span className="font-bold text-slateink dark:text-white">{GRADE_SCHEDULE[g]}</span>
+                Ordering day: <span className="font-bold text-slateink dark:text-white">{weekdayName(gradeOrderingDay(g, orderSchedule))}</span>
               </p>
-              <p className="mt-2 text-xs text-slate-400 dark:text-slate-500">Students in {g} order on {GRADE_SCHEDULE[g]}s, or on any day specially opened by the manager.</p>
+              <p className="mt-2 text-xs text-slate-400 dark:text-slate-500">Students in {g} order on {weekdayName(gradeOrderingDay(g, orderSchedule))}s, or on any day specially opened by the manager.</p>
             </button>
           );
         })}
@@ -194,7 +207,8 @@ export default function SchoolPage() {
               <CalendarDays className="h-5 w-5 text-amber-400" /> Ordering closed for {grade}
             </p>
             <p className="text-sm text-slate-300 mt-1">
-              {grade} orders reopen on {GRADE_SCHEDULE[grade]} (JSS1 · Mon, JSS2 · Tue, JSS3 · Wed).
+              {grade} orders reopen on {weekdayName(gradeOrderingDay(grade, orderSchedule))}{" "}
+              (JSS1 · Mon, JSS2 · Tue, JSS3 · Wed — unless reassigned).
             </p>
           </div>
           <CountdownTimer target={nextDate} />
@@ -357,7 +371,7 @@ export default function SchoolPage() {
                 orderingOpen ? "bg-primary-600 hover:bg-primary-700 text-white" : "bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500"
               )}
             >
-              {placing ? "Placing order..." : orderingOpen ? (isEmergencyOpen ? `Place ${grade} Order (Emergency Open)` : `Place ${grade} Order`) : `Closed until ${GRADE_SCHEDULE[grade]}`}
+              {placing ? "Placing order..." : orderingOpen ? (isEmergencyOpen ? `Place ${grade} Order (Emergency Open)` : `Place ${grade} Order`) : `Closed until ${weekdayName(gradeOrderingDay(grade, orderSchedule))}`}
             </button>
             {mounted && !online && (
               <p className="mt-3 flex items-center justify-center gap-1.5 text-xs text-amber-600">
@@ -385,18 +399,18 @@ export default function SchoolPage() {
             <h2 className="font-display font-extrabold text-lg flex items-center gap-2">
               <ShieldCheck className="h-5 w-5 text-skyline-500" /> Mini-Store Manager Panel
             </h2>
-            <p className="text-xs text-slate-400 mt-0.5">
-              Restricted to exactly three authorized managers (RBAC). Works offline — orders sync automatically.
-            </p>
+<p className="text-xs text-slate-400 mt-0.5">
+            Restricted to authorized managers and the admin (RBAC). Works offline — orders sync automatically.
+          </p>
           </div>
-          {isManager && (
+          {(isManager || isAdmin) && (
             <span className="rounded-full bg-emerald-400/20 text-emerald-300 text-xs font-bold px-3 py-1">
               Logged in as {user?.name}
             </span>
           )}
         </div>
 
-        {isManager ? (
+        {isManager || isAdmin ? (
           <div className="p-6">
             <MiniStorePanel />
           </div>

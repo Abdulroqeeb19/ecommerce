@@ -33,6 +33,7 @@ import { AdminReports } from "@/components/admin/Reports";
 import { SyncPanel } from "@/components/admin/SyncPanel";
 import { CategoryCardsPanel } from "@/components/admin/CategoryCardsPanel";
 import { CatalogItemsPanel } from "@/components/admin/CatalogItemsPanel";
+import { OrderingScheduleEditor } from "@/components/admin/OrderingScheduleEditor";
 import { cx } from "@/lib/utils";
 import { NOTIFICATION_CHANNELS, type NotificationChannelStatus } from "@/lib/types";
 
@@ -76,7 +77,12 @@ function AdminBody() {
       <div className="mt-6">
         {tab === "dashboard" && <AdminDashboard />}
         {tab === "products" && <AdminProducts />}
-        {tab === "mini" && <AdminProducts miniOnly />}
+        {tab === "mini" && (
+          <div>
+            <OrderingScheduleEditor />
+            <AdminProducts miniOnly />
+          </div>
+        )}
         {tab === "orders" && <AdminOrders />}
         {tab === "reports" && <AdminReports />}
         {tab === "categories" && <CategoryCardsPanel />}

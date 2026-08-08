@@ -42,7 +42,7 @@ export default function HomePage() {
               </span>
               <h2 className="mt-3 font-display text-2xl sm:text-3xl font-extrabold">Mini-Store for Schools</h2>
               <p className="mt-2 text-slate-200 max-w-xl text-sm">
-                Designated ordering days: Monday (JSS1), Tuesday (JSS2), Wednesday (JSS3). Restricted to three authorized managers with full offline operation.
+                Each grade orders on its designated day of the week, which the admin can reassign at any time. Restricted to authorized managers with full offline operation.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3">

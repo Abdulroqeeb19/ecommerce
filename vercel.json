@@ -1,0 +1,9 @@
+{
+  "crons": [
+    {
+      "path": "/api/bot/digest",
+      "schedule": "0 7 * * *",
+      "secret": "ecom-digest-cron-gp4kx9q2"
+    }
+  ]
+}

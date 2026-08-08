@@ -1,6 +1,16 @@
 import { NextResponse } from "next/server";
-
-const TELEGRAM_API = "https://api.telegram.org";
+import {
+  isAllowedTelegramUser,
+  ordersPendingText,
+  todaySummary,
+  statusText,
+  dutyManagerToday,
+  lowStockSummary,
+  completeOrderCallback,
+  sendBotMessage,
+  answerCallback
+} from "@/lib/server/telegramBot";
+import { listProducts } from "@/lib/server/store";
 
 function getBaseUrl(req: Request): string {
   const proto = req.headers.get("x-forwarded-proto") || "https";
@@ -8,37 +18,32 @@ function getBaseUrl(req: Request): string {
   return host ? `${proto}://${host}` : process.env.NEXT_PUBLIC_APP_URL || "";
 }
 
-function portalMessage(base: string, start?: string) {
-  const appPath = start && start.trim() ? `/tg?start=${encodeURIComponent(start.trim())}` : "/tg";
+function portalMessage(base: string) {
   return {
     text: [
       "🏪 *AYINDEDUNNY ENTERPRISE — Mini-Store Portal*",
       "",
       "Tap the button below to open the admin portal right inside Telegram.",
       "",
-      "_Commands:_ `/start` · `/menu` · `/help`"
+      "_Commands:_ /start · /menu · /help · /status · /today · /pending"
     ].join("\n"),
     markup: {
-      inline_keyboard: [[{ text: "🛒 Open Mini-Store Portal", web_app: { url: `${base}${appPath}` } }]]
+      inline_keyboard: [[{ text: "🛒 Open Mini-Store Portal", web_app: { url: `${base}/tg` } }]]
     }
   };
-}
-
-async function sendMessage(token: string, chatId: number | string, text: string, replyMarkup?: Record<string, unknown>) {
-  const payload: Record<string, unknown> = { chat_id: chatId, text, parse_mode: "Markdown" };
-  if (replyMarkup) payload.reply_markup = replyMarkup;
-  const res = await fetch(`${TELEGRAM_API}/bot${token}/sendMessage`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload)
-  });
-  return res.ok;
 }
 
 interface TelegramUpdate {
   message?: {
     chat?: { id?: number | string };
+    from?: { id?: number };
     text?: string;
+  };
+  callback_query?: {
+    id?: string;
+    from?: { id?: number };
+    message?: { chat?: { id?: number | string }; message_id?: number };
+    data?: string;
   };
 }
 
@@ -59,21 +64,73 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false }, { status: 400 });
   }
 
-  const msg = update?.message;
+  const base = getBaseUrl(req);
+
+  const cb = update.callback_query;
+  if (cb?.id && cb.data) {
+    await handleCallback(token, cb);
+    return NextResponse.json({ ok: true });
+  }
+
+  const msg = update.message;
   const chatId = msg?.chat?.id;
-  if (chatId) {
-    const text = (msg?.text || "").trim();
-    const m = text.match(/^\/(?:start|menu|help)(?:\s+(.+))?$/i);
-    if (!m) {
-      return NextResponse.json({ ok: true });
+  const text = (msg?.text || "").trim();
+  if (!chatId || !text) return NextResponse.json({ ok: true });
+
+  if (!isAllowedTelegramUser(msg.from?.id)) {
+    await sendBotMessage(token, chatId, "You are not authorized to use this bot's commands.\n\nPlease contact the store owner if you believe this is a mistake.");
+    return NextResponse.json({ ok: true });
+  }
+
+  const m = text.match(/^\/([a-zA-Z_]+)(?:\s+(.+))?$/);
+  if (!m) return NextResponse.json({ ok: true });
+  const cmd = m[1].toLowerCase();
+
+  switch (cmd) {
+    case "start":
+    case "menu":
+    case "help": {
+      const reply = portalMessage(base);
+      await sendBotMessage(token, chatId, reply.text, reply.markup);
+      break;
     }
-    const startParam = m[1];
-    const base = getBaseUrl(req);
-    if (base) {
-      const reply = portalMessage(base, startParam);
-      await sendMessage(token, chatId, reply.text, reply.markup);
-    }
+    case "status":
+      await sendBotMessage(token, chatId, await statusText());
+      break;
+    case "today":
+      await sendBotMessage(token, chatId, `${await todaySummary()}\n\n${await dutyManagerToday()}`);
+      break;
+    case "pending":
+      await sendBotMessage(token, chatId, await ordersPendingText());
+      break;
+    case "stock":
+    case "lowstock":
+      await sendBotMessage(token, chatId, lowStockSummary(await listProducts()));
+      break;
+    default:
+      await sendBotMessage(token, chatId, `Unknown command /${cmd}.\n\nTry /start, /status, /today, /pending or /stock.`);
   }
 
   return NextResponse.json({ ok: true });
+}
+
+async function handleCallback(token: string, cb: NonNullable<TelegramUpdate["callback_query"]>) {
+  const { id: callbackId, from, data, message } = cb;
+  const chatId = message?.chat?.id;
+  if (!callbackId || !data || !from?.id || !chatId) return;
+
+  if (!isAllowedTelegramUser(from.id)) {
+    await answerCallback(token, callbackId, "You are not authorized.");
+    return;
+  }
+
+  const [kind, action, orderId] = data.split(":");
+  if (kind !== "order" || !action || !orderId) {
+    await answerCallback(token, callbackId, "Unknown action.");
+    return;
+  }
+
+  const result = await completeOrderCallback(action, orderId);
+  await answerCallback(token, callbackId, result.message);
+  await sendBotMessage(token, chatId, `${result.message}\n\n_Updated from Telegram._`);
 }

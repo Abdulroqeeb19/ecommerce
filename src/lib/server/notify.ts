@@ -1,4 +1,5 @@
 import { getSettings } from "./store";
+import { orderActionKeyboard } from "./telegramBot";
 import type { NotificationSettings, Order } from "../types";
 
 function fmtItems(order: Order): string {
@@ -42,13 +43,19 @@ async function loadSettings(): Promise<Settings> {
   };
 }
 
-async function sendTelegram(text: string, s: Settings): Promise<boolean> {
+async function sendTelegram(text: string, s: Settings, keyboard?: Record<string, unknown>): Promise<boolean> {
   if (!s.telegramBotToken || !s.telegramChatId) return false;
   try {
+    const payload: Record<string, unknown> = {
+      chat_id: s.telegramChatId,
+      text,
+      parse_mode: "Markdown"
+    };
+    if (keyboard) payload.reply_markup = keyboard;
     const res = await fetch(`https://api.telegram.org/bot${s.telegramBotToken}/sendMessage`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ chat_id: s.telegramChatId, text, parse_mode: "Markdown" })
+      body: JSON.stringify(payload)
     });
     const json = (await res.json().catch(() => ({}))) as { ok?: boolean };
     return res.ok && json.ok !== false;
@@ -140,7 +147,7 @@ export async function notifyOrderPlaced(
   const failed: string[] = [];
 
   const jobs: [string, () => Promise<boolean>][] = [
-    ["telegram", () => sendTelegram(text, s)],
+    ["telegram", () => sendTelegram(text, s, orderActionKeyboard(order.id))],
     ["whatsapp", () => sendWhatsApp(text, s)],
     ["email", () => sendEmail(order, text, s, opts?.dutyManagerEmail)],
     ["sms", () => sendSms(text, s)]

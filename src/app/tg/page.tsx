@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { Suspense, useEffect, useRef, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { ShieldCheck, Loader2, AlertTriangle } from "lucide-react";
 import { api } from "@/lib/api";
 
@@ -20,7 +20,25 @@ declare global {
 }
 
 export default function TgStartPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center bg-navy-950 p-6">
+          <div className="w-full max-w-sm rounded-2xl bg-white p-8 text-center shadow-xl">
+            <Loader2 className="h-7 w-7 animate-spin text-skyline-600 mx-auto" />
+            <p className="mt-3 text-sm text-slate-500">Connecting to your portal...</p>
+          </div>
+        </div>
+      }
+    >
+      <TgStartInner />
+    </Suspense>
+  );
+}
+
+function TgStartInner() {
   const router = useRouter();
+  const params = useSearchParams();
   const [status, setStatus] = useState<"loading" | "ok" | "error">("loading");
   const [message, setMessage] = useState("Connecting to your portal...");
   const done = useRef(false);
@@ -49,7 +67,14 @@ export default function TgStartPage() {
         done.current = true;
         setStatus("ok");
         setMessage(`Welcome, ${res.user?.name || "Store Owner"}! Opening the admin portal…`);
-        setTimeout(() => router.replace(res.user?.role === "admin" ? "/admin" : "/school#manager-login"), 600);
+        const start = params.get("start") || params.get("startapp");
+        const tab = start && ["dashboard", "products", "mini", "orders", "reports", "categories", "catalogue", "sync", "notify"].includes(start)
+          ? start
+          : res.user?.role === "admin" ? "dashboard" : "mini";
+        setTimeout(() => {
+          if (res.user?.role === "admin") router.replace(`/admin?tab=${tab}`);
+          else router.replace("/school#manager-login");
+        }, 600);
       } catch (e) {
         setStatus("error");
         setMessage((e as Error).message || "Could not verify your Telegram session.");
@@ -57,7 +82,7 @@ export default function TgStartPage() {
     };
 
     run();
-  }, [router]);
+  }, [router, params]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-navy-950 p-6">

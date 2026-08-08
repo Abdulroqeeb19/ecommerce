@@ -1,10 +1,6 @@
 ﻿import type { Metadata, Viewport } from "next";
 import { AppProviders } from "@/store/providers";
-import { TopBar } from "@/components/TopBar";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { CompareTray } from "@/components/CompareTray";
-import { PwaRegister } from "@/components/PwaRegister";
+import { ChromeShell } from "@/components/ChromeShell";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -40,14 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <AppProviders>
-          <div className="min-h-screen flex flex-col">
-            <TopBar />
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
-          <CompareTray />
-          <PwaRegister />
+          <ChromeShell>{children}</ChromeShell>
         </AppProviders>
       </body>
     </html>

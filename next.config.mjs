@@ -5,31 +5,32 @@ const isProd = process.env.NODE_ENV === "production";
 // inline RSC bootstrap scripts in varied form, so a fixed hash would force
 // 'unsafe-inline' to be ignored (per CSP rules) and break hydration.
 // Keeping script-src as 'self' + 'unsafe-inline' is required for the app to run.
+const telegramSrc = "https://telegram.org https://*.telegram.org";
 const csp = isProd
   ? [
       "default-src 'self'",
       "base-uri 'self'",
-      "frame-ancestors 'none'",
+      "frame-ancestors 'self' https://t.me https://telegram.org https://*.telegram.org",
       "object-src 'none'",
       "form-action 'self'",
       "img-src 'self' data: blob:",
       "font-src 'self' data:",
       "style-src 'self' 'unsafe-inline'",
-      "script-src 'self' 'unsafe-inline'",
-      "connect-src 'self'",
+      "script-src 'self' 'unsafe-inline' " + telegramSrc,
+      "connect-src 'self' " + telegramSrc,
       "worker-src 'self' blob:",
       "manifest-src 'self'"
     ].join("; ")
   : [
       "default-src 'self'",
       "base-uri 'self'",
-      "frame-ancestors 'none'",
+      "frame-ancestors 'self' https://t.me https://telegram.org https://*.telegram.org",
       "object-src 'none'",
       "form-action 'self'",
       "img-src 'self' data: blob:",
       "font-src 'self' data:",
       "style-src 'self' 'unsafe-inline'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' " + telegramSrc,
       "connect-src 'self'",
       "worker-src 'self' blob:",
       "manifest-src 'self'"
@@ -38,7 +39,6 @@ const csp = isProd
 const securityHeaders = [
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-  { key: "X-Frame-Options", value: "DENY" },
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
   { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
   { key: "X-DNS-Prefetch-Control", value: "off" },

@@ -44,12 +44,17 @@ async function loadSettings(): Promise<Settings> {
 
 async function sendTelegram(text: string, s: Settings): Promise<boolean> {
   if (!s.telegramBotToken || !s.telegramChatId) return false;
-  const res = await fetch(`https://api.telegram.org/bot${s.telegramBotToken}/sendMessage`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ chat_id: s.telegramChatId, text, parse_mode: "Markdown" })
-  });
-  return res.ok;
+  try {
+    const res = await fetch(`https://api.telegram.org/bot${s.telegramBotToken}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ chat_id: s.telegramChatId, text, parse_mode: "Markdown" })
+    });
+    const json = (await res.json().catch(() => ({}))) as { ok?: boolean };
+    return res.ok && json.ok !== false;
+  } catch {
+    return false;
+  }
 }
 
 async function sendWhatsApp(text: string, s: Settings): Promise<boolean> {

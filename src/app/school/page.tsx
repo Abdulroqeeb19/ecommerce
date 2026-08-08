@@ -28,15 +28,13 @@ import {
   cx,
   formatPrice,
   gradeOrderingDay,
-  isEmergencyOpenFor,
   isOrderingDay,
   nextOrderingDate,
   orderNumber,
   todayDayIndex,
   uid,
   weekdayName,
-  DEFAULT_ORDERING_SCHEDULE,
-  type EmergencyOpenWindow
+  DEFAULT_ORDERING_SCHEDULE
 } from "@/lib/utils";
 import { placeOrder } from "@/lib/sync";
 import { api } from "@/lib/api";
@@ -60,17 +58,6 @@ export default function SchoolPage() {
   const [placed, setPlaced] = useState<Order | null>(null);
   const [supplyFilter, setSupplyFilter] = useState<string>("All");
 
-  const [emergencyWindows, setEmergencyWindows] = useState<EmergencyOpenWindow[]>([]);
-
-  useEffect(() => {
-    api
-      .get<EmergencyOpenWindow[]>("/settings/store-open")
-      .then((list) => {
-        if (Array.isArray(list)) setEmergencyWindows(list);
-      })
-      .catch(() => {});
-  }, []);
-
   useEffect(() => {
     api
       .get<{ schedule: Record<string, number> }>("/settings/order-schedule")
@@ -82,8 +69,7 @@ export default function SchoolPage() {
       .catch(() => {});
   }, []);
 
-  const orderingOpen = isOrderingDay(grade, orderSchedule) || isEmergencyOpenFor(grade, emergencyWindows);
-  const isEmergencyOpen = !isOrderingDay(grade, orderSchedule) && isEmergencyOpenFor(grade, emergencyWindows);
+  const orderingOpen = isOrderingDay(grade, orderSchedule);
   const nextDate = useMemo(() => nextOrderingDate(grade, orderSchedule), [grade, orderSchedule]);
 
   const miniProducts = useMemo(() => products.filter((p) => p.miniStore), [products]);
@@ -193,7 +179,7 @@ export default function SchoolPage() {
                 <CalendarDays className="h-4 w-4 text-primary-600" />
                 Ordering day: <span className="font-bold text-slateink dark:text-white">{weekdayName(gradeOrderingDay(g, orderSchedule))}</span>
               </p>
-              <p className="mt-2 text-xs text-slate-400 dark:text-slate-500">Students in {g} order on {weekdayName(gradeOrderingDay(g, orderSchedule))}s, or on any day specially opened by the manager.</p>
+              <p className="mt-2 text-xs text-slate-400 dark:text-slate-500">Students in {g} order on {weekdayName(gradeOrderingDay(g, orderSchedule))}s. The manager may change this schedule at any time.</p>
             </button>
           );
         })}
@@ -207,23 +193,10 @@ export default function SchoolPage() {
               <CalendarDays className="h-5 w-5 text-amber-400" /> Ordering closed for {grade}
             </p>
             <p className="text-sm text-slate-300 mt-1">
-              {grade} orders reopen on {weekdayName(gradeOrderingDay(grade, orderSchedule))}{" "}
-              (JSS1 · Mon, JSS2 · Tue, JSS3 · Wed — unless reassigned).
+              {grade} orders reopen on {weekdayName(gradeOrderingDay(grade, orderSchedule))}.
             </p>
           </div>
           <CountdownTimer target={nextDate} />
-        </div>
-      ) : isEmergencyOpen ? (
-        <div className="mt-6 rounded-xl bg-skyline-700 text-white p-5 flex flex-col sm:flex-row sm:items-center gap-4 justify-between">
-          <div>
-            <p className="font-display font-extrabold text-lg flex items-center gap-2">
-              <CheckCircle2 className="h-5 w-5" /> Ordering temporarily open for {grade}!
-            </p>
-            <p className="text-sm text-skyline-100 mt-1">
-              The store has been specially opened today to accommodate students who missed their allotted ordering day.
-            </p>
-          </div>
-          <span className="rounded-lg bg-white/20 px-4 py-2 text-sm font-bold text-center">Emergency access active</span>
         </div>
       ) : (
         <div className="mt-6 rounded-xl bg-emerald-500 text-white p-5 flex flex-col sm:flex-row sm:items-center gap-4 justify-between">
@@ -371,7 +344,7 @@ export default function SchoolPage() {
                 orderingOpen ? "bg-primary-600 hover:bg-primary-700 text-white" : "bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500"
               )}
             >
-              {placing ? "Placing order..." : orderingOpen ? (isEmergencyOpen ? `Place ${grade} Order (Emergency Open)` : `Place ${grade} Order`) : `Closed until ${weekdayName(gradeOrderingDay(grade, orderSchedule))}`}
+              {placing ? "Placing order..." : orderingOpen ? `Place ${grade} Order` : `Closed until ${weekdayName(gradeOrderingDay(grade, orderSchedule))}`}
             </button>
             {mounted && !online && (
               <p className="mt-3 flex items-center justify-center gap-1.5 text-xs text-amber-600">

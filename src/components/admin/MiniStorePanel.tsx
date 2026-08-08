@@ -1,14 +1,12 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { RefreshCw, Plus, Minus, Package, ShoppingCart, CheckCircle2, Unlock, Lock, ShieldCheck } from "lucide-react";
+import { RefreshCw, Plus, Minus, Package, ShoppingCart, CheckCircle2, ShieldCheck } from "lucide-react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db, queueOperation } from "@/lib/db";
 import { api, isOnline } from "@/lib/api";
 import { useToast } from "@/store/toast";
 import { cx, formatDateTime, formatPrice } from "@/lib/utils";
-import type { EmergencyOpenWindow } from "@/lib/utils";
-import { useAuth } from "@/store/auth";
 import type { Order, OrderStatus, Product, User } from "@/lib/types";
 import { OrderingScheduleEditor } from "./OrderingScheduleEditor";
 
@@ -26,15 +24,9 @@ const STATUS_STYLES: Record<OrderStatus, string> = {
 
 export function MiniStorePanel() {
   const { toast } = useToast();
-  const { user } = useAuth();
   const [orders, setOrders] = useState<Order[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   const [busy, setBusy] = useState(false);
-  const [emergencyWindows, setEmergencyWindows] = useState<EmergencyOpenWindow[]>([]);
-  const [emerGrade, setEmerGrade] = useState<string>("ALL");
-  const [emerUntil, setEmerUntil] = useState<string>("");
-  const [emerNote, setEmerNote] = useState<string>("");
-  const [emerSaving, setEmerSaving] = useState(false);
   const [managers, setManagers] = useState<User[]>([]);
   const [schedule, setSchedule] = useState<Record<string, string>>({});
   const [scheduleSaving, setScheduleSaving] = useState(false);
@@ -75,15 +67,6 @@ export function MiniStorePanel() {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- async load on mount
     load();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    api
-      .get<EmergencyOpenWindow[]>("/settings/store-open")
-      .then((list) => {
-        if (Array.isArray(list)) setEmergencyWindows(list);
-      })
-      .catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -143,40 +126,6 @@ export function MiniStorePanel() {
 
   const pendingCount = mergedOrders.filter((o) => o.status === "pending").length;
   const lowStock = products.filter((p) => p.stock <= 5);
-  const emergencyOpen = emergencyWindows.length > 0;
-
-  const openEmergency = async () => {
-    if (!emerUntil) {
-      toast("Please set the end date for the emergency window", "error");
-      return;
-    }
-    setEmerSaving(true);
-    try {
-      const next = await api.put<EmergencyOpenWindow[]>("/settings/store-open", {
-        grade: emerGrade,
-        until: emerUntil,
-        note: emerNote,
-        openedBy: user?.name
-      });
-      if (Array.isArray(next)) setEmergencyWindows(next);
-      toast("Store opened for emergency ordering");
-      setEmerNote("");
-    } catch {
-      toast("Could not open the store right now. Please try again.", "error");
-    } finally {
-      setEmerSaving(false);
-    }
-  };
-
-  const closeEmergency = async (grade: string) => {
-    try {
-      const next = await api.del<EmergencyOpenWindow[]>(`/settings/store-open?grade=${encodeURIComponent(grade)}`);
-      if (Array.isArray(next)) setEmergencyWindows(next);
-      toast("Store closed again");
-    } catch {
-      toast("Could not close the store right now.", "error");
-    }
-  };
 
   return (
     <div>
@@ -209,59 +158,6 @@ export function MiniStorePanel() {
 
       {/* Ordering days per grade */}
       <OrderingScheduleEditor />
-
-      {/* Emergency opening */}
-      <div className="mb-6 rounded-2xl border border-amber-200 bg-amber-50 dark:bg-amber-900/20 dark:border-amber-800 p-5">
-        <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
-          <h3 className="font-bold text-slateink dark:text-white flex items-center gap-2">
-            {emergencyWindows.length ? <Unlock className="h-5 w-5 text-amber-600" /> : <Lock className="h-5 w-5 text-amber-600" />}
-            Emergency Ordering Window
-          </h3>
-          <span className={cx("rounded-full px-3 py-1 text-xs font-bold uppercase", emergencyOpen ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300" : "bg-slate-200 text-slate-600 dark:bg-slate-700 dark:text-slate-300")}>
-            {emergencyOpen ? `${emergencyWindows.length} active` : "Closed"}
-          </span>
-        </div>
-        <p className="text-xs text-amber-700 dark:text-amber-300 text-sm mt-1">
-          Open the mini-store on a day outside the usual schedule so students who missed their allotted ordering day
-          — due to engagements, meetings, or parent, guardian or personnel visits — can still place their orders.
-        </p>
-        {emergencyWindows.map((w) => (
-          <div key={w.grade} className="mt-3 flex flex-wrap items-center justify-between gap-3 rounded-lg bg-white dark:bg-slate-800 border border-amber-200 dark:border-amber-800 p-3 text-sm">
-            <div className="min-w-0">
-              <p className="font-bold text-slateink dark:text-white">{w.grade === "ALL" ? "All grades" : w.grade}</p>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
-                Open until <span className="font-semibold">{formatDateTime(w.until)}</span>
-                {w.note ? ` · ${w.note}` : ""}
-              </p>
-            </div>
-            <button onClick={() => closeEmergency(w.grade)} className="rounded-lg border border-red-200 px-3 py-1.5 text-xs font-bold text-red-600 hover:bg-red-50 dark:border-red-800 dark:hover:bg-red-900/30">
-              Close now
-            </button>
-          </div>
-        ))}
-        <div className="mt-4 grid sm:grid-cols-3 gap-3">
-          <div>
-            <label className="label">Grade</label>
-            <select value={emerGrade} onChange={(e) => setEmerGrade(e.target.value)} className="input w-full py-2 text-sm">
-              <option value="ALL">All grades</option>
-              <option value="JSS1">JSS1</option>
-              <option value="JSS2">JSS2</option>
-              <option value="JSS3">JSS3</option>
-            </select>
-          </div>
-          <div>
-            <label className="label">Close on (date & time)</label>
-            <input type="datetime-local" value={emerUntil} onChange={(e) => setEmerUntil(e.target.value)} className="input w-full py-2 text-sm" />
-          </div>
-          <div>
-            <label className="label">Reason (optional)</label>
-            <input value={emerNote} onChange={(e) => setEmerNote(e.target.value)} placeholder="e.g. Make-up day for missed orders" className="input w-full py-2 text-sm" />
-          </div>
-        </div>
-        <button onClick={openEmergency} disabled={emerSaving} className="btn-primary mt-4 !py-2.5 text-sm">
-          {emerSaving ? "Opening store..." : "Open store now"}
-        </button>
-      </div>
 
       {/* Manager duty schedule */}
       <div className="mb-6 rounded-2xl border border-skyline-200 bg-skyline-50 dark:bg-skyline-900/20 dark:border-skyline-800 p-5">

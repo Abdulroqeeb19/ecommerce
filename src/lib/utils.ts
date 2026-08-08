@@ -98,23 +98,6 @@ export function isOrderingDay(grade: string, schedule: Record<string, number> = 
   return todayDayIndex() === gradeOrderingDay(grade, schedule);
 }
 
-export interface EmergencyOpenWindow {
-  grade: string;
-  until: string;
-  note?: string;
-  openedBy?: string;
-  createdAt: string;
-}
-
-export function isEmergencyOpenFor(grade: string, windows: EmergencyOpenWindow[]): boolean {
-  const now = Date.now();
-  const active = (windows || []).filter((w) => new Date(w.until).getTime() > now);
-  return (
-    active.some((w) => w.grade === grade) ||
-    active.some((w) => w.grade === "ALL")
-  );
-}
-
 export function nextOrderingDate(grade: string, schedule: Record<string, number> = DEFAULT_ORDERING_SCHEDULE): Date {
   const target = gradeOrderingDay(grade, schedule);
   const now = new Date();

@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
-import { cookies } from "next/headers";
-import { createSession, findUserByEmail, SESSION_TTL_MS } from "@/lib/server/store";
-import { authCookieName, publicUser } from "@/lib/server/auth";
+import { createSession, findUserByEmail } from "@/lib/server/store";
+import { publicUser, setSessionCookie } from "@/lib/server/auth";
 import { validateTelegramInitData } from "@/lib/server/telegramAuth";
 import { rateLimit } from "@/lib/server/rateLimit";
 
@@ -55,14 +54,7 @@ export async function POST(req: Request) {
   const user = await findUserByEmail(email);
   if (!user) return NextResponse.json({ error: "Account not found" }, { status: 500 });
 
-  const token = await createSession(user.id);
-  (await cookies()).set(authCookieName(), token, {
-    httpOnly: true,
-    sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
-    path: "/",
-    maxAge: Math.floor(SESSION_TTL_MS / 1000)
-  });
+  await setSessionCookie(await createSession(user.id));
 
   return NextResponse.json({ ok: true, user: publicUser(user) });
 }

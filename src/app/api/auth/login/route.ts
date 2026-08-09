@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import { findUserByEmail, createSession, SESSION_TTL_MS } from "@/lib/server/store";
-import { cookies } from "next/headers";
-import { authCookieName, publicUser } from "@/lib/server/auth";
+import { findUserByEmail, createSession } from "@/lib/server/store";
+import { publicUser, setSessionCookie } from "@/lib/server/auth";
 import { rateLimit } from "@/lib/server/rateLimit";
 
 export async function POST(req: Request) {
@@ -30,13 +29,7 @@ export async function POST(req: Request) {
   }
 
   const token = await createSession(user.id);
-  (await cookies()).set(authCookieName(), token, {
-    httpOnly: true,
-    sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
-    path: "/",
-    maxAge: Math.floor(SESSION_TTL_MS / 1000)
-  });
+  await setSessionCookie(token);
 
   return NextResponse.json({ user: publicUser(user) });
 }

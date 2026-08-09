@@ -1,9 +1,8 @@
 import { NextResponse } from "next/server";
 import crypto from "node:crypto";
 import bcrypt from "bcryptjs";
-import { createUser, createSession, findUserByEmail, SESSION_TTL_MS } from "@/lib/server/store";
-import { cookies } from "next/headers";
-import { authCookieName, publicUser } from "@/lib/server/auth";
+import { createUser, createSession, findUserByEmail } from "@/lib/server/store";
+import { publicUser, setSessionCookie } from "@/lib/server/auth";
 import { rateLimit } from "@/lib/server/rateLimit";
 import { GRADE_LABELS } from "@/lib/types";
 
@@ -43,13 +42,7 @@ export async function POST(req: Request) {
   await createUser(user);
 
   const token = await createSession(user.id);
-  (await cookies()).set(authCookieName(), token, {
-    httpOnly: true,
-    sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
-    path: "/",
-    maxAge: Math.floor(SESSION_TTL_MS / 1000)
-  });
+  await setSessionCookie(token);
 
   return NextResponse.json({ user: publicUser(user) }, { status: 201 });
 }

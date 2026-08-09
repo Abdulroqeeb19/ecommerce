@@ -1,10 +1,32 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import { getSessionUser } from "@/lib/server/store";
+import { getSessionUser, SESSION_TTL_MS } from "@/lib/server/store";
 import type { User } from "@/lib/types";
 
 export function authCookieName() {
   return "gh_session";
+}
+
+export function sessionCookieOptions() {
+  const production = process.env.NODE_ENV === "production";
+  return {
+    httpOnly: true,
+    sameSite: production ? "none" as const : "lax" as const,
+    secure: production,
+    path: "/",
+    maxAge: Math.floor(SESSION_TTL_MS / 1000)
+  };
+}
+
+export async function setSessionCookie(token: string) {
+  (await cookies()).set(authCookieName(), token, sessionCookieOptions());
+}
+
+export async function deleteSessionCookie() {
+  (await cookies()).set(authCookieName(), "", {
+    ...sessionCookieOptions(),
+    maxAge: 0
+  });
 }
 
 export function publicUser(user: User): Omit<User, "passwordHash"> {

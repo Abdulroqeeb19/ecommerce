@@ -3,6 +3,7 @@ import { listProducts, upsertProductIfFresh } from "@/lib/server/store";
 import { currentUser, requireRole } from "@/lib/server/auth";
 import { rateLimit } from "@/lib/server/rateLimit";
 import { validateProductInput } from "@/lib/server/productValidation";
+import { slugify } from "@/lib/utils";
 import type { Product } from "@/lib/types";
 
 export async function GET() {
@@ -28,6 +29,7 @@ export async function POST(req: Request) {
   if (error) return NextResponse.json({ error }, { status: 400 });
 
   const product = value as Product;
+  if (!product.slug) product.slug = slugify(product.title);
   if (user?.role === "manager" && !product.miniStore) {
     return NextResponse.json({ error: "Managers can only manage mini-store products" }, { status: 403 });
   }

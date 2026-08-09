@@ -80,7 +80,7 @@ export interface Product {
   specs: ProductSpec[];
   badge?: string;
   featured?: boolean;
-  group?: "Laptops" | "Printers" | "Smart Accessories" | "Power Solutions" | "Office and Audio";
+  group?: string;
   tags: string[];
   miniStore?: boolean;
   supplyType?: "supplies" | "grocery";

@@ -20,13 +20,14 @@ import { useToast } from "@/store/toast";
 import { useAuth } from "@/store/auth";
 import { CountdownTimer } from "@/components/CountdownTimer";
 import { MiniStorePanel } from "@/components/admin/MiniStorePanel";
+import { Pagination } from "@/components/Pagination";
 import {
   GRADE_LABELS,
   type Order
 } from "@/lib/types";
 import {
   cx,
-  formatPrice,
+  formatNaira,
   gradeOrderingDay,
   isOrderingDay,
   nextOrderingDate,
@@ -40,6 +41,8 @@ import { placeOrder } from "@/lib/sync";
 import { api } from "@/lib/api";
 
 type BasketItem = { productId: string; title: string; price: number; qty: number };
+
+const PAGE_SIZE = 9;
 
 export default function SchoolPage() {
   const { products } = useProducts();
@@ -57,6 +60,7 @@ export default function SchoolPage() {
   const [placing, setPlacing] = useState(false);
   const [placed, setPlaced] = useState<Order | null>(null);
   const [supplyFilter, setSupplyFilter] = useState<string>("All");
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     api
@@ -72,14 +76,42 @@ export default function SchoolPage() {
   const orderingOpen = isOrderingDay(grade, orderSchedule);
   const nextDate = useMemo(() => nextOrderingDate(grade, orderSchedule), [grade, orderSchedule]);
 
-  const miniProducts = useMemo(() => products.filter((p) => p.miniStore), [products]);
-  const catalog = useMemo(
+  const miniProducts = useMemo(
     () =>
-      supplyFilter === "All"
-        ? miniProducts
-        : miniProducts.filter((p) => p.supplyType === (supplyFilter === "Groceries" ? "grocery" : "supplies")),
+      products
+        .filter((p) => p.miniStore)
+        .sort(
+          (a, b) =>
+            (a.group || a.title).localeCompare(b.group || b.title) ||
+            (a.type || "").localeCompare(b.type || "")
+        ),
+    [products]
+  );
+  const categoryOptions = useMemo(
+    () => ["All", ...Array.from(new Set(miniProducts.map((p) => p.category)))],
+    [miniProducts]
+  );
+  const catalog = useMemo(
+    () => (supplyFilter === "All" ? miniProducts : miniProducts.filter((p) => p.category === supplyFilter)),
     [miniProducts, supplyFilter]
   );
+  const pageCount = Math.max(1, Math.ceil(catalog.length / PAGE_SIZE));
+
+  const [prevFilter, setPrevFilter] = useState(supplyFilter);
+  if (supplyFilter !== prevFilter) {
+    setPrevFilter(supplyFilter);
+    setPage(1);
+  }
+
+  const [prevPageCount, setPrevPageCount] = useState(pageCount);
+  if (pageCount !== prevPageCount) {
+    setPrevPageCount(pageCount);
+    if (page > pageCount) setPage(pageCount);
+  }
+
+  const paged = useMemo(() => catalog.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE), [catalog, page]);
+  const showingStart = catalog.length === 0 ? 0 : (page - 1) * PAGE_SIZE + 1;
+  const showingEnd = Math.min(page * PAGE_SIZE, catalog.length);
 
   const addItem = (p: { id: string; title: string; price: number }) => {
     setBasket((b) => {
@@ -216,7 +248,7 @@ export default function SchoolPage() {
           <h2 className="font-display text-lg font-extrabold text-slateink dark:text-white mb-4">Student Order Form — {grade}</h2>
 
           <div className="mb-5 flex flex-wrap items-center gap-2">
-            {["All", "School Supplies", "Groceries"].map((c) => (
+            {categoryOptions.map((c) => (
               <button
                 key={c}
                 onClick={() => setSupplyFilter(c)}
@@ -228,7 +260,9 @@ export default function SchoolPage() {
                 {c}
               </button>
             ))}
-            <span className="ml-auto text-xs text-slate-400 dark:text-slate-500">{catalog.length} items</span>
+            <span className="ml-auto text-xs text-slate-400 dark:text-slate-500">
+              {catalog.length > 0 ? `Showing ${showingStart}–${showingEnd} of ${catalog.length} items` : "0 items"}
+            </span>
           </div>
 
           <div className="card p-5 mb-5 grid sm:grid-cols-2 gap-4">
@@ -249,8 +283,9 @@ export default function SchoolPage() {
           {catalog.length === 0 ? (
             <div className="card p-12 text-center text-sm text-slate-400 dark:text-slate-500">No items in this category right now. Check back soon.</div>
           ) : (
+          <>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {catalog.map((p) => {
+            {paged.map((p) => {
               const inBasket = basket.find((i) => i.productId === p.id);
               return (
                 <div key={p.id} className="card overflow-hidden group">
@@ -265,8 +300,11 @@ export default function SchoolPage() {
                   <div className="p-3">
                     <p className="text-[10px] sm:text-[11px] font-bold uppercase text-primary-600 dark:text-primary-400">{p.category}</p>
                     <h3 className="text-xs sm:text-sm font-bold text-slateink dark:text-white line-clamp-2 min-h-[2.1rem] sm:min-h-[2.5rem]">{p.title}</h3>
+                    <p className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400">
+                      {[p.type, p.measure].filter(Boolean).join(" · ") || "School shop item"}
+                    </p>
                     <div className="mt-1 flex items-center justify-between">
-                      <span className="text-base sm:text-lg font-extrabold text-slateink dark:text-white">{formatPrice(p.price)}</span>
+                      <span className="text-base sm:text-lg font-extrabold text-slateink dark:text-white">{formatNaira(p.price)}</span>
                       {inBasket ? (
                         <div className="flex items-center gap-1">
                           <button onClick={() => changeQty(p.id, -1)} className="rounded bg-slate-100 dark:bg-slate-800 p-1 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700" aria-label="Remove one">
@@ -292,6 +330,8 @@ export default function SchoolPage() {
               );
             })}
           </div>
+          <Pagination page={page} pageCount={pageCount} onChange={setPage} />
+          </>
           )}
         </div>
 
@@ -306,7 +346,7 @@ export default function SchoolPage() {
                 <p className="font-bold text-emerald-700 flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4" /> Order {placed.orderNumber} received!
                 </p>
-                <p className="text-emerald-600 mt-1 text-xs">{placed.customer.name} · {placed.customer.grade} · {formatPrice(placed.total)}</p>
+                <p className="text-emerald-600 mt-1 text-xs">{placed.customer.name} · {placed.customer.grade} · {formatNaira(placed.total)}</p>
                 <button onClick={() => setPlaced(null)} className="mt-2 text-xs font-bold text-emerald-700 underline">Place another order</button>
               </div>
             )}
@@ -318,7 +358,7 @@ export default function SchoolPage() {
                   <div key={i.productId} className="flex items-center justify-between gap-2 text-sm">
                     <div className="min-w-0">
                       <p className="font-semibold text-slateink dark:text-white truncate">{i.title}</p>
-                      <p className="text-xs text-slate-500 dark:text-slate-400">{i.qty} × {formatPrice(i.price)}</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">{i.qty} × {formatNaira(i.price)}</p>
                     </div>
                     <div className="flex items-center gap-1.5 shrink-0">
                       <button onClick={() => changeQty(i.productId, -1)} className="rounded bg-slate-100 p-1 text-slate-500" aria-label="Decrease">
@@ -332,7 +372,7 @@ export default function SchoolPage() {
                 ))}
                 <div className="border-t border-slate-200 dark:border-slate-800 pt-3 flex justify-between font-bold text-slateink dark:text-white">
                   <span>Total</span>
-                  <span>{formatPrice(basketTotal)}</span>
+                  <span>{formatNaira(basketTotal)}</span>
                 </div>
               </div>
             )}

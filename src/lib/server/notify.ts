@@ -6,15 +6,23 @@ function fmtItems(order: Order): string {
   return order.items.map((i) => `${i.qty}× ${i.title}`).join(", ");
 }
 
+function fmtNaira(n: number): string {
+  return `₦${new Intl.NumberFormat("en-NG", { maximumFractionDigits: 2 }).format(n)}`;
+}
+
+function fmtTotal(order: Order): string {
+  return order.channel === "school" ? fmtNaira(order.total) : `$${order.total.toFixed(2)}`;
+}
+
 function textFor(order: Order, dutyManagerName?: string): string {
   return [
-    `🛒 *GADGET HUB - New Order*`,
+    `🛒 *AYINDEDUNNY ENTERPRISE - New Order*`,
     `Order #: ${order.orderNumber}`,
     `Customer: ${order.customer.name || order.customer.email}`,
     order.customer.grade ? `Grade: ${order.customer.grade}` : "",
     order.customer.school ? `School: ${order.customer.school}` : "",
     `Items: ${fmtItems(order)}`,
-    `Total: $${order.total.toFixed(2)}`,
+    `Total: ${fmtTotal(order)}`,
     order.customer.note ? `Note: ${order.customer.note}` : "",
     order.channel === "school" ? "Channel: 🏫 Mini-Store for Schools" : "Channel: 🌐 Online",
     dutyManagerName ? `Duty Manager: ${dutyManagerName}` : ""
@@ -64,14 +72,15 @@ async function sendTelegram(text: string, s: Settings, keyboard?: Record<string,
   }
 }
 
-async function sendWhatsApp(text: string, s: Settings): Promise<boolean> {
-  if (!s.whatsappPhoneId || !s.whatsappToken || !s.whatsappTo) return false;
+async function sendWhatsApp(text: string, s: Settings, toOverride?: string): Promise<boolean> {
+  const to = toOverride || s.whatsappTo;
+  if (!s.whatsappPhoneId || !s.whatsappToken || !to) return false;
   const res = await fetch(`https://graph.facebook.com/v18.0/${s.whatsappPhoneId}/messages`, {
     method: "POST",
     headers: { Authorization: `Bearer ${s.whatsappToken}`, "Content-Type": "application/json" },
     body: JSON.stringify({
       messaging_product: "whatsapp",
-      to: s.whatsappTo,
+      to,
       type: "text",
       text: { body: text.replace(/\*/g, "") }
     })
@@ -87,7 +96,7 @@ async function sendEmail(order: Order, text: string, s: Settings, toOverride?: s
     body: JSON.stringify({
       personalizations: [{ to: [{ email: toOverride || s.notifyEmailTo }] }],
       from: { email: s.notifyEmailFrom || "orders@gadgetstore.com" },
-      subject: `New AYINDEDUNNY ENTERPRISE Order ${order.orderNumber} — $${order.total.toFixed(2)}`,
+      subject: `New AYINDEDUNNY ENTERPRISE Order ${order.orderNumber} — ${fmtTotal(order)}`,
       content: [{ type: "text/plain", value: text }]
     })
   });
@@ -102,7 +111,7 @@ async function sendManagerEmail(order: Order, text: string, s: Settings, to: str
     body: JSON.stringify({
       personalizations: [{ to: [{ email: to }] }],
       from: { email: s.notifyEmailFrom || "orders@gadgetstore.com" },
-      subject: `📋 Your duty day — New Order ${order.orderNumber} ($${order.total.toFixed(2)})`,
+      subject: `📋 Your duty day — New Order ${order.orderNumber} (${fmtTotal(order)})`,
       content: [{ type: "text/plain", value: text }]
     })
   });
@@ -139,7 +148,7 @@ export async function channelStatus(): Promise<ChannelStatus> {
 
 export async function notifyOrderPlaced(
   order: Order,
-  opts?: { dutyManagerName?: string; dutyManagerEmail?: string }
+  opts?: { dutyManagerName?: string; dutyManagerEmail?: string; dutyManagerWhatsApp?: string }
 ): Promise<{ delivered: string[]; failed: string[] }> {
   const text = textFor(order, opts?.dutyManagerName);
   const s = await loadSettings();
@@ -148,7 +157,7 @@ export async function notifyOrderPlaced(
 
   const jobs: [string, () => Promise<boolean>][] = [
     ["telegram", () => sendTelegram(text, s, orderActionKeyboard(order.id))],
-    ["whatsapp", () => sendWhatsApp(text, s)],
+    ["whatsapp", () => sendWhatsApp(text, s, opts?.dutyManagerWhatsApp)],
     ["email", () => sendEmail(order, text, s, opts?.dutyManagerEmail)],
     ["sms", () => sendSms(text, s)]
   ];

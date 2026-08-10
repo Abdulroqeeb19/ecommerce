@@ -456,6 +456,17 @@ export function managerForWeekday(schedule: Record<string, string>, dayIndex: nu
   return id && String(id).trim() ? String(id).trim() : null;
 }
 
+export const MANAGER_WHATSAPP_KEY = "managerWhatsapp";
+
+export async function getManagerWhatsapps(): Promise<Record<string, string>> {
+  const stored = await getSettings<Record<string, string>>(MANAGER_WHATSAPP_KEY);
+  return stored && typeof stored === "object" ? stored : {};
+}
+
+export async function setManagerWhatsapps(whatsapp: Record<string, string>) {
+  await setSettings(MANAGER_WHATSAPP_KEY, whatsapp);
+}
+
 export const ORDERING_SCHEDULE_KEY = "orderingSchedule";
 
 export async function getOrderingSchedule(): Promise<Record<string, number>> {

@@ -1,6 +1,6 @@
 /* GADGET HUB - Hand-rolled PWA Service Worker
    Cache-first for static assets, network-first for navigations & API. */
-const VERSION = "gadgethub-v1.0.2";
+const VERSION = "gadgethub-v1.0.3";
 const STATIC_CACHE = `${VERSION}-static`;
 const RUNTIME_CACHE = `${VERSION}-runtime`;
 

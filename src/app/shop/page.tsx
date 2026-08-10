@@ -6,10 +6,13 @@ import { SlidersHorizontal, Search, X } from "lucide-react";
 import { useProducts } from "@/lib/catalog";
 import { ProductCard } from "@/components/ProductCard";
 import { VariantGroupCard } from "@/components/VariantGroupCard";
+import { Pagination } from "@/components/Pagination";
 import { cx, formatPrice } from "@/lib/utils";
 import type { Product } from "@/lib/types";
 
 type SortKey = "featured" | "price-asc" | "price-desc" | "rating" | "newest";
+
+const PAGE_SIZE = 9;
 
 const SORTS: { key: SortKey; label: string }[] = [
   { key: "featured", label: "Featured" },
@@ -28,33 +31,40 @@ const RATING_FILTERS = [
   { value: 4.5, label: "4.5+ stars" }
 ];
 
-function GroupedGrid({ products }: { products: Product[] }) {
-  const groups = useMemo(() => {
-    const map = new Map<string, Product[]>();
-    const standalone: Product[] = [];
-    for (const p of products) {
-      if (p.group) {
-        const arr = map.get(p.group) || [];
-        arr.push(p);
-        map.set(p.group, arr);
-      } else {
-        standalone.push(p);
-      }
+type CardItem =
+  | { type: "group"; name: string; products: Product[] }
+  | { type: "product"; product: Product };
+
+function buildCards(products: Product[]): CardItem[] {
+  const map = new Map<string, Product[]>();
+  const standalone: Product[] = [];
+  for (const p of products) {
+    if (p.group) {
+      const arr = map.get(p.group) || [];
+      arr.push(p);
+      map.set(p.group, arr);
+    } else {
+      standalone.push(p);
     }
-    const list = Array.from(map.entries()).sort((a, b) => a[0].localeCompare(b[0]));
-    return { list, standalone };
-  }, [products]);
+  }
+  const groups = Array.from(map.entries()).sort((a, b) => a[0].localeCompare(b[0]));
+  return [
+    ...groups.map(([name, prods]) => ({ type: "group" as const, name, products: prods })),
+    ...standalone.map((product) => ({ type: "product" as const, product }))
+  ];
+}
 
-  if (groups.list.length === 0 && groups.standalone.length === 0) return null;
-
+function CardGrid({ items }: { items: CardItem[] }) {
+  if (items.length === 0) return null;
   return (
     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
-      {groups.list.map(([name, prods]) => (
-        <VariantGroupCard key={name} groupName={name} products={prods} />
-      ))}
-      {groups.standalone.map((p) => (
-        <ProductCard key={p.id} product={p} />
-      ))}
+      {items.map((it) =>
+        it.type === "group" ? (
+          <VariantGroupCard key={it.name} groupName={it.name} products={it.products} />
+        ) : (
+          <ProductCard key={it.product.id} product={it.product} />
+        )
+      )}
     </div>
   );
 }
@@ -70,6 +80,7 @@ function ShopContent() {
   const [brand, setBrand] = useState<string>("All");
   const [minRating, setMinRating] = useState<number>(0);
   const [inStockOnly, setInStockOnly] = useState(false);
+  const [page, setPage] = useState(1);
 
   const urlCategory = params.get("category");
   const [prevUrlCategory, setPrevUrlCategory] = useState(urlCategory);
@@ -122,11 +133,25 @@ function ShopContent() {
     return list;
   }, [products, category, search, sort, maxPrice, brand, minRating, inStockOnly]);
 
-  const grouped = useMemo(() => {
-    const map = new Map<string, Product[]>();
-    for (const p of filtered) if (p.group) map.set(p.group, (map.get(p.group) || []).concat(p));
-    return map.size + filtered.filter((p) => !p.group).length;
-  }, [filtered]);
+  const cards = useMemo(() => buildCards(filtered), [filtered]);
+  const pageCount = Math.max(1, Math.ceil(cards.length / PAGE_SIZE));
+
+  const filterKey = [search, category, sort, maxPrice, brand, minRating, inStockOnly].join("|");
+  const [prevFilterKey, setPrevFilterKey] = useState(filterKey);
+  if (filterKey !== prevFilterKey) {
+    setPrevFilterKey(filterKey);
+    setPage(1);
+  }
+
+  const [prevPageCount, setPrevPageCount] = useState(pageCount);
+  if (pageCount !== prevPageCount) {
+    setPrevPageCount(pageCount);
+    if (page > pageCount) setPage(pageCount);
+  }
+
+  const paged = useMemo(() => cards.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE), [cards, page]);
+  const showingStart = cards.length === 0 ? 0 : (page - 1) * PAGE_SIZE + 1;
+  const showingEnd = Math.min(page * PAGE_SIZE, cards.length);
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
@@ -222,8 +247,13 @@ function ShopContent() {
         <div>
           <div className="flex items-center justify-between mb-5 flex-wrap gap-3">
             <p className="text-sm text-slate-500 dark:text-slate-400">
-              <span className="font-bold text-slateink dark:text-white">{grouped}</span>{" "}
-              {grouped === 1 ? "product type" : "product types"} found
+              <span className="font-bold text-slateink dark:text-white">{cards.length}</span>{" "}
+              {cards.length === 1 ? "product type" : "product types"} found
+              {cards.length > 0 && (
+                <span className="text-slate-400 dark:text-slate-500">
+                  {" "}· showing {showingStart}–{showingEnd}
+                </span>
+              )}
             </p>
             <div className="flex items-center gap-2">
               <span className="text-sm text-slate-500 dark:text-slate-400 hidden sm:inline">Sort by:</span>
@@ -248,7 +278,10 @@ function ShopContent() {
               </button>
             </div>
           ) : (
-            <GroupedGrid products={filtered} />
+            <>
+              <CardGrid items={paged} />
+              <Pagination page={page} pageCount={pageCount} onChange={setPage} />
+            </>
           )}
         </div>
       </div>

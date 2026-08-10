@@ -1,14 +1,26 @@
 import { NextResponse } from "next/server";
-import { getManagerSchedule, setManagerSchedule, listManagers } from "@/lib/server/store";
+import {
+  getManagerSchedule,
+  setManagerSchedule,
+  getManagerWhatsapps,
+  setManagerWhatsapps,
+  listManagers
+} from "@/lib/server/store";
 import { currentUser, requireRole } from "@/lib/server/auth";
 import { WEEKDAYS } from "@/lib/types";
+
+const PHONE_RE = /^\+?[0-9]{7,15}$/;
 
 export async function GET() {
   const user = await currentUser();
   const denied = requireRole(user, ["admin", "manager"]);
   if (denied) return denied;
-  const [schedule, managers] = await Promise.all([getManagerSchedule(), listManagers()]);
-  return NextResponse.json({ schedule, managers });
+  const [schedule, managers, whatsapp] = await Promise.all([
+    getManagerSchedule(),
+    listManagers(),
+    getManagerWhatsapps()
+  ]);
+  return NextResponse.json({ schedule, managers, whatsapp });
 }
 
 export async function PUT(req: Request) {
@@ -39,6 +51,17 @@ export async function PUT(req: Request) {
     if (value && validIds.has(value)) schedule[key] = value;
   }
 
+  const rawWhatsapp = (body as Record<string, unknown>)?.whatsapp;
+  const whatsapp: Record<string, string> = {};
+  if (rawWhatsapp && typeof rawWhatsapp === "object") {
+    for (const id of validIds) {
+      const rawPhone = (rawWhatsapp as Record<string, unknown>)[id];
+      const phone = typeof rawPhone === "string" ? rawPhone.replace(/[^+0-9]/g, "").trim() : "";
+      if (phone && PHONE_RE.test(phone)) whatsapp[id] = phone;
+    }
+  }
+
   await setManagerSchedule(schedule);
-  return NextResponse.json({ schedule });
+  await setManagerWhatsapps(whatsapp);
+  return NextResponse.json({ schedule, whatsapp });
 }

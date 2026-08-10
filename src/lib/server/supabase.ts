@@ -3,6 +3,8 @@ import crypto from "node:crypto";
 import bcrypt from "bcryptjs";
 import { SEED_PRODUCTS } from "../data";
 import { CATALOG_ITEMS, DEFAULT_CATEGORY_CARDS } from "../brand";
+import { SCHOOL_ITEM_IDS, toSchoolRow } from "../schoolItems";
+import { applyPricingSpecs } from "../schoolItems";
 import type { CatalogItem, CategoryCard, Coupon, Order, Product, Review, User } from "../types";
 
 export const SESSION_TTL_MS = 1000 * 60 * 60 * 24 * 7;
@@ -21,7 +23,7 @@ function getClient(): SupabaseClient {
 }
 
 function rowToProduct(r: Record<string, unknown>): Product {
-  return r as unknown as Product;
+  return applyPricingSpecs(r as unknown as Product);
 }
 
 function rowToUser(r: Record<string, unknown>): User {
@@ -45,6 +47,31 @@ function rowToReview(r: Record<string, unknown>): Review {
   return r as unknown as Review;
 }
 
+/**
+ * Supabase-safe row for a seed product: school-shop cost/selling fields are not
+ * columns on the products table, so `toSchoolRow` merges them into the `specs`
+ * JSONB column and drops the extra scalar fields before upserting.
+ */
+function seedRowFor(p: Product): Record<string, unknown> {
+  const row = toSchoolRow(p);
+  return {
+    ...row,
+    brand: row.brand ?? "",
+    price: row.price ?? 0,
+    stock: row.stock ?? 0,
+    rating: row.rating ?? 0,
+    reviews: row.reviews ?? 0,
+    image: row.image ?? "",
+    gallery: row.gallery ?? [],
+    shortDescription: row.shortDescription ?? "",
+    description: row.description ?? "",
+    specs: row.specs ?? [],
+    featured: row.featured ?? false,
+    tags: row.tags ?? [],
+    miniStore: row.miniStore ?? false
+  };
+}
+
 export async function ensureBootstrap() {
   const sb = getClient();
   const { count: productCount } = await sb.from("products").select("id", { count: "exact", head: true });
@@ -54,28 +81,25 @@ export async function ensureBootstrap() {
 
   const emailSet = new Set((existingUsers || []).map((u) => String(u.email).toLowerCase()));
 
+  const { data: deletedRows } = await sb.from("deleted_products").select("id");
+  const deleted = new Set((deletedRows || []).map((d) => String(d.id)));
+
   if ((productCount || 0) === 0) {
-    const { data: deletedRows } = await sb.from("deleted_products").select("id");
-    const deleted = new Set((deletedRows || []).map((d) => String(d.id)));
-    const rows = SEED_PRODUCTS.filter((p) => !deleted.has(p.id)).map((p) => ({
-      ...p,
-      brand: p.brand ?? "",
-      price: p.price ?? 0,
-      stock: p.stock ?? 0,
-      rating: p.rating ?? 0,
-      reviews: p.reviews ?? 0,
-      image: p.image ?? "",
-      gallery: p.gallery ?? [],
-      shortDescription: p.shortDescription ?? "",
-      description: p.description ?? "",
-      specs: p.specs ?? [],
-      featured: p.featured ?? false,
-      tags: p.tags ?? [],
-      miniStore: p.miniStore ?? false
-    }));
+    const rows = SEED_PRODUCTS.filter((p) => !deleted.has(p.id)).map(seedRowFor);
     if (rows.length) {
       const { error } = await sb.from("products").upsert(rows, { onConflict: "id" });
       if (error) console.error("Failed to seed products:", error.message);
+    }
+  } else {
+    // Always provision the school shop items (mini-store catalog) if missing.
+    const { data: existingRows } = await sb.from("products").select("id");
+    const existingIds = new Set((existingRows || []).map((r) => String(r.id)));
+    const missingSchool = SEED_PRODUCTS.filter(
+      (p) => SCHOOL_ITEM_IDS.has(p.id) && !existingIds.has(p.id) && !deleted.has(p.id)
+    );
+    if (missingSchool.length) {
+      const { error } = await sb.from("products").upsert(missingSchool.map(seedRowFor), { onConflict: "id" });
+      if (error) console.error("Failed to seed school shop items:", error.message);
     }
   }
 
@@ -212,7 +236,7 @@ export async function sbGetProduct(idOrSlug: string): Promise<Product | undefine
 
 export async function sbUpsertProduct(product: Product): Promise<Product> {
   await bootstrap();
-  const { data, error } = await getClient().from("products").upsert(product as unknown as Record<string, unknown>, { onConflict: "id" }).select().single();
+  const { data, error } = await getClient().from("products").upsert(seedRowFor(product), { onConflict: "id" }).select().single();
   if (error) throw new Error(error.message);
   return rowToProduct(data);
 }

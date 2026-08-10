@@ -7,7 +7,7 @@ import { db, queueOperation } from "@/lib/db";
 import { useToast } from "@/store/toast";
 import { useProducts } from "@/lib/catalog";
 import { CATEGORIES, MINI_STORE_CATEGORIES, SUPPLY_TYPE_BY_CATEGORY } from "@/lib/types";
-import { cx, formatPrice, slugify, uid } from "@/lib/utils";
+import { cx, formatPrice, formatNaira, slugify, uid } from "@/lib/utils";
 import { syncAll, pullCatalog } from "@/lib/sync";
 import type { Product, ProductSpec } from "@/lib/types";
 
@@ -27,6 +27,12 @@ interface FormState {
   miniStore: boolean;
   featured: boolean;
   supplyType: "supplies" | "grocery" | "";
+  type: string;
+  measure: string;
+  costQty: string;
+  costUnitPrice: string;
+  sellPcs: string;
+  sellUnitPrice: string;
 }
 
 const isMiniCategory = (c: string) => (MINI_STORE_CATEGORIES as readonly string[]).includes(c);
@@ -46,7 +52,13 @@ const emptyForm: FormState = {
   specs: [{ label: "", value: "" }],
   miniStore: false,
   featured: false,
-  supplyType: ""
+  supplyType: "",
+  type: "",
+  measure: "",
+  costQty: "",
+  costUnitPrice: "",
+  sellPcs: "",
+  sellUnitPrice: ""
 };
 
 export function AdminProducts({ miniOnly = false }: { miniOnly?: boolean }) {
@@ -89,7 +101,13 @@ export function AdminProducts({ miniOnly = false }: { miniOnly?: boolean }) {
       specs: p.specs.length ? p.specs : [{ label: "", value: "" }],
       miniStore: Boolean(p.miniStore),
       featured: Boolean(p.featured),
-      supplyType: (p.supplyType as "supplies" | "grocery" | "") || ""
+      supplyType: (p.supplyType as "supplies" | "grocery" | "") || "",
+      type: p.type || "",
+      measure: p.measure || "",
+      costQty: p.costQty != null ? String(p.costQty) : "",
+      costUnitPrice: p.costUnitPrice != null ? String(p.costUnitPrice) : "",
+      sellPcs: p.sellPcs != null ? String(p.sellPcs) : "",
+      sellUnitPrice: p.sellUnitPrice != null ? String(p.sellUnitPrice) : ""
     });
   };
 
@@ -113,18 +131,25 @@ export function AdminProducts({ miniOnly = false }: { miniOnly?: boolean }) {
     const now = new Date().toISOString();
     const isMini = MINI_STORE_CATEGORIES.includes(form.category as (typeof MINI_STORE_CATEGORIES)[number]);
     const supplyType = isMini ? SUPPLY_TYPE_BY_CATEGORY[form.category] || "supplies" : undefined;
+    const costQty = Number(form.costQty) || 0;
+    const costUnitPrice = Number(form.costUnitPrice) || 0;
+    const sellPcs = Number(form.sellPcs) || 0;
+    const sellUnitPrice = Number(form.sellUnitPrice) || 0;
+    const costAmount = costQty * costUnitPrice;
+    const sellAmount = sellPcs * sellUnitPrice;
+    const profit = sellAmount - costAmount;
     const product: Product = {
       id: form.id || uid("prd"),
       slug: slugify(form.title),
       title: form.title,
       category: form.category,
       brand: form.brand || "AYINDEDUNNY ENTERPRISE",
-      price: Number(form.price),
+      price: isMini && sellUnitPrice > 0 ? sellUnitPrice : Number(form.price),
       oldPrice: form.oldPrice ? Number(form.oldPrice) : undefined,
       stock: Number(form.stock) || 0,
       rating: 4.5,
       reviews: 0,
-      image: form.image || "/images/products/ultrabook-x15.svg",
+      image: form.image || "/images/products/school-item-placeholder.svg",
       shortDescription: form.shortDescription || form.title,
       description: form.description || form.shortDescription || form.title,
       specs: form.specs.filter((s) => s.label && s.value),
@@ -133,6 +158,15 @@ export function AdminProducts({ miniOnly = false }: { miniOnly?: boolean }) {
       featured: form.featured,
       miniStore: isMini || form.miniStore,
       supplyType,
+      type: isMini ? form.type.trim() : undefined,
+      measure: isMini ? form.measure.trim() : undefined,
+      costQty: isMini ? costQty : undefined,
+      costUnitPrice: isMini ? costUnitPrice : undefined,
+      costAmount: isMini ? costAmount : undefined,
+      sellPcs: isMini ? sellPcs : undefined,
+      sellUnitPrice: isMini ? sellUnitPrice : undefined,
+      sellAmount: isMini ? sellAmount : undefined,
+      profit: isMini ? profit : undefined,
       createdAt: form.id ? new Date(now).toISOString() : now,
       updatedAt: now
     };
@@ -364,6 +398,61 @@ export function AdminProducts({ miniOnly = false }: { miniOnly?: boolean }) {
                   <input type="number" min="0" className="input" value={form.stock} onChange={(e) => setForm({ ...form, stock: e.target.value })} />
                 </div>
               </div>
+
+              {isMiniCategory(form.category) && (
+                <div className="rounded-xl border border-skyline-200 dark:border-skyline-800 bg-skyline-50 dark:bg-skyline-900/30 p-4 space-y-3">
+                  <p className="text-xs font-bold text-skyline-700 dark:text-skyline-300 uppercase tracking-wide">
+                    School Shop Pricing (Naira)
+                  </p>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="label">Type (as shown to students)</label>
+                      <input className="input" value={form.type} onChange={(e) => setForm({ ...form, type: e.target.value })} placeholder="e.g. Bread" />
+                    </div>
+                    <div>
+                      <label className="label">Measure</label>
+                      <input className="input" value={form.measure} onChange={(e) => setForm({ ...form, measure: e.target.value })} placeholder="e.g. loaf" />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-3 gap-3">
+                    <div>
+                      <label className="label">Cost Qty</label>
+                      <input type="number" min="0" step="0.01" className="input" value={form.costQty} onChange={(e) => setForm({ ...form, costQty: e.target.value })} placeholder="0" />
+                    </div>
+                    <div>
+                      <label className="label">Cost Unit Price (₦)</label>
+                      <input type="number" min="0" step="0.01" className="input" value={form.costUnitPrice} onChange={(e) => setForm({ ...form, costUnitPrice: e.target.value })} placeholder="0" />
+                    </div>
+                    <div>
+                      <label className="label">Cost Amount (₦)</label>
+                      <input className="input bg-slate-100 dark:bg-slate-800 font-bold" value={formatNaira((Number(form.costQty) || 0) * (Number(form.costUnitPrice) || 0))} disabled />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-3 gap-3">
+                    <div>
+                      <label className="label">Sell Pcs</label>
+                      <input type="number" min="0" step="0.01" className="input" value={form.sellPcs} onChange={(e) => setForm({ ...form, sellPcs: e.target.value })} placeholder="0" />
+                    </div>
+                    <div>
+                      <label className="label">Selling Unit Price (₦) *</label>
+                      <input type="number" min="0" step="0.01" className="input" value={form.sellUnitPrice} onChange={(e) => setForm({ ...form, sellUnitPrice: e.target.value })} placeholder="0" />
+                    </div>
+                    <div>
+                      <label className="label">Sell Amount (₦)</label>
+                      <input className="input bg-slate-100 dark:bg-slate-800 font-bold" value={formatNaira((Number(form.sellPcs) || 0) * (Number(form.sellUnitPrice) || 0))} disabled />
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-3 py-2">
+                    <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Expected Gain</span>
+                    <span className={cx("font-display font-extrabold text-sm", (Number(form.sellPcs) || 0) * (Number(form.sellUnitPrice) || 0) - (Number(form.costQty) || 0) * (Number(form.costUnitPrice) || 0) > 0 ? "text-primary-700 dark:text-primary-400" : "text-red-500")}>
+                      {formatNaira((Number(form.sellPcs) || 0) * (Number(form.sellUnitPrice) || 0) - (Number(form.costQty) || 0) * (Number(form.costUnitPrice) || 0))}
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                    Students see the name, type, measure and selling unit price (₦) only. The price above is overridden by the selling unit price.
+                  </p>
+                </div>
+              )}
 
               <div>
                 <label className="label">Badge (e.g. LOW STOCK / 16GB RAM)</label>

@@ -84,6 +84,24 @@ export interface Product {
   tags: string[];
   miniStore?: boolean;
   supplyType?: "supplies" | "grocery";
+  /** School shop item "Type" column (e.g. "Fab", "Nice"). */
+  type?: string;
+  /** School shop item measurement/unit (e.g. "Roll", "Ctn", "Pack", "Sachet"). */
+  measure?: string;
+  /** Cost price – quantity bought. */
+  costQty?: number;
+  /** Cost price – unit price. */
+  costUnitPrice?: number;
+  /** Cost price – total amount (qty x unit). */
+  costAmount?: number;
+  /** Selling price – pieces per pack. */
+  sellPcs?: number;
+  /** Selling price – unit price charged to students. */
+  sellUnitPrice?: number;
+  /** Selling price – total amount (pcs x unit). */
+  sellAmount?: number;
+  /** Expected gain / profit = sellAmount - costAmount. */
+  profit?: number;
   createdAt?: string;
   updatedAt?: string;
 }
@@ -185,6 +203,8 @@ export interface User {
   role: "customer" | "admin" | "manager";
   grade?: string;
   school?: string;
+  /** WhatsApp number (with country code) for order notifications to this manager. */
+  whatsapp?: string;
   createdAt: string;
 }
 

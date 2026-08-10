@@ -21,6 +21,11 @@ export function formatPrice(n: number): string {
   }).format(n * rate);
 }
 
+/** Formats a raw Naira amount directly (school shop items are stored in Naira). */
+export function formatNaira(n: number): string {
+  return `₦${new Intl.NumberFormat("en-NG", { maximumFractionDigits: 2 }).format(n)}`;
+}
+
 export function uid(prefix = "id"): string {
   return `${prefix}_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
 }

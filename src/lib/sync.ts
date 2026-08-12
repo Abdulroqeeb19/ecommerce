@@ -2,7 +2,31 @@
 
 import { clearSyncedOps, db, getPendingOps, markSynced, markOpError, markOpConflict, queueOperation, setSyncMeta, upsertProducts } from "./db";
 import { api, isOnline, type SyncResult } from "./api";
+import { compressDataUrl } from "./image";
 import type { Order, Product, SyncQueueItem } from "./types";
+
+let syncAllRunning = false;
+let syncAllWaiters: Array<() => void> = [];
+
+/**
+ * Serializes syncAll runs so the 20s interval, the online handler and manual
+ * "Sync Now" clicks never push the same queued operation twice concurrently.
+ */
+async function runExclusive(fn: () => Promise<void>): Promise<void> {
+  if (syncAllRunning) {
+    await new Promise<void>((resolve) => syncAllWaiters.push(resolve));
+    return runExclusive(fn);
+  }
+  syncAllRunning = true;
+  try {
+    await fn();
+  } finally {
+    syncAllRunning = false;
+    const waiters = syncAllWaiters;
+    syncAllWaiters = [];
+    for (const w of waiters) w();
+  }
+}
 
 export async function pullCatalog(): Promise<number> {
   if (!isOnline()) return 0;
@@ -10,9 +34,45 @@ export async function pullCatalog(): Promise<number> {
     const products = await api.get<Product[]>("/products");
     const deleted = new Set((await db.deletedProducts.toArray()).map((d) => d.id));
     const live = products.filter((p) => !deleted.has(p.id));
-    await upsertProducts(live);
+    // Never overwrite or delete local products whose edits have not finished
+    // pushing, otherwise a failed sync (e.g. oversized image) would wipe the
+    // local copy before it can be retried.
+    const pendingOps = await db.syncQueue.filter((o) => !o.synced).toArray();
+    const pendingIds = new Set(
+      pendingOps.flatMap((o) =>
+        o.op === "create-product" || o.op === "update-product"
+          ? [String((o.payload as { id?: string } | undefined)?.id ?? "")]
+          : []
+      ).filter(Boolean)
+    );
+    // A conflicted product means the cloud copy is newer/authoritative. Resolve
+    // it by mirroring the cloud state and dropping the stale op, so a conflict
+    // is not stuck forever behind the pendingIds guard.
+    const conflictedIds = new Set(
+      pendingOps.filter((o) => o.conflicted).map((o) => String((o.payload as { id?: string } | undefined)?.id ?? ""))
+    );
+    const resolveIds = [...conflictedIds].filter(Boolean);
+    const safe = live.filter((p) => !pendingIds.has(p.id) || resolveIds.includes(p.id));
+    await upsertProducts(safe);
+    if (resolveIds.length) {
+      const toDrop = pendingOps.filter(
+        (o) =>
+          o.conflicted &&
+          (o.op === "create-product" || o.op === "update-product") &&
+          resolveIds.includes(String((o.payload as { id?: string } | undefined)?.id ?? ""))
+      );
+      const ids = toDrop.map((o) => o.id!).filter((id): id is number => typeof id === "number");
+      if (ids.length) await db.syncQueue.bulkDelete(ids);
+      // If the cloud no longer has a conflicted product, mirror the deletion.
+      const removedLocally = resolveIds.filter((id) => !live.some((p) => p.id === id));
+      if (removedLocally.length) await db.products.bulkDelete(removedLocally);
+    }
     const stale = await db.products.toArray().then((rows) =>
-      rows.filter((r) => !live.some((p) => p.id === r.id) && !deleted.has(r.id)).map((r) => r.id)
+      rows
+        .filter(
+          (r) => !pendingIds.has(r.id) && !live.some((p) => p.id === r.id) && !deleted.has(r.id)
+        )
+        .map((r) => r.id)
     );
     if (stale.length) await db.products.bulkDelete(stale);
     return live.length;
@@ -25,6 +85,14 @@ function isConflictError(e: unknown): boolean {
   return (e as { message?: string })?.message?.toLowerCase().includes("conflict") ?? false;
 }
 
+function isNotFoundError(e: unknown): boolean {
+  return (e as { status?: number })?.status === 404;
+}
+
+// Stop auto-retrying an op after this many failed attempts; it is left in the
+// queue with its error visible for a manual Retry decision.
+const MAX_AUTO_ATTEMPTS = 10;
+
 export async function pushQueue(): Promise<{ pushed: number; failed: number; conflicts: number; errors: string[] }> {
   const pending = await getPendingOps();
   let pushed = 0;
@@ -33,11 +101,31 @@ export async function pushQueue(): Promise<{ pushed: number; failed: number; con
   const errors: string[] = [];
 
   for (const op of pending) {
+    // Conflicted ops need a human decision (pull cloud or edit again) — do not
+    // re-push them on every auto-sync; that only re-conflicts and churns.
+    if (op.conflicted) {
+      conflicts++;
+      continue;
+    }
+    // Permanently failing ops must not be re-pushed every 20s forever.
+    if ((op.attempts || 0) >= MAX_AUTO_ATTEMPTS) {
+      failed++;
+      continue;
+    }
     try {
       switch (op.op) {
         case "create-product":
         case "update-product": {
-          await api.post("/products", op.payload);
+          const payload = { ...op.payload };
+          const image = typeof payload.image === "string" ? payload.image : "";
+          if (image.startsWith("data:image/") && image.length > 4 * 1024 * 1024) {
+            try {
+              payload.image = await compressDataUrl(image);
+            } catch {
+              // keep original if compression fails; push will surface the error
+            }
+          }
+          await api.post("/products", payload);
           break;
         }
         case "update-stock": {
@@ -66,6 +154,11 @@ export async function pushQueue(): Promise<{ pushed: number; failed: number; con
       if (isConflictError(e)) {
         conflicts++;
         await markOpConflict(op.id!, (e as Error).message);
+      } else if (isNotFoundError(e)) {
+        // The target was already removed from the cloud (deleted elsewhere),
+        // so the intent is already satisfied — drop the op instead of failing.
+        await markSynced(op.id!);
+        pushed++;
       } else {
         failed++;
         await markOpError(op.id!, (e as Error).message);
@@ -77,10 +170,14 @@ export async function pushQueue(): Promise<{ pushed: number; failed: number; con
 }
 
 export async function syncAll(): Promise<SyncResult> {
-  const push = await pushQueue();
-  const pulled = await pullCatalog();
-  await setSyncMeta(new Date().toISOString());
-  await clearSyncedOps();
+  let push: Awaited<ReturnType<typeof pushQueue>> = { pushed: 0, failed: 0, conflicts: 0, errors: [] };
+  let pulled = 0;
+  await runExclusive(async () => {
+    push = await pushQueue();
+    pulled = await pullCatalog();
+    await setSyncMeta(new Date().toISOString());
+    await clearSyncedOps();
+  });
   return {
     pushed: push.pushed,
     pulled,
@@ -110,6 +207,12 @@ export async function syncQueueSnapshot(): Promise<SyncQueueItem[]> {
   return rows
     .filter((r) => !r.synced)
     .sort((a, b) => a.createdAt.localeCompare(b.createdAt));
+}
+
+/** Number of queued ops that can still be auto-retried (below the attempt cap). */
+export async function retryablePendingCount(): Promise<number> {
+  const rows = await db.syncQueue.filter((o) => !o.synced).toArray();
+  return rows.filter((o) => !o.conflicted && (o.attempts || 0) < MAX_AUTO_ATTEMPTS).length;
 }
 
 export async function saveOrderOffline(order: Order) {

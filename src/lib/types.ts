@@ -297,6 +297,64 @@ export const NOTIFICATION_CHANNELS: NotificationChannelConfig[] = [
   }
 ];
 
+export type ImageImportItemStatus =
+  | "uploaded"
+  | "processing"
+  | "matched"
+  | "review"
+  | "unmatched"
+  | "failed"
+  | "rejected"
+  | "duplicate";
+
+export type ImageImportJobStatus = "pending" | "processing" | "completed" | "failed" | "cancelled";
+
+/** Structured output of the AI Vision analysis (Phase 5). */
+export interface AiImageAnalysis {
+  product_type: string | null;
+  brand: string | null;
+  model: string | null;
+  color: string | null;
+  visible_text: string[];
+  category: string | null;
+  variant: string | null;
+  confidence: number;
+}
+
+export interface ImageImportJob {
+  id: string;
+  adminId: string;
+  totalImages: number;
+  processedImages: number;
+  matchedImages: number;
+  reviewImages: number;
+  unmatchedImages: number;
+  failedImages: number;
+  status: ImageImportJobStatus;
+  autoMatchThreshold: number;
+  reviewThreshold: number;
+  createdAt: string;
+  completedAt?: string;
+}
+
+export interface ImageImportItem {
+  id: string;
+  jobId: string;
+  originalFilename: string;
+  storagePath: string;
+  fileHash: string;
+  mime: string;
+  size: number;
+  status: ImageImportItemStatus;
+  aiAnalysis?: AiImageAnalysis;
+  candidateProductId?: string;
+  confidenceScore?: number;
+  altText?: string;
+  errorMessage?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export const GRADE_SCHEDULE: Record<string, string> = {
   JSS1: "Monday",
   JSS2: "Tuesday",

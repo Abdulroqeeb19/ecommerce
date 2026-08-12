@@ -6,6 +6,8 @@ const isProd = process.env.NODE_ENV === "production";
 // 'unsafe-inline' to be ignored (per CSP rules) and break hydration.
 // Keeping script-src as 'self' + 'unsafe-inline' is required for the app to run.
 const telegramSrc = "https://telegram.org https://*.telegram.org";
+// Supabase project host used by the AI Image Importer to serve stored product images.
+const supabaseImg = process.env.SUPABASE_URL ? new URL(process.env.SUPABASE_URL).host : "";
 const csp = isProd
   ? [
       "default-src 'self'",
@@ -13,7 +15,7 @@ const csp = isProd
       "frame-ancestors 'self' https://t.me https://telegram.org https://*.telegram.org",
       "object-src 'none'",
       "form-action 'self'",
-      "img-src 'self' data: blob:",
+      "img-src 'self' data: blob:" + (supabaseImg ? ` https://${supabaseImg}` : ""),
       "font-src 'self' data:",
       "style-src 'self' 'unsafe-inline'",
       "script-src 'self' 'unsafe-inline' " + telegramSrc,
@@ -27,7 +29,7 @@ const csp = isProd
       "frame-ancestors 'self' https://t.me https://telegram.org https://*.telegram.org",
       "object-src 'none'",
       "form-action 'self'",
-      "img-src 'self' data: blob:",
+      "img-src 'self' data: blob:" + (supabaseImg ? ` https://${supabaseImg}` : ""),
       "font-src 'self' data:",
       "style-src 'self' 'unsafe-inline'",
       "script-src 'self' 'unsafe-inline' 'unsafe-eval' " + telegramSrc,

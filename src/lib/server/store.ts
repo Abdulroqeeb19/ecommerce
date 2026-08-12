@@ -5,6 +5,7 @@ import bcrypt from "bcryptjs";
 import { SEED_PRODUCTS } from "../data";
 import { CATALOG_ITEMS, DEFAULT_CATEGORY_CARDS } from "../brand";
 import type { CatalogItem, CategoryCard, Coupon, NotificationSettings, Order, Product, Review, User } from "../types";
+import type { ImageImportItem, ImageImportJob } from "../types";
 import * as sb from "./supabase";
 
 export const SESSION_TTL_MS = sb.SESSION_TTL_MS;
@@ -31,6 +32,8 @@ export interface DbShape {
   settings: Record<string, NotificationSettings>;
   categoryCards: CategoryCard[];
   catalogItems: CatalogItem[];
+  imageImportJobs: ImageImportJob[];
+  imageImportItems: ImageImportItem[];
 }
 
 const DB_PATH = process.env.DB_FILE
@@ -50,7 +53,9 @@ const EMPTY_DB: DbShape = {
   wishlists: {},
   settings: {},
   categoryCards: [],
-  catalogItems: []
+  catalogItems: [],
+  imageImportJobs: [],
+  imageImportItems: []
 };
 
 function readDb(): DbShape {
@@ -526,4 +531,80 @@ export async function deleteCatalogItem(id: string): Promise<boolean> {
   db.catalogItems.splice(idx, 1);
   saveDb(db);
   return true;
+}
+
+// --- AI Image Importer: jobs & items ---
+
+export async function listImageImportJobs(): Promise<ImageImportJob[]> {
+  if (USE_SUPABASE) return sb.sbListImageImportJobs();
+  return [...getDb().imageImportJobs].sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+}
+
+export async function getImageImportJob(id: string): Promise<ImageImportJob | undefined> {
+  if (USE_SUPABASE) return sb.sbGetImageImportJob(id);
+  return getDb().imageImportJobs.find((j) => j.id === id);
+}
+
+export async function createImageImportJob(job: ImageImportJob): Promise<ImageImportJob> {
+  if (USE_SUPABASE) return sb.sbCreateImageImportJob(job);
+  const db = getDb();
+  db.imageImportJobs.push(job);
+  saveDb(db);
+  return job;
+}
+
+export async function updateImageImportJob(job: ImageImportJob): Promise<ImageImportJob> {
+  if (USE_SUPABASE) return sb.sbUpdateImageImportJob(job);
+  const db = getDb();
+  const idx = db.imageImportJobs.findIndex((j) => j.id === job.id);
+  if (idx >= 0) db.imageImportJobs[idx] = job;
+  else db.imageImportJobs.push(job);
+  saveDb(db);
+  return job;
+}
+
+export async function deleteImageImportJob(id: string): Promise<boolean> {
+  if (USE_SUPABASE) return sb.sbDeleteImageImportJob(id);
+  const db = getDb();
+  const idx = db.imageImportJobs.findIndex((j) => j.id === id);
+  if (idx < 0) return false;
+  db.imageImportJobs.splice(idx, 1);
+  db.imageImportItems = db.imageImportItems.filter((i) => i.jobId !== id);
+  saveDb(db);
+  return true;
+}
+
+export async function listImageImportItems(jobId: string): Promise<ImageImportItem[]> {
+  if (USE_SUPABASE) return sb.sbListImageImportItems(jobId);
+  return getDb()
+    .imageImportItems.filter((i) => i.jobId === jobId)
+    .sort((a, b) => a.createdAt.localeCompare(b.createdAt));
+}
+
+export async function getImageImportItem(id: string): Promise<ImageImportItem | undefined> {
+  if (USE_SUPABASE) return sb.sbGetImageImportItem(id);
+  return getDb().imageImportItems.find((i) => i.id === id);
+}
+
+export async function createImageImportItem(item: ImageImportItem): Promise<ImageImportItem> {
+  if (USE_SUPABASE) return sb.sbCreateImageImportItem(item);
+  const db = getDb();
+  db.imageImportItems.push(item);
+  saveDb(db);
+  return item;
+}
+
+export async function updateImageImportItem(item: ImageImportItem): Promise<ImageImportItem> {
+  if (USE_SUPABASE) return sb.sbUpdateImageImportItem(item);
+  const db = getDb();
+  const idx = db.imageImportItems.findIndex((i) => i.id === item.id);
+  if (idx >= 0) db.imageImportItems[idx] = item;
+  else db.imageImportItems.push(item);
+  saveDb(db);
+  return item;
+}
+
+export async function getImageImportItemByHash(hash: string): Promise<ImageImportItem | undefined> {
+  if (USE_SUPABASE) return sb.sbGetImageImportItemByHash(hash);
+  return getDb().imageImportItems.find((i) => i.fileHash === hash);
 }

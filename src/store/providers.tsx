@@ -10,7 +10,7 @@ import { CurrencyProvider, useCurrency } from "./currency";
 import { ThemeProvider } from "./theme";
 import { useOnline } from "@/hooks/useOnline";
 import { useMounted } from "@/hooks/useMounted";
-import { syncAll } from "@/lib/sync";
+import { syncAll, retryablePendingCount } from "@/lib/sync";
 import { setActiveCurrency } from "@/lib/utils";
 import { Wifi, WifiOff } from "lucide-react";
 
@@ -47,9 +47,13 @@ function SyncWatcher() {
     if (!online) return;
     const id = window.setInterval(() => {
       syncAll()
-        .then((r) => {
-          if (r.failed > 0) return;
-          if (r.pushed === 0) window.clearInterval(id);
+        .then(async (r) => {
+          if (r.pushed === 0) {
+            // Stop polling once nothing can be auto-retried; permanently failed
+            // ops stay visible in the Sync panel for a manual retry decision.
+            const remaining = await retryablePendingCount();
+            if (remaining === 0) window.clearInterval(id);
+          }
         })
         .catch(() => {});
     }, 20000);

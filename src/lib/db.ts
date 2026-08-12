@@ -76,6 +76,20 @@ export async function queueOperation(op: SyncQueueItem["op"], payload: Record<st
   await db.syncQueue.add({ op, payload, synced: false, createdAt: new Date().toISOString() });
 }
 
+/**
+ * Drops any pending (unsynced) product create/update ops for a given product
+ * id. When an admin re-saves a product, older queued edits are superseded, so
+ * keeping them would re-push stale payloads (and re-conflict) later.
+ */
+export async function dropPendingProductOps(id: string) {
+  const rows = await db.syncQueue
+    .filter((o) => !o.synced && (o.op === "create-product" || o.op === "update-product"))
+    .toArray();
+  const stale = rows.filter((o) => String((o.payload as { id?: string } | undefined)?.id ?? "") === id);
+  const ids = stale.map((o) => o.id!).filter((x): x is number => typeof x === "number");
+  if (ids.length) await db.syncQueue.bulkDelete(ids);
+}
+
 export async function getPendingOps() {
   return db.syncQueue.filter((op) => !op.synced).toArray();
 }
@@ -113,7 +127,7 @@ export async function markOpConflict(id: number, message: string) {
 }
 
 export async function clearOpError(id: number) {
-  await db.syncQueue.update(id, { error: undefined, conflicted: false });
+  await db.syncQueue.update(id, { error: undefined, conflicted: false, attempts: 0, lastAttemptAt: undefined });
 }
 
 export async function clearSyncedOps() {

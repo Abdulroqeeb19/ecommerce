@@ -17,7 +17,8 @@ import {
   Store,
   RefreshCw,
   LayoutGrid,
-  BookOpen
+  BookOpen,
+  Sparkles
 } from "lucide-react";
 import { useAuth } from "@/store/auth";
 import { useToast } from "@/store/toast";
@@ -34,6 +35,8 @@ import { SyncPanel } from "@/components/admin/SyncPanel";
 import { CategoryCardsPanel } from "@/components/admin/CategoryCardsPanel";
 import { CatalogItemsPanel } from "@/components/admin/CatalogItemsPanel";
 import { OrderingScheduleEditor } from "@/components/admin/OrderingScheduleEditor";
+import { ImageImportPanel } from "@/components/admin/ImageImportPanel";
+import { BulkImageUpload } from "@/components/admin/BulkImageUpload";
 import { cx } from "@/lib/utils";
 import { NOTIFICATION_CHANNELS, type NotificationChannelStatus } from "@/lib/types";
 
@@ -45,6 +48,7 @@ const TABS = [
   { key: "reports", label: "Reports", icon: BarChart3 },
   { key: "categories", label: "Shop by Category", icon: LayoutGrid },
   { key: "catalogue", label: "Catalogue", icon: BookOpen },
+  { key: "importer", label: "AI Importer", icon: Sparkles },
   { key: "sync", label: "Sync", icon: RefreshCw },
   { key: "notify", label: "Notifications", icon: Bell }
 ];
@@ -87,6 +91,12 @@ function AdminBody() {
         {tab === "reports" && <AdminReports />}
         {tab === "categories" && <CategoryCardsPanel />}
         {tab === "catalogue" && <CatalogItemsPanel />}
+        {tab === "importer" && (
+          <div className="space-y-6">
+            <BulkImageUpload />
+            <ImageImportPanel />
+          </div>
+        )}
         {tab === "sync" && <SyncPanel />}
         {tab === "notify" && <NotifyTab />}
       </div>

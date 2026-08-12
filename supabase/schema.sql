@@ -159,6 +159,46 @@ create table if not exists public.catalog_items (
 );
 create index if not exists catalog_items_sort_idx on public.catalog_items ("sortOrder");
 
+-- AI bulk product image matching (see IMAGE IMPORTATION.txt)
+-- Import jobs (a batch of uploaded images awaiting AI processing)
+create table if not exists public.image_import_jobs (
+  id text primary key,
+  "adminId" text not null,
+  "totalImages" integer not null default 0,
+  "processedImages" integer not null default 0,
+  "matchedImages" integer not null default 0,
+  "reviewImages" integer not null default 0,
+  "unmatchedImages" integer not null default 0,
+  "failedImages" integer not null default 0,
+  status text not null default 'pending',
+  "autoMatchThreshold" integer not null default 85,
+  "reviewThreshold" integer not null default 60,
+  "createdAt" text not null,
+  "completedAt" text
+);
+create index if not exists image_import_jobs_created_idx on public.image_import_jobs ("createdAt");
+
+-- Individual images within an import job
+create table if not exists public.image_import_items (
+  id text primary key,
+  "jobId" text not null references public.image_import_jobs (id) on delete cascade,
+  "originalFilename" text not null,
+  "storagePath" text not null default '',
+  "fileHash" text not null default '',
+  mime text not null default '',
+  size integer not null default 0,
+  status text not null default 'uploaded',
+  "aiAnalysis" jsonb,
+  "candidateProductId" text,
+  "confidenceScore" double precision,
+  "altText" text,
+  "errorMessage" text,
+  "createdAt" text not null,
+  "updatedAt" text not null
+);
+create index if not exists image_import_items_job_idx on public.image_import_items ("jobId");
+create index if not exists image_import_items_hash_idx on public.image_import_items ("fileHash");
+
 -- ============================================================
 -- Privileges: the app talks to Supabase ONLY server-side via the
 -- service_role key (see src/lib/server/supabase.ts). Grant full
@@ -178,4 +218,6 @@ grant all on table public.deleted_products to service_role;
 grant all on table public.settings to service_role;
 grant all on table public.category_cards to service_role;
 grant all on table public.catalog_items to service_role;
+grant all on table public.image_import_jobs to service_role;
+grant all on table public.image_import_items to service_role;
 grant usage, select on sequence public.order_items_id_seq to service_role;

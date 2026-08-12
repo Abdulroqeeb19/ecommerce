@@ -6,6 +6,7 @@ import { Plus, Pencil, Trash2, X, ImageUp, Save, RefreshCw } from "lucide-react"
 import { api } from "@/lib/api";
 import { useToast } from "@/store/toast";
 import { CATEGORY_CARD_ICONS, type CategoryCard } from "@/lib/types";
+import { fileToCompressedDataUrl } from "@/lib/image";
 import { cx } from "@/lib/utils";
 
 const EMPTY: Omit<CategoryCard, "id"> = {
@@ -43,20 +44,16 @@ export function CategoryCardsPanel() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const onImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      const url = String(reader.result);
-      if (url.length > 4 * 1024 * 1024) {
-        toast("Image too large (max 4MB)", "error");
-        return;
-      }
+    try {
+      const url = await fileToCompressedDataUrl(file);
       setForm((f) => (f ? { ...f, image: url } : f));
-      toast("Image attached");
-    };
-    reader.readAsDataURL(file);
+      toast("Image attached (auto-compressed)");
+    } catch {
+      toast("Could not read that image", "error");
+    }
     e.target.value = "";
   };
 

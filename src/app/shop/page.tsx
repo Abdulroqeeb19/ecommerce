@@ -24,6 +24,9 @@ const SORTS: { key: SortKey; label: string }[] = [
 
 const CATEGORY_FILTERS = ["All", "Babies Wears", "Electrical Materials and Fittings", "Kitchen Utensils"];
 
+/** Display order for the main shop categories (Babies first, then Electrical, then Kitchen). */
+const CATEGORY_ORDER: string[] = ["Babies Wears", "Electrical Materials and Fittings", "Kitchen Utensils"];
+
 const RATING_FILTERS = [
   { value: 0, label: "Any rating" },
   { value: 3, label: "3+ stars" },
@@ -128,7 +131,20 @@ function ShopContent() {
         list.sort((a, b) => (b.createdAt || "").localeCompare(a.createdAt || ""));
         break;
       default:
-        list.sort((a, b) => Number(b.featured || false) - Number(a.featured || false));
+        // Featured first, then grouped by category (Babies -> Electrical -> Kitchen)
+        // and alphabetical by title within each group.
+        list.sort((a, b) => {
+          const aFeat = Number(b.featured || false) - Number(a.featured || false);
+          if (aFeat !== 0) return aFeat;
+          const catOrder = (x: string, y: string) => {
+            const ix = CATEGORY_ORDER.indexOf(x);
+            const iy = CATEGORY_ORDER.indexOf(y);
+            return (ix < 0 ? CATEGORY_ORDER.length : ix) - (iy < 0 ? CATEGORY_ORDER.length : iy);
+          };
+          const byCat = catOrder(a.category, b.category);
+          if (byCat !== 0) return byCat;
+          return a.title.localeCompare(b.title, undefined, { numeric: true, sensitivity: "base" });
+        });
     }
     return list;
   }, [products, category, search, sort, maxPrice, brand, minRating, inStockOnly]);

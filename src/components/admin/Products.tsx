@@ -3,11 +3,12 @@
 import { useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { Plus, Pencil, Trash2, ImageUp, X, RefreshCw, UploadCloud } from "lucide-react";
-import { db, queueOperation } from "@/lib/db";
+import { db, queueOperation, dropPendingProductOps } from "@/lib/db";
 import { useToast } from "@/store/toast";
 import { useProducts } from "@/lib/catalog";
 import { CATEGORIES, MINI_STORE_CATEGORIES, SUPPLY_TYPE_BY_CATEGORY } from "@/lib/types";
 import { cx, formatPrice, formatNaira, slugify, uid } from "@/lib/utils";
+import { fileToCompressedDataUrl } from "@/lib/image";
 import { syncAll, pullCatalog } from "@/lib/sync";
 import type { Product, ProductSpec } from "@/lib/types";
 
@@ -36,6 +37,18 @@ interface FormState {
 }
 
 const isMiniCategory = (c: string) => (MINI_STORE_CATEGORIES as readonly string[]).includes(c);
+
+/** Display order for the main shop categories (Babies first, then Electrical, then Kitchen). */
+const CATEGORY_ORDER: string[] = [
+  "Babies Wears",
+  "Electrical Materials and Fittings",
+  "Kitchen Utensils"
+];
+
+const categoryRank = (c: string) => {
+  const i = CATEGORY_ORDER.indexOf(c);
+  return i >= 0 ? i : CATEGORY_ORDER.length;
+};
 
 const emptyForm: FormState = {
   id: "",
@@ -71,8 +84,16 @@ export function AdminProducts({ miniOnly = false }: { miniOnly?: boolean }) {
 
   const visibleProducts = useMemo(() => (miniOnly ? products.filter((p) => p.miniStore) : products), [products, miniOnly]);
   const scopedProducts = useMemo(() => {
-    if (!miniOnly || miniFilter === "All") return visibleProducts;
-    return visibleProducts.filter((p) => p.supplyType === (miniFilter === "Groceries" ? "grocery" : "supplies"));
+    let list = visibleProducts;
+    if (miniOnly && miniFilter !== "All") {
+      list = list.filter((p) => p.supplyType === (miniFilter === "Groceries" ? "grocery" : "supplies"));
+    }
+    // Group by category (Babies -> Electrical -> Kitchen first), alphabetical by title within.
+    return [...list].sort((a, b) => {
+      const byCat = categoryRank(a.category) - categoryRank(b.category);
+      if (byCat !== 0) return byCat;
+      return a.title.localeCompare(b.title, undefined, { numeric: true, sensitivity: "base" });
+    });
   }, [visibleProducts, miniFilter, miniOnly]);
 
   const openNew = () => {
@@ -111,15 +132,16 @@ export function AdminProducts({ miniOnly = false }: { miniOnly?: boolean }) {
     });
   };
 
-  const onImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      setForm((f) => (f ? { ...f, image: String(reader.result) } : f));
-      toast("Image attached (stored locally, offline-ready)");
-    };
-    reader.readAsDataURL(file);
+    try {
+      const url = await fileToCompressedDataUrl(file);
+      setForm((f) => (f ? { ...f, image: url } : f));
+      toast("Image attached (auto-compressed for reliable syncing)");
+    } catch {
+      toast("Could not read that image", "error");
+    }
   };
 
   const save = async (e: React.FormEvent) => {
@@ -172,6 +194,7 @@ export function AdminProducts({ miniOnly = false }: { miniOnly?: boolean }) {
     };
 
     await db.products.put(product);
+    await dropPendingProductOps(product.id);
     await queueOperation(isNew ? "create-product" : "update-product", product as unknown as Record<string, unknown>);
     const r = await syncAll();
     if (r.conflicts) {

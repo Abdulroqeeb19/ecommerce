@@ -1,0 +1,510 @@
+{
+  "Adaptor": {
+    "image": "/images/catalog/web/adaptor.jpg",
+    "reused": true
+  },
+  "Air Freshner": {
+    "image": "/images/catalog/web/air-freshner.jpg",
+    "reused": true
+  },
+  "Baby Care": {
+    "image": "/images/catalog/web/baby-care.jpg",
+    "reused": true
+  },
+  "Bag": {
+    "image": "/images/catalog/web/bag.jpg",
+    "reused": true
+  },
+  "Basket": {
+    "image": "/images/catalog/web/basket.jpg",
+    "reused": true
+  },
+  "Battery": {
+    "image": "/images/catalog/web/battery.jpg",
+    "reused": true
+  },
+  "BBQ": {
+    "image": "/images/catalog/web/bbq.jpg",
+    "reused": true
+  },
+  "Blender": {
+    "image": "/images/catalog/web/blender.jpg",
+    "reused": true
+  },
+  "Boiling Ring": {
+    "image": "/images/catalog/web/boiling-ring.jpg",
+    "reused": true
+  },
+  "Bottle": {
+    "image": "/images/catalog/web/bottle.jpg",
+    "reused": true
+  },
+  "Bowl": {
+    "image": "/images/catalog/web/bowl.jpg",
+    "reused": true
+  },
+  "Breakable Plate": {
+    "image": "/images/catalog/web/breakable-plate.jpg",
+    "reused": true
+  },
+  "Broom": {
+    "image": "/images/catalog/web/broom.jpg",
+    "reused": true
+  },
+  "Brush": {
+    "image": "/images/catalog/web/brush.jpg",
+    "reused": true
+  },
+  "Bucket": {
+    "image": "/images/catalog/web/bucket.jpg",
+    "reused": true
+  },
+  "Bulb": {
+    "image": "/images/catalog/web/bulb.jpg",
+    "reused": true
+  },
+  "Bulb - Energy Saver": {
+    "image": "/images/catalog/web/bulb-energy-saver.jpg",
+    "reused": true
+  },
+  "Bulb - Recheargeable": {
+    "image": "/images/catalog/web/bulb-recheargeable.jpg",
+    "reused": true
+  },
+  "Cello Tape": {
+    "image": "/images/catalog/web/cello-tape.jpg",
+    "reused": true
+  },
+  "Charger": {
+    "image": "/images/catalog/web/charger.jpg",
+    "reused": true
+  },
+  "Chopper": {
+    "image": "/images/catalog/web/chopper.jpg",
+    "reused": true
+  },
+  "Cling Film": {
+    "image": "/images/catalog/web/cling-film.jpg",
+    "reused": true
+  },
+  "Clip": {
+    "image": "/images/catalog/web/clip.jpg",
+    "reused": true
+  },
+  "Cliper": {
+    "image": "/images/catalog/web/cliper.jpg",
+    "reused": true
+  },
+  "Clipper": {
+    "image": "/images/catalog/web/clipper.jpg",
+    "reused": true
+  },
+  "Comb": {
+    "image": "/images/catalog/web/comb.jpg",
+    "reused": true
+  },
+  "Container": {
+    "image": "/images/catalog/web/container.jpg",
+    "reused": true
+  },
+  "Cooler": {
+    "image": "/images/catalog/web/cooler.jpg",
+    "reused": true
+  },
+  "Cord": {
+    "image": "/images/catalog/web/cord.jpg",
+    "reused": true
+  },
+  "Cover": {
+    "image": "/images/catalog/web/cover.jpg",
+    "reused": true
+  },
+  "Cup": {
+    "image": "/images/catalog/web/cup.jpg",
+    "reused": true
+  },
+  "Cutlery Set": {
+    "image": "/images/catalog/web/cutlery-set.jpg",
+    "reused": true
+  },
+  "Cutter": {
+    "image": "/images/catalog/web/cutter.jpg",
+    "reused": true
+  },
+  "Dispenser": {
+    "image": "/images/catalog/web/dispenser.jpg",
+    "reused": true
+  },
+  "Egg Boiler": {
+    "image": "/images/catalog/web/egg-boiler.jpg",
+    "reused": true
+  },
+  "Extention Wire": {
+    "image": "/images/catalog/web/extention-wire.jpg",
+    "reused": true
+  },
+  "Fan": {
+    "image": "/images/catalog/web/fan.jpg",
+    "reused": true
+  },
+  "Fan - Desktop": {
+    "image": "/images/catalog/web/fan-desktop.jpg",
+    "reused": true
+  },
+  "Fan - Foldable": {
+    "image": "/images/catalog/web/fan-foldable.jpg",
+    "reused": true
+  },
+  "Fan - Hand Fan": {
+    "image": "/images/catalog/web/fan-hand-fan.jpg",
+    "reused": true
+  },
+  "Fan - Table Fan": {
+    "image": "/images/catalog/web/fan-table-fan.jpg",
+    "reused": true
+  },
+  "Feeder": {
+    "image": "/images/catalog/web/feeder.jpg",
+    "reused": true
+  },
+  "Foil Paper": {
+    "image": "/images/catalog/web/foil-paper.jpg",
+    "reused": true
+  },
+  "Food Flask": {
+    "image": "/images/catalog/web/food-flask.jpg",
+    "reused": true
+  },
+  "Food Warmer": {
+    "image": "/images/catalog/web/food-warmer.jpg",
+    "reused": true
+  },
+  "Fry Pan": {
+    "image": "/images/catalog/web/fry-pan.jpg",
+    "reused": true
+  },
+  "Gas Cylinder": {
+    "image": "/images/catalog/web/gas-cylinder.jpg",
+    "reused": true
+  },
+  "Gas Lighter": {
+    "image": "/images/catalog/web/gas-lighter.jpg",
+    "reused": true
+  },
+  "Gas Stove": {
+    "image": "/images/catalog/web/gas-stove.jpg",
+    "reused": true
+  },
+  "Ghana Must Go": {
+    "image": "/images/catalog/web/ghana-must-go.jpg",
+    "reused": true
+  },
+  "Glue": {
+    "image": "/images/catalog/web/glue.jpg",
+    "reused": true
+  },
+  "Griller": {
+    "image": "/images/catalog/web/griller.jpg",
+    "reused": true
+  },
+  "Gum": {
+    "image": "/images/catalog/web/gum.jpg",
+    "reused": true
+  },
+  "Hair Dryer": {
+    "image": "/images/catalog/web/hair-dryer.jpg",
+    "reused": true
+  },
+  "Hand Grater": {
+    "image": "/images/catalog/web/hand-grater.jpg",
+    "reused": true
+  },
+  "Hand Mixer": {
+    "image": "/images/catalog/web/hand-mixer.jpg",
+    "reused": true
+  },
+  "Hanger": {
+    "image": "/images/catalog/web/hanger.jpg",
+    "reused": true
+  },
+  "Holder": {
+    "image": "/images/catalog/web/holder.jpg",
+    "reused": true
+  },
+  "Hot Plate": {
+    "image": "/images/catalog/web/hot-plate.jpg",
+    "reused": true
+  },
+  "Ice Bucket": {
+    "image": "/images/catalog/web/ice-bucket.jpg",
+    "reused": true
+  },
+  "Iron": {
+    "image": "/images/catalog/web/iron.jpg",
+    "reused": true
+  },
+  "Iron - Electric": {
+    "image": "/images/catalog/web/iron-electric.jpg",
+    "reused": true
+  },
+  "Jug": {
+    "image": "/images/catalog/web/jug.jpg",
+    "reused": true
+  },
+  "Juicer": {
+    "image": "/images/catalog/web/juicer.jpg",
+    "reused": true
+  },
+  "Kettle": {
+    "image": "/images/catalog/web/kettle.jpg",
+    "reused": true
+  },
+  "Kitchen Spoon": {
+    "image": "/images/catalog/web/kitchen-spoon.jpg",
+    "reused": true
+  },
+  "Knife": {
+    "image": "/images/catalog/web/knife.jpg",
+    "reused": true
+  },
+  "Knife Switch": {
+    "image": "/images/catalog/web/knife-switch.jpg",
+    "reused": true
+  },
+  "Lamp - LED Bulb": {
+    "image": "/images/catalog/web/lamp-led-bulb.jpg",
+    "reused": true
+  },
+  "Lamp - Rechargeable": {
+    "image": "/images/catalog/web/lamp-rechargeable.jpg",
+    "reused": true
+  },
+  "Lamp - Solar": {
+    "image": "/images/catalog/web/lamp-solar.jpg",
+    "reused": true
+  },
+  "Lampholder": {
+    "image": "/images/catalog/web/lampholder.jpg",
+    "reused": true
+  },
+  "Lighter": {
+    "image": "/images/catalog/web/lighter.jpg",
+    "reused": true
+  },
+  "Lunch Box": {
+    "image": "/images/catalog/web/lunch-box.jpg",
+    "reused": true
+  },
+  "Massager": {
+    "image": "/images/catalog/web/massager.jpg",
+    "reused": true
+  },
+  "Microwave": {
+    "image": "/images/catalog/web/microwave.jpg",
+    "reused": true
+  },
+  "Mopping Stick": {
+    "image": "/images/catalog/web/mopping-stick.jpg",
+    "reused": true
+  },
+  "Mug": {
+    "image": "/images/catalog/web/mug.jpg",
+    "reused": true
+  },
+  "Nail": {
+    "image": "/images/catalog/web/nail.jpg",
+    "reused": true
+  },
+  "Nail Cutter": {
+    "image": "/images/catalog/web/nail-cutter.jpg",
+    "reused": true
+  },
+  "Napkin": {
+    "image": "/images/catalog/web/napkin.jpg",
+    "reused": true
+  },
+  "Nylon": {
+    "image": "/images/catalog/web/nylon.jpg",
+    "reused": true
+  },
+  "Parker": {
+    "image": "/images/catalog/web/parker.jpg",
+    "reused": true
+  },
+  "Pattress Box": {
+    "image": "/images/catalog/web/pattress-box.jpg",
+    "reused": true
+  },
+  "Peg": {
+    "image": "/images/catalog/web/peg.jpg",
+    "reused": true
+  },
+  "Phone Stand": {
+    "image": "/images/catalog/web/phone-stand.jpg",
+    "reused": true
+  },
+  "Plate": {
+    "image": "/images/catalog/web/plate.jpg",
+    "reused": true
+  },
+  "Plate Rack": {
+    "image": "/images/catalog/web/plate-rack.jpg",
+    "reused": true
+  },
+  "Plug": {
+    "image": "/images/catalog/web/plug.jpg",
+    "reused": true
+  },
+  "Plunger": {
+    "image": "/images/catalog/web/plunger.jpg",
+    "reused": true
+  },
+  "Pot": {
+    "image": "/images/catalog/web/pot.jpg",
+    "reused": true
+  },
+  "Pressure Pot": {
+    "image": "/images/catalog/web/pressure-pot.jpg",
+    "reused": true
+  },
+  "Rack": {
+    "image": "/images/catalog/web/rack.jpg",
+    "reused": true
+  },
+  "Radio": {
+    "image": "/images/catalog/web/radio.jpg",
+    "reused": true
+  },
+  "Rice Cooker": {
+    "image": "/images/catalog/web/rice-cooker.jpg",
+    "reused": true
+  },
+  "Sandwich Maker": {
+    "image": "/images/catalog/web/sandwich-maker.jpg",
+    "reused": true
+  },
+  "Scissors": {
+    "image": "/images/catalog/web/scissors.jpg",
+    "reused": true
+  },
+  "Screw Driver": {
+    "image": "/images/catalog/web/screw-driver.jpg",
+    "reused": true
+  },
+  "Shapner": {
+    "image": "/images/catalog/web/shapner.jpg",
+    "reused": true
+  },
+  "Shaving Stick": {
+    "image": "/images/catalog/web/shaving-stick.jpg",
+    "reused": true
+  },
+  "Shoe Rack": {
+    "image": "/images/catalog/web/shoe-rack.jpg",
+    "reused": true
+  },
+  "Sieve": {
+    "image": "/images/catalog/web/sieve.jpg",
+    "reused": true
+  },
+  "Soap Case": {
+    "image": "/images/catalog/web/soap-case.jpg",
+    "reused": true
+  },
+  "Socket": {
+    "image": "/images/catalog/web/socket.jpg",
+    "reused": true
+  },
+  "Speaker": {
+    "image": "/images/catalog/web/speaker.jpg",
+    "reused": true
+  },
+  "Sponge": {
+    "image": "/images/catalog/web/sponge.jpg",
+    "reused": true
+  },
+  "Spoon": {
+    "image": "/images/catalog/web/spoon.jpg",
+    "reused": true
+  },
+  "Spoon Holder": {
+    "image": "/images/catalog/web/spoon-holder.jpg",
+    "reused": true
+  },
+  "Stock Pot": {
+    "image": "/images/catalog/web/stock-pot.jpg",
+    "reused": true
+  },
+  "Switch": {
+    "image": "/images/catalog/web/switch.jpg",
+    "reused": true
+  },
+  "Takeaway Plate": {
+    "image": "/images/catalog/web/takeaway-plate.jpg",
+    "reused": true
+  },
+  "Tissue": {
+    "image": "/images/catalog/web/tissue.jpg",
+    "reused": true
+  },
+  "Tommy Trimmer": {
+    "image": "/images/catalog/web/tommy-trimmer.jpg",
+    "reused": true
+  },
+  "Torchlight": {
+    "image": "/images/catalog/web/torchlight.jpg",
+    "reused": true
+  },
+  "Towel": {
+    "image": "/images/catalog/web/towel.jpg",
+    "reused": true
+  },
+  "Toy": {
+    "image": "/images/catalog/web/toy.jpg",
+    "reused": true
+  },
+  "Tray": {
+    "image": "/images/catalog/web/tray.jpg",
+    "reused": true
+  },
+  "Trolley": {
+    "image": "/images/catalog/web/trolley.jpg",
+    "reused": true
+  },
+  "TV Guide": {
+    "image": "/images/catalog/web/tv-guide.jpg",
+    "reused": true
+  },
+  "Umbrella": {
+    "image": "/images/catalog/web/umbrella.jpg",
+    "reused": true
+  },
+  "Unbreakable Dish": {
+    "image": "/images/catalog/web/unbreakable-dish.jpg",
+    "reused": true
+  },
+  "Unbreakable Plate": {
+    "image": "/images/catalog/web/unbreakable-plate.jpg",
+    "reused": true
+  },
+  "Unbreakable Tray": {
+    "image": "/images/catalog/web/unbreakable-tray.jpg",
+    "reused": true
+  },
+  "Wardrope": {
+    "image": "/images/catalog/web/wardrope.jpg",
+    "reused": true
+  },
+  "Water Bottle": {
+    "image": "/images/catalog/web/water-bottle.jpg",
+    "reused": true
+  },
+  "Water Flask": {
+    "image": "/images/catalog/web/water-flask.jpg",
+    "reused": true
+  },
+  "Yam Pounder": {
+    "image": "/images/catalog/web/yam-pounder.jpg",
+    "reused": true
+  }
+}

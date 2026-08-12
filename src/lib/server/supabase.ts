@@ -6,6 +6,7 @@ import { CATALOG_ITEMS, DEFAULT_CATEGORY_CARDS } from "../brand";
 import { SCHOOL_ITEM_IDS, toSchoolRow } from "../schoolItems";
 import { applyPricingSpecs } from "../schoolItems";
 import type { CatalogItem, CategoryCard, Coupon, Order, Product, Review, User } from "../types";
+import type { ImageImportItem, ImageImportJob } from "../types";
 
 export const SESSION_TTL_MS = 1000 * 60 * 60 * 24 * 7;
 
@@ -20,6 +21,45 @@ function getClient(): SupabaseClient {
     client = createClient(url, key, { auth: { persistSession: false } });
   }
   return client;
+}
+
+// --- Storage (AI Image Importer) ---
+
+export const PRODUCT_IMAGE_BUCKET = "product-images";
+
+/** Ensures the public storage bucket exists (idempotent). */
+export async function sbEnsureBucket(): Promise<void> {
+  const sb = getClient();
+  const { data } = await sb.storage.getBucket(PRODUCT_IMAGE_BUCKET);
+  if (data) return;
+  const { error } = await sb.storage.createBucket(PRODUCT_IMAGE_BUCKET, { public: true, fileSizeLimit: 10 * 1024 * 1024 });
+  if (error && !/already exists/i.test(error.message)) throw new Error(`Could not create storage bucket: ${error.message}`);
+}
+
+/** Uploads bytes to storage at the given path inside the product-images bucket. */
+export async function sbUploadFile(path: string, buffer: ArrayBuffer | Uint8Array, mime: string): Promise<void> {
+  await sbEnsureBucket();
+  const { error } = await getClient().storage.from(PRODUCT_IMAGE_BUCKET).upload(path, buffer, { contentType: mime, upsert: true });
+  if (error) throw new Error(`Storage upload failed: ${error.message}`);
+}
+
+/** Downloads a file from storage and returns its bytes. */
+export async function sbDownloadFile(path: string): Promise<Uint8Array> {
+  const { data, error } = await getClient().storage.from(PRODUCT_IMAGE_BUCKET).download(path);
+  if (error) throw new Error(`Storage download failed: ${error.message}`);
+  return new Uint8Array(await data.arrayBuffer());
+}
+
+/** Removes a file from storage (missing file is not an error). */
+export async function sbDeleteFile(path: string): Promise<void> {
+  const { error } = await getClient().storage.from(PRODUCT_IMAGE_BUCKET).remove([path]);
+  if (error && !/not found/i.test(error.message)) throw new Error(`Storage delete failed: ${error.message}`);
+}
+
+/** Public URL for a stored object. */
+export function sbStoragePublicUrl(path: string): string {
+  if (!url) throw new Error("SUPABASE_URL must be set");
+  return `${url}/storage/v1/object/public/${PRODUCT_IMAGE_BUCKET}/${path}`;
 }
 
 function rowToProduct(r: Record<string, unknown>): Product {
@@ -337,6 +377,11 @@ export async function sbListOrders(): Promise<Order[]> {
 export async function sbAddOrder(order: Order): Promise<Order> {
   await bootstrap();
   const sb = getClient();
+  // Idempotency: a retried offline order push must not insert a duplicate
+  // order or decrement stock twice if the first attempt already committed but
+  // the response was lost.
+  const { data: existing } = await sb.from("orders").select("id").eq("id", order.id).maybeSingle();
+  if (existing) return order;
   const { order_items: _omit, items, ...orderRow } = order as unknown as Record<string, unknown> & { items: Order["items"] };
   void _omit;
   const { error: orderErr } = await sb.from("orders").insert(orderRow);
@@ -514,4 +559,79 @@ export async function sbDeleteCatalogItem(id: string): Promise<boolean> {
   const { error, data } = await getClient().from("catalog_items").delete().eq("id", id).select("id");
   if (error) throw new Error(error.message);
   return Array.isArray(data) && data.length > 0;
+}
+
+// --- AI Image Importer: jobs & items ---
+
+function rowToImageImportJob(r: Record<string, unknown>): ImageImportJob {
+  return r as unknown as ImageImportJob;
+}
+
+function rowToImageImportItem(r: Record<string, unknown>): ImageImportItem {
+  return r as unknown as ImageImportItem;
+}
+
+export async function sbListImageImportJobs(): Promise<ImageImportJob[]> {
+  await bootstrap();
+  const { data } = await getClient().from("image_import_jobs").select("*").order("createdAt", { ascending: false });
+  return (data || []).map(rowToImageImportJob);
+}
+
+export async function sbGetImageImportJob(id: string): Promise<ImageImportJob | undefined> {
+  await bootstrap();
+  const { data } = await getClient().from("image_import_jobs").select("*").eq("id", id).maybeSingle();
+  return data ? rowToImageImportJob(data) : undefined;
+}
+
+export async function sbCreateImageImportJob(job: ImageImportJob): Promise<ImageImportJob> {
+  await bootstrap();
+  const { data, error } = await getClient().from("image_import_jobs").insert(job as unknown as Record<string, unknown>).select().single();
+  if (error) throw new Error(error.message);
+  return rowToImageImportJob(data);
+}
+
+export async function sbUpdateImageImportJob(job: ImageImportJob): Promise<ImageImportJob> {
+  await bootstrap();
+  const { data, error } = await getClient().from("image_import_jobs").update(job as unknown as Record<string, unknown>).eq("id", job.id).select().single();
+  if (error) throw new Error(error.message);
+  return rowToImageImportJob(data);
+}
+
+export async function sbDeleteImageImportJob(id: string): Promise<boolean> {
+  await bootstrap();
+  const { error, data } = await getClient().from("image_import_jobs").delete().eq("id", id).select("id");
+  if (error) throw new Error(error.message);
+  return Array.isArray(data) && data.length > 0;
+}
+
+export async function sbListImageImportItems(jobId: string): Promise<ImageImportItem[]> {
+  await bootstrap();
+  const { data } = await getClient().from("image_import_items").select("*").eq("jobId", jobId).order("createdAt", { ascending: true });
+  return (data || []).map(rowToImageImportItem);
+}
+
+export async function sbGetImageImportItem(id: string): Promise<ImageImportItem | undefined> {
+  await bootstrap();
+  const { data } = await getClient().from("image_import_items").select("*").eq("id", id).maybeSingle();
+  return data ? rowToImageImportItem(data) : undefined;
+}
+
+export async function sbCreateImageImportItem(item: ImageImportItem): Promise<ImageImportItem> {
+  await bootstrap();
+  const { data, error } = await getClient().from("image_import_items").insert(item as unknown as Record<string, unknown>).select().single();
+  if (error) throw new Error(error.message);
+  return rowToImageImportItem(data);
+}
+
+export async function sbUpdateImageImportItem(item: ImageImportItem): Promise<ImageImportItem> {
+  await bootstrap();
+  const { data, error } = await getClient().from("image_import_items").update(item as unknown as Record<string, unknown>).eq("id", item.id).select().single();
+  if (error) throw new Error(error.message);
+  return rowToImageImportItem(data);
+}
+
+export async function sbGetImageImportItemByHash(hash: string): Promise<ImageImportItem | undefined> {
+  await bootstrap();
+  const { data } = await getClient().from("image_import_items").select("*").eq("fileHash", hash).limit(1).maybeSingle();
+  return data ? rowToImageImportItem(data) : undefined;
 }

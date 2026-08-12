@@ -7,7 +7,9 @@ export async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> 
   });
   if (!res.ok) {
     const body = await res.json().catch(() => ({}));
-    throw new Error(body?.error || `Request failed (${res.status})`);
+    const error = new Error(body?.error || `Request failed (${res.status})`) as Error & { status?: number };
+    error.status = res.status;
+    throw error;
   }
   return res.json() as Promise<T>;
 }

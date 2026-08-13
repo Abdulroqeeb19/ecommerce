@@ -400,78 +400,43 @@ input[type="number"]::-webkit-outer-spin-button {
   pointer-events: none;
   z-index: 9999;
 }
-.cinem-cursor-dot {
+/* Glowing bubble that follows the pointer (native cursor stays visible) */
+.cinem-cursor-bubble {
   position: fixed;
   top: 0;
   left: 0;
-  width: 8px;
-  height: 8px;
-  margin: -4px 0 0 -4px;
+  width: 52px;
+  height: 52px;
+  margin: -26px 0 0 -26px;
   border-radius: 9999px;
-  background: var(--gold-light);
-  box-shadow: 0 0 12px 2px rgba(212, 175, 55, 0.9);
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-.cinem-cursor-ring {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 36px;
-  height: 36px;
-  margin: -18px 0 0 -18px;
-  border-radius: 9999px;
-  border: 1.5px solid rgba(212, 175, 55, 0.85);
-  box-shadow: 0 0 18px 0 rgba(212, 175, 55, 0.4), inset 0 0 10px rgba(212, 175, 55, 0.25);
-  transition: width 0.25s cubic-bezier(0.22, 1, 0.36, 1), height 0.25s cubic-bezier(0.22, 1, 0.36, 1), margin 0.25s cubic-bezier(0.22, 1, 0.36, 1), background 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
-}
-.cinem-cursor-dot.cursor-active {
-  transform: scale(2.4);
-}
-.cinem-cursor-ring.cursor-active {
-  width: 64px;
-  height: 64px;
-  margin: -32px 0 0 -32px;
-  background: rgba(212, 175, 55, 0.14);
-  border-color: rgba(241, 210, 125, 0.95);
-}
-.cinem-cursor-ring.cursor-hidden,
-.cinem-cursor-dot.cursor-hidden {
+  background: radial-gradient(circle, rgba(241, 210, 125, 0.5) 0%, rgba(212, 175, 55, 0.22) 42%, rgba(212, 175, 55, 0) 70%);
+  border: 1px solid rgba(241, 210, 125, 0.5);
+  box-shadow: 0 0 24px 4px rgba(212, 175, 55, 0.35), inset 0 0 16px rgba(241, 210, 125, 0.35);
   opacity: 0;
+  transition: opacity 0.3s ease;
 }
-.cinem-cursor.cursor-label .cinem-cursor-ring {
-  width: 88px;
-  height: 88px;
-  margin: -44px 0 0 -44px;
-  background: rgba(10, 18, 26, 0.82);
-  border-color: rgba(241, 210, 125, 0.9);
+.cinem-cursor-bubble.cursor-active {
+  background: radial-gradient(circle, rgba(241, 210, 125, 0.6) 0%, rgba(212, 175, 55, 0.3) 45%, rgba(212, 175, 55, 0) 72%);
+}
+.cinem-cursor-bubble.cursor-visible {
+  opacity: 1;
+}
+.cinem-cursor.cursor-label .cinem-cursor-bubble {
+  background: rgba(10, 18, 26, 0.88);
   backdrop-filter: blur(4px);
 }
-.cinem-cursor.cursor-label .cinem-cursor-ring::before {
+.cinem-cursor.cursor-label .cinem-cursor-bubble::before {
   content: attr(data-label);
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: var(--gold-light);
   text-transform: uppercase;
-}
-
-@media (pointer: fine) {
-  .has-cinematic-cursor {
-    cursor: none;
-  }
-  .has-cinematic-cursor a,
-  .has-cinematic-cursor button,
-  .has-cinematic-cursor input,
-  .has-cinematic-cursor select,
-  .has-cinematic-cursor textarea,
-  .has-cinematic-cursor label {
-    cursor: none;
-  }
 }
 
 /* Staggered card grid entrance */
@@ -529,8 +494,7 @@ input[type="number"]::-webkit-outer-spin-button {
   .cinem-marquee-track,
   .cinem-sheen-wrap::after,
   .cinem-card-in,
-  .cinem-cursor-ring,
-  .cinem-cursor-dot {
+  .cinem-cursor-bubble {
     animation: none !important;
     transition: none !important;
     transform: none !important;

@@ -128,8 +128,8 @@ const HERO_ITEMS: HeroItem[] = [
 ];
 
 const CALLOUT_TONES: Record<string, string> = {
-  gold: "border-gold-400/60 text-gold-200 bg-gold-400/10 shadow-[0_0_18px_rgba(212,175,55,0.35)]",
-  sky: "border-sky-400/60 text-sky-200 bg-sky-400/10 shadow-[0_0_18px_rgba(56,189,248,0.35)]"
+  gold: "border-gold-400/60 text-gold-200 bg-black shadow-[0_0_18px_rgba(212,175,55,0.45)]",
+  sky: "border-sky-400/60 text-sky-200 bg-black shadow-[0_0_18px_rgba(56,189,248,0.45)]"
 };
 
 interface DustSpec {
@@ -346,7 +346,7 @@ export function HeroSection() {
 
 function Callout({ label, tone }: { label: string; tone: string }) {
   return (
-    <div className={cx("rounded-xl border px-3 py-2 text-xs font-bold backdrop-blur-md", CALLOUT_TONES[tone] || CALLOUT_TONES.gold)}>
+    <div className={cx("rounded-xl border px-3 py-2 text-xs font-bold", CALLOUT_TONES[tone] || CALLOUT_TONES.gold)}>
       {label}
     </div>
   );

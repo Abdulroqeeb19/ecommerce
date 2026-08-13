@@ -66,9 +66,20 @@ export function FeaturedProducts() {
           No products found in this filter yet.
         </div>
       ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5">
-          {visible.map((p) => (
-            <ProductCard key={p.id} product={p} />
+        <div key={tab} className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5">
+          {visible.map((p, i) => (
+            <div
+              key={p.id}
+              className="cinem-card-in cinem-card-glow"
+              style={{ animationDelay: `${Math.min(i, 8) * 70}ms` }}
+              onMouseMove={(e) => {
+                const r = e.currentTarget.getBoundingClientRect();
+                e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
+                e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+              }}
+            >
+              <ProductCard product={p} />
+            </div>
           ))}
         </div>
       )}

@@ -61,13 +61,20 @@ export function CategoryCarousel() {
         </Link>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {cards.map((item) => {
+        {cards.map((item, i) => {
           const Icon = ICONS[item.icon] || Package;
           return (
             <Link
               key={item.id || item.name}
               href={item.href}
-              className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-slateink to-primary-900 text-white shadow-card hover:shadow-hover transition-all hover:-translate-y-0.5"
+              data-cursor="Shop"
+              className="cinem-card-in cinem-card-glow group relative overflow-hidden rounded-xl bg-gradient-to-br from-slateink to-primary-900 text-white shadow-card hover:shadow-hover transition-all hover:-translate-y-0.5"
+              style={{ animationDelay: `${i * 90}ms` }}
+              onMouseMove={(e) => {
+                const r = e.currentTarget.getBoundingClientRect();
+                e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
+                e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+              }}
             >
               <Image
                 src={item.image}
@@ -77,12 +84,15 @@ export function CategoryCarousel() {
                 className="h-44 w-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slateink via-slateink/30 to-transparent" />
-              <div className="absolute bottom-0 inset-x-0 p-4">
+              <div className="absolute inset-x-0 bottom-0 p-4">
                 <span className="flex items-center gap-2">
                   <Icon className="h-4 w-4 text-gold-500" />
                   <span className="font-display font-extrabold text-sm tracking-wide">{item.name}</span>
                 </span>
                 <p className="text-xs text-slate-300 mt-0.5">{item.tagline}</p>
+              </div>
+              <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-xl">
+                <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 -translate-x-full group-hover:translate-x-0 transition-all duration-700 ease-out" />
               </div>
             </Link>
           );

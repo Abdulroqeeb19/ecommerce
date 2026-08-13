@@ -1,8 +1,8 @@
 ﻿"use client";
 
-import { Suspense, useMemo, useState } from "react";
+import { Suspense, useMemo, useState, type MouseEvent } from "react";
 import { useSearchParams } from "next/navigation";
-import { SlidersHorizontal, Search, X } from "lucide-react";
+import { SlidersHorizontal, Search, X, Sparkles } from "lucide-react";
 import { useProducts } from "@/lib/catalog";
 import { ProductCard } from "@/components/ProductCard";
 import { VariantGroupCard } from "@/components/VariantGroupCard";
@@ -57,17 +57,31 @@ function buildCards(products: Product[]): CardItem[] {
   ];
 }
 
-function CardGrid({ items }: { items: CardItem[] }) {
+function trackGlow(e: MouseEvent<HTMLElement>) {
+  const el = e.currentTarget;
+  const r = el.getBoundingClientRect();
+  el.style.setProperty("--mx", `${e.clientX - r.left}px`);
+  el.style.setProperty("--my", `${e.clientY - r.top}px`);
+}
+
+function CardGrid({ items, staggerKey }: { items: CardItem[]; staggerKey: string }) {
   if (items.length === 0) return null;
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
-      {items.map((it) =>
-        it.type === "group" ? (
-          <VariantGroupCard key={it.name} groupName={it.name} products={it.products} />
-        ) : (
-          <ProductCard key={it.product.id} product={it.product} />
-        )
-      )}
+    <div key={staggerKey} className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
+      {items.map((it, i) => (
+        <div
+          key={it.type === "group" ? it.name : it.product.id}
+          className="cinem-card-in cinem-card-glow"
+          style={{ animationDelay: `${Math.min(i, 9) * 70}ms` }}
+          onMouseMove={trackGlow}
+        >
+          {it.type === "group" ? (
+            <VariantGroupCard key={it.name} groupName={it.name} products={it.products} />
+          ) : (
+            <ProductCard key={it.product.id} product={it.product} />
+          )}
+        </div>
+      ))}
     </div>
   );
 }
@@ -171,14 +185,42 @@ function ShopContent() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
-      <div className="mb-6">
-        <h1 className="font-display text-2xl sm:text-3xl font-extrabold text-slateink dark:text-white">Shop AYINDEDUNNY ENTERPRISE</h1>
-        <div className="mt-2 h-1 w-14 rounded-full" style={{ background: "var(--gold-gradient)" }} />
-        <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">
-          {category === "All"
-            ? "Browse the full AYINDEDUNNY ENTERPRISE catalogue."
-            : `Our ${category} range — order directly on WhatsApp.`}
-        </p>
+      {/* Cinematic catalogue banner */}
+      <div
+        className="relative overflow-hidden rounded-2xl mb-8 px-7 py-9 sm:px-10 text-white"
+        style={{ background: "radial-gradient(900px 380px at 15% -20%, rgba(212,175,55,0.22) 0%, transparent 55%), linear-gradient(135deg, #182230 0%, #0C121A 100%)" }}
+      >
+        <div className="cinem-beam left-[6%] rotate-[18deg]" aria-hidden="true" />
+        <div className="cinem-beam right-[10%] -rotate-[15deg]" aria-hidden="true" />
+        <div className="cinem-dust-field" aria-hidden="true">
+          {Array.from({ length: 12 }).map((_, i) => (
+            <span
+              key={i}
+              className="cinem-dust"
+              style={{
+                left: `${(i * 8 + 4) % 96}%`,
+                width: 2 + (i % 3),
+                height: 2 + (i % 3),
+                animationDuration: `${8 + (i % 6)}s`,
+                animationDelay: `${(i * 0.6) % 8}s`
+              }}
+            />
+          ))}
+        </div>
+        <div className="relative">
+          <span className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-gold-400/40 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide backdrop-blur-sm">
+            <Sparkles className="h-3.5 w-3.5 text-gold-300" /> Full Catalogue
+          </span>
+          <h1 className="mt-3 font-display text-2xl sm:text-4xl font-extrabold leading-tight">
+            <span className="cinem-shimmer-text">AYINDEDUNNY ENTERPRISE</span> Collection
+          </h1>
+          <div className="mt-3 h-1 w-24 rounded-full" style={{ background: "var(--gold-gradient)" }} />
+          <p className="mt-3 max-w-xl text-sm text-slate-300">
+            {category === "All"
+              ? "Browse every Kitchen Utensil, Babies Wear and Electrical Fitting — order directly on WhatsApp."
+              : `Our ${category} range — order directly on WhatsApp.`}
+          </p>
+        </div>
       </div>
 
       <div className="grid lg:grid-cols-[15rem_1fr] gap-8">
@@ -295,7 +337,7 @@ function ShopContent() {
             </div>
           ) : (
             <>
-              <CardGrid items={paged} />
+              <CardGrid items={paged} staggerKey={`${filterKey}|${page}`} />
               <Pagination page={page} pageCount={pageCount} onChange={setPage} />
             </>
           )}

@@ -69,11 +69,20 @@ export default function ProductDetailPage() {
       </nav>
 
       <div className="grid lg:grid-cols-2 gap-10">
-        <div className="rounded-2xl overflow-hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-card">
-          <Image src={product.image} alt={product.title} width={720} height={720} className="w-full h-auto" />
+        <div className="cinem-card-in cinem-card-glow relative" style={{ animationDelay: "0.05s" }}
+          onMouseMove={(e) => {
+            const r = e.currentTarget.getBoundingClientRect();
+            e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
+            e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+          }}
+        >
+          <div className="absolute -inset-6 -z-10 rounded-full bg-gold-400/10 blur-3xl cinem-glow-pulse" />
+          <div className="rounded-2xl overflow-hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-card cinem-sheen-wrap">
+            <Image src={product.image} alt={product.title} width={720} height={720} className="w-full h-auto transition-transform duration-700 hover:scale-105" />
+          </div>
         </div>
 
-        <div>
+        <div className="cinem-card-in" style={{ animationDelay: "0.18s" }}>
           <p className="text-xs font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">{product.brand} · {product.category}</p>
           <h1 className="mt-2 font-display text-2xl sm:text-3xl font-extrabold text-slateink dark:text-white leading-tight">{product.title}</h1>
           <div className="mt-3 flex items-center gap-3">
@@ -115,6 +124,7 @@ export default function ProductDetailPage() {
                 toast("Added to cart");
               }}
               className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 text-sm disabled:opacity-50"
+              data-cursor="Add"
             >
               <ShoppingCart className="h-5 w-5" /> Add to Cart
             </button>
@@ -156,7 +166,7 @@ export default function ProductDetailPage() {
         </div>
       </div>
 
-      <div className="mt-12 card">
+      <div className="mt-12 card cinem-card-in" style={{ animationDelay: "0.25s" }}>
         <div className="flex border-b border-slate-200">
           {TABS.map((t) => (
             <button
@@ -191,8 +201,19 @@ export default function ProductDetailPage() {
         <div className="mt-12">
           <h2 className="font-display text-xl font-extrabold text-slateink dark:text-white mb-5">You may also like</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {related.map((p) => (
-              <ProductCard key={p.id} product={p} />
+            {related.map((p, i) => (
+              <div
+                key={p.id}
+                className="cinem-card-in cinem-card-glow"
+                style={{ animationDelay: `${i * 90}ms` }}
+                onMouseMove={(e) => {
+                  const r = e.currentTarget.getBoundingClientRect();
+                  e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
+                  e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+                }}
+              >
+                <ProductCard product={p} />
+              </div>
             ))}
           </div>
         </div>

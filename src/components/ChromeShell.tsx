@@ -7,6 +7,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CompareTray } from "@/components/CompareTray";
 import { PwaRegister } from "@/components/PwaRegister";
+import { CinemCursor } from "@/components/CinemCursor";
 
 const HIDE_CHROME = new Set(["/tg"]);
 
@@ -30,6 +31,7 @@ export function ChromeShell({ children }: { children: ReactNode }) {
       </div>
       <CompareTray />
       <PwaRegister />
+      <CinemCursor />
     </>
   );
 }

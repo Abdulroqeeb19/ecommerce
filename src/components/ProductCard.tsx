@@ -27,9 +27,9 @@ export function ProductCard({ product }: { product: Product }) {
 
   return (
     <>
-      <div className="group relative bg-white dark:bg-navy-800 rounded-xl border border-slate-200 dark:border-navy-700 shadow-card overflow-hidden hover:shadow-hover hover:-translate-y-0.5 transition-all">
+      <div className="group relative bg-white dark:bg-navy-800 rounded-xl border border-slate-200 dark:border-navy-700 shadow-card overflow-hidden hover:shadow-hover hover:-translate-y-0.5 hover:ring-1 hover:ring-gold-400/40 transition-all duration-300">
         <Link href={`/product/${product.slug}`} className="block">
-          <div className="relative aspect-square overflow-hidden bg-slatebg dark:bg-slate-800">
+          <div className="relative aspect-square overflow-hidden bg-slatebg dark:bg-slate-800 cinem-sheen-wrap">
             <ProductImage
               key={imageKey}
               src={product.image}

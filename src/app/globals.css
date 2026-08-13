@@ -86,6 +86,338 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 
+/* ============================================================
+   Cinematic motion system (see "cinematic prompt for ecommerce")
+   ============================================================ */
+
+/* Scroll-triggered element reveals */
+.cinem-reveal {
+  opacity: 0;
+  will-change: opacity, transform, filter;
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.cinem-reveal-fade-up {
+  transform: translateY(36px);
+  filter: blur(6px);
+}
+.cinem-reveal-fade-in {
+  filter: blur(8px);
+}
+.cinem-reveal-zoom {
+  transform: scale(0.9);
+  filter: blur(6px);
+}
+.cinem-reveal-left {
+  transform: translateX(-48px);
+  filter: blur(6px);
+}
+.cinem-reveal-right {
+  transform: translateX(48px);
+  filter: blur(6px);
+}
+.cinem-reveal.is-inview {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+  filter: blur(0);
+}
+
+/* Cinematic keyframes */
+@keyframes cinem-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(1.5deg);
+  }
+}
+
+@keyframes cinem-float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes cinem-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cinem-spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes cinem-dust {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-110px) translateX(24px);
+    opacity: 0;
+  }
+}
+
+@keyframes cinem-light-sweep {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.6;
+  }
+  80% {
+    opacity: 0.25;
+  }
+  100% {
+    transform: translateX(220%) skewX(-18deg);
+    opacity: 0;
+  }
+}
+
+@keyframes cinem-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes cinem-orbital {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes cinem-sheen {
+  0% {
+    transform: translateX(-130%) skewX(-20deg);
+  }
+  60%,
+  100% {
+    transform: translateX(230%) skewX(-20deg);
+  }
+}
+
+@keyframes cinem-callout-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.6) translateY(16px);
+    filter: blur(4px);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes cinem-ticker-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Utility classes */
+.cinem-float {
+  animation: cinem-float 6s ease-in-out infinite;
+}
+.cinem-float-slow {
+  animation: cinem-float-slow 8s ease-in-out infinite;
+}
+.cinem-spin-slow {
+  animation: cinem-spin 22s linear infinite;
+}
+.cinem-spin-slow-reverse {
+  animation: cinem-spin-reverse 30s linear infinite;
+}
+.cinem-glow-pulse {
+  animation: cinem-glow-pulse 4s ease-in-out infinite;
+}
+.cinem-light-sweep {
+  animation: cinem-light-sweep 7s ease-in-out infinite;
+}
+.cinem-sheen {
+  animation: cinem-sheen 2.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+.cinem-callout {
+  animation: cinem-callout-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Floating micro-dust particles */
+.cinem-dust-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.cinem-dust {
+  position: absolute;
+  bottom: -12px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(241, 210, 125, 0.9) 0%, rgba(212, 175, 55, 0) 70%);
+  animation: cinem-dust linear infinite;
+  opacity: 0;
+}
+
+/* Orbital ring for product showcase */
+.cinem-orbital-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--ring-size, 420px);
+  height: var(--ring-size, 420px);
+  border-radius: 9999px;
+  border: 1px dashed rgba(212, 175, 55, 0.35);
+  transform: translate(-50%, -50%);
+  animation: cinem-orbital 40s linear infinite;
+}
+.cinem-orbital-dot {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  border-radius: 9999px;
+  background: var(--gold-medium);
+  box-shadow: 0 0 14px 3px rgba(212, 175, 55, 0.8);
+}
+.cinem-orbital-ring::after {
+  content: "";
+  position: absolute;
+  inset: -14px;
+  border-radius: 9999px;
+  border: 1px solid rgba(241, 210, 125, 0.12);
+}
+
+/* Glass sheen on product images */
+.cinem-sheen-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.cinem-sheen-wrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 45%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transform: translateX(-130%) skewX(-20deg);
+  pointer-events: none;
+}
+.cinem-sheen-wrap:hover::after {
+  animation: cinem-sheen 1.1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Cinematic headline shimmer */
+.cinem-shimmer-text {
+  background: linear-gradient(90deg, #f1d27d 0%, #fff7e0 25%, #d4af37 50%, #fff7e0 75%, #f1d27d 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: cinem-shimmer 6s linear infinite;
+}
+@keyframes cinem-shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Cinematic spotlight beams */
+.cinem-beam {
+  position: absolute;
+  top: -30%;
+  bottom: -30%;
+  width: 180px;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(212, 175, 55, 0.16) 0%, rgba(212, 175, 55, 0.03) 60%, transparent 100%);
+  filter: blur(6px);
+}
+.cinem-beam::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  background: rgba(241, 210, 125, 0.18);
+  filter: blur(18px);
+}
+
+/* Marquee with velocity/motion blur feel */
+.cinem-marquee-track {
+  animation: cinem-ticker-marquee 45s linear infinite;
+}
+.cinem-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Reduced motion: respect user preference */
+@media (prefers-reduced-motion: reduce) {
+  .cinem-reveal,
+  .cinem-reveal.is-inview,
+  .cinem-float,
+  .cinem-float-slow,
+  .cinem-spin-slow,
+  .cinem-spin-slow-reverse,
+  .cinem-glow-pulse,
+  .cinem-light-sweep,
+  .cinem-sheen,
+  .cinem-callout,
+  .cinem-dust,
+  .cinem-orbital-ring,
+  .cinem-shimmer-text,
+  .cinem-marquee-track,
+  .cinem-sheen-wrap::after {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+  .cinem-dust-field {
+    display: none;
+  }
+}
+
 @layer components {
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-slateink shadow transition-all hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50;

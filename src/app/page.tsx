@@ -6,33 +6,38 @@ import { HeroSection } from "@/components/HeroSection";
 import { CategoryCarousel } from "@/components/CategoryCarousel";
 import { Perks } from "@/components/Perks";
 import { InStockTicker } from "@/components/InStockTicker";
+import { CinematicReveal } from "@/components/CinematicReveal";
 
 export default function HomePage() {
   return (
     <>
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 grid lg:grid-cols-[16rem_1fr] gap-8">
-        <CategorySidebar />
+        <CinematicReveal as="div" variant="left" className="min-w-0 lg:min-w-0">
+          <CategorySidebar />
+        </CinematicReveal>
         <div className="min-w-0">
-          <SearchBar />
+          <CinematicReveal as="div" variant="fade-up" delay={0.1}>
+            <SearchBar />
+          </CinematicReveal>
           <div className="mt-6">
             <HeroSection />
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 -mt-2">
+      <CinematicReveal as="section" variant="fade-up" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 -mt-2">
         <Perks />
-      </section>
+      </CinematicReveal>
 
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <CinematicReveal as="section" variant="fade-in" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <InStockTicker />
-      </section>
+      </CinematicReveal>
 
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <CinematicReveal as="section" variant="fade-up" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <CategoryCarousel />
-      </section>
+      </CinematicReveal>
 
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
+      <CinematicReveal as="section" variant="zoom" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
         <div className="mt-14 rounded-2xl text-white overflow-hidden relative" style={{ background: "linear-gradient(135deg, #182230 0%, #0C121A 100%)" }}>
           <div className="absolute -left-16 -top-16 h-64 w-64 rounded-full bg-gold-400/10 blur-2xl" />
           <div className="relative p-8 sm:p-10 grid lg:grid-cols-[1fr_auto] gap-6 items-center">
@@ -55,7 +60,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </CinematicReveal>
     </>
   );
 }

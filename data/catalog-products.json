@@ -10,7 +10,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/adaptor.jpg",
+    "image": "/images/catalog/products/cat_e_adaptor_1.jpg",
     "gallery": [],
     "shortDescription": "Adaptor",
     "description": "Adaptor: Multipurpose - Orange. In stock. Quantity available: 2.",
@@ -31,7 +31,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.928Z",
-    "updatedAt": "2026-08-13T05:25:16.463Z"
+    "updatedAt": "2026-08-13T17:27:35.611Z"
   },
   {
     "id": "cat_e_adaptor_2",
@@ -44,7 +44,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/adaptor.jpg",
+    "image": "/images/catalog/products/cat_e_adaptor_2.jpg",
     "gallery": [],
     "shortDescription": "Adaptor - 15 A",
     "description": "Adaptor: Multipurpose - White - 15 A. In stock. Quantity available: 1.",
@@ -69,7 +69,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.954Z",
-    "updatedAt": "2026-08-13T05:25:16.467Z"
+    "updatedAt": "2026-08-13T17:27:35.619Z"
   },
   {
     "id": "cat_k_air-freshner_1",
@@ -116,7 +116,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/baby-care.jpg",
+    "image": "/images/catalog/products/cat_b_baby-care_1.jpg",
     "gallery": [],
     "shortDescription": "Baby Care",
     "description": "Baby Care: Plate and Spoon. In stock. Quantity available: 2.",
@@ -139,7 +139,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.954Z",
-    "updatedAt": "2026-08-13T05:25:16.467Z"
+    "updatedAt": "2026-08-13T17:27:35.619Z"
   },
   {
     "id": "cat_k_bag_1",
@@ -882,7 +882,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/battery.jpg",
+    "image": "/images/catalog/products/cat_e_battery_1.jpg",
     "gallery": [],
     "shortDescription": "Battery",
     "description": "Battery: Duracell. In stock. Quantity available: 1.",
@@ -903,7 +903,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.958Z",
-    "updatedAt": "2026-08-13T05:25:16.467Z"
+    "updatedAt": "2026-08-13T17:27:35.619Z"
   },
   {
     "id": "cat_e_battery_2",
@@ -916,7 +916,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/battery.jpg",
+    "image": "/images/catalog/products/cat_e_battery_1.jpg",
     "gallery": [],
     "shortDescription": "Battery - Blue",
     "description": "Battery: Rechargeable - Blue. In stock. Quantity available: 3.",
@@ -941,7 +941,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.958Z",
-    "updatedAt": "2026-08-13T05:25:16.467Z"
+    "updatedAt": "2026-08-13T17:27:35.619Z"
   },
   {
     "id": "cat_e_battery_3",
@@ -954,7 +954,7 @@
     "stock": 4,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/battery.jpg",
+    "image": "/images/catalog/products/cat_e_battery_1.jpg",
     "gallery": [],
     "shortDescription": "Battery - DP-Li01",
     "description": "Battery: Rechargeable - DP-Li01. In stock. Quantity available: 4.",
@@ -979,7 +979,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.958Z",
-    "updatedAt": "2026-08-13T05:25:16.467Z"
+    "updatedAt": "2026-08-13T17:27:35.619Z"
   },
   {
     "id": "cat_e_battery_4",
@@ -992,7 +992,7 @@
     "stock": 6,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/battery.jpg",
+    "image": "/images/catalog/products/cat_e_battery_1.jpg",
     "gallery": [],
     "shortDescription": "Battery",
     "description": "Battery: Tiger - Big. In stock. Quantity available: 6.",
@@ -1013,7 +1013,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.958Z",
-    "updatedAt": "2026-08-13T05:25:16.467Z"
+    "updatedAt": "2026-08-13T17:27:35.619Z"
   },
   {
     "id": "cat_e_battery_5",
@@ -1026,7 +1026,7 @@
     "stock": 7,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/battery.jpg",
+    "image": "/images/catalog/products/cat_e_battery_1.jpg",
     "gallery": [],
     "shortDescription": "Battery",
     "description": "Battery: Tiger and Tudor. In stock. Quantity available: 7.",
@@ -1047,7 +1047,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.958Z",
-    "updatedAt": "2026-08-13T05:25:16.467Z"
+    "updatedAt": "2026-08-13T17:27:35.619Z"
   },
   {
     "id": "cat_e_battery_6",
@@ -1060,7 +1060,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/battery.jpg",
+    "image": "/images/catalog/products/cat_e_battery_1.jpg",
     "gallery": [],
     "shortDescription": "Battery",
     "description": "Battery: Tiger Head Akaline. In stock. Quantity available: 2.",
@@ -1081,7 +1081,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.958Z",
-    "updatedAt": "2026-08-13T05:25:16.467Z"
+    "updatedAt": "2026-08-13T17:27:35.619Z"
   },
   {
     "id": "cat_e_battery_7",
@@ -1094,7 +1094,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/battery.jpg",
+    "image": "/images/catalog/products/cat_e_battery_1.jpg",
     "gallery": [],
     "shortDescription": "Battery",
     "description": "Battery: Tudor - Big. In stock. Quantity available: 1.",
@@ -1115,7 +1115,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.958Z",
-    "updatedAt": "2026-08-13T05:25:16.467Z"
+    "updatedAt": "2026-08-13T17:27:35.619Z"
   },
   {
     "id": "cat_e_battery_8",
@@ -1128,7 +1128,7 @@
     "stock": 12,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/battery.jpg",
+    "image": "/images/catalog/products/cat_e_battery_1.jpg",
     "gallery": [],
     "shortDescription": "Battery",
     "description": "Battery: Tudor - Small. In stock. Quantity available: 12.",
@@ -1149,7 +1149,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.958Z",
-    "updatedAt": "2026-08-13T05:25:16.467Z"
+    "updatedAt": "2026-08-13T17:27:35.619Z"
   },
   {
     "id": "cat_k_bbq_1",
@@ -2360,7 +2360,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/bulb.jpg",
+    "image": "/images/catalog/products/cat_e_bulb_1.jpg",
     "gallery": [],
     "shortDescription": "Bulb",
     "description": "Bulb: Indicator. In stock. Quantity available: 3.",
@@ -2381,7 +2381,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.959Z",
-    "updatedAt": "2026-08-13T05:25:16.468Z"
+    "updatedAt": "2026-08-13T17:27:35.619Z"
   },
   {
     "id": "cat_e_bulb-energy-saver_1",
@@ -2394,7 +2394,7 @@
     "stock": 14,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/bulb-energy-saver.jpg",
+    "image": "/images/catalog/products/cat_e_bulb-energy-saver_1.jpg",
     "gallery": [],
     "shortDescription": "Bulb - Energy Saver - 10 W",
     "description": "Bulb - Energy Saver: AKT - 10 W. In stock. Quantity available: 14.",
@@ -2419,7 +2419,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.959Z",
-    "updatedAt": "2026-08-13T05:25:16.468Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_bulb-energy-saver_2",
@@ -2432,7 +2432,7 @@
     "stock": 6,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/bulb-energy-saver.jpg",
+    "image": "/images/catalog/products/cat_e_bulb-energy-saver_1.jpg",
     "gallery": [],
     "shortDescription": "Bulb - Energy Saver - 5 W",
     "description": "Bulb - Energy Saver: AVC - 5 W. In stock. Quantity available: 6.",
@@ -2457,7 +2457,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.959Z",
-    "updatedAt": "2026-08-13T05:25:16.468Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_bulb-energy-saver_3",
@@ -2470,7 +2470,7 @@
     "stock": 6,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/bulb-energy-saver.jpg",
+    "image": "/images/catalog/products/cat_e_bulb-energy-saver_1.jpg",
     "gallery": [],
     "shortDescription": "Bulb - Energy Saver - 100 W",
     "description": "Bulb - Energy Saver: Britania - Old Bulb - 100 W. In stock. Quantity available: 6.",
@@ -2495,7 +2495,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.959Z",
-    "updatedAt": "2026-08-13T05:25:16.468Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_bulb-energy-saver_4",
@@ -2508,7 +2508,7 @@
     "stock": 20,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/bulb-energy-saver.jpg",
+    "image": "/images/catalog/products/cat_e_bulb-energy-saver_1.jpg",
     "gallery": [],
     "shortDescription": "Bulb - Energy Saver - 10 W",
     "description": "Bulb - Energy Saver: CY - 10 W. In stock. Quantity available: 20.",
@@ -2533,7 +2533,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.959Z",
-    "updatedAt": "2026-08-13T05:25:16.468Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_bulb-energy-saver_5",
@@ -2546,7 +2546,7 @@
     "stock": 4,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/bulb-energy-saver.jpg",
+    "image": "/images/catalog/products/cat_e_bulb-energy-saver_1.jpg",
     "gallery": [],
     "shortDescription": "Bulb - Energy Saver - 15 W",
     "description": "Bulb - Energy Saver: Ecomin - 15 W. In stock. Quantity available: 4.",
@@ -2571,7 +2571,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.959Z",
-    "updatedAt": "2026-08-13T05:25:16.468Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_bulb-energy-saver_6",
@@ -2584,7 +2584,7 @@
     "stock": 26,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/bulb-energy-saver.jpg",
+    "image": "/images/catalog/products/cat_e_bulb-energy-saver_1.jpg",
     "gallery": [],
     "shortDescription": "Bulb - Energy Saver - 5 W",
     "description": "Bulb - Energy Saver: Ecomin - 5 W. In stock. Quantity available: 26.",
@@ -2609,7 +2609,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.959Z",
-    "updatedAt": "2026-08-13T05:25:16.468Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_bulb-energy-saver_7",
@@ -2622,7 +2622,7 @@
     "stock": 31,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/bulb-energy-saver.jpg",
+    "image": "/images/catalog/products/cat_e_bulb-energy-saver_1.jpg",
     "gallery": [],
     "shortDescription": "Bulb - Energy Saver - 10 W",
     "description": "Bulb - Energy Saver: Ecomin - Pin and Screw - 10 W. In stock. Quantity available: 31.",
@@ -2647,7 +2647,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.959Z",
-    "updatedAt": "2026-08-13T05:25:16.468Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_bulb-energy-saver_8",
@@ -2660,7 +2660,7 @@
     "stock": 12,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/bulb-energy-saver.jpg",
+    "image": "/images/catalog/products/cat_e_bulb-energy-saver_1.jpg",
     "gallery": [],
     "shortDescription": "Bulb - Energy Saver - 10 W",
     "description": "Bulb - Energy Saver: Itel - 10 W. In stock. Quantity available: 12.",
@@ -2685,7 +2685,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.960Z",
-    "updatedAt": "2026-08-13T05:25:16.468Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_bulb-recheargeable_1",
@@ -2698,7 +2698,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/bulb-recheargeable.jpg",
+    "image": "/images/catalog/products/cat_e_bulb-recheargeable_1.jpg",
     "gallery": [],
     "shortDescription": "Bulb - Recheargeable - 18 W",
     "description": "Bulb - Recheargeable: AKT - 18 W. In stock. Quantity available: 1.",
@@ -2723,7 +2723,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.960Z",
-    "updatedAt": "2026-08-13T05:25:16.468Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_cello-tape_1",
@@ -2736,7 +2736,7 @@
     "stock": 10,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/cello-tape.jpg",
+    "image": "/images/catalog/products/cat_e_cello-tape_1.jpg",
     "gallery": [],
     "shortDescription": "Cello Tape",
     "description": "Cello Tape: Black. In stock. Quantity available: 10.",
@@ -2757,7 +2757,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.960Z",
-    "updatedAt": "2026-08-13T05:25:16.468Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_cello-tape_2",
@@ -2770,7 +2770,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/cello-tape.jpg",
+    "image": "/images/catalog/products/cat_e_cello-tape_1.jpg",
     "gallery": [],
     "shortDescription": "Cello Tape",
     "description": "Cello Tape: Paper. In stock. Quantity available: 2.",
@@ -2791,7 +2791,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.960Z",
-    "updatedAt": "2026-08-13T05:25:16.468Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_cello-tape_3",
@@ -2804,7 +2804,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/cello-tape.jpg",
+    "image": "/images/catalog/products/cat_e_cello-tape_1.jpg",
     "gallery": [],
     "shortDescription": "Cello Tape",
     "description": "Cello Tape: Transparent - Big Roll. In stock. Quantity available: 2.",
@@ -2825,7 +2825,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.960Z",
-    "updatedAt": "2026-08-13T05:25:16.468Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_cello-tape_4",
@@ -2838,7 +2838,7 @@
     "stock": 4,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/cello-tape.jpg",
+    "image": "/images/catalog/products/cat_e_cello-tape_1.jpg",
     "gallery": [],
     "shortDescription": "Cello Tape",
     "description": "Cello Tape: Transparent - Small Roll. In stock. Quantity available: 4.",
@@ -2859,7 +2859,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.960Z",
-    "updatedAt": "2026-08-13T05:25:16.468Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_charger_1",
@@ -2872,7 +2872,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/charger.jpg",
+    "image": "/images/catalog/products/cat_e_charger_1.jpg",
     "gallery": [],
     "shortDescription": "Charger - SHPLUS",
     "description": "Charger: Phone - SHPLUS. In stock. Quantity available: 1.",
@@ -2897,7 +2897,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.960Z",
-    "updatedAt": "2026-08-13T05:25:16.468Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_charger_2",
@@ -2910,7 +2910,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/charger.jpg",
+    "image": "/images/catalog/products/cat_e_charger_1.jpg",
     "gallery": [],
     "shortDescription": "Charger - Tecnno",
     "description": "Charger: Phone - Tecnno. In stock. Quantity available: 1.",
@@ -2935,7 +2935,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.960Z",
-    "updatedAt": "2026-08-13T05:25:16.468Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_charger_3",
@@ -2948,7 +2948,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/charger.jpg",
+    "image": "/images/catalog/products/cat_e_charger_1.jpg",
     "gallery": [],
     "shortDescription": "Charger - Seven Colour",
     "description": "Charger: Phone - Desktop - Seven Colour. In stock. Quantity available: 2.",
@@ -2973,7 +2973,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.960Z",
-    "updatedAt": "2026-08-13T05:25:16.468Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_charger_4",
@@ -2986,7 +2986,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/charger.jpg",
+    "image": "/images/catalog/products/cat_e_charger_1.jpg",
     "gallery": [],
     "shortDescription": "Charger - 10 W",
     "description": "Charger: Phone - Itel - 10 W. In stock. Quantity available: 1.",
@@ -3011,7 +3011,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.960Z",
-    "updatedAt": "2026-08-13T05:25:16.468Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_charger_5",
@@ -3024,7 +3024,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/charger.jpg",
+    "image": "/images/catalog/products/cat_e_charger_1.jpg",
     "gallery": [],
     "shortDescription": "Charger",
     "description": "Charger: Phone - Small White. In stock. Quantity available: 2.",
@@ -3045,7 +3045,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.960Z",
-    "updatedAt": "2026-08-13T05:25:16.468Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_k_chopper_1",
@@ -3130,7 +3130,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/clip.jpg",
+    "image": "/images/catalog/products/cat_e_clip_1.jpg",
     "gallery": [],
     "shortDescription": "Clip",
     "description": "Clip: Iron Clip. In stock. Quantity available: 2.",
@@ -3151,7 +3151,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.960Z",
-    "updatedAt": "2026-08-13T05:25:16.468Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_clip_2",
@@ -3164,7 +3164,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/clip.jpg",
+    "image": "/images/catalog/products/cat_e_clip_1.jpg",
     "gallery": [],
     "shortDescription": "Clip - 1.5 mm",
     "description": "Clip: Rubber - White - 1.5 mm. In stock. Quantity available: 1.",
@@ -3189,7 +3189,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.960Z",
-    "updatedAt": "2026-08-13T05:25:16.468Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_cliper_1",
@@ -3202,7 +3202,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/cliper.jpg",
+    "image": "/images/catalog/products/cat_e_cliper_1.jpg",
     "gallery": [],
     "shortDescription": "Cliper",
     "description": "Cliper: Rechargeable - WK-9400. In stock. Quantity available: 1.",
@@ -3223,7 +3223,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.960Z",
-    "updatedAt": "2026-08-13T05:25:16.468Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_k_clipper_1",
@@ -3604,7 +3604,7 @@
     "stock": 4,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/cord.jpg",
+    "image": "/images/catalog/products/cat_e_cord_1.jpg",
     "gallery": [],
     "shortDescription": "Cord",
     "description": "Cord: Oraimo Black. In stock. Quantity available: 4.",
@@ -3625,7 +3625,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.960Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_cord_2",
@@ -3638,7 +3638,7 @@
     "stock": 5,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/cord.jpg",
+    "image": "/images/catalog/products/cat_e_cord_1.jpg",
     "gallery": [],
     "shortDescription": "Cord - SHPLUS White",
     "description": "Cord: USB - SHPLUS White. In stock. Quantity available: 5.",
@@ -3663,7 +3663,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.960Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_k_cover_1",
@@ -3744,7 +3744,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/cup.jpg",
+    "image": "/images/catalog/products/cat_b_cup_1.jpg",
     "gallery": [],
     "shortDescription": "Cup",
     "description": "Cup: Baby Cup with Spoon. In stock. Quantity available: 1.",
@@ -3767,7 +3767,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.960Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_k_cup_2",
@@ -4602,7 +4602,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/extention-wire.jpg",
+    "image": "/images/catalog/products/cat_e_extention-wire_1.jpg",
     "gallery": [],
     "shortDescription": "Extention Wire - ISU-2321U",
     "description": "Extention Wire: Itel - ISU-2321U. In stock. Quantity available: 1.",
@@ -4627,7 +4627,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.961Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_extention-wire_2",
@@ -4640,7 +4640,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/extention-wire.jpg",
+    "image": "/images/catalog/products/cat_e_extention-wire_1.jpg",
     "gallery": [],
     "shortDescription": "Extention Wire - Big",
     "description": "Extention Wire: JKJRoyal - Big. In stock. Quantity available: 1.",
@@ -4665,7 +4665,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.961Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_extention-wire_3",
@@ -4678,7 +4678,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/extention-wire.jpg",
+    "image": "/images/catalog/products/cat_e_extention-wire_1.jpg",
     "gallery": [],
     "shortDescription": "Extention Wire - Small",
     "description": "Extention Wire: JKJRoyal - Small. In stock. Quantity available: 1.",
@@ -4703,7 +4703,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.961Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_extention-wire_4",
@@ -4716,7 +4716,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/extention-wire.jpg",
+    "image": "/images/catalog/products/cat_e_extention-wire_1.jpg",
     "gallery": [],
     "shortDescription": "Extention Wire",
     "description": "Extention Wire: Kincastra. In stock. Quantity available: 1.",
@@ -4737,7 +4737,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.961Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_extention-wire_5",
@@ -4750,7 +4750,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/extention-wire.jpg",
+    "image": "/images/catalog/products/cat_e_extention-wire_1.jpg",
     "gallery": [],
     "shortDescription": "Extention Wire",
     "description": "Extention Wire: KingAstra. In stock. Quantity available: 1.",
@@ -4771,7 +4771,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.961Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_extention-wire_6",
@@ -4784,7 +4784,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/extention-wire.jpg",
+    "image": "/images/catalog/products/cat_e_extention-wire_1.jpg",
     "gallery": [],
     "shortDescription": "Extention Wire",
     "description": "Extention Wire: Power Socket. In stock. Quantity available: 1.",
@@ -4805,7 +4805,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.961Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_extention-wire_7",
@@ -4818,7 +4818,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/extention-wire.jpg",
+    "image": "/images/catalog/products/cat_e_extention-wire_1.jpg",
     "gallery": [],
     "shortDescription": "Extention Wire - 002USB",
     "description": "Extention Wire: Round - 002USB. In stock. Quantity available: 1.",
@@ -4843,7 +4843,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.961Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_extention-wire_8",
@@ -4856,7 +4856,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/extention-wire.jpg",
+    "image": "/images/catalog/products/cat_e_extention-wire_1.jpg",
     "gallery": [],
     "shortDescription": "Extention Wire",
     "description": "Extention Wire: Standard. In stock. Quantity available: 2.",
@@ -4877,7 +4877,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.961Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_extention-wire_9",
@@ -4890,7 +4890,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/extention-wire.jpg",
+    "image": "/images/catalog/products/cat_e_extention-wire_1.jpg",
     "gallery": [],
     "shortDescription": "Extention Wire - JK204",
     "description": "Extention Wire: USB Socket - JK204. In stock. Quantity available: 1.",
@@ -4915,7 +4915,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.961Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_extention-wire_10",
@@ -4928,7 +4928,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/extention-wire.jpg",
+    "image": "/images/catalog/products/cat_e_extention-wire_1.jpg",
     "gallery": [],
     "shortDescription": "Extention Wire - HY-2332U",
     "description": "Extention Wire: VBT - HY-2332U. In stock. Quantity available: 1.",
@@ -4953,7 +4953,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.961Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_k_fan_1",
@@ -5000,7 +5000,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/fan.jpg",
+    "image": "/images/catalog/products/cat_e_fan_2.jpg",
     "gallery": [],
     "shortDescription": "Fan - DP-7608",
     "description": "Fan: Foldable Small - DP-7608. In stock. Quantity available: 1.",
@@ -5025,7 +5025,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.961Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_fan_2",
@@ -5038,7 +5038,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/fan.jpg",
+    "image": "/images/catalog/products/cat_e_fan_2.jpg",
     "gallery": [],
     "shortDescription": "Fan",
     "description": "Fan: JH-2028. In stock. Quantity available: 1.",
@@ -5059,7 +5059,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.961Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_fan-desktop_1",
@@ -5454,7 +5454,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/food-flask.jpg",
+    "image": "/images/catalog/products/cat_b_food-flask_1.jpg",
     "gallery": [],
     "shortDescription": "Food Flask - Children Bowl",
     "description": "Food Flask: China - Children Bowl. In stock. Quantity available: 2.",
@@ -5481,7 +5481,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.961Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_k_food-flask_2",
@@ -6878,7 +6878,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/gum.jpg",
+    "image": "/images/catalog/products/cat_e_gum_1.jpg",
     "gallery": [],
     "shortDescription": "Gum - Steel - 2 in 1",
     "description": "Gum: 4 Minutes - Steel - 2 in 1. In stock. Quantity available: 2.",
@@ -6903,7 +6903,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.963Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_k_hair-dryer_1",
@@ -8340,7 +8340,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/iron-electric.jpg",
+    "image": "/images/catalog/products/cat_e_iron-electric_1.jpg",
     "gallery": [],
     "shortDescription": "Iron - Electric",
     "description": "Iron - Electric: Emouliness. In stock. Quantity available: 1.",
@@ -8361,7 +8361,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_iron-electric_2",
@@ -8374,7 +8374,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/iron-electric.jpg",
+    "image": "/images/catalog/products/cat_e_iron-electric_1.jpg",
     "gallery": [],
     "shortDescription": "Iron - Electric - QDL-300",
     "description": "Iron - Electric: Qasa - QDL-300. In stock. Quantity available: 1.",
@@ -8399,7 +8399,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_iron-electric_3",
@@ -8412,7 +8412,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/iron-electric.jpg",
+    "image": "/images/catalog/products/cat_e_iron-electric_1.jpg",
     "gallery": [],
     "shortDescription": "Iron - Electric - RN-702",
     "description": "Iron - Electric: Rashnik - RN-702. In stock. Quantity available: 1.",
@@ -8437,7 +8437,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_iron-electric_4",
@@ -8450,7 +8450,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/iron-electric.jpg",
+    "image": "/images/catalog/products/cat_e_iron-electric_1.jpg",
     "gallery": [],
     "shortDescription": "Iron - Electric - DI01",
     "description": "Iron - Electric: SMP - DI01. In stock. Quantity available: 1.",
@@ -8475,7 +8475,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_iron-electric_5",
@@ -8488,7 +8488,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/iron-electric.jpg",
+    "image": "/images/catalog/products/cat_e_iron-electric_1.jpg",
     "gallery": [],
     "shortDescription": "Iron - Electric - S105",
     "description": "Iron - Electric: SMP - S105. In stock. Quantity available: 1.",
@@ -8513,7 +8513,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_k_jug_1",
@@ -9842,7 +9842,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/knife-switch.jpg",
+    "image": "/images/catalog/products/cat_e_knife-switch_1.jpg",
     "gallery": [],
     "shortDescription": "Knife Switch - 100 Amps",
     "description": "Knife Switch: Change Over - 100 Amps. In stock. Quantity available: 1.",
@@ -9867,7 +9867,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_knife-switch_2",
@@ -9880,7 +9880,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/knife-switch.jpg",
+    "image": "/images/catalog/products/cat_e_knife-switch_1.jpg",
     "gallery": [],
     "shortDescription": "Knife Switch - 32 Amps",
     "description": "Knife Switch: Change Over - 32 Amps. In stock. Quantity available: 1.",
@@ -9905,7 +9905,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_lamp-led-bulb_1",
@@ -9918,7 +9918,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/lamp-led-bulb.jpg",
+    "image": "/images/catalog/products/cat_e_lamp-led-bulb_1.jpeg",
     "gallery": [],
     "shortDescription": "Lamp - LED Bulb - DP-7812C",
     "description": "Lamp - LED Bulb: DP - DP-7812C. In stock. Quantity available: 1.",
@@ -9943,7 +9943,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_lamp-led-bulb_2",
@@ -9956,7 +9956,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/lamp-led-bulb.jpg",
+    "image": "/images/catalog/products/cat_e_lamp-led-bulb_1.jpeg",
     "gallery": [],
     "shortDescription": "Lamp - LED Bulb - KM-7781",
     "description": "Lamp - LED Bulb: Kemsafe - KM-7781. In stock. Quantity available: 1.",
@@ -9981,7 +9981,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_lamp-led-bulb_3",
@@ -9994,7 +9994,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/lamp-led-bulb.jpg",
+    "image": "/images/catalog/products/cat_e_lamp-led-bulb_1.jpeg",
     "gallery": [],
     "shortDescription": "Lamp - LED Bulb - KM-AE05",
     "description": "Lamp - LED Bulb: Kemsafe - KM-AE05. In stock. Quantity available: 1.",
@@ -10019,7 +10019,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.969Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_lamp-rechargeable_1",
@@ -10346,7 +10346,7 @@
     "stock": 10,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/lampholder.jpg",
+    "image": "/images/catalog/products/cat_e_lampholder_1.jpg",
     "gallery": [],
     "shortDescription": "Lampholder - 2 in 1",
     "description": "Lampholder: Vin Well - 2 in 1. In stock. Quantity available: 10.",
@@ -10371,7 +10371,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.969Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_lighter_1",
@@ -10990,7 +10990,7 @@
     "stock": 10,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/nail.jpg",
+    "image": "/images/catalog/products/cat_e_nail_1.jpg",
     "gallery": [],
     "shortDescription": "Nail",
     "description": "Nail: For Iron Clip. In stock. Quantity available: 10.",
@@ -11011,7 +11011,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.969Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_nail-cutter_1",
@@ -11024,7 +11024,7 @@
     "stock": 12,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/nail-cutter.jpg",
+    "image": "/images/catalog/products/cat_e_nail-cutter_1.jpg",
     "gallery": [],
     "shortDescription": "Nail Cutter",
     "description": "Nail Cutter: Standard. In stock. Quantity available: 12.",
@@ -11045,7 +11045,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.969Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_k_napkin_1",
@@ -11164,7 +11164,7 @@
     "stock": 10,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/pattress-box.jpg",
+    "image": "/images/catalog/products/cat_e_pattress-box_1.jpg",
     "gallery": [],
     "shortDescription": "Pattress Box",
     "description": "Pattress Box: Standard. In stock. Quantity available: 10.",
@@ -11185,7 +11185,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_k_peg_1",
@@ -11300,7 +11300,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/phone-stand.jpg",
+    "image": "/images/catalog/products/cat_e_phone-stand_1.jpg",
     "gallery": [],
     "shortDescription": "Phone Stand",
     "description": "Phone Stand: Standard. In stock. Quantity available: 1.",
@@ -11321,7 +11321,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_k_plate_1",
@@ -12178,7 +12178,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/plug.jpg",
+    "image": "/images/catalog/products/cat_e_plug_1.jpg",
     "gallery": [],
     "shortDescription": "Plug",
     "description": "Plug: 13 A. In stock. Quantity available: 2.",
@@ -12199,7 +12199,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_k_plunger_1",
@@ -13108,7 +13108,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/radio.jpg",
+    "image": "/images/catalog/products/cat_e_radio_2.jpg",
     "gallery": [],
     "shortDescription": "Radio - E30",
     "description": "Radio: MP3 - E30. In stock. Quantity available: 1.",
@@ -13133,7 +13133,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_radio_2",
@@ -13146,7 +13146,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/radio.jpg",
+    "image": "/images/catalog/products/cat_e_radio_2.jpg",
     "gallery": [],
     "shortDescription": "Radio - TG-184",
     "description": "Radio: MP3 - TG-184. In stock. Quantity available: 1.",
@@ -13171,7 +13171,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_k_rice-cooker_1",
@@ -13392,7 +13392,7 @@
     "stock": 4,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/screw-driver.jpg",
+    "image": "/images/catalog/products/cat_e_screw-driver_1.jpg",
     "gallery": [],
     "shortDescription": "Screw Driver",
     "description": "Screw Driver: Flat and Star. In stock. Quantity available: 4.",
@@ -13413,7 +13413,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_screw-driver_2",
@@ -13426,7 +13426,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/screw-driver.jpg",
+    "image": "/images/catalog/products/cat_e_screw-driver_1.jpg",
     "gallery": [],
     "shortDescription": "Screw Driver",
     "description": "Screw Driver: Tester. In stock. Quantity available: 2.",
@@ -13447,7 +13447,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_k_shapner_1",
@@ -13990,7 +13990,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/socket.jpg",
+    "image": "/images/catalog/products/cat_e_socket_2.jpg",
     "gallery": [],
     "shortDescription": "Socket - OPK",
     "description": "Socket: Max Power - 4000W - OPK. In stock. Quantity available: 2.",
@@ -14015,7 +14015,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_socket_2",
@@ -14028,7 +14028,7 @@
     "stock": 8,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/socket.jpg",
+    "image": "/images/catalog/products/cat_e_socket_2.jpg",
     "gallery": [],
     "shortDescription": "Socket",
     "description": "Socket: Standard. In stock. Quantity available: 8.",
@@ -14049,7 +14049,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_speaker_1",
@@ -14062,7 +14062,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/speaker.jpg",
+    "image": "/images/catalog/products/cat_e_speaker_1.jpg",
     "gallery": [],
     "shortDescription": "Speaker",
     "description": "Speaker: Bluetooth. In stock. Quantity available: 1.",
@@ -14083,7 +14083,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_k_sponge_1",
@@ -14198,7 +14198,7 @@
     "stock": 6,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/spoon.jpg",
+    "image": "/images/catalog/products/cat_b_spoon_1.jpg",
     "gallery": [],
     "shortDescription": "Spoon - 12 Pcs",
     "description": "Spoon: Children - 12 Pcs. In stock. Quantity available: 6.",
@@ -14225,7 +14225,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_b_spoon_2",
@@ -14238,7 +14238,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/spoon.jpg",
+    "image": "/images/catalog/products/cat_b_spoon_2.jpeg",
     "gallery": [],
     "shortDescription": "Spoon",
     "description": "Spoon: Children - Swuzzy. In stock. Quantity available: 3.",
@@ -14261,7 +14261,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_k_spoon_3",
@@ -14516,7 +14516,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/switch.jpg",
+    "image": "/images/catalog/products/cat_e_switch_3.jpg",
     "gallery": [],
     "shortDescription": "Switch",
     "description": "Switch: 1 Gang. In stock. Quantity available: 3.",
@@ -14537,7 +14537,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_switch_2",
@@ -14550,7 +14550,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/switch.jpg",
+    "image": "/images/catalog/products/cat_e_switch_3.jpg",
     "gallery": [],
     "shortDescription": "Switch",
     "description": "Switch: 2 Gang. In stock. Quantity available: 3.",
@@ -14571,7 +14571,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_switch_3",
@@ -14584,7 +14584,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/switch.jpg",
+    "image": "/images/catalog/products/cat_e_switch_3.jpg",
     "gallery": [],
     "shortDescription": "Switch",
     "description": "Switch: 3 Gang. In stock. Quantity available: 1.",
@@ -14605,7 +14605,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_k_takeaway-plate_1",
@@ -14720,7 +14720,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/torchlight.jpg",
+    "image": "/images/catalog/products/cat_e_torchlight_1.jpg",
     "gallery": [],
     "shortDescription": "Torchlight",
     "description": "Torchlight: AF-KM808S. In stock. Quantity available: 1.",
@@ -14741,7 +14741,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_torchlight_2",
@@ -14754,7 +14754,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/torchlight.jpg",
+    "image": "/images/catalog/products/cat_e_torchlight_1.jpg",
     "gallery": [],
     "shortDescription": "Torchlight",
     "description": "Torchlight: CN-L9216C. In stock. Quantity available: 1.",
@@ -14775,7 +14775,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_torchlight_3",
@@ -14788,7 +14788,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/torchlight.jpg",
+    "image": "/images/catalog/products/cat_e_torchlight_1.jpg",
     "gallery": [],
     "shortDescription": "Torchlight",
     "description": "Torchlight: CTL-CH413A. In stock. Quantity available: 1.",
@@ -14809,7 +14809,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_torchlight_4",
@@ -14822,7 +14822,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/torchlight.jpg",
+    "image": "/images/catalog/products/cat_e_torchlight_1.jpg",
     "gallery": [],
     "shortDescription": "Torchlight",
     "description": "Torchlight: DP-9005B. In stock. Quantity available: 2.",
@@ -14843,7 +14843,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_torchlight_5",
@@ -14856,7 +14856,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/torchlight.jpg",
+    "image": "/images/catalog/products/cat_e_torchlight_1.jpg",
     "gallery": [],
     "shortDescription": "Torchlight",
     "description": "Torchlight: DP-9013B. In stock. Quantity available: 2.",
@@ -14877,7 +14877,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_torchlight_6",
@@ -14890,7 +14890,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/torchlight.jpg",
+    "image": "/images/catalog/products/cat_e_torchlight_1.jpg",
     "gallery": [],
     "shortDescription": "Torchlight",
     "description": "Torchlight: DP-9110C. In stock. Quantity available: 1.",
@@ -14911,7 +14911,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_torchlight_7",
@@ -14924,7 +14924,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/torchlight.jpg",
+    "image": "/images/catalog/products/cat_e_torchlight_1.jpg",
     "gallery": [],
     "shortDescription": "Torchlight",
     "description": "Torchlight: DP-9162. In stock. Quantity available: 1.",
@@ -14945,7 +14945,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_torchlight_8",
@@ -14958,7 +14958,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/torchlight.jpg",
+    "image": "/images/catalog/products/cat_e_torchlight_1.jpg",
     "gallery": [],
     "shortDescription": "Torchlight",
     "description": "Torchlight: DP-9183. In stock. Quantity available: 1.",
@@ -14979,7 +14979,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_torchlight_9",
@@ -14992,7 +14992,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/torchlight.jpg",
+    "image": "/images/catalog/products/cat_e_torchlight_1.jpg",
     "gallery": [],
     "shortDescription": "Torchlight",
     "description": "Torchlight: DP-9184. In stock. Quantity available: 3.",
@@ -15013,7 +15013,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_torchlight_10",
@@ -15026,7 +15026,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/torchlight.jpg",
+    "image": "/images/catalog/products/cat_e_torchlight_1.jpg",
     "gallery": [],
     "shortDescription": "Torchlight",
     "description": "Torchlight: DP-9185. In stock. Quantity available: 1.",
@@ -15047,7 +15047,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_torchlight_11",
@@ -15060,7 +15060,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/torchlight.jpg",
+    "image": "/images/catalog/products/cat_e_torchlight_1.jpg",
     "gallery": [],
     "shortDescription": "Torchlight",
     "description": "Torchlight: DX-1804. In stock. Quantity available: 1.",
@@ -15081,7 +15081,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_torchlight_12",
@@ -15094,7 +15094,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/torchlight.jpg",
+    "image": "/images/catalog/products/cat_e_torchlight_1.jpg",
     "gallery": [],
     "shortDescription": "Torchlight",
     "description": "Torchlight: GR-9558A. In stock. Quantity available: 1.",
@@ -15115,7 +15115,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_torchlight_13",
@@ -15128,7 +15128,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/torchlight.jpg",
+    "image": "/images/catalog/products/cat_e_torchlight_1.jpg",
     "gallery": [],
     "shortDescription": "Torchlight",
     "description": "Torchlight: KM-7759. In stock. Quantity available: 1.",
@@ -15149,7 +15149,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_e_torchlight_14",
@@ -15162,7 +15162,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/torchlight.jpg",
+    "image": "/images/catalog/products/cat_e_torchlight_1.jpg",
     "gallery": [],
     "shortDescription": "Torchlight",
     "description": "Torchlight: KM-7773. In stock. Quantity available: 1.",
@@ -15183,7 +15183,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_k_towel_1",
@@ -15574,7 +15574,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/tv-guide.jpg",
+    "image": "/images/catalog/products/cat_e_tv-guide_1.jpg",
     "gallery": [],
     "shortDescription": "TV Guide",
     "description": "TV Guide: Volt Guard. In stock. Quantity available: 2.",
@@ -15595,7 +15595,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-13T17:27:35.620Z"
   },
   {
     "id": "cat_k_umbrella_1",

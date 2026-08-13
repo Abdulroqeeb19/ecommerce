@@ -1,0 +1,498 @@
+category,id,group,title,status,current_image,suggested_image,suggested_exists
+"Electrical Materials and Fittings","cat_e_adaptor_1","Adaptor","Multipurpose - Orange","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/adaptor.jpg",YES
+"Electrical Materials and Fittings","cat_e_adaptor_2","Adaptor","Multipurpose - White - 15 A","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/adaptor.jpg",YES
+"Kitchen Utensils","cat_k_air-freshner_1","Air Freshner","Standard","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/air-freshner.jpg",YES
+"Babies Wears","cat_b_baby-care_1","Baby Care","Plate and Spoon","NO-IMAGE","/images/catalog/babies-placeholder.svg","/images/catalog/web/baby-care.jpg",YES
+"Kitchen Utensils","cat_k_bag_1","Bag","Bagco","MISMATCH","/images/catalog/bag.png","/images/catalog/web/bag.jpg",YES
+"Kitchen Utensils","cat_k_bag_2","Bag","Fancy","MISMATCH","/images/catalog/bag.png","/images/catalog/web/bag.jpg",YES
+"Kitchen Utensils","cat_k_bag_3","Bag","Lunch - Black - Big","MISMATCH","/images/catalog/bag.png","/images/catalog/web/bag.jpg",YES
+"Kitchen Utensils","cat_k_bag_4","Bag","Lunch - Character","MISMATCH","/images/catalog/bag.png","/images/catalog/web/bag.jpg",YES
+"Kitchen Utensils","cat_k_bag_5","Bag","Lunch - Character - 4 Corner","MISMATCH","/images/catalog/bag.png","/images/catalog/web/bag.jpg",YES
+"Kitchen Utensils","cat_k_bag_6","Bag","Lunch - Character - Big","MISMATCH","/images/catalog/bag.png","/images/catalog/web/bag.jpg",YES
+"Kitchen Utensils","cat_k_bag_7","Bag","School - Black - Big","MISMATCH","/images/catalog/bag.png","/images/catalog/web/bag.jpg",YES
+"Kitchen Utensils","cat_k_bag_8","Bag","School - Charater - Big","MISMATCH","/images/catalog/bag.png","/images/catalog/web/bag.jpg",YES
+"Kitchen Utensils","cat_k_bag_9","Bag","School - Charater - Medium","MISMATCH","/images/catalog/bag.png","/images/catalog/web/bag.jpg",YES
+"Kitchen Utensils","cat_k_bag_10","Bag","School - Charater - Small","MISMATCH","/images/catalog/bag.png","/images/catalog/web/bag.jpg",YES
+"Kitchen Utensils","cat_k_basket_1","Basket","Clothe - Big - Lundry - Round","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/basket.jpg",YES
+"Kitchen Utensils","cat_k_basket_2","Basket","Clothe - Small - Lundry - Round","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/basket.jpg",YES
+"Kitchen Utensils","cat_k_basket_3","Basket","Dustbin - Dustbin","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/basket.jpg",YES
+"Kitchen Utensils","cat_k_basket_4","Basket","Food - Food","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/basket.jpg",YES
+"Kitchen Utensils","cat_k_basket_5","Basket","Food Basket - OK Product","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/basket.jpg",YES
+"Kitchen Utensils","cat_k_basket_6","Basket","Laundry - Round Big","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/basket.jpg",YES
+"Kitchen Utensils","cat_k_basket_7","Basket","Laundry - Round Small","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/basket.jpg",YES
+"Kitchen Utensils","cat_k_basket_8","Basket","Laundry - Square","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/basket.jpg",YES
+"Kitchen Utensils","cat_k_basket_9","Basket","Plate","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/basket.jpg",YES
+"Kitchen Utensils","cat_k_basket_10","Basket","School","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/basket.jpg",YES
+"Kitchen Utensils","cat_k_basket_11","Basket","School with Cover","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/basket.jpg",YES
+"Electrical Materials and Fittings","cat_e_battery_1","Battery","Duracell","MISMATCH","/images/catalog/solar.png","/images/catalog/web/battery.jpg",YES
+"Electrical Materials and Fittings","cat_e_battery_2","Battery","Rechargeable - Blue","MISMATCH","/images/catalog/solar.png","/images/catalog/web/battery.jpg",YES
+"Electrical Materials and Fittings","cat_e_battery_3","Battery","Rechargeable - DP-Li01","MISMATCH","/images/catalog/solar.png","/images/catalog/web/battery.jpg",YES
+"Electrical Materials and Fittings","cat_e_battery_4","Battery","Tiger - Big","MISMATCH","/images/catalog/solar.png","/images/catalog/web/battery.jpg",YES
+"Electrical Materials and Fittings","cat_e_battery_5","Battery","Tiger and Tudor","MISMATCH","/images/catalog/solar.png","/images/catalog/web/battery.jpg",YES
+"Electrical Materials and Fittings","cat_e_battery_6","Battery","Tiger Head Akaline","MISMATCH","/images/catalog/solar.png","/images/catalog/web/battery.jpg",YES
+"Electrical Materials and Fittings","cat_e_battery_7","Battery","Tudor - Big","MISMATCH","/images/catalog/solar.png","/images/catalog/web/battery.jpg",YES
+"Electrical Materials and Fittings","cat_e_battery_8","Battery","Tudor - Small","MISMATCH","/images/catalog/solar.png","/images/catalog/web/battery.jpg",YES
+"Kitchen Utensils","cat_k_bbq_1","BBQ","Charcoal","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/bbq.jpg",YES
+"Kitchen Utensils","cat_k_bbq_2","BBQ","Electrical","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/bbq.jpg",YES
+"Kitchen Utensils","cat_k_blender_1","Blender","Master Chef - B115 - 3 in 1 Breakable","MISMATCH","/images/catalog/blender.png","/images/catalog/web/blender.jpg",YES
+"Kitchen Utensils","cat_k_blender_2","Blender","Master Chef - B136 - 2 in 1","MISMATCH","/images/catalog/blender.png","/images/catalog/web/blender.jpg",YES
+"Kitchen Utensils","cat_k_blender_3","Blender","Master Chef - B142 - 3 in 1","MISMATCH","/images/catalog/blender.png","/images/catalog/web/blender.jpg",YES
+"Kitchen Utensils","cat_k_blender_4","Blender","Master Chef - B146 - 3 in 1 Stainless","MISMATCH","/images/catalog/blender.png","/images/catalog/web/blender.jpg",YES
+"Kitchen Utensils","cat_k_blender_5","Blender","Master Chef - B157 - 2 in 1","MISMATCH","/images/catalog/blender.png","/images/catalog/web/blender.jpg",YES
+"Kitchen Utensils","cat_k_blender_6","Blender","Master Chef - B159 - 3 in 1 Breakable","MISMATCH","/images/catalog/blender.png","/images/catalog/web/blender.jpg",YES
+"Kitchen Utensils","cat_k_blender_7","Blender","Master Chef - B181 - 4 in 1 Stainless","MISMATCH","/images/catalog/blender.png","/images/catalog/web/blender.jpg",YES
+"Kitchen Utensils","cat_k_blender_8","Blender","Master Chef - B651 - 2 in 1 Stainless","MISMATCH","/images/catalog/blender.png","/images/catalog/web/blender.jpg",YES
+"Kitchen Utensils","cat_k_blender_9","Blender","Master Chef - BL3302 - 2 in 1","MISMATCH","/images/catalog/blender.png","/images/catalog/web/blender.jpg",YES
+"Kitchen Utensils","cat_k_blender_10","Blender","Rico - 1803 - 3 in 1 - Lock","MISMATCH","/images/catalog/blender.png","/images/catalog/web/blender.jpg",YES
+"Kitchen Utensils","cat_k_blender_11","Blender","Rico - 1907 - 3 in 1 - Unlock","MISMATCH","/images/catalog/blender.png","/images/catalog/web/blender.jpg",YES
+"Kitchen Utensils","cat_k_blender_12","Blender","SMP BL-02 - 2in 1","MISMATCH","/images/catalog/blender.png","/images/catalog/web/blender.jpg",YES
+"Kitchen Utensils","cat_k_blender_13","Blender","VTCL - Excella","MISMATCH","/images/catalog/blender.png","/images/catalog/web/blender.jpg",YES
+"Kitchen Utensils","cat_k_blender_14","Blender","VTCL - 2008 - 4 in 1 - Smart Leaf","MISMATCH","/images/catalog/blender.png","/images/catalog/web/blender.jpg",YES
+"Kitchen Utensils","cat_k_boiling-ring_1","Boiling Ring","Standard","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/boiling-ring.jpg",YES
+"Kitchen Utensils","cat_k_bottle_1","Bottle","Nice","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/bottle.jpg",YES
+"Kitchen Utensils","cat_k_bowl_1","Bowl","Hana - 4 in 1","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/bowl.jpg",YES
+"Kitchen Utensils","cat_k_bowl_2","Bowl","Hana - 5 in 1","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/bowl.jpg",YES
+"Kitchen Utensils","cat_k_bowl_3","Bowl","SMP - Fashion Bowl","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/bowl.jpg",YES
+"Kitchen Utensils","cat_k_bowl_4","Bowl","SMP with Cover","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/bowl.jpg",YES
+"Kitchen Utensils","cat_k_bowl_5","Bowl","Washing Hand Bolw","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/bowl.jpg",YES
+"Kitchen Utensils","cat_k_breakable-plate_1","Breakable Plate","Awo","MISMATCH","/images/catalog/plate.png","/images/catalog/web/breakable-plate.jpg",YES
+"Kitchen Utensils","cat_k_breakable-plate_2","Breakable Plate","Awo - Pieces","MISMATCH","/images/catalog/plate.png","/images/catalog/web/breakable-plate.jpg",YES
+"Kitchen Utensils","cat_k_broom_1","Broom","Spinash","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/broom.jpg",YES
+"Kitchen Utensils","cat_k_brush_1","Brush","Big - Toilet","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/brush.jpg",YES
+"Kitchen Utensils","cat_k_brush_2","Brush","Feeder Brush","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/brush.jpg",YES
+"Kitchen Utensils","cat_k_brush_3","Brush","Scrubbing Brush","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/brush.jpg",YES
+"Kitchen Utensils","cat_k_brush_4","Brush","Small - Toilet","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/brush.jpg",YES
+"Kitchen Utensils","cat_k_brush_5","Brush","Sweeping Brush","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/brush.jpg",YES
+"Kitchen Utensils","cat_k_brush_6","Brush","Toilet - Silicon","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/brush.jpg",YES
+"Kitchen Utensils","cat_k_bucket_1","Bucket","Standard","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/bucket.jpg",YES
+"Electrical Materials and Fittings","cat_e_bulb_1","Bulb","Indicator","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/bulb.jpg",YES
+"Electrical Materials and Fittings","cat_e_bulb-energy-saver_1","Bulb - Energy Saver","AKT - 10 W","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/bulb-energy-saver.jpg",YES
+"Electrical Materials and Fittings","cat_e_bulb-energy-saver_2","Bulb - Energy Saver","AVC - 5 W","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/bulb-energy-saver.jpg",YES
+"Electrical Materials and Fittings","cat_e_bulb-energy-saver_3","Bulb - Energy Saver","Britania - Old Bulb - 100 W","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/bulb-energy-saver.jpg",YES
+"Electrical Materials and Fittings","cat_e_bulb-energy-saver_4","Bulb - Energy Saver","CY - 10 W","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/bulb-energy-saver.jpg",YES
+"Electrical Materials and Fittings","cat_e_bulb-energy-saver_5","Bulb - Energy Saver","Ecomin - 15 W","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/bulb-energy-saver.jpg",YES
+"Electrical Materials and Fittings","cat_e_bulb-energy-saver_6","Bulb - Energy Saver","Ecomin - 5 W","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/bulb-energy-saver.jpg",YES
+"Electrical Materials and Fittings","cat_e_bulb-energy-saver_7","Bulb - Energy Saver","Ecomin - Pin and Screw - 10 W","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/bulb-energy-saver.jpg",YES
+"Electrical Materials and Fittings","cat_e_bulb-energy-saver_8","Bulb - Energy Saver","Itel - 10 W","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/bulb-energy-saver.jpg",YES
+"Electrical Materials and Fittings","cat_e_bulb-recheargeable_1","Bulb - Recheargeable","AKT - 18 W","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/bulb-recheargeable.jpg",YES
+"Electrical Materials and Fittings","cat_e_cello-tape_1","Cello Tape","Black","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/cello-tape.jpg",YES
+"Electrical Materials and Fittings","cat_e_cello-tape_2","Cello Tape","Paper","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/cello-tape.jpg",YES
+"Electrical Materials and Fittings","cat_e_cello-tape_3","Cello Tape","Transparent - Big Roll","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/cello-tape.jpg",YES
+"Electrical Materials and Fittings","cat_e_cello-tape_4","Cello Tape","Transparent - Small Roll","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/cello-tape.jpg",YES
+"Electrical Materials and Fittings","cat_e_charger_1","Charger","Phone - SHPLUS","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/charger.jpg",YES
+"Electrical Materials and Fittings","cat_e_charger_2","Charger","Phone - Tecnno","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/charger.jpg",YES
+"Electrical Materials and Fittings","cat_e_charger_3","Charger","Phone - Desktop - Seven Colour","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/charger.jpg",YES
+"Electrical Materials and Fittings","cat_e_charger_4","Charger","Phone - Itel - 10 W","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/charger.jpg",YES
+"Electrical Materials and Fittings","cat_e_charger_5","Charger","Phone - Small White","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/charger.jpg",YES
+"Kitchen Utensils","cat_k_chopper_1","Chopper","Eurosonic ES-1862 - Glass","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/chopper.jpg",YES
+"Kitchen Utensils","cat_k_cling-film_1","Cling Film","Standard","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/cling-film.jpg",YES
+"Electrical Materials and Fittings","cat_e_clip_1","Clip","Iron Clip","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/clip.jpg",YES
+"Electrical Materials and Fittings","cat_e_clip_2","Clip","Rubber - White - 1.5 mm","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/clip.jpg",YES
+"Electrical Materials and Fittings","cat_e_cliper_1","Cliper","Rechargeable - WK-9400","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/cliper.jpg",YES
+"Kitchen Utensils","cat_k_clipper_1","Clipper","Nova - Mini","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/clipper.jpg",YES
+"Kitchen Utensils","cat_k_comb_1","Comb","HotComb","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/comb.jpg",YES
+"Kitchen Utensils","cat_k_container_1","Container","Salvin - Cereal - 3 in 1","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/container.jpg",YES
+"Kitchen Utensils","cat_k_container_2","Container","Salvin - Fridge - 3 in 1","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/container.jpg",YES
+"Kitchen Utensils","cat_k_container_3","Container","Salvin - Fridge - 5 in 1","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/container.jpg",YES
+"Kitchen Utensils","cat_k_container_4","Container","Salvin - Fridge - Snap and Go - 5 in 1","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/container.jpg",YES
+"Kitchen Utensils","cat_k_container_5","Container","Set - 10 Pcs","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/container.jpg",YES
+"Kitchen Utensils","cat_k_cooler_1","Cooler","Salvin - Party Cooler - 4 in 1 - Round","MISMATCH","/images/catalog/cooler.png","/images/catalog/web/cooler.jpg",YES
+"Kitchen Utensils","cat_k_cooler_2","Cooler","Salvin - Party Cooler - 4 in 1 - Square","MISMATCH","/images/catalog/cooler.png","/images/catalog/web/cooler.jpg",YES
+"Kitchen Utensils","cat_k_cooler_3","Cooler","Salvin - Red","MISMATCH","/images/catalog/cooler.png","/images/catalog/web/cooler.jpg",YES
+"Electrical Materials and Fittings","cat_e_cord_1","Cord","Oraimo Black","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/cord.jpg",YES
+"Electrical Materials and Fittings","cat_e_cord_2","Cord","USB - SHPLUS White","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/cord.jpg",YES
+"Kitchen Utensils","cat_k_cover_1","Cover","Nylon","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/cover.jpg",YES
+"Kitchen Utensils","cat_k_cover_2","Cover","Silicon","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/cover.jpg",YES
+"Babies Wears","cat_b_cup_1","Cup","Baby Cup with Spoon","NO-IMAGE","/images/catalog/babies-placeholder.svg","/images/catalog/web/cup.jpg",YES
+"Kitchen Utensils","cat_k_cup_2","Cup","GBO Products - Golden","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/cup.jpg",YES
+"Kitchen Utensils","cat_k_cup_3","Cup","Glass Ware - Glass Cup by 6 - Small","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/cup.jpg",YES
+"Kitchen Utensils","cat_k_cup_4","Cup","Glass with Cover - Golden","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/cup.jpg",YES
+"Kitchen Utensils","cat_k_cup_5","Cup","Glass with Cover - White","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/cup.jpg",YES
+"Kitchen Utensils","cat_k_cup_6","Cup","Humble Bird - Glass Cup by 6","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/cup.jpg",YES
+"Kitchen Utensils","cat_k_cup_7","Cup","Kenedim","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/cup.jpg",YES
+"Kitchen Utensils","cat_k_cup_8","Cup","Plastic with Cover","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/cup.jpg",YES
+"Kitchen Utensils","cat_k_cup_9","Cup","SMP - Wine Cup - 2 Pcs","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/cup.jpg",YES
+"Kitchen Utensils","cat_k_cup_10","Cup","SMP - Wine Cup - 3 in 1 Short","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/cup.jpg",YES
+"Kitchen Utensils","cat_k_cup_11","Cup","SMP - Wine Cup - 3 Pcs","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/cup.jpg",YES
+"Kitchen Utensils","cat_k_cup_12","Cup","SMP - Glass - Water Cup - 3 in 1","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/cup.jpg",YES
+"Kitchen Utensils","cat_k_cup_13","Cup","Stainless with Cover - Big","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/cup.jpg",YES
+"Kitchen Utensils","cat_k_cup_14","Cup","Stainless with Cover - Small","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/cup.jpg",YES
+"Kitchen Utensils","cat_k_cup_15","Cup","Takeaway - 5 Packs","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/cup.jpg",YES
+"Kitchen Utensils","cat_k_cup_16","Cup","Unbreakable - Cup with Cover","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/cup.jpg",YES
+"Kitchen Utensils","cat_k_cup_17","Cup","Wine Cup - Long - Single","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/cup.jpg",YES
+"Kitchen Utensils","cat_k_cup_18","Cup","Wine Cup - Short - Single","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/cup.jpg",YES
+"Kitchen Utensils","cat_k_cutlery-set_1","Cutlery Set","Various - 24 Pcs - Nil","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/cutlery-set.jpg",YES
+"Kitchen Utensils","cat_k_cutter_1","Cutter","Pie","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/cutter.jpg",YES
+"Kitchen Utensils","cat_k_cutter_2","Cutter","Vegetable","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/cutter.jpg",YES
+"Kitchen Utensils","cat_k_dispenser_1","Dispenser","Tooth Paste","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/dispenser.jpg",YES
+"Kitchen Utensils","cat_k_dispenser_2","Dispenser","Water - Table Top","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/dispenser.jpg",YES
+"Kitchen Utensils","cat_k_egg-boiler_1","Egg Boiler","YD501 - Plastic","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/egg-boiler.jpg",YES
+"Electrical Materials and Fittings","cat_e_extention-wire_1","Extention Wire","Itel - ISU-2321U","MISMATCH","/images/catalog/sockets.png","/images/catalog/web/extention-wire.jpg",YES
+"Electrical Materials and Fittings","cat_e_extention-wire_2","Extention Wire","JKJRoyal - Big","MISMATCH","/images/catalog/sockets.png","/images/catalog/web/extention-wire.jpg",YES
+"Electrical Materials and Fittings","cat_e_extention-wire_3","Extention Wire","JKJRoyal - Small","MISMATCH","/images/catalog/sockets.png","/images/catalog/web/extention-wire.jpg",YES
+"Electrical Materials and Fittings","cat_e_extention-wire_4","Extention Wire","Kincastra","MISMATCH","/images/catalog/sockets.png","/images/catalog/web/extention-wire.jpg",YES
+"Electrical Materials and Fittings","cat_e_extention-wire_5","Extention Wire","KingAstra","MISMATCH","/images/catalog/sockets.png","/images/catalog/web/extention-wire.jpg",YES
+"Electrical Materials and Fittings","cat_e_extention-wire_6","Extention Wire","Power Socket","MISMATCH","/images/catalog/sockets.png","/images/catalog/web/extention-wire.jpg",YES
+"Electrical Materials and Fittings","cat_e_extention-wire_7","Extention Wire","Round - 002USB","MISMATCH","/images/catalog/sockets.png","/images/catalog/web/extention-wire.jpg",YES
+"Electrical Materials and Fittings","cat_e_extention-wire_8","Extention Wire","Standard","MISMATCH","/images/catalog/sockets.png","/images/catalog/web/extention-wire.jpg",YES
+"Electrical Materials and Fittings","cat_e_extention-wire_9","Extention Wire","USB Socket - JK204","MISMATCH","/images/catalog/sockets.png","/images/catalog/web/extention-wire.jpg",YES
+"Electrical Materials and Fittings","cat_e_extention-wire_10","Extention Wire","VBT - HY-2332U","MISMATCH","/images/catalog/sockets.png","/images/catalog/web/extention-wire.jpg",YES
+"Kitchen Utensils","cat_k_fan_1","Fan","DB - Standing","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/fan.jpg",YES
+"Electrical Materials and Fittings","cat_e_fan_1","Fan","Foldable Small - DP-7608","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/fan.jpg",YES
+"Electrical Materials and Fittings","cat_e_fan_2","Fan","JH-2028","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/fan.jpg",YES
+"Electrical Materials and Fittings","cat_e_fan-desktop_1","Fan - Desktop","DP-7605","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/fan-desktop.jpg",YES
+"Electrical Materials and Fittings","cat_e_fan-desktop_2","Fan - Desktop","Standard","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/fan-desktop.jpg",YES
+"Electrical Materials and Fittings","cat_e_fan-foldable_1","Fan - Foldable","Standard","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/fan-foldable.jpg",YES
+"Electrical Materials and Fittings","cat_e_fan-hand-fan_1","Fan - Hand Fan","Diandi","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/fan-hand-fan.jpg",YES
+"Electrical Materials and Fittings","cat_e_fan-hand-fan_2","Fan - Hand Fan","DP-7635","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/fan-hand-fan.jpg",YES
+"Electrical Materials and Fittings","cat_e_fan-hand-fan_3","Fan - Hand Fan","Fan","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/fan-hand-fan.jpg",YES
+"Electrical Materials and Fittings","cat_e_fan-table-fan_1","Fan - Table Fan","Double Head - NO.666","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/fan-table-fan.jpg",YES
+"Electrical Materials and Fittings","cat_e_fan-table-fan_2","Fan - Table Fan","IW8038-A","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/fan-table-fan.jpg",YES
+"Electrical Materials and Fittings","cat_e_fan-table-fan_3","Fan - Table Fan","Mini - CTL-MF026-6","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/fan-table-fan.jpg",YES
+"Kitchen Utensils","cat_k_feeder_1","Feeder","Standard","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/feeder.jpg",YES
+"Kitchen Utensils","cat_k_foil-paper_1","Foil Paper","Standard","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/foil-paper.jpg",YES
+"Babies Wears","cat_b_food-flask_1","Food Flask","China - Children Bowl","NO-IMAGE","/images/catalog/babies-placeholder.svg","/images/catalog/web/food-flask.jpg",YES
+"Kitchen Utensils","cat_k_food-flask_2","Food Flask","Eurosonic ES - 698 - 600ML","MISMATCH","/images/catalog/cooler.png","/images/catalog/web/food-flask.jpg",YES
+"Kitchen Utensils","cat_k_food-flask_3","Food Flask","Gift Master - 800ML","MISMATCH","/images/catalog/cooler.png","/images/catalog/web/food-flask.jpg",YES
+"Kitchen Utensils","cat_k_food-flask_4","Food Flask","Haers - 600ML","MISMATCH","/images/catalog/cooler.png","/images/catalog/web/food-flask.jpg",YES
+"Kitchen Utensils","cat_k_food-flask_5","Food Flask","Insulated Pot - 1.8L","MISMATCH","/images/catalog/cooler.png","/images/catalog/web/food-flask.jpg",YES
+"Kitchen Utensils","cat_k_food-flask_6","Food Flask","Master Chef - 1L","MISMATCH","/images/catalog/cooler.png","/images/catalog/web/food-flask.jpg",YES
+"Kitchen Utensils","cat_k_food-flask_7","Food Flask","Master Chef - F880 - 800ML","MISMATCH","/images/catalog/cooler.png","/images/catalog/web/food-flask.jpg",YES
+"Kitchen Utensils","cat_k_food-flask_8","Food Flask","Master Chef - FF07 - 1.3L","MISMATCH","/images/catalog/cooler.png","/images/catalog/web/food-flask.jpg",YES
+"Kitchen Utensils","cat_k_food-flask_9","Food Flask","Masterchef - F1700 - 1.7L","MISMATCH","/images/catalog/cooler.png","/images/catalog/web/food-flask.jpg",YES
+"Kitchen Utensils","cat_k_food-flask_10","Food Flask","Masterchef - FF2413 - 1 in 1","MISMATCH","/images/catalog/cooler.png","/images/catalog/web/food-flask.jpg",YES
+"Kitchen Utensils","cat_k_food-flask_11","Food Flask","Masterchef - FF3001 - 10 pcs","MISMATCH","/images/catalog/cooler.png","/images/catalog/web/food-flask.jpg",YES
+"Kitchen Utensils","cat_k_food-flask_12","Food Flask","MTM - 500ML","MISMATCH","/images/catalog/cooler.png","/images/catalog/web/food-flask.jpg",YES
+"Kitchen Utensils","cat_k_food-flask_13","Food Flask","Salvin - For my Family","MISMATCH","/images/catalog/cooler.png","/images/catalog/web/food-flask.jpg",YES
+"Kitchen Utensils","cat_k_food-flask_14","Food Flask","Smart Cup","MISMATCH","/images/catalog/cooler.png","/images/catalog/web/food-flask.jpg",YES
+"Kitchen Utensils","cat_k_food-flask_15","Food Flask","Spiderman - 650ML","MISMATCH","/images/catalog/cooler.png","/images/catalog/web/food-flask.jpg",YES
+"Kitchen Utensils","cat_k_food-flask_16","Food Flask","XY - Food Shelt","MISMATCH","/images/catalog/cooler.png","/images/catalog/web/food-flask.jpg",YES
+"Kitchen Utensils","cat_k_food-warmer_1","Food Warmer","2 in 1","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/food-warmer.jpg",YES
+"Kitchen Utensils","cat_k_food-warmer_2","Food Warmer","Master Chef (3.7L) - Multipurpose","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/food-warmer.jpg",YES
+"Kitchen Utensils","cat_k_food-warmer_3","Food Warmer","Master Chef - FF9092 - 3 in 1","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/food-warmer.jpg",YES
+"Kitchen Utensils","cat_k_food-warmer_4","Food Warmer","Rishabh - 3 in 1","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/food-warmer.jpg",YES
+"Kitchen Utensils","cat_k_food-warmer_5","Food Warmer","VTCL - Rose Gold - 3 in 1","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/food-warmer.jpg",YES
+"Kitchen Utensils","cat_k_food-warmer_6","Food Warmer","VTCL - Sassy Classic - 3 in 1","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/food-warmer.jpg",YES
+"Kitchen Utensils","cat_k_food-warmer_7","Food Warmer","VTCL Satin - 3 in 1","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/food-warmer.jpg",YES
+"Kitchen Utensils","cat_k_fry-pan_1","Fry Pan","Air Fry Pan - Steel (Non-Stick)","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/fry-pan.jpg",YES
+"Kitchen Utensils","cat_k_fry-pan_2","Fry Pan","Manna - Stainless","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/fry-pan.jpg",YES
+"Kitchen Utensils","cat_k_fry-pan_3","Fry Pan","Picasso - Aluminium - With Cover","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/fry-pan.jpg",YES
+"Kitchen Utensils","cat_k_fry-pan_4","Fry Pan","Picasso - Aluminium - Without Cover - Big","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/fry-pan.jpg",YES
+"Kitchen Utensils","cat_k_fry-pan_5","Fry Pan","Picasso - Aluminium - Without Cover - Small","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/fry-pan.jpg",YES
+"Kitchen Utensils","cat_k_fry-pan_6","Fry Pan","Picasso - Non Stick - With Cover","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/fry-pan.jpg",YES
+"Kitchen Utensils","cat_k_gas-cylinder_1","Gas Cylinder","3 KG","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/gas-cylinder.jpg",YES
+"Kitchen Utensils","cat_k_gas-lighter_1","Gas Lighter","Standard","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/gas-lighter.jpg",YES
+"Kitchen Utensils","cat_k_gas-stove_1","Gas Stove","Glass","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/gas-stove.jpg",YES
+"Kitchen Utensils","cat_k_gas-stove_2","Gas Stove","Single","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/gas-stove.jpg",YES
+"Kitchen Utensils","cat_k_gas-stove_3","Gas Stove","Stainless","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/gas-stove.jpg",YES
+"Kitchen Utensils","cat_k_ghana-must-go_1","Ghana Must Go","Big","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/ghana-must-go.jpg",YES
+"Kitchen Utensils","cat_k_ghana-must-go_2","Ghana Must Go","Liverpool","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/ghana-must-go.jpg",YES
+"Kitchen Utensils","cat_k_glue_1","Glue","Super Glue - Big","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/glue.jpg",YES
+"Kitchen Utensils","cat_k_glue_2","Glue","Super Glue - Small","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/glue.jpg",YES
+"Kitchen Utensils","cat_k_griller_1","Griller","Master Chef - HP408","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/griller.jpg",YES
+"Electrical Materials and Fittings","cat_e_gum_1","Gum","4 Minutes - Steel - 2 in 1","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/gum.jpg",YES
+"Kitchen Utensils","cat_k_hair-dryer_1","Hair Dryer","Professional - Nil","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hair-dryer.jpg",YES
+"Kitchen Utensils","cat_k_hand-grater_1","Hand Grater","4 Shaped","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hand-grater.jpg",YES
+"Kitchen Utensils","cat_k_hand-grater_2","Hand Grater","Beans - Manual","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hand-grater.jpg",YES
+"Kitchen Utensils","cat_k_hand-grater_3","Hand Grater","Brava Spring Slicer","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hand-grater.jpg",YES
+"Kitchen Utensils","cat_k_hand-grater_4","Hand Grater","Chilling and Nuts - Stainless - Manual","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hand-grater.jpg",YES
+"Kitchen Utensils","cat_k_hand-grater_5","Hand Grater","Chopper - Manual","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hand-grater.jpg",YES
+"Kitchen Utensils","cat_k_hand-grater_6","Hand Grater","Flat - Big","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hand-grater.jpg",YES
+"Kitchen Utensils","cat_k_hand-grater_7","Hand Grater","Flat Round","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hand-grater.jpg",YES
+"Kitchen Utensils","cat_k_hand-grater_8","Hand Grater","Genius Nicer Dicer","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hand-grater.jpg",YES
+"Kitchen Utensils","cat_k_hand-grater_9","Hand Grater","Hexa - Manual","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hand-grater.jpg",YES
+"Kitchen Utensils","cat_k_hand-grater_10","Hand Grater","Manna Chilli - Manual","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hand-grater.jpg",YES
+"Kitchen Utensils","cat_k_hand-grater_11","Hand Grater","Manna Wooden - Manual","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hand-grater.jpg",YES
+"Kitchen Utensils","cat_k_hand-grater_12","Hand Grater","Manual","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hand-grater.jpg",YES
+"Kitchen Utensils","cat_k_hand-grater_13","Hand Grater","Okro - 6 Faces","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hand-grater.jpg",YES
+"Kitchen Utensils","cat_k_hand-grater_14","Hand Grater","Rashnik Chilli Cutter - Round - Manual","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hand-grater.jpg",YES
+"Kitchen Utensils","cat_k_hand-grater_15","Hand Grater","Rashnik Deluxe - Manual","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hand-grater.jpg",YES
+"Kitchen Utensils","cat_k_hand-grater_16","Hand Grater","Rashnik Over Cutter - Manual","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hand-grater.jpg",YES
+"Kitchen Utensils","cat_k_hand-grater_17","Hand Grater","Round Shape","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hand-grater.jpg",YES
+"Kitchen Utensils","cat_k_hand-grater_18","Hand Grater","Small","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hand-grater.jpg",YES
+"Kitchen Utensils","cat_k_hand-grater_19","Hand Grater","Supreme Vegetable - Manual","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hand-grater.jpg",YES
+"Kitchen Utensils","cat_k_hand-mixer_1","Hand Mixer","Scarlett","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hand-mixer.jpg",YES
+"Kitchen Utensils","cat_k_hanger_1","Hanger","for Bag","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hanger.jpg",YES
+"Kitchen Utensils","cat_k_hanger_2","Hanger","For Clothe - Iron","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hanger.jpg",YES
+"Kitchen Utensils","cat_k_hanger_3","Hanger","For Clothe - Plastic","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hanger.jpg",YES
+"Kitchen Utensils","cat_k_hanger_4","Hanger","Iron - Spoon","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hanger.jpg",YES
+"Kitchen Utensils","cat_k_hanger_5","Hanger","Kitchen","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hanger.jpg",YES
+"Kitchen Utensils","cat_k_hanger_6","Hanger","Pant","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hanger.jpg",YES
+"Kitchen Utensils","cat_k_hanger_7","Hanger","Small for Fridge","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hanger.jpg",YES
+"Kitchen Utensils","cat_k_hanger_8","Hanger","SS - Bathroom - Iron/Plastic","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hanger.jpg",YES
+"Kitchen Utensils","cat_k_hanger_9","Hanger","Wuve - Bathroom - Plastic","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hanger.jpg",YES
+"Kitchen Utensils","cat_k_holder_1","Holder","Brush and Tooth Paste","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/holder.jpg",YES
+"Kitchen Utensils","cat_k_hot-plate_1","Hot Plate","Glass - Single","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hot-plate.jpg",YES
+"Kitchen Utensils","cat_k_hot-plate_2","Hot Plate","National HP - 100A - Single - 1,500 W","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hot-plate.jpg",YES
+"Kitchen Utensils","cat_k_hot-plate_3","Hot Plate","Rashnik - Double - Flat","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hot-plate.jpg",YES
+"Kitchen Utensils","cat_k_hot-plate_4","Hot Plate","Rashnik - Double - Ring","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hot-plate.jpg",YES
+"Kitchen Utensils","cat_k_hot-plate_5","Hot Plate","Rashnik - RN - 4076B - Single - 1000W","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/hot-plate.jpg",YES
+"Kitchen Utensils","cat_k_ice-bucket_1","Ice Bucket","Standard","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/ice-bucket.jpg",YES
+"Kitchen Utensils","cat_k_iron_1","Iron","JD SMP - DI01","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/iron.jpg",YES
+"Kitchen Utensils","cat_k_iron_2","Iron","JD SMP - DI03","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/iron.jpg",YES
+"Kitchen Utensils","cat_k_iron_3","Iron","Rashnik","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/iron.jpg",YES
+"Electrical Materials and Fittings","cat_e_iron-electric_1","Iron - Electric","Emouliness","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/iron-electric.jpg",YES
+"Electrical Materials and Fittings","cat_e_iron-electric_2","Iron - Electric","Qasa - QDL-300","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/iron-electric.jpg",YES
+"Electrical Materials and Fittings","cat_e_iron-electric_3","Iron - Electric","Rashnik - RN-702","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/iron-electric.jpg",YES
+"Electrical Materials and Fittings","cat_e_iron-electric_4","Iron - Electric","SMP - DI01","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/iron-electric.jpg",YES
+"Electrical Materials and Fittings","cat_e_iron-electric_5","Iron - Electric","SMP - S105","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/iron-electric.jpg",YES
+"Kitchen Utensils","cat_k_jug_1","Jug","Flower with Cups","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/jug.jpg",YES
+"Kitchen Utensils","cat_k_jug_2","Jug","Hana - Glass - Big","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/jug.jpg",YES
+"Kitchen Utensils","cat_k_jug_3","Jug","Hana - Glass - Small 3 Pcs","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/jug.jpg",YES
+"Kitchen Utensils","cat_k_jug_4","Jug","Hana - Jug and Cup - 7 Pcs","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/jug.jpg",YES
+"Kitchen Utensils","cat_k_jug_5","Jug","Huiluong - 4 in 1","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/jug.jpg",YES
+"Kitchen Utensils","cat_k_jug_6","Jug","JDSMP - 2.4L","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/jug.jpg",YES
+"Kitchen Utensils","cat_k_jug_7","Jug","Lemon with Cups","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/jug.jpg",YES
+"Kitchen Utensils","cat_k_jug_8","Jug","Salvin","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/jug.jpg",YES
+"Kitchen Utensils","cat_k_jug_9","Jug","Salvin - Plastic with Cups","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/jug.jpg",YES
+"Kitchen Utensils","cat_k_jug_10","Jug","SMP - Unbreakable with Cups","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/jug.jpg",YES
+"Kitchen Utensils","cat_k_jug_11","Jug","SMP - Unbreakable with Cups/Handle","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/jug.jpg",YES
+"Kitchen Utensils","cat_k_jug_12","Jug","Stainless","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/jug.jpg",YES
+"Kitchen Utensils","cat_k_jug_13","Jug","Yeecome","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/jug.jpg",YES
+"Kitchen Utensils","cat_k_juicer_1","Juicer","Manual","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/juicer.jpg",YES
+"Kitchen Utensils","cat_k_juicer_2","Juicer","Rechargeable","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/juicer.jpg",YES
+"Kitchen Utensils","cat_k_kettle_1","Kettle","Crown Star - 5L - Electric","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/kettle.jpg",YES
+"Kitchen Utensils","cat_k_kettle_2","Kettle","Manna - ZBH03 - 3L - Whistling Kettle","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/kettle.jpg",YES
+"Kitchen Utensils","cat_k_kettle_3","Kettle","SMP - SK03 - 4L - Whistling Kettle","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/kettle.jpg",YES
+"Kitchen Utensils","cat_k_kettle_4","Kettle","Tower - Alluminium - 3L","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/kettle.jpg",YES
+"Kitchen Utensils","cat_k_kettle_5","Kettle","Tower - Stainless - 3L","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/kettle.jpg",YES
+"Kitchen Utensils","cat_k_kitchen-spoon_1","Kitchen Spoon","Kiko - 6 Pcs","MISMATCH","/images/catalog/spoon.png","/images/catalog/web/kitchen-spoon.jpg",YES
+"Kitchen Utensils","cat_k_kitchen-spoon_2","Kitchen Spoon","Kitchenware - 4 Pcs","MISMATCH","/images/catalog/spoon.png","/images/catalog/web/kitchen-spoon.jpg",YES
+"Kitchen Utensils","cat_k_kitchen-spoon_3","Kitchen Spoon","Original - 2 in 1","MISMATCH","/images/catalog/spoon.png","/images/catalog/web/kitchen-spoon.jpg",YES
+"Kitchen Utensils","cat_k_kitchen-spoon_4","Kitchen Spoon","Original - Single","MISMATCH","/images/catalog/spoon.png","/images/catalog/web/kitchen-spoon.jpg",YES
+"Kitchen Utensils","cat_k_kitchen-spoon_5","Kitchen Spoon","Paradiso - 32 Pcs","MISMATCH","/images/catalog/spoon.png","/images/catalog/web/kitchen-spoon.jpg",YES
+"Kitchen Utensils","cat_k_kitchen-spoon_6","Kitchen Spoon","Paradiso - 7 Pcs","MISMATCH","/images/catalog/spoon.png","/images/catalog/web/kitchen-spoon.jpg",YES
+"Kitchen Utensils","cat_k_kitchen-spoon_7","Kitchen Spoon","Rubber - 6 in 1","MISMATCH","/images/catalog/spoon.png","/images/catalog/web/kitchen-spoon.jpg",YES
+"Kitchen Utensils","cat_k_kitchen-spoon_8","Kitchen Spoon","Tianmu Boutique - Kitchen Suit - 5 in 1","MISMATCH","/images/catalog/spoon.png","/images/catalog/web/kitchen-spoon.jpg",YES
+"Kitchen Utensils","cat_k_kitchen-spoon_9","Kitchen Spoon","Various","MISMATCH","/images/catalog/spoon.png","/images/catalog/web/kitchen-spoon.jpg",YES
+"Kitchen Utensils","cat_k_kitchen-spoon_10","Kitchen Spoon","Yi Guan - 12 Pcs","MISMATCH","/images/catalog/spoon.png","/images/catalog/web/kitchen-spoon.jpg",YES
+"Kitchen Utensils","cat_k_knife_1","Knife","Butcher Knife - 2011","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/knife.jpg",YES
+"Kitchen Utensils","cat_k_knife_2","Knife","Butcher Knife - JP125# / 6 inch","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/knife.jpg",YES
+"Kitchen Utensils","cat_k_knife_3","Knife","China - Fruit Knife Set","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/knife.jpg",YES
+"Kitchen Utensils","cat_k_knife_4","Knife","Forging Family - 6 Pcs - Nil","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/knife.jpg",YES
+"Kitchen Utensils","cat_k_knife_5","Knife","Kitchen Knife - 7 inch","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/knife.jpg",YES
+"Kitchen Utensils","cat_k_knife_6","Knife","Rashnik - Single","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/knife.jpg",YES
+"Electrical Materials and Fittings","cat_e_knife-switch_1","Knife Switch","Change Over - 100 Amps","MISMATCH","/images/catalog/sockets.png","/images/catalog/web/knife-switch.jpg",YES
+"Electrical Materials and Fittings","cat_e_knife-switch_2","Knife Switch","Change Over - 32 Amps","MISMATCH","/images/catalog/sockets.png","/images/catalog/web/knife-switch.jpg",YES
+"Electrical Materials and Fittings","cat_e_lamp-led-bulb_1","Lamp - LED Bulb","DP - DP-7812C","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/lamp-led-bulb.jpg",YES
+"Electrical Materials and Fittings","cat_e_lamp-led-bulb_2","Lamp - LED Bulb","Kemsafe - KM-7781","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/lamp-led-bulb.jpg",YES
+"Electrical Materials and Fittings","cat_e_lamp-led-bulb_3","Lamp - LED Bulb","Kemsafe - KM-AE05","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/lamp-led-bulb.jpg",YES
+"Electrical Materials and Fittings","cat_e_lamp-rechargeable_1","Lamp - Rechargeable","CTL-EL 119U","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/lamp-rechargeable.jpg",YES
+"Electrical Materials and Fittings","cat_e_lamp-rechargeable_2","Lamp - Rechargeable","CTL-EL 189","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/lamp-rechargeable.jpg",YES
+"Electrical Materials and Fittings","cat_e_lamp-rechargeable_3","Lamp - Rechargeable","DP-7129B","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/lamp-rechargeable.jpg",YES
+"Electrical Materials and Fittings","cat_e_lamp-rechargeable_4","Lamp - Rechargeable","DP-7161B","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/lamp-rechargeable.jpg",YES
+"Electrical Materials and Fittings","cat_e_lamp-rechargeable_5","Lamp - Rechargeable","Lantern - DP-7164","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/lamp-rechargeable.jpg",YES
+"Electrical Materials and Fittings","cat_e_lamp-solar_1","Lamp - Solar","Cob Work Lamp - SA-819A","MISMATCH","/images/catalog/solar.png","/images/catalog/web/lamp-solar.jpg",YES
+"Electrical Materials and Fittings","cat_e_lamp-solar_2","Lamp - Solar","EP-7816","MISMATCH","/images/catalog/solar.png","/images/catalog/web/lamp-solar.jpg",YES
+"Electrical Materials and Fittings","cat_e_lamp-solar_3","Lamp - Solar","GD-5808","MISMATCH","/images/catalog/solar.png","/images/catalog/web/lamp-solar.jpg",YES
+"Electrical Materials and Fittings","cat_e_lamp-solar_4","Lamp - Solar","JA-399 / 2004","MISMATCH","/images/catalog/solar.png","/images/catalog/web/lamp-solar.jpg",YES
+"Electrical Materials and Fittings","cat_e_lampholder_1","Lampholder","Vin Well - 2 in 1","MISMATCH","/images/catalog/sockets.png","/images/catalog/web/lampholder.jpg",YES
+"Electrical Materials and Fittings","cat_e_lighter_1","Lighter","Standard","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/lighter.jpg",YES
+"Kitchen Utensils","cat_k_lunch-box_1","Lunch Box","Canada","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/lunch-box.jpg",YES
+"Kitchen Utensils","cat_k_lunch-box_2","Lunch Box","China - 1L","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/lunch-box.jpg",YES
+"Kitchen Utensils","cat_k_lunch-box_3","Lunch Box","China - 2L","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/lunch-box.jpg",YES
+"Kitchen Utensils","cat_k_lunch-box_4","Lunch Box","IQIX","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/lunch-box.jpg",YES
+"Kitchen Utensils","cat_k_lunch-box_5","Lunch Box","Multifuntional - Electric - 2L","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/lunch-box.jpg",YES
+"Kitchen Utensils","cat_k_lunch-box_6","Lunch Box","Single","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/lunch-box.jpg",YES
+"Kitchen Utensils","cat_k_lunch-box_7","Lunch Box","With Divider","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/lunch-box.jpg",YES
+"Kitchen Utensils","cat_k_massager_1","Massager","Face","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/massager.jpg",YES
+"Kitchen Utensils","cat_k_microwave_1","Microwave","Hisence - H20MOBS11","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/microwave.jpg",YES
+"Kitchen Utensils","cat_k_mopping-stick_1","Mopping Stick","Big","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/mopping-stick.jpg",YES
+"Kitchen Utensils","cat_k_mopping-stick_2","Mopping Stick","Medium","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/mopping-stick.jpg",YES
+"Kitchen Utensils","cat_k_mopping-stick_3","Mopping Stick","Small","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/mopping-stick.jpg",YES
+"Kitchen Utensils","cat_k_mug_1","Mug","Coffee Break - With Spoon","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/mug.jpg",YES
+"Kitchen Utensils","cat_k_mug_2","Mug","Emel with Spoons","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/mug.jpg",YES
+"Kitchen Utensils","cat_k_mug_3","Mug","Hana - Single","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/mug.jpg",YES
+"Kitchen Utensils","cat_k_mug_4","Mug","SMP - Single","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/mug.jpg",YES
+"Electrical Materials and Fittings","cat_e_nail_1","Nail","For Iron Clip","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/nail.jpg",YES
+"Electrical Materials and Fittings","cat_e_nail-cutter_1","Nail Cutter","Standard","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/nail-cutter.jpg",YES
+"Kitchen Utensils","cat_k_napkin_1","Napkin","Kitchen - 3 in 1","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/napkin.jpg",YES
+"Kitchen Utensils","cat_k_nylon_1","Nylon","Takeaway","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/nylon.jpg",YES
+"Kitchen Utensils","cat_k_parker_1","Parker","Standard","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/parker.jpg",YES
+"Electrical Materials and Fittings","cat_e_pattress-box_1","Pattress Box","Standard","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/pattress-box.jpg",YES
+"Kitchen Utensils","cat_k_peg_1","Peg","Sunbelt for Clothe","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/peg.jpg",YES
+"Kitchen Utensils","cat_k_peg_2","Peg","XRZ - Big","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/peg.jpg",YES
+"Kitchen Utensils","cat_k_peg_3","Peg","XRZ - Small","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/peg.jpg",YES
+"Electrical Materials and Fittings","cat_e_phone-stand_1","Phone Stand","Standard","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/phone-stand.jpg",YES
+"Kitchen Utensils","cat_k_plate_1","Plate","Ceramic Plate with Spoon","MISMATCH","/images/catalog/plate.png","/images/catalog/web/plate.jpg",YES
+"Kitchen Utensils","cat_k_plate_2","Plate","China - 5 Pcs","MISMATCH","/images/catalog/plate.png","/images/catalog/web/plate.jpg",YES
+"Kitchen Utensils","cat_k_plate_3","Plate","China - Deqin - 4 Pcs","MISMATCH","/images/catalog/plate.png","/images/catalog/web/plate.jpg",YES
+"Kitchen Utensils","cat_k_plate_4","Plate","Cran Berry - Dinner Set - 10 Pcs White","MISMATCH","/images/catalog/plate.png","/images/catalog/web/plate.jpg",YES
+"Kitchen Utensils","cat_k_plate_5","Plate","Happy Family - Dinner Set - 4 Pcs","MISMATCH","/images/catalog/plate.png","/images/catalog/web/plate.jpg",YES
+"Kitchen Utensils","cat_k_plate_6","Plate","SMP - Dinner Set - 3 Pcs","MISMATCH","/images/catalog/plate.png","/images/catalog/web/plate.jpg",YES
+"Kitchen Utensils","cat_k_plate_7","Plate","SMP - Dinner Set - 6 Pcs","MISMATCH","/images/catalog/plate.png","/images/catalog/web/plate.jpg",YES
+"Kitchen Utensils","cat_k_plate_8","Plate","Square - Dinner Set - 6 Pcs","MISMATCH","/images/catalog/plate.png","/images/catalog/web/plate.jpg",YES
+"Kitchen Utensils","cat_k_plate-rack_1","Plate Rack","Concept Fashion - Multipurpose","MISMATCH","/images/catalog/plate.png","/images/catalog/web/plate-rack.jpg",YES
+"Kitchen Utensils","cat_k_plate-rack_2","Plate Rack","Maximus","MISMATCH","/images/catalog/plate.png","/images/catalog/web/plate-rack.jpg",YES
+"Kitchen Utensils","cat_k_plate-rack_3","Plate Rack","Multifunctional","MISMATCH","/images/catalog/plate.png","/images/catalog/web/plate-rack.jpg",YES
+"Kitchen Utensils","cat_k_plate-rack_4","Plate Rack","Multifunctional - Table","MISMATCH","/images/catalog/plate.png","/images/catalog/web/plate-rack.jpg",YES
+"Kitchen Utensils","cat_k_plate-rack_5","Plate Rack","Pentagon","MISMATCH","/images/catalog/plate.png","/images/catalog/web/plate-rack.jpg",YES
+"Kitchen Utensils","cat_k_plate-rack_6","Plate Rack","Plate - 2 Steps","MISMATCH","/images/catalog/plate.png","/images/catalog/web/plate-rack.jpg",YES
+"Kitchen Utensils","cat_k_plate-rack_7","Plate Rack","QDR-247","MISMATCH","/images/catalog/plate.png","/images/catalog/web/plate-rack.jpg",YES
+"Kitchen Utensils","cat_k_plate-rack_8","Plate Rack","QDR-252+","MISMATCH","/images/catalog/plate.png","/images/catalog/web/plate-rack.jpg",YES
+"Kitchen Utensils","cat_k_plate-rack_9","Plate Rack","Rashnik - RN-1602","MISMATCH","/images/catalog/plate.png","/images/catalog/web/plate-rack.jpg",YES
+"Kitchen Utensils","cat_k_plate-rack_10","Plate Rack","Rashnik - RN-1603","MISMATCH","/images/catalog/plate.png","/images/catalog/web/plate-rack.jpg",YES
+"Kitchen Utensils","cat_k_plate-rack_11","Plate Rack","Rashnik - RN-1606","MISMATCH","/images/catalog/plate.png","/images/catalog/web/plate-rack.jpg",YES
+"Kitchen Utensils","cat_k_plate-rack_12","Plate Rack","Rashnik - RN-1607","MISMATCH","/images/catalog/plate.png","/images/catalog/web/plate-rack.jpg",YES
+"Kitchen Utensils","cat_k_plate-rack_13","Plate Rack","Rashnik - RN-1636","MISMATCH","/images/catalog/plate.png","/images/catalog/web/plate-rack.jpg",YES
+"Kitchen Utensils","cat_k_plate-rack_14","Plate Rack","Salvin - Big","MISMATCH","/images/catalog/plate.png","/images/catalog/web/plate-rack.jpg",YES
+"Kitchen Utensils","cat_k_plate-rack_15","Plate Rack","Salvin - Small","MISMATCH","/images/catalog/plate.png","/images/catalog/web/plate-rack.jpg",YES
+"Kitchen Utensils","cat_k_plate-rack_16","Plate Rack","Salvin with Cover","MISMATCH","/images/catalog/plate.png","/images/catalog/web/plate-rack.jpg",YES
+"Electrical Materials and Fittings","cat_e_plug_1","Plug","13 A","MISMATCH","/images/catalog/sockets.png","/images/catalog/web/plug.jpg",YES
+"Kitchen Utensils","cat_k_plunger_1","Plunger","Standard","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/plunger.jpg",YES
+"Kitchen Utensils","cat_k_pot_1","Pot","Casserole S-6022 - 7 in 1","MISMATCH","/images/catalog/pot.png","/images/catalog/web/pot.jpg",YES
+"Kitchen Utensils","cat_k_pot_2","Pot","Casserole S-6024 - 3 in 1","MISMATCH","/images/catalog/pot.png","/images/catalog/web/pot.jpg",YES
+"Kitchen Utensils","cat_k_pot_3","Pot","Dzire - DZ-5127 - 6 pcs","MISMATCH","/images/catalog/pot.png","/images/catalog/web/pot.jpg",YES
+"Kitchen Utensils","cat_k_pot_4","Pot","Hoffner - 3 in 1","MISMATCH","/images/catalog/pot.png","/images/catalog/web/pot.jpg",YES
+"Kitchen Utensils","cat_k_pot_5","Pot","Hoffner - 801 (Non-Stick) - 3 in 1 with Fry Pan","MISMATCH","/images/catalog/pot.png","/images/catalog/web/pot.jpg",YES
+"Kitchen Utensils","cat_k_pot_6","Pot","Hoffner - Heavy Pot - 4 in 1","MISMATCH","/images/catalog/pot.png","/images/catalog/web/pot.jpg",YES
+"Kitchen Utensils","cat_k_pot_7","Pot","Hoffner - Non Stick - 3 in 1","MISMATCH","/images/catalog/pot.png","/images/catalog/web/pot.jpg",YES
+"Kitchen Utensils","cat_k_pot_8","Pot","Hoffner's - 3401 - 3 in 1","MISMATCH","/images/catalog/pot.png","/images/catalog/web/pot.jpg",YES
+"Kitchen Utensils","cat_k_pot_9","Pot","Kinelco - KN-5SP2 - Belli - 5 in 1","MISMATCH","/images/catalog/pot.png","/images/catalog/web/pot.jpg",YES
+"Kitchen Utensils","cat_k_pot_10","Pot","Kinelco - KN-6016 - 4 in 1","MISMATCH","/images/catalog/pot.png","/images/catalog/web/pot.jpg",YES
+"Kitchen Utensils","cat_k_pot_11","Pot","Kitchenmate - 4 Pcs - 4A","MISMATCH","/images/catalog/pot.png","/images/catalog/web/pot.jpg",YES
+"Kitchen Utensils","cat_k_pot_12","Pot","Kitchenmate - 4 Pcs - 4B","MISMATCH","/images/catalog/pot.png","/images/catalog/web/pot.jpg",YES
+"Kitchen Utensils","cat_k_pot_13","Pot","Picasso - 3C","MISMATCH","/images/catalog/pot.png","/images/catalog/web/pot.jpg",YES
+"Kitchen Utensils","cat_k_pot_14","Pot","Picasso - 4 Pcs - 4A","MISMATCH","/images/catalog/pot.png","/images/catalog/web/pot.jpg",YES
+"Kitchen Utensils","cat_k_pot_15","Pot","Rashnik - RN-4852 - 5 in 1","MISMATCH","/images/catalog/pot.png","/images/catalog/web/pot.jpg",YES
+"Kitchen Utensils","cat_k_pot_16","Pot","Soupy Pan - 1 in 1","MISMATCH","/images/catalog/pot.png","/images/catalog/web/pot.jpg",YES
+"Kitchen Utensils","cat_k_pot_17","Pot","Tornado - 7 in 1","MISMATCH","/images/catalog/pot.png","/images/catalog/web/pot.jpg",YES
+"Kitchen Utensils","cat_k_pot_18","Pot","Tower Classic - 5 in 1","MISMATCH","/images/catalog/pot.png","/images/catalog/web/pot.jpg",YES
+"Kitchen Utensils","cat_k_pot_19","Pot","Tower Gold - 5 in 1","MISMATCH","/images/catalog/pot.png","/images/catalog/web/pot.jpg",YES
+"Kitchen Utensils","cat_k_pot_20","Pot","Tower Trim - Bigi","MISMATCH","/images/catalog/pot.png","/images/catalog/web/pot.jpg",YES
+"Kitchen Utensils","cat_k_pressure-pot_1","Pressure Pot","Kinelco - KN-9295 - 9.5L","MISMATCH","/images/catalog/pot.png","/images/catalog/web/pressure-pot.jpg",YES
+"Kitchen Utensils","cat_k_rack_1","Rack","Egg","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/rack.jpg",YES
+"Kitchen Utensils","cat_k_rack_2","Rack","Spice - 6 Pcs","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/rack.jpg",YES
+"Electrical Materials and Fittings","cat_e_radio_1","Radio","MP3 - E30","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/radio.jpg",YES
+"Electrical Materials and Fittings","cat_e_radio_2","Radio","MP3 - TG-184","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/radio.jpg",YES
+"Kitchen Utensils","cat_k_rice-cooker_1","Rice Cooker","Binatone - 1.8L","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/rice-cooker.jpg",YES
+"Kitchen Utensils","cat_k_rice-cooker_2","Rice Cooker","Master Chef - 1.8L","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/rice-cooker.jpg",YES
+"Kitchen Utensils","cat_k_rice-cooker_3","Rice Cooker","Master Chef - 3L","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/rice-cooker.jpg",YES
+"Kitchen Utensils","cat_k_sandwich-maker_1","Sandwich Maker","Maximus - 2 Face","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/sandwich-maker.jpg",YES
+"Kitchen Utensils","cat_k_scissors_1","Scissors","Multiprupose Kitchen Suit","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/scissors.jpg",YES
+"Kitchen Utensils","cat_k_scissors_2","Scissors","Standard","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/scissors.jpg",YES
+"Electrical Materials and Fittings","cat_e_screw-driver_1","Screw Driver","Flat and Star","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/screw-driver.jpg",YES
+"Electrical Materials and Fittings","cat_e_screw-driver_2","Screw Driver","Tester","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/screw-driver.jpg",YES
+"Kitchen Utensils","cat_k_shapner_1","Shapner","Knife","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/shapner.jpg",YES
+"Kitchen Utensils","cat_k_shaving-stick_1","Shaving Stick","Single","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/shaving-stick.jpg",YES
+"Kitchen Utensils","cat_k_shoe-rack_1","Shoe Rack","2 Layers","MISMATCH","/images/catalog/shoe.png","/images/catalog/web/shoe-rack.jpg",YES
+"Kitchen Utensils","cat_k_shoe-rack_2","Shoe Rack","3 Layers","MISMATCH","/images/catalog/shoe.png","/images/catalog/web/shoe-rack.jpg",YES
+"Kitchen Utensils","cat_k_shoe-rack_3","Shoe Rack","Plastic - 5 Layers","MISMATCH","/images/catalog/shoe.png","/images/catalog/web/shoe-rack.jpg",YES
+"Kitchen Utensils","cat_k_sieve_1","Sieve","2 in 1 - Rice Sieve","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/sieve.jpg",YES
+"Kitchen Utensils","cat_k_sieve_2","Sieve","Elubo","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/sieve.jpg",YES
+"Kitchen Utensils","cat_k_sieve_3","Sieve","Salvin - Rice","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/sieve.jpg",YES
+"Kitchen Utensils","cat_k_sieve_4","Sieve","Standard","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/sieve.jpg",YES
+"Kitchen Utensils","cat_k_sieve_5","Sieve","Sunrise - 6 in 1","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/sieve.jpg",YES
+"Kitchen Utensils","cat_k_soap-case_1","Soap Case","Bath Collection - 2 in 1","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/soap-case.jpg",YES
+"Kitchen Utensils","cat_k_soap-case_2","Soap Case","Bath Collection - Single","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/soap-case.jpg",YES
+"Kitchen Utensils","cat_k_soap-case_3","Soap Case","Meisier","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/soap-case.jpg",YES
+"Kitchen Utensils","cat_k_soap-case_4","Soap Case","Salvin","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/soap-case.jpg",YES
+"Kitchen Utensils","cat_k_soap-case_5","Soap Case","Sun Belt","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/soap-case.jpg",YES
+"Electrical Materials and Fittings","cat_e_socket_1","Socket","Max Power - 4000W - OPK","MISMATCH","/images/catalog/sockets.png","/images/catalog/web/socket.jpg",YES
+"Electrical Materials and Fittings","cat_e_socket_2","Socket","Standard","MISMATCH","/images/catalog/sockets.png","/images/catalog/web/socket.jpg",YES
+"Electrical Materials and Fittings","cat_e_speaker_1","Speaker","Bluetooth","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/speaker.jpg",YES
+"Kitchen Utensils","cat_k_sponge_1","Sponge","Bathing","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/sponge.jpg",YES
+"Kitchen Utensils","cat_k_sponge_2","Sponge","Clothe for Plate","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/sponge.jpg",YES
+"Kitchen Utensils","cat_k_sponge_3","Sponge","Iron for Plate and Pot","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/sponge.jpg",YES
+"Babies Wears","cat_b_spoon_1","Spoon","Children - 12 Pcs","NO-IMAGE","/images/catalog/babies-placeholder.svg","/images/catalog/web/spoon.jpg",YES
+"Babies Wears","cat_b_spoon_2","Spoon","Children - Swuzzy","NO-IMAGE","/images/catalog/babies-placeholder.svg","/images/catalog/web/spoon.jpg",YES
+"Kitchen Utensils","cat_k_spoon_3","Spoon","Gold (Spoon and Folk)","MISMATCH","/images/catalog/spoon.png","/images/catalog/web/spoon.jpg",YES
+"Kitchen Utensils","cat_k_spoon_4","Spoon","Heavy","MISMATCH","/images/catalog/spoon.png","/images/catalog/web/spoon.jpg",YES
+"Kitchen Utensils","cat_k_spoon_5","Spoon","Ordinary","MISMATCH","/images/catalog/spoon.png","/images/catalog/web/spoon.jpg",YES
+"Kitchen Utensils","cat_k_spoon_6","Spoon","Silver - Pieces","MISMATCH","/images/catalog/spoon.png","/images/catalog/web/spoon.jpg",YES
+"Kitchen Utensils","cat_k_spoon_7","Spoon","Takeaway","MISMATCH","/images/catalog/spoon.png","/images/catalog/web/spoon.jpg",YES
+"Kitchen Utensils","cat_k_spoon-holder_1","Spoon Holder","China","MISMATCH","/images/catalog/spoon.png","/images/catalog/web/spoon-holder.jpg",YES
+"Kitchen Utensils","cat_k_stock-pot_1","Stock Pot","IPHIE - 4 in 1","MISMATCH","/images/catalog/pot.png","/images/catalog/web/stock-pot.jpg",YES
+"Electrical Materials and Fittings","cat_e_switch_1","Switch","1 Gang","MISMATCH","/images/catalog/sockets.png","/images/catalog/web/switch.jpg",YES
+"Electrical Materials and Fittings","cat_e_switch_2","Switch","2 Gang","MISMATCH","/images/catalog/sockets.png","/images/catalog/web/switch.jpg",YES
+"Electrical Materials and Fittings","cat_e_switch_3","Switch","3 Gang","MISMATCH","/images/catalog/sockets.png","/images/catalog/web/switch.jpg",YES
+"Kitchen Utensils","cat_k_takeaway-plate_1","Takeaway Plate","Standard","MISMATCH","/images/catalog/plate.png","/images/catalog/web/takeaway-plate.jpg",YES
+"Kitchen Utensils","cat_k_tissue_1","Tissue","Standard","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/tissue.jpg",YES
+"Kitchen Utensils","cat_k_tommy-trimmer_1","Tommy Trimmer","Standard","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/tommy-trimmer.jpg",YES
+"Electrical Materials and Fittings","cat_e_torchlight_1","Torchlight","AF-KM808S","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/torchlight.jpg",YES
+"Electrical Materials and Fittings","cat_e_torchlight_2","Torchlight","CN-L9216C","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/torchlight.jpg",YES
+"Electrical Materials and Fittings","cat_e_torchlight_3","Torchlight","CTL-CH413A","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/torchlight.jpg",YES
+"Electrical Materials and Fittings","cat_e_torchlight_4","Torchlight","DP-9005B","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/torchlight.jpg",YES
+"Electrical Materials and Fittings","cat_e_torchlight_5","Torchlight","DP-9013B","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/torchlight.jpg",YES
+"Electrical Materials and Fittings","cat_e_torchlight_6","Torchlight","DP-9110C","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/torchlight.jpg",YES
+"Electrical Materials and Fittings","cat_e_torchlight_7","Torchlight","DP-9162","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/torchlight.jpg",YES
+"Electrical Materials and Fittings","cat_e_torchlight_8","Torchlight","DP-9183","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/torchlight.jpg",YES
+"Electrical Materials and Fittings","cat_e_torchlight_9","Torchlight","DP-9184","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/torchlight.jpg",YES
+"Electrical Materials and Fittings","cat_e_torchlight_10","Torchlight","DP-9185","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/torchlight.jpg",YES
+"Electrical Materials and Fittings","cat_e_torchlight_11","Torchlight","DX-1804","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/torchlight.jpg",YES
+"Electrical Materials and Fittings","cat_e_torchlight_12","Torchlight","GR-9558A","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/torchlight.jpg",YES
+"Electrical Materials and Fittings","cat_e_torchlight_13","Torchlight","KM-7759","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/torchlight.jpg",YES
+"Electrical Materials and Fittings","cat_e_torchlight_14","Torchlight","KM-7773","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/torchlight.jpg",YES
+"Kitchen Utensils","cat_k_towel_1","Towel","3 in 1","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/towel.jpg",YES
+"Kitchen Utensils","cat_k_toy_1","Toy","Fruits and Vegetables","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/toy.jpg",YES
+"Kitchen Utensils","cat_k_tray_1","Tray","3 in 1","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/tray.jpg",YES
+"Kitchen Utensils","cat_k_tray_2","Tray","Formica - 2 in 1","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/tray.jpg",YES
+"Kitchen Utensils","cat_k_tray_3","Tray","Leave - Small and Big","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/tray.jpg",YES
+"Kitchen Utensils","cat_k_tray_4","Tray","Plastic","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/tray.jpg",YES
+"Kitchen Utensils","cat_k_tray_5","Tray","T023","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/tray.jpg",YES
+"Kitchen Utensils","cat_k_tray_6","Tray","White - Big Single","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/tray.jpg",YES
+"Kitchen Utensils","cat_k_tray_7","Tray","White - Small","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/tray.jpg",YES
+"Kitchen Utensils","cat_k_trolley_1","Trolley","Big","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/trolley.jpg",YES
+"Kitchen Utensils","cat_k_trolley_2","Trolley","Small","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/trolley.jpg",YES
+"Electrical Materials and Fittings","cat_e_tv-guide_1","TV Guide","Volt Guard","NO-IMAGE","/images/catalog/electrical-placeholder.svg","/images/catalog/web/tv-guide.jpg",YES
+"Kitchen Utensils","cat_k_umbrella_1","Umbrella","Big - Long","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/umbrella.jpg",YES
+"Kitchen Utensils","cat_k_umbrella_2","Umbrella","Big - Short","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/umbrella.jpg",YES
+"Kitchen Utensils","cat_k_umbrella_3","Umbrella","Bottled - Short","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/umbrella.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-dish_1","Unbreakable Dish","2 in 1","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-dish.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-dish_2","Unbreakable Dish","2 in 1 - Greeen","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-dish.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-dish_3","Unbreakable Dish","2 in 1 with Tray","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-dish.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-dish_4","Unbreakable Dish","2 in 1 with Tray - Brown","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-dish.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-dish_5","Unbreakable Dish","3 in 1","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-dish.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-dish_6","Unbreakable Dish","3 in 1 with Tray","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-dish.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-dish_7","Unbreakable Dish","Fish - 3 in 1","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-dish.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-plate_1","Unbreakable Plate","3 White/Brown - WY1015 - Dectagon","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-plate.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-plate_2","Unbreakable Plate","B2009 - Flat","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-plate.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-plate_3","Unbreakable Plate","Campalla - 85110 - Flat","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-plate.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-plate_4","Unbreakable Plate","Kitchen Star - 4 in 1","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-plate.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-plate_5","Unbreakable Plate","MEC-VIN - 3062 Green - Bowl","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-plate.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-plate_6","Unbreakable Plate","MEC-VIN - Green - Flat - Round","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-plate.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-plate_7","Unbreakable Plate","MEC-VIN - Green - Flat - Square","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-plate.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-plate_8","Unbreakable Plate","Pink - 3673 - Bowl","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-plate.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-plate_9","Unbreakable Plate","Pink at the Edge - 1009 - Round - Big","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-plate.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-plate_10","Unbreakable Plate","Pink at the Edge - B2008 - Round - Small","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-plate.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-plate_11","Unbreakable Plate","Shell - 33105 - Different Colours","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-plate.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-plate_12","Unbreakable Plate","White - 101 - 2 in 1","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-plate.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-plate_13","Unbreakable Plate","White - 23118 - Flat","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-plate.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-plate_14","Unbreakable Plate","White - B105","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-plate.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-plate_15","Unbreakable Plate","White - JY258 - Ova","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-plate.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-plate_16","Unbreakable Plate","White - JY269 - Round","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-plate.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-plate_17","Unbreakable Plate","White Leave - 6309 - Bowl","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-plate.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-plate_18","Unbreakable Plate","White Leave Flat - 3309","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-plate.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-plate_19","Unbreakable Plate","White with Flower - 660","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-plate.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-plate_20","Unbreakable Plate","White with Flower - 660 - Bowl","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-plate.jpg",YES
+"Kitchen Utensils","cat_k_unbreakable-tray_1","Unbreakable Tray","Big","MISMATCH","/images/catalog/plate.png","/images/catalog/web/unbreakable-tray.jpg",YES
+"Kitchen Utensils","cat_k_wardrope_1","Wardrope","Wonder Home - Nil","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/wardrope.jpg",YES
+"Kitchen Utensils","cat_k_water-bottle_1","Water Bottle","Cool","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-bottle.jpg",YES
+"Kitchen Utensils","cat_k_water-bottle_2","Water Bottle","Generation - Big with Sieve","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-bottle.jpg",YES
+"Kitchen Utensils","cat_k_water-bottle_3","Water Bottle","Generation - Small with Sieve","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-bottle.jpg",YES
+"Kitchen Utensils","cat_k_water-bottle_4","Water Bottle","Green","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-bottle.jpg",YES
+"Kitchen Utensils","cat_k_water-bottle_5","Water Bottle","Motivational","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-bottle.jpg",YES
+"Kitchen Utensils","cat_k_water-bottle_6","Water Bottle","S-8520 - 600ML","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-bottle.jpg",YES
+"Kitchen Utensils","cat_k_water-bottle_7","Water Bottle","Salvin - Hot and Cold","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-bottle.jpg",YES
+"Kitchen Utensils","cat_k_water-bottle_8","Water Bottle","Salvin - Small","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-bottle.jpg",YES
+"Kitchen Utensils","cat_k_water-bottle_9","Water Bottle","Salvin - transparent","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-bottle.jpg",YES
+"Kitchen Utensils","cat_k_water-bottle_10","Water Bottle","Salvin with Straw","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-bottle.jpg",YES
+"Kitchen Utensils","cat_k_water-bottle_11","Water Bottle","Sport Bottle","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-bottle.jpg",YES
+"Kitchen Utensils","cat_k_water-bottle_12","Water Bottle","The Kettle - 1.2L","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-bottle.jpg",YES
+"Kitchen Utensils","cat_k_water-flask_1","Water Flask","China - 1L","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-flask.jpg",YES
+"Kitchen Utensils","cat_k_water-flask_2","Water Flask","China - Leinuo - 400ML","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-flask.jpg",YES
+"Kitchen Utensils","cat_k_water-flask_3","Water Flask","China - School - 500ML","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-flask.jpg",YES
+"Kitchen Utensils","cat_k_water-flask_4","Water Flask","China - Vacuum - 1L","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-flask.jpg",YES
+"Kitchen Utensils","cat_k_water-flask_5","Water Flask","China - Vacuum - 700ML","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-flask.jpg",YES
+"Kitchen Utensils","cat_k_water-flask_6","Water Flask","China - Vacuum Cup - 500ML","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-flask.jpg",YES
+"Kitchen Utensils","cat_k_water-flask_7","Water Flask","Inox Bottle - 800ML","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-flask.jpg",YES
+"Kitchen Utensils","cat_k_water-flask_8","Water Flask","Leinuo - 300ML","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-flask.jpg",YES
+"Kitchen Utensils","cat_k_water-flask_9","Water Flask","Magic Cook - 600ML","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-flask.jpg",YES
+"Kitchen Utensils","cat_k_water-flask_10","Water Flask","Magic Cook - VF9435 - 4L","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-flask.jpg",YES
+"Kitchen Utensils","cat_k_water-flask_11","Water Flask","Master Chef - 6055 - 1.2L","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-flask.jpg",YES
+"Kitchen Utensils","cat_k_water-flask_12","Water Flask","Master Chef - F912 - 2L","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-flask.jpg",YES
+"Kitchen Utensils","cat_k_water-flask_13","Water Flask","Smart Cup - LED - 400ML","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-flask.jpg",YES
+"Kitchen Utensils","cat_k_water-flask_14","Water Flask","SMP - 800ML","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-flask.jpg",YES
+"Kitchen Utensils","cat_k_water-flask_15","Water Flask","Vacuum Bottle with 2 Cups - 500ML","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/water-flask.jpg",YES
+"Kitchen Utensils","cat_k_yam-pounder_1","Yam Pounder","Kenwood - 3L - Nil","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/yam-pounder.jpg",YES
+"Kitchen Utensils","cat_k_yam-pounder_2","Yam Pounder","Kenwood - 5L - Nil","NO-IMAGE","/images/catalog/kitchen-placeholder.svg","/images/catalog/web/yam-pounder.jpg",YES

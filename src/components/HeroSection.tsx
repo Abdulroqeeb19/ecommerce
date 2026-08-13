@@ -251,7 +251,7 @@ export function HeroSection() {
         </div>
 
         {/* Product showcase — cinematic reveal stage */}
-        <div className="relative hidden lg:flex items-center justify-center">
+        <div className="relative hidden md:flex items-center justify-center">
           <div className="relative w-full max-w-md">
             {/* Orbital rings */}
             <div className="cinem-orbital-ring" style={{ ["--ring-size" as string]: "clamp(320px, 46vw, 460px)" }} aria-hidden="true">

@@ -1,13 +1,42 @@
 ﻿"use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { X, Trash2, Minus, Plus, ShoppingBag, ArrowRight } from "lucide-react";
+import { X, Trash2, Minus, Plus, ShoppingBag, ArrowRight, MessageCircle } from "lucide-react";
 import { useCart } from "@/store/cart";
+import { useToast } from "@/store/toast";
 import { formatPrice } from "@/lib/utils";
+import { BRAND_NAME, whatsappLink } from "@/lib/brand";
 
 export function CartDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
   const { items, count, subtotal, updateQty, remove } = useCart();
+  const { toast } = useToast();
+  const [note, setNote] = useState("");
+
+  const delivery = subtotal >= 500 ? 0 : 25;
+  const total = subtotal + delivery;
+
+  const orderOnWhatsApp = () => {
+    if (items.length === 0) return;
+    const lines = items.map(
+      (i, idx) => `${idx + 1}. ${i.product.title}${i.product.group ? ` (${i.product.group})` : ""} × ${i.qty} — ${formatPrice(i.product.price * i.qty)}`
+    );
+    const msg = [
+      `Hello ${BRAND_NAME},`,
+      ``,
+      `I would like to order the following items together:`,
+      ``,
+      ...lines,
+      ``,
+      `Subtotal: ${formatPrice(subtotal)}`,
+      `Delivery: ${delivery === 0 ? "FREE" : formatPrice(delivery)}`,
+      `Total: ${formatPrice(total)}`
+    ].join("\n");
+    const final = note.trim() ? `${msg}\n\nOrder Notes:\n${note.trim()}` : msg;
+    window.open(whatsappLink(final), "_blank", "noopener,noreferrer");
+    toast("Opening WhatsApp with all your items");
+  };
 
   return (
     <div className={`fixed inset-0 z-[60] ${open ? "" : "pointer-events-none"}`}>
@@ -33,7 +62,7 @@ export function CartDrawer({ open, onClose }: { open: boolean; onClose: () => vo
           <div className="flex-1 flex flex-col items-center justify-center text-center p-8">
             <ShoppingBag className="h-14 w-14 text-slate-300" />
             <p className="mt-4 font-semibold text-slateink dark:text-white">Your cart is empty</p>
-            <p className="text-sm text-slate-500 mt-1">Add some tech gadgets to get started.</p>
+            <p className="text-sm text-slate-500 mt-1">Tap the cart icon on any product to add it here.</p>
             <Link
               href="/shop"
               onClick={onClose}
@@ -77,14 +106,31 @@ export function CartDrawer({ open, onClose }: { open: boolean; onClose: () => vo
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-slate-500">Delivery</span>
-                <span className="text-slate-600 dark:text-slate-400">{subtotal >= 500 ? "FREE" : "Calculated at checkout"}</span>
+                <span className="text-slate-600 dark:text-slate-400">{delivery === 0 ? "FREE" : formatPrice(delivery)}</span>
               </div>
+              <div className="border-t border-slate-100 dark:border-slate-800 pt-3">
+                <label className="label" htmlFor="cart-order-note">Order Notes</label>
+                <textarea
+                  id="cart-order-note"
+                  value={note}
+                  onChange={(e) => setNote(e.target.value)}
+                  placeholder="Add delivery notes or special instructions — sent with all the items above."
+                  rows={2}
+                  className="input w-full py-2 text-sm resize-none"
+                />
+              </div>
+              <button
+                onClick={orderOnWhatsApp}
+                className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 text-sm transition-colors"
+              >
+                <MessageCircle className="h-4 w-4" /> Order All ({count}) on WhatsApp — {formatPrice(total)}
+              </button>
               <Link
                 href="/checkout"
                 onClick={onClose}
                 className="w-full inline-flex items-center justify-center gap-2 rounded-lg py-3 text-sm font-bold text-slateink transition-all hover:-translate-y-0.5" style={{ background: "var(--gold-gradient)" }}
               >
-                Proceed to Checkout <ArrowRight className="h-4 w-4" />
+                Proceed to Web Checkout <ArrowRight className="h-4 w-4" />
               </Link>
               <button onClick={onClose} className="w-full text-center text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-primary-600 py-1">
                 Continue shopping

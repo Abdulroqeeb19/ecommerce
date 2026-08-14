@@ -2,10 +2,12 @@
 
 import { useMemo, useState } from "react";
 import Image from "next/image";
-import { ChevronDown, MessageCircle } from "lucide-react";
+import { ChevronDown, Heart, ShoppingCart } from "lucide-react";
 import type { Product } from "@/lib/types";
-import { cx } from "@/lib/utils";
-import { BRAND_NAME, whatsappLink } from "@/lib/brand";
+import { cx, formatPrice } from "@/lib/utils";
+import { useCart } from "@/store/cart";
+import { useWishlist } from "@/store/wishlist";
+import { useToast } from "@/store/toast";
 
 export function VariantGroupCard({ groupName, products }: { groupName: string; products: Product[] }) {
   const [open, setOpen] = useState(false);
@@ -47,15 +49,7 @@ export function VariantGroupCard({ groupName, products }: { groupName: string; p
       {open && (
         <div className="border-t border-slate-100 dark:border-navy-700 divide-y divide-slate-100 dark:divide-navy-700 text-left">
           {products.map((p) => (
-            <div key={p.id} className="px-4 py-3 flex items-center justify-between gap-3">
-              <div className="min-w-0">
-                <p className="text-sm font-semibold text-slateink dark:text-white truncate">{p.title}</p>
-                <p className="text-xs text-slate-500 dark:text-slate-400">
-                  {p.stock > 0 ? `${p.stock} available` : "Out of stock"}
-                </p>
-              </div>
-              <OrderCardButton product={p} />
-            </div>
+            <VariantRow key={p.id} product={p} />
           ))}
         </div>
       )}
@@ -63,62 +57,57 @@ export function VariantGroupCard({ groupName, products }: { groupName: string; p
   );
 }
 
-export function OrderCardButton({ product }: { product: Product }) {
-  const [open, setOpen] = useState(false);
-  const [need, setNeed] = useState("");
-  const [sending, setSending] = useState(false);
+function VariantRow({ product }: { product: Product }) {
+  const { items, add, remove } = useCart();
+  const { has, toggle } = useWishlist();
+  const { toast } = useToast();
 
-  const send = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSending(true);
-    const line = `${product.title} (${product.category})`;
-    const message = need.trim()
-      ? `Hello ${BRAND_NAME},\n\nI am interested in: ${line}.\n\nWhat I need help with / problem to be solved:\n${need.trim()}\n\nPlease advise. Thank you.`
-      : `Hello ${BRAND_NAME},\n\nI am interested in: ${line}.\n\nPlease help me with this product. Thank you.`;
-    window.open(whatsappLink(message), "_blank", "noopener,noreferrer");
-    setSending(false);
-    setOpen(false);
-    setNeed("");
-  };
+  const inCart = items.some((i) => i.id === product.id);
+  const outOfStock = product.stock <= 0;
 
   return (
-    <>
-      <button
-        onClick={() => setOpen(true)}
-        className="shrink-0 inline-flex items-center gap-1 text-[11px] font-bold btn-primary !py-1.5 !px-2.5"
-      >
-        <MessageCircle className="h-3 w-3" /> Order
-      </button>
-      {open && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-950/60" onClick={() => setOpen(false)}>
-          <div
-            className="w-full max-w-md rounded-2xl bg-white dark:bg-navy-800 p-6 shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h3 className="font-display font-extrabold text-lg text-slateink dark:text-white">Order on WhatsApp</h3>
-            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">The message opens in the owner&apos;s WhatsApp.</p>
-            <div className="mt-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-3">
-              <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Item</p>
-              <p className="font-bold text-slateink dark:text-white mt-0.5">{product.title}</p>
-              <p className="text-xs text-slate-500 mt-0.5">
-                {product.category} · {product.stock > 0 ? `${product.stock} available` : "Out of stock"}
-              </p>
-            </div>
-            <form onSubmit={send} className="mt-4 space-y-3">
-              <textarea
-                value={need}
-                onChange={(e) => setNeed(e.target.value)}
-                placeholder="Describe the problem or need the item must solve. Include quantity or size if you know it."
-                rows={3}
-                className="input w-full py-2 text-sm resize-none"
-              />
-              <button type="submit" disabled={sending} className="btn-primary w-full !py-2.5 text-sm">
-                <MessageCircle className="h-4 w-4" /> {sending ? "Opening WhatsApp…" : "Order on WhatsApp"}
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
-    </>
+    <div className="px-4 py-3 flex items-center justify-between gap-3">
+      <div className="min-w-0">
+        <p className="text-sm font-semibold text-slateink dark:text-white truncate">{product.title}</p>
+        <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+          {outOfStock ? "Out of stock" : `${product.stock} available · ${formatPrice(product.price)}`}
+        </p>
+      </div>
+      <div className="flex items-center gap-1.5 shrink-0">
+        <button
+          onClick={() => {
+            toggle(product.id);
+            toast(has(product.id) ? "Removed from wishlist" : "Saved to wishlist");
+          }}
+          title="Wishlist"
+          aria-label={`Toggle ${product.title} in wishlist`}
+          className={`flex items-center justify-center rounded-lg p-2 transition-colors ${
+            has(product.id) ? "text-red-500 bg-red-50" : "text-slate-500 dark:text-slate-300 dark:hover:bg-slate-800"
+          }`}
+        >
+          <Heart className={`h-4 w-4 ${has(product.id) ? "fill-red-500" : ""}`} />
+        </button>
+        <button
+          onClick={() => {
+            if (outOfStock) return;
+            if (inCart) {
+              remove(product.id);
+              toast("Removed from cart");
+            } else {
+              add(product, 1);
+              toast("Added to cart");
+            }
+          }}
+          title={inCart ? "Remove from Cart" : "Add to Cart"}
+          aria-label={inCart ? "Remove from cart" : "Add to cart"}
+          disabled={outOfStock}
+          className={`flex items-center justify-center rounded-lg p-2 transition-colors disabled:opacity-40 ${
+            inCart ? "bg-emerald-600 text-white hover:bg-emerald-700" : "bg-primary-500 text-slateink hover:bg-primary-400"
+          }`}
+        >
+          <ShoppingCart className={`h-4 w-4 ${inCart ? "fill-white" : ""}`} />
+        </button>
+      </div>
+    </div>
   );
 }

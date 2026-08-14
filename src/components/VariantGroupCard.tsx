@@ -29,30 +29,32 @@ export function VariantGroupCard({ groupName, products }: { groupName: string; p
         </span>
       </div>
 
-      <div className="p-4">
-        <p className="font-bold uppercase tracking-wide text-slateink dark:text-white">{groupName}</p>
-        <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{cover.category}</p>
-        <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-          {totalQty} in stock · {products.length} variant{products.length !== 1 ? "s" : ""}
-        </p>
+      <div onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+        <div className="p-4">
+          <p className="font-bold uppercase tracking-wide text-slateink dark:text-white">{groupName}</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{cover.category}</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+            {totalQty} in stock · {products.length} variant{products.length !== 1 ? "s" : ""}
+          </p>
 
-        <button
-          onClick={() => setOpen((o) => !o)}
-          className="mt-3 inline-flex w-full items-center justify-center gap-1.5 btn-outline !py-2 text-sm"
-          aria-expanded={open}
-        >
-          {open ? "Hide types" : "View types"}
-          <ChevronDown className={cx("h-4 w-4 transition-transform", open && "rotate-180")} />
-        </button>
-      </div>
-
-      {open && (
-        <div className="border-t border-slate-100 dark:border-navy-700 divide-y divide-slate-100 dark:divide-navy-700 text-left">
-          {products.map((p) => (
-            <VariantRow key={p.id} product={p} />
-          ))}
+          <button
+            onClick={() => setOpen((o) => !o)}
+            className="mt-3 inline-flex w-full items-center justify-center gap-1.5 btn-outline !py-2 text-sm"
+            aria-expanded={open}
+          >
+            {open ? "Hide types" : "View types"}
+            <ChevronDown className={cx("h-4 w-4 transition-transform", open && "rotate-180")} />
+          </button>
         </div>
-      )}
+
+        {open && (
+          <div className="border-t border-slate-100 dark:border-navy-700 divide-y divide-slate-100 dark:divide-navy-700 text-left">
+            {products.map((p) => (
+              <VariantRow key={p.id} product={p} />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

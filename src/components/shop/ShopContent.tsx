@@ -6,6 +6,7 @@ import { SlidersHorizontal, Search, X, Sparkles } from "lucide-react";
 import { useProducts } from "@/lib/catalog";
 import { ProductCard } from "@/components/ProductCard";
 import { VariantGroupCard } from "@/components/VariantGroupCard";
+import { HoverSelect } from "@/components/HoverSelect";
 import { Pagination } from "@/components/Pagination";
 import { cx, formatPrice } from "@/lib/utils";
 import type { Product } from "@/lib/types";
@@ -279,20 +280,27 @@ export function ShopContent() {
             </div>
             <div className="mt-4">
               <p className="label">Brand</p>
-              <select value={brand} onChange={(e) => setBrand(e.target.value)} className="input w-full py-2 text-sm">
-                <option value="All">All brands</option>
-                {brands.map((b) => (
-                  <option key={b} value={b}>{b}</option>
-                ))}
-              </select>
+              <HoverSelect
+                value={brand}
+                onChange={setBrand}
+                options={[{ value: "All", label: "All brands" }, ...brands.map((b) => ({ value: b, label: b }))]}
+                ariaLabel="Select brand"
+                className="w-full"
+                triggerClassName="input w-full py-2 text-sm"
+                listClassName="w-full"
+              />
             </div>
             <div className="mt-4">
               <p className="label">Minimum rating</p>
-              <select value={minRating} onChange={(e) => setMinRating(Number(e.target.value))} className="input w-full py-2 text-sm">
-                {RATING_FILTERS.map((r) => (
-                  <option key={r.value} value={r.value}>{r.label}</option>
-                ))}
-              </select>
+              <HoverSelect
+                value={minRating}
+                onChange={setMinRating}
+                options={RATING_FILTERS.map((r) => ({ value: r.value, label: r.label }))}
+                ariaLabel="Select minimum rating"
+                className="w-full"
+                triggerClassName="input w-full py-2 text-sm"
+                listClassName="w-full"
+              />
             </div>
             <label className="mt-4 flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300 cursor-pointer">
               <input
@@ -322,13 +330,14 @@ export function ShopContent() {
             </p>
             <div className="flex items-center gap-2">
               <span className="text-sm text-slate-500 dark:text-slate-400 hidden sm:inline">Sort by:</span>
-              <select value={sort} onChange={(e) => setSort(e.target.value as SortKey)} className="input w-auto py-2">
-                {SORTS.map((s) => (
-                  <option key={s.key} value={s.key}>
-                    {s.label}
-                  </option>
-                ))}
-              </select>
+              <HoverSelect
+                value={sort}
+                onChange={setSort}
+                options={SORTS.map((s) => ({ value: s.key, label: s.label }))}
+                ariaLabel="Sort products"
+                triggerClassName="input w-auto py-2 min-w-[9rem]"
+                align="right"
+              />
             </div>
           </div>
 

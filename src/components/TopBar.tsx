@@ -5,6 +5,7 @@ import { Phone, Mail, Facebook, Instagram, MessageCircle, User, Sun, Moon } from
 import { useAuth } from "@/store/auth";
 import { useCurrency } from "@/store/currency";
 import { useTheme } from "@/store/theme";
+import { HoverSelect } from "@/components/HoverSelect";
 import { BRAND_EMAIL, BRAND_PHONES, FACEBOOK_URL, INSTAGRAM_URL, whatsappLink } from "@/lib/brand";
 
 const SOCIALS = [
@@ -39,18 +40,15 @@ export function TopBar() {
           </div>
           <div className="hidden md:flex items-center gap-1">
             <span className="text-slate-500">Currency:</span>
-            <select
+            <HoverSelect
               value={currency.code}
-              onChange={(e) => setCurrency(e.target.value)}
-              className="bg-transparent text-slate-300 font-semibold outline-none cursor-pointer"
-              aria-label="Select currency"
-            >
-              {currencies.map((c) => (
-                <option key={c.code} value={c.code} className="text-slate-800">
-                  {c.code} {c.symbol}
-                </option>
-              ))}
-            </select>
+              onChange={setCurrency}
+              options={currencies.map((c) => ({ value: c.code, label: `${c.code} ${c.symbol}` }))}
+              ariaLabel="Select currency"
+              align="right"
+              triggerClassName="bg-transparent text-slate-300 font-semibold"
+              listClassName="min-w-44"
+            />
           </div>
           <button
             onClick={toggleTheme}

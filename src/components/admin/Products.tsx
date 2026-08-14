@@ -489,7 +489,7 @@ export function AdminProducts({ miniOnly = false }: { miniOnly?: boolean }) {
                   onChange={(e) => setForm({ ...form, featured: e.target.checked })}
                   className="accent-primary-600 h-4 w-4"
                 />
-                Show in Featured Tech and Gadget (home page)
+                Show on home page — Hot Deal slides (featured product)
               </label>
 
               <div>

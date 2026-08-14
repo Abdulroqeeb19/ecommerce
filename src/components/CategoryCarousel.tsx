@@ -29,11 +29,14 @@ const ICONS: Record<string, LucideIcon> = {
   baby: Baby
 };
 
-const ACTIVE_CATEGORY_IDS = ["card_kitchen", "card_electrical", "card_babies"];
+const ACTIVE_CATEGORY_IDS = ["card_babies", "card_electrical", "card_kitchen"];
+
+const byOrder = (a: { id: string }, b: { id: string }) =>
+  ACTIVE_CATEGORY_IDS.indexOf(a.id) - ACTIVE_CATEGORY_IDS.indexOf(b.id);
 
 export function CategoryCarousel() {
   const [cards, setCards] = useState<CategoryCard[]>(
-    DEFAULT_CATEGORY_CARDS.filter((c) => ACTIVE_CATEGORY_IDS.includes(c.id))
+    DEFAULT_CATEGORY_CARDS.filter((c) => ACTIVE_CATEGORY_IDS.includes(c.id)).sort(byOrder)
   );
 
   useEffect(() => {
@@ -42,7 +45,7 @@ export function CategoryCarousel() {
       .get<CategoryCard[]>("/category-cards")
       .then((list) => {
         if (!cancelled && Array.isArray(list) && list.length)
-          setCards(list.filter((c) => c.active && ACTIVE_CATEGORY_IDS.includes(c.id)));
+          setCards(list.filter((c) => c.active && ACTIVE_CATEGORY_IDS.includes(c.id)).sort(byOrder));
       })
       .catch(() => {});
     return () => {

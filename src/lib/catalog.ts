@@ -24,8 +24,16 @@ export function useProducts(): { products: Product[]; loading: boolean } {
         const missing = seed.filter((p) => !existing.has(p.id));
         if (missing.length) await db.products.bulkPut(missing);
       }
+      // Skip the cloud pull when we synced recently. The 30s background sync
+      // (see store/providers.tsx) already keeps the local catalog fresh, and
+      // re-downloading every product on each mount is the main cause of slow
+      // category/shop navigation.
       if (isOnline() && !cancelled) {
-        await pullCatalog();
+        const last = (await db.meta.get("catalogPullAt"))?.value;
+        if (!last || Date.now() - new Date(last).getTime() > 30_000) {
+          await pullCatalog();
+          await db.meta.put({ key: "catalogPullAt", value: new Date().toISOString() });
+        }
       }
     })();
     return () => {

@@ -1,51 +1,34 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import Link from "next/link";
 import { Zap, ArrowRight, PackageCheck } from "lucide-react";
-import { CATALOG_ITEMS } from "@/lib/brand";
-import { CATALOG_CATEGORY_KEYS } from "@/lib/catalogCategories";
-import { api } from "@/lib/api";
-import type { CatalogItem } from "@/lib/types";
+import { useProducts } from "@/lib/catalog";
 import { CatalogImage } from "./CatalogImage";
 
-const CATEGORY_HREF: Record<string, string> = {
-  "Kitchen Utensils": "/shop?category=Kitchen%20Utensils",
-  "Electrical Materials and Fittings": "/shop?category=Electrical%20Materials%20and%20Fittings",
-  "Babies Wears": "/shop?category=Babies%20Wears"
-};
+const CATEGORY_ORDER: { label: string; href: string; badge: string }[] = [
+  { label: "Babies Wears", href: "/shop?category=Babies%20Wears", badge: "Babies Wears" },
+  { label: "Electrical Materials and Fittings", href: "/shop?category=Electrical%20Materials%20and%20Fittings", badge: "Electrical Fittings" },
+  { label: "Kitchen Utensils", href: "/shop?category=Kitchen%20Utensils", badge: "Kitchen Utensils" }
+];
 
-const GROUP_LABEL: Record<string, string> = {
-  "Kitchen Utensils": "Kitchen Utensils",
-  "Electrical Materials and Fittings": "Electrical Fittings",
-  "Babies Wears": "Babies Wears"
-};
+const MAX_PER_CATEGORY = 8;
 
 export function InStockTicker() {
-  const [items, setItems] = useState<CatalogItem[]>(CATALOG_ITEMS);
+  const { products } = useProducts();
 
-  useEffect(() => {
-    let cancelled = false;
-    api
-      .get<CatalogItem[]>("/catalog-items")
-      .then((list) => {
-        if (!cancelled && Array.isArray(list) && list.length) setItems(list);
-      })
-      .catch(() => {});
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
+  // Live data: the latest in-stock products per category, using the most
+  // recently uploaded images. Auto-refreshes via the background catalog sync.
   const groups = useMemo(() => {
-    return Object.entries(CATEGORY_HREF)
-      .map(([label, href]) => {
-        const keys = CATALOG_CATEGORY_KEYS[label] || [];
-        const sub = items.filter((i) => i.active && keys.includes(i.category));
-        return { label, href, items: sub };
-      })
-      .filter((g) => g.items.length > 0);
-  }, [items]);
+    return CATEGORY_ORDER.map((g) => ({
+      label: g.label,
+      href: g.href,
+      badge: g.badge,
+      items: (products || [])
+        .filter((p) => !p.miniStore && p.category === g.label && p.stock > 0 && p.image)
+        .slice(0, MAX_PER_CATEGORY)
+    })).filter((g) => g.items.length > 0);
+  }, [products]);
 
   const count = useMemo(() => groups.reduce((n, g) => n + g.items.length, 0), [groups]);
 
@@ -73,17 +56,17 @@ export function InStockTicker() {
               {groups.map((g) =>
                 g.items.map((item) => (
                   <Link
-                    key={`${i}-${item.id || item.name}`}
+                    key={`${i}-${item.id}`}
                     href={g.href}
                     className="group/card w-56 shrink-0 flex items-center gap-3 rounded-xl bg-slatebg dark:bg-slate-800 border border-slate-200 dark:border-navy-700 p-3 transition-all hover:border-primary-400 hover:shadow-hover hover:-translate-y-0.5"
                   >
                     <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg bg-white dark:bg-navy-900">
-                      <CatalogImage src={item.image} alt={item.name} className="h-full w-full object-contain transition-transform duration-500 group-hover/card:scale-110" />
+                      <CatalogImage src={item.image} alt={item.title} className="h-full w-full object-contain transition-transform duration-500 group-hover/card:scale-110" />
                     </div>
                     <div className="min-w-0">
-                      <p className="truncate text-xs font-bold text-slateink dark:text-white group-hover/card:text-primary-700 dark:group-hover/card:text-primary-400">{item.name}</p>
+                      <p className="truncate text-xs font-bold text-slateink dark:text-white group-hover/card:text-primary-700 dark:group-hover/card:text-primary-400">{item.title}</p>
                       <span className="mt-1 inline-flex items-center gap-1 rounded-full bg-gold-50 dark:bg-gold-900/40 text-gold-700 dark:text-gold-300 px-2 py-0.5 text-[10px] font-bold">
-                        {GROUP_LABEL[g.label]}
+                        {g.badge}
                       </span>
                       <span className="mt-1 inline-flex items-center gap-1 text-[10px] font-bold text-brand-green">
                         <span className="h-1.5 w-1.5 rounded-full bg-brand-green" /> In stock

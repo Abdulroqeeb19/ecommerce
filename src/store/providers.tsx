@@ -10,7 +10,7 @@ import { CurrencyProvider, useCurrency } from "./currency";
 import { ThemeProvider } from "./theme";
 import { useOnline } from "@/hooks/useOnline";
 import { useMounted } from "@/hooks/useMounted";
-import { syncAll, retryablePendingCount } from "@/lib/sync";
+import { syncAll } from "@/lib/sync";
 import { setActiveCurrency } from "@/lib/utils";
 import { Wifi, WifiOff } from "lucide-react";
 
@@ -45,18 +45,12 @@ function SyncWatcher() {
 
   useEffect(() => {
     if (!online) return;
+    // Keep catalog fresh while the tab is open so homepage slides and the
+    // "in stock" ticker pick up admin edits (new images, featured/Hot Deal
+    // toggles) automatically within the interval.
     const id = window.setInterval(() => {
-      syncAll()
-        .then(async (r) => {
-          if (r.pushed === 0) {
-            // Stop polling once nothing can be auto-retried; permanently failed
-            // ops stay visible in the Sync panel for a manual retry decision.
-            const remaining = await retryablePendingCount();
-            if (remaining === 0) window.clearInterval(id);
-          }
-        })
-        .catch(() => {});
-    }, 20000);
+      syncAll().catch(() => {});
+    }, 30000);
     return () => window.clearInterval(id);
   }, [online]);
 

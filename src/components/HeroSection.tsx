@@ -7,27 +7,37 @@ import { ArrowRight, ShieldCheck, Sparkles, Star } from "lucide-react";
 import { useCurrency } from "@/store/currency";
 import { CURRENCY_RATES } from "@/lib/utils";
 import { SLOGAN, MOTTO } from "@/lib/brand";
+import { useProducts } from "@/lib/catalog";
 import { cx } from "@/lib/utils";
+import type { Product } from "@/lib/types";
 
 interface HeroItem {
   id: string;
+  slug: string;
   name: string;
   brand: string;
   spec: string;
   category: string;
   image: string;
+  price: number;
   save: number;
   callouts: { label: string; tone: string }[];
 }
 
-const HERO_ITEMS: HeroItem[] = [
+/** Display order for the main shop categories (Babies, then Electrical, then Kitchen). */
+const CATEGORY_ORDER = ["Babies Wears", "Electrical Materials and Fittings", "Kitchen Utensils"];
+
+/** Fallback showcase used only while there are no products in the local catalog. */
+const FALLBACK_HERO_ITEMS: HeroItem[] = [
   {
     id: "hl_pot",
+    slug: "",
     name: "POT",
     brand: "Rivo",
     spec: "Stainless Steel Cookware",
     category: "Kitchen Utensils",
     image: "/images/catalog/pot.png",
+    price: 4500,
     save: 18,
     callouts: [
       { label: "Stainless Steel", tone: "gold" },
@@ -35,38 +45,14 @@ const HERO_ITEMS: HeroItem[] = [
     ]
   },
   {
-    id: "hl_blender",
-    name: "BLENDER",
-    brand: "Binatone",
-    spec: "500W High-Speed Blending",
-    category: "Kitchen Utensils",
-    image: "/images/catalog/blender.png",
-    save: 25,
-    callouts: [
-      { label: "500W Motor", tone: "gold" },
-      { label: "4 Speeds", tone: "sky" }
-    ]
-  },
-  {
-    id: "hl_cooler",
-    name: "COOLER",
-    brand: "Thermos",
-    spec: "Insulated Food Cooler",
-    category: "Kitchen Utensils",
-    image: "/images/catalog/cooler.png",
-    save: 15,
-    callouts: [
-      { label: "12H Cold", tone: "sky" },
-      { label: "Food Safe", tone: "gold" }
-    ]
-  },
-  {
     id: "hl_singlet",
+    slug: "",
     name: "SINGLET",
     brand: "TinyTots",
     spec: "100% Soft Cotton",
     category: "Babies Wears",
     image: "/images/catalog/singlet.png",
+    price: 3000,
     save: 20,
     callouts: [
       { label: "100% Cotton", tone: "gold" },
@@ -74,32 +60,44 @@ const HERO_ITEMS: HeroItem[] = [
     ]
   },
   {
-    id: "hl_shoe",
-    name: "SHOES",
-    brand: "Adorable",
-    spec: "Soft-Sole Baby Footwear",
-    category: "Babies Wears",
-    image: "/images/catalog/shoe.png",
-    save: 16,
+    id: "hl_sockets",
+    slug: "",
+    name: "SOCKETS",
+    brand: "Tops",
+    spec: "Surface-Mount Power Sockets",
+    category: "Electrical Materials and Fittings",
+    image: "/images/catalog/sockets.png",
+    price: 2500,
+    save: 15,
     callouts: [
-      { label: "Soft Sole", tone: "sky" },
-      { label: "Flex Fit", tone: "gold" }
-    ]
-  },
-  {
-    id: "hl_bag",
-    name: "BAG",
-    brand: "Cuddles",
-    spec: "Spacious diaper & baby bag",
-    category: "Babies Wears",
-    image: "/images/catalog/bag.png",
-    save: 22,
-    callouts: [
-      { label: "Spacious", tone: "gold" },
-      { label: "Multi-Pocket", tone: "sky" }
+      { label: "Fire Safe", tone: "gold" },
+      { label: "2-3 Pin", tone: "sky" }
     ]
   }
 ];
+
+function toHeroItem(p: Product): HeroItem {
+  const save = p.oldPrice && p.oldPrice > p.price ? p.oldPrice - p.price : 0;
+  const clip = (s: string, n: number) => (s.length > n ? `${s.slice(0, n)}…` : s);
+  const spec = p.shortDescription || p.group || p.category;
+  const first = p.specs?.[0]?.value || p.specs?.[0]?.label;
+  const second = p.specs?.[1]?.value || p.specs?.[1]?.label;
+  return {
+    id: p.id,
+    slug: p.slug,
+    name: clip(p.title, 24),
+    brand: p.brand,
+    spec: clip(spec, 34),
+    category: p.category,
+    image: p.image,
+    price: p.price,
+    save,
+    callouts: [
+      { label: clip(first || p.brand || "Top Quality", 18), tone: "gold" },
+      { label: clip(second || "Now Stocking", 18), tone: "sky" }
+    ]
+  };
+}
 
 const CALLOUT_TONES: Record<string, string> = {
   gold: "border-gold-400/60 text-gold-200 bg-black shadow-[0_0_18px_rgba(212,175,55,0.45)]",
@@ -145,24 +143,60 @@ function DustField() {
 
 export function HeroSection() {
   const { currency } = useCurrency();
+  const { products } = useProducts();
   const rate = CURRENCY_RATES[currency.code] ?? 1;
   const free = Math.round(500 * rate);
   const fmt = (n: number) => new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(n);
+
+  // Live slides: featured products first (admin-controlled "Hot Deal"), filled
+  // with an in-stock mix across Babies -> Electrical -> Kitchen so the showcase
+  // stays populated and always shows the latest uploaded product images.
+  const heroItems = useMemo<HeroItem[]>(() => {
+    const eligible = (products || []).filter((p) => !p.miniStore && p.image && p.stock > 0);
+    if (eligible.length === 0) return FALLBACK_HERO_ITEMS;
+    const featured = eligible.filter((p) => p.featured);
+    const pool = featured.length >= 3 ? featured : eligible;
+    const picks: Product[] = [];
+    const seen = new Set<string>();
+    for (const cat of CATEGORY_ORDER) {
+      for (const p of pool.filter((x) => x.category === cat && !seen.has(x.id)).slice(0, 2)) {
+        picks.push(p);
+        seen.add(p.id);
+      }
+    }
+    for (const p of pool) {
+      if (picks.length >= 8) break;
+      if (!seen.has(p.id)) {
+        picks.push(p);
+        seen.add(p.id);
+      }
+    }
+    return picks.slice(0, 8).map(toHeroItem);
+  }, [products]);
 
   const [index, setIndex] = useState(0);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (typeof window === "undefined" || heroItems.length === 0) return;
     const id = requestAnimationFrame(() => setMounted(true));
-    const timer = setInterval(() => setIndex((i) => (i + 1) % HERO_ITEMS.length), 4200);
+    const timer = setInterval(() => setIndex((i) => (i + 1) % heroItems.length), 4200);
     return () => {
       cancelAnimationFrame(id);
       clearInterval(timer);
     };
-  }, []);
+  }, [heroItems.length]);
 
-  const item = HERO_ITEMS[index];
+  const safeIndex = index < heroItems.length ? index : Math.max(0, heroItems.length - 1);
+  const item = heroItems[safeIndex] || heroItems[0];
+  const saveAmt = Math.round(item.save * rate);
+  const itemLabel = [item.brand, item.name].filter(Boolean).join(" ");
+  const deal =
+    saveAmt > 0
+      ? { prefix: "Save up to", value: `${currency.symbol}${fmt(saveAmt)}` }
+      : item.price > 0
+        ? { prefix: "From", value: `${currency.symbol}${fmt(Math.round(item.price * rate))}+` }
+        : null;
 
   return (
     <section
@@ -247,7 +281,7 @@ export function HeroSection() {
               )}
             >
               <div className="relative aspect-square bg-slate-100 cinem-sheen-wrap">
-                {HERO_ITEMS.map((it, i) => (
+                {heroItems.map((it, i) => (
                   <Image
                     key={it.id}
                     src={it.image}
@@ -256,14 +290,14 @@ export function HeroSection() {
                     height={460}
                     className={cx(
                       "absolute inset-0 h-full w-full object-contain p-6 transition-opacity duration-700",
-                      i === index ? "opacity-100" : "opacity-0"
+                      i === safeIndex ? "opacity-100" : "opacity-0"
                     )}
                   />
                 ))}
               </div>
               <div className="px-5 py-4 text-navy-900">
                 <div className="flex items-center justify-between gap-2">
-                  <p className="font-display font-extrabold text-lg">{item.brand} {item.name}</p>
+                  <p className="font-display font-extrabold text-lg">{itemLabel}</p>
                   <span className="rounded-full px-2.5 py-1 text-[10px] font-bold uppercase bg-skyline-100 text-skyline-700">
                     {item.category}
                   </span>
@@ -271,12 +305,12 @@ export function HeroSection() {
                 <p className="text-xs text-slate-500 mt-0.5">{item.spec} · Now Stocking</p>
               </div>
               <div className="absolute inset-x-0 bottom-3 flex items-center justify-center gap-1.5">
-                {HERO_ITEMS.map((it, i) => (
+                {heroItems.map((it, i) => (
                   <button
                     key={it.id}
                     onClick={() => setIndex(i)}
                     aria-label={`Show ${it.name}`}
-                    className={cx("h-1.5 rounded-full transition-all", i === index ? "w-6 bg-gold-400" : "w-1.5 bg-navy-200 hover:bg-navy-300")}
+                    className={cx("h-1.5 rounded-full transition-all", i === safeIndex ? "w-6 bg-gold-400" : "w-1.5 bg-navy-200 hover:bg-navy-300")}
                   />
                 ))}
               </div>
@@ -290,7 +324,13 @@ export function HeroSection() {
               <Callout label={item.callouts[1]?.label || "Best Price"} tone={item.callouts[1]?.tone || "sky"} />
             </div>
             <div className="cinem-callout absolute -left-6 bottom-16 z-20 hidden sm:flex items-center gap-2 rounded-xl border border-gold-400/50 bg-navy-900/70 backdrop-blur px-3 py-2 text-xs font-bold text-gold-200 shadow-[0_0_22px_rgba(212,175,55,0.35)]" style={{ animationDelay: "1.7s" }}>
-              <Star className="h-4 w-4 fill-gold-300 text-gold-300" /> Save up to {currency.symbol}{fmt(item.save * rate)}
+              {saveAmt > 0 ? (
+                <>
+                  <Star className="h-4 w-4 fill-gold-300 text-gold-300" /> Save up to {currency.symbol}{fmt(saveAmt)}
+                </>
+              ) : (
+                <span className="text-brand-green">Best Price · In Stock</span>
+              )}
             </div>
           </div>
         </div>
@@ -304,14 +344,24 @@ export function HeroSection() {
               Hot Deal
             </span>
             <div>
-              <p className="font-display font-extrabold text-lg text-gold-200">{item.brand} {item.name}</p>
+              {item.slug ? (
+                <Link href={`/product/${item.slug}`} className="font-display font-extrabold text-lg text-gold-200 hover:underline">
+                  {itemLabel}
+                </Link>
+              ) : (
+                <p className="font-display font-extrabold text-lg text-gold-200">{itemLabel}</p>
+              )}
               <p className="text-xs text-slate-400">{item.spec} · {item.category} · Now Stocking</p>
             </div>
           </div>
-          <div className="flex items-center gap-3">
-            <span className="text-sm text-slate-300">Save up to</span>
-            <span className="font-display font-extrabold text-2xl" style={{ color: "var(--gold-light)" }}>{currency.symbol}{fmt(item.save * rate)}</span>
-          </div>
+          {deal && (
+            <div className="flex items-center gap-3">
+              <span className="text-sm text-slate-300">{deal.prefix}</span>
+              <span className="font-display font-extrabold text-2xl" style={{ color: "var(--gold-light)" }}>
+                {deal.value}
+              </span>
+            </div>
+          )}
         </div>
       </div>
     </section>

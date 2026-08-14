@@ -98,32 +98,6 @@ const HERO_ITEMS: HeroItem[] = [
       { label: "Spacious", tone: "gold" },
       { label: "Multi-Pocket", tone: "sky" }
     ]
-  },
-  {
-    id: "hl_sockets",
-    name: "SOCKETS",
-    brand: "Legrand",
-    spec: "13A Flat-Face Wall Sockets",
-    category: "Electrical",
-    image: "/images/catalog/sockets.png",
-    save: 12,
-    callouts: [
-      { label: "13A Rated", tone: "gold" },
-      { label: "Flat Face", tone: "sky" }
-    ]
-  },
-  {
-    id: "hl_solar",
-    name: "SOLAR KIT",
-    brand: "Solardown",
-    spec: "Panel & Backup Lighting",
-    category: "Electrical",
-    image: "/images/catalog/solar.png",
-    save: 30,
-    callouts: [
-      { label: "Sun Powered", tone: "gold" },
-      { label: "Night Light", tone: "sky" }
-    ]
   }
 ];
 

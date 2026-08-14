@@ -133,50 +133,6 @@ export const SEED_PRODUCTS: Product[] = [
     ],
     tags: ["babies", "bag", "sundries", "wears"]
   },
-  {
-    id: "p_electrical_sockets",
-    slug: "wall-socket-panel",
-    title: "Standard Wall Sockets",
-    category: "Electrical Materials and Fittings",
-    brand: "Legrand",
-    price: 18,
-    stock: 60,
-    rating: 4.8,
-    reviews: 140,
-    image: cimg("sockets"),
-    shortDescription: "Safe, durable electrical wall sockets.",
-    description:
-      "Flame-retardant wall sockets built for safe everyday use. Smooth finish, secure connections and sturdy build for homes and offices.",
-    specs: [
-      { label: "Type", value: "UK standard 3-pin" },
-      { label: "Rated", value: "13A 250V" },
-      { label: "Material", value: "Flame-retardant" }
-    ],
-    tags: ["electrical", "sockets", "fittings", "materials"]
-  },
-  {
-    id: "p_electrical_solar",
-    slug: "solar-panel-kit",
-    title: "Solar Panel Lighting Kit",
-    category: "Electrical Materials and Fittings",
-    brand: "Solardown",
-    price: 90,
-    oldPrice: 110,
-    stock: 20,
-    rating: 4.6,
-    reviews: 58,
-    image: cimg("solar"),
-    shortDescription: "Reliable solar power for homes and shops.",
-    description:
-      "A complete solar kit delivering dependable backup power. Panels, battery and lighting components are pre-configured for quick home and shop installation.",
-    specs: [
-      { label: "Output", value: "100W panel" },
-      { label: "Battery", value: "20Ah sealed" },
-      { label: "Includes", value: "Panels, battery and lights" }
-    ],
-    featured: true,
-    tags: ["electrical", "solar", "fittings", "power"]
-  },
 
   // --- School Shop Items (from "School Shop Items List.xlsx", mini-store only) ---
   ...SCHOOL_SHOP_ITEMS

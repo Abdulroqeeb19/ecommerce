@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { Suspense, useMemo, useState, type MouseEvent } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { SlidersHorizontal, Search, X, Sparkles } from "lucide-react";
 import { useProducts } from "@/lib/catalog";
 import { ProductCard } from "@/components/ProductCard";
@@ -88,23 +88,27 @@ function CardGrid({ items, staggerKey }: { items: CardItem[]; staggerKey: string
 
 function ShopContent() {
   const params = useSearchParams();
+  const router = useRouter();
   const { products } = useProducts();
 
+  const urlCategory = params.get("category");
+  const category = urlCategory || "All";
+
+  const setCategoryFilter = (c: string) => {
+    const sp = new URLSearchParams(params.toString());
+    if (c === "All") sp.delete("category");
+    else sp.set("category", c);
+    const qs = sp.toString();
+    router.replace(qs ? `/shop?${qs}` : "/shop", { scroll: false });
+  };
+
   const [search, setSearch] = useState(params.get("q") || "");
-  const [category, setCategory] = useState<string>(params.get("category") || "All");
   const [sort, setSort] = useState<SortKey>("featured");
   const [maxPrice, setMaxPrice] = useState<number>(2000);
   const [brand, setBrand] = useState<string>("All");
   const [minRating, setMinRating] = useState<number>(0);
   const [inStockOnly, setInStockOnly] = useState(false);
   const [page, setPage] = useState(1);
-
-  const urlCategory = params.get("category");
-  const [prevUrlCategory, setPrevUrlCategory] = useState(urlCategory);
-  if (urlCategory !== prevUrlCategory) {
-    setPrevUrlCategory(urlCategory);
-    setCategory(urlCategory || "All");
-  }
 
   const brands = useMemo(() => {
     const set = new Set<string>();
@@ -248,7 +252,7 @@ function ShopContent() {
               {CATEGORY_FILTERS.map((c) => (
                 <button
                   key={c}
-                  onClick={() => setCategory(c)}
+                  onClick={() => setCategoryFilter(c)}
                   className={cx(
                     "w-full text-left px-3 py-1.5 rounded-lg text-sm transition-colors",
                     category === c ? "bg-primary-50 dark:bg-primary-900/40 text-primary-700 dark:text-primary-400 font-semibold" : "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800"
@@ -296,7 +300,7 @@ function ShopContent() {
               />
               In stock only
             </label>
-            <button onClick={() => { setSearch(""); setCategory("All"); setSort("featured"); setMaxPrice(2000); setBrand("All"); setMinRating(0); setInStockOnly(false); }} className="mt-4 text-xs font-semibold text-primary-600 hover:text-primary-700">
+            <button onClick={() => { setSearch(""); setCategoryFilter("All"); setSort("featured"); setMaxPrice(2000); setBrand("All"); setMinRating(0); setInStockOnly(false); }} className="mt-4 text-xs font-semibold text-primary-600 hover:text-primary-700">
               Reset all filters
             </button>
           </div>
@@ -329,7 +333,7 @@ function ShopContent() {
             <div className="card p-16 text-center dark:text-slate-300">
               <p className="text-slate-500 dark:text-slate-400">No products match your filters.</p>
               <button
-                onClick={() => { setSearch(""); setCategory("All"); setMaxPrice(2000); setBrand("All"); setMinRating(0); setInStockOnly(false); }}
+                onClick={() => { setSearch(""); setCategoryFilter("All"); setMaxPrice(2000); setBrand("All"); setMinRating(0); setInStockOnly(false); }}
                 className="btn-primary mt-4"
               >
                 Clear filters

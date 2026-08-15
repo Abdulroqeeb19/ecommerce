@@ -4959,14 +4959,14 @@
     "id": "cat_k_fan_1",
     "slug": "fan-db-standing",
     "title": "DB - Standing",
-    "category": "Kitchen Utensils",
+    "category": "Electrical Materials and Fittings",
     "group": "Fan",
     "brand": "",
     "price": 0,
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/fan.jpg",
+    "image": "/images/catalog/products/cat_e_fan_1.jpg",
     "gallery": [],
     "shortDescription": "Fan",
     "description": "Fan: DB - Standing. In stock. Quantity available: 1.",
@@ -4983,11 +4983,11 @@
     "featured": false,
     "tags": [
       "fan",
-      "kitchen utensils"
+      "electrical materials and fittings"
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.961Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-15T00:00:00.000Z"
   },
   {
     "id": "cat_e_fan_1",

@@ -3229,14 +3229,14 @@
     "id": "cat_k_clipper_1",
     "slug": "clipper-nova-mini",
     "title": "Nova - Mini",
-    "category": "Kitchen Utensils",
+    "category": "Electrical Materials and Fittings",
     "group": "Clipper",
     "brand": "",
     "price": 0,
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/clipper.jpg",
+    "image": "/images/catalog/products/cat_k_clipper_1.jpg",
     "gallery": [],
     "shortDescription": "Clipper",
     "description": "Clipper: Nova - Mini. In stock. Quantity available: 1.",
@@ -3253,11 +3253,11 @@
     "featured": false,
     "tags": [
       "clipper",
-      "kitchen utensils"
+      "electrical materials and fittings"
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.960Z",
-    "updatedAt": "2026-08-13T05:25:16.468Z"
+    "updatedAt": "2026-08-15T00:00:00.000Z"
   },
   {
     "id": "cat_k_comb_1",
@@ -6052,7 +6052,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/food-warmer.jpg",
+    "image": "/images/catalog/products/cat_k_food-warmer_1.jpg",
     "gallery": [],
     "shortDescription": "Food Warmer",
     "description": "Food Warmer: 2 in 1. In stock. Quantity available: 1.",
@@ -6073,7 +6073,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.963Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-16T04:17:10.273Z"
   },
   {
     "id": "cat_k_food-warmer_2",
@@ -6086,7 +6086,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/food-warmer.jpg",
+    "image": "/images/catalog/products/cat_k_food-warmer_1.jpg",
     "gallery": [],
     "shortDescription": "Food Warmer - Multipurpose",
     "description": "Food Warmer: Master Chef (3.7L) - Multipurpose. In stock. Quantity available: 2.",
@@ -6111,7 +6111,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.963Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-16T04:17:10.287Z"
   },
   {
     "id": "cat_k_food-warmer_3",
@@ -6124,7 +6124,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/food-warmer.jpg",
+    "image": "/images/catalog/products/cat_k_food-warmer_1.jpg",
     "gallery": [],
     "shortDescription": "Food Warmer - 3 in 1",
     "description": "Food Warmer: Master Chef - FF9092 - 3 in 1. In stock. Quantity available: 2.",
@@ -6149,7 +6149,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.963Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-16T04:17:10.287Z"
   },
   {
     "id": "cat_k_food-warmer_4",
@@ -6162,7 +6162,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/food-warmer.jpg",
+    "image": "/images/catalog/products/cat_k_food-warmer_1.jpg",
     "gallery": [],
     "shortDescription": "Food Warmer - 3 in 1",
     "description": "Food Warmer: Rishabh - 3 in 1. In stock. Quantity available: 1.",
@@ -6187,7 +6187,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.963Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-16T04:17:10.287Z"
   },
   {
     "id": "cat_k_food-warmer_5",
@@ -6200,7 +6200,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/food-warmer.jpg",
+    "image": "/images/catalog/products/cat_k_food-warmer_1.jpg",
     "gallery": [],
     "shortDescription": "Food Warmer - 3 in 1",
     "description": "Food Warmer: VTCL - Rose Gold - 3 in 1. In stock. Quantity available: 3.",
@@ -6225,7 +6225,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.963Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-16T04:17:10.287Z"
   },
   {
     "id": "cat_k_food-warmer_6",
@@ -6238,7 +6238,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/food-warmer.jpg",
+    "image": "/images/catalog/products/cat_k_food-warmer_1.jpg",
     "gallery": [],
     "shortDescription": "Food Warmer - 3 in 1",
     "description": "Food Warmer: VTCL - Sassy Classic - 3 in 1. In stock. Quantity available: 1.",
@@ -6263,7 +6263,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.963Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-16T04:17:10.287Z"
   },
   {
     "id": "cat_k_food-warmer_7",
@@ -6276,7 +6276,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/food-warmer.jpg",
+    "image": "/images/catalog/products/cat_k_food-warmer_1.jpg",
     "gallery": [],
     "shortDescription": "Food Warmer - 3 in 1",
     "description": "Food Warmer: VTCL Satin - 3 in 1. In stock. Quantity available: 1.",
@@ -6301,7 +6301,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.963Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-16T04:17:10.287Z"
   },
   {
     "id": "cat_k_fry-pan_1",
@@ -6314,7 +6314,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/fry-pan.jpg",
+    "image": "/images/catalog/products/cat_k_fry-pan_1.jpg",
     "gallery": [],
     "shortDescription": "Fry Pan - Steel (Non-Stick)",
     "description": "Fry Pan: Air Fry Pan - Steel (Non-Stick). In stock. Quantity available: 1.",
@@ -6339,7 +6339,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.963Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-16T04:17:10.287Z"
   },
   {
     "id": "cat_k_fry-pan_2",
@@ -6352,7 +6352,7 @@
     "stock": 5,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/fry-pan.jpg",
+    "image": "/images/catalog/products/cat_k_fry-pan_1.jpg",
     "gallery": [],
     "shortDescription": "Fry Pan",
     "description": "Fry Pan: Manna - Stainless. In stock. Quantity available: 5.",
@@ -6373,7 +6373,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.963Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-16T04:17:10.287Z"
   },
   {
     "id": "cat_k_fry-pan_3",
@@ -6386,7 +6386,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/fry-pan.jpg",
+    "image": "/images/catalog/products/cat_k_fry-pan_1.jpg",
     "gallery": [],
     "shortDescription": "Fry Pan - With Cover",
     "description": "Fry Pan: Picasso - Aluminium - With Cover. In stock. Quantity available: 2.",
@@ -6411,7 +6411,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.963Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-16T04:17:10.287Z"
   },
   {
     "id": "cat_k_fry-pan_4",
@@ -6424,7 +6424,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/fry-pan.jpg",
+    "image": "/images/catalog/products/cat_k_fry-pan_1.jpg",
     "gallery": [],
     "shortDescription": "Fry Pan - Without Cover - Big",
     "description": "Fry Pan: Picasso - Aluminium - Without Cover - Big. In stock. Quantity available: 2.",
@@ -6449,7 +6449,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.963Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-16T04:17:10.287Z"
   },
   {
     "id": "cat_k_fry-pan_5",
@@ -6462,7 +6462,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/fry-pan.jpg",
+    "image": "/images/catalog/products/cat_k_fry-pan_1.jpg",
     "gallery": [],
     "shortDescription": "Fry Pan - Without Cover - Small",
     "description": "Fry Pan: Picasso - Aluminium - Without Cover - Small. In stock. Quantity available: 2.",
@@ -6487,7 +6487,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.963Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-16T04:17:10.287Z"
   },
   {
     "id": "cat_k_fry-pan_6",
@@ -6500,7 +6500,7 @@
     "stock": 5,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/fry-pan.jpg",
+    "image": "/images/catalog/products/cat_k_fry-pan_1.jpg",
     "gallery": [],
     "shortDescription": "Fry Pan - With Cover",
     "description": "Fry Pan: Picasso - Non Stick - With Cover. In stock. Quantity available: 5.",
@@ -6525,7 +6525,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.963Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-16T04:17:10.287Z"
   },
   {
     "id": "cat_k_gas-cylinder_1",

@@ -15118,40 +15118,6 @@
     "updatedAt": "2026-08-13T05:25:16.472Z"
   },
   {
-    "id": "cat_k_toy_1",
-    "slug": "toy-fruits-and-vegetables",
-    "title": "Fruits and Vegetables",
-    "category": "Kitchen Utensils",
-    "group": "Toy",
-    "brand": "",
-    "price": 0,
-    "stock": 1,
-    "rating": 0,
-    "reviews": 0,
-    "image": "/images/catalog/web/toy.jpg",
-    "gallery": [],
-    "shortDescription": "Toy",
-    "description": "Toy: Fruits and Vegetables. In stock. Quantity available: 1.",
-    "specs": [
-      {
-        "label": "Model",
-        "value": "Fruits and Vegetables"
-      },
-      {
-        "label": "Available",
-        "value": "1"
-      }
-    ],
-    "featured": false,
-    "tags": [
-      "toy",
-      "kitchen utensils"
-    ],
-    "miniStore": false,
-    "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
-  },
-  {
     "id": "cat_k_tray_1",
     "slug": "tray-3-in-1",
     "title": "3 in 1",

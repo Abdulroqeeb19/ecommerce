@@ -5,13 +5,13 @@ import Image from "next/image";
 import { Plus, Pencil, Trash2, X, ImageUp, Save, RefreshCw } from "lucide-react";
 import { api } from "@/lib/api";
 import { useToast } from "@/store/toast";
-import { CATALOG_CATEGORY_KEYS } from "@/lib/catalogCategories";
+import { SHOP_CATEGORY_NAMES } from "@/lib/catalogCategories";
 import { CATALOG_ITEMS } from "@/lib/brand";
 import { fileToCompressedDataUrl } from "@/lib/image";
 import type { CatalogItem } from "@/lib/types";
 import { cx } from "@/lib/utils";
 
-const CATEGORIES = Array.from(new Set(Object.values(CATALOG_CATEGORY_KEYS).flat())).sort();
+const CATEGORIES = SHOP_CATEGORY_NAMES;
 
 const EMPTY: Omit<CatalogItem, "id"> = {
   name: "",

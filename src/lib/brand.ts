@@ -1,3 +1,6 @@
+import { SHOP_CATEGORIES } from "./catalogCategories";
+import type { CategoryCard } from "./types";
+
 export const BRAND_NAME = "AYINDEDUNNY ENTERPRISE";
 
 export const BRAND_EMAIL = "naimatoriyomi@yahoo.com";
@@ -43,16 +46,21 @@ export const CATALOG_ITEMS: CatalogItemShape[] = [
   { id: "cat_blender", name: "BLENDER", tag: "Blender", category: "Home Essentials", image: CATALOG_IMAGE("blender"), sortOrder: 3, active: true },
   { id: "cat_spoon", name: "SPOON", tag: "Spoon", category: "Home Essentials", image: CATALOG_IMAGE("spoon"), sortOrder: 4, active: true },
   { id: "cat_cooler", name: "COOLER", tag: "Cooler", category: "Home Essentials", image: CATALOG_IMAGE("cooler"), sortOrder: 5, active: true },
-  { id: "cat_shoe", name: "SHOE", tag: "Shoe", category: "Babies Wears and Footwear", image: CATALOG_IMAGE("shoe"), sortOrder: 6, active: true },
-  { id: "cat_bag", name: "BAG", tag: "Bag", category: "Bags and Sundries", image: CATALOG_IMAGE("bag"), sortOrder: 7, active: true },
+  { id: "cat_shoe", name: "SHOE", tag: "Shoe", category: "Babies Wears", image: CATALOG_IMAGE("shoe"), sortOrder: 6, active: true },
+  { id: "cat_bag", name: "BAG", tag: "Bag", category: "Babies Wears", image: CATALOG_IMAGE("bag"), sortOrder: 7, active: true },
   { id: "cat_singlet", name: "SINGLET", tag: "Singlet", category: "Babies Wears", image: CATALOG_IMAGE("singlet"), sortOrder: 8, active: true },
   { id: "cat_babies_wear", name: "BABIES WEAR", tag: "Babies Wear", category: "Babies Wears", image: CATALOG_IMAGE("babies-wear"), sortOrder: 9, active: true },
-  { id: "cat_solar", name: "SOLAR", tag: "Solar", category: "Electrical Fittings", image: CATALOG_IMAGE("solar"), sortOrder: 10, active: true },
-  { id: "cat_sockets", name: "SOCKETS", tag: "Sockets", category: "Electrical Fittings", image: CATALOG_IMAGE("sockets"), sortOrder: 11, active: true }
+  { id: "cat_solar", name: "SOLAR", tag: "Solar", category: "Electrical Materials and Fittings", image: CATALOG_IMAGE("solar"), sortOrder: 10, active: true },
+  { id: "cat_sockets", name: "SOCKETS", tag: "Sockets", category: "Electrical Materials and Fittings", image: CATALOG_IMAGE("sockets"), sortOrder: 11, active: true }
 ];
 
-export const DEFAULT_CATEGORY_CARDS = [
-  { id: "card_babies", name: "BABIES WEARS", tagline: "Comfort for your little ones", href: "/shop?category=Babies%20Wears", image: "/images/catalog/babies-wear.png", icon: "baby", sortOrder: 1, active: true },
-  { id: "card_electrical", name: "ELECTRICAL MATERIALS AND FITTINGS", tagline: "Sockets, solar and fittings", href: "/shop?category=Electrical%20Materials%20and%20Fittings", image: "/images/catalog/sockets.png", icon: "plug", sortOrder: 2, active: true },
-  { id: "card_kitchen", name: "HOME ESSENTIALS", tagline: "Home and cooking essentials", href: "/shop?category=Home%20Essentials", image: "/images/catalog/pot.png", icon: "utensils", sortOrder: 3, active: true }
-];
+export const DEFAULT_CATEGORY_CARDS: CategoryCard[] = SHOP_CATEGORIES.map((c) => ({
+  id: c.cardId,
+  name: c.name.toUpperCase(),
+  tagline: c.tagline,
+  href: c.href,
+  image: c.image,
+  icon: c.iconKey,
+  sortOrder: c.order,
+  active: true
+}));

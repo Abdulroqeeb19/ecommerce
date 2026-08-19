@@ -8,17 +8,14 @@ import { useCart } from "@/store/cart";
 import { useWishlist } from "@/store/wishlist";
 import { useAuth } from "@/store/auth";
 import { formatPrice } from "@/lib/utils";
+import { SHOP_CATEGORIES } from "@/lib/catalogCategories";
 import { CartDrawer } from "./CartDrawer";
 
-const SHOP_CATEGORIES = [
-  { href: "/shop?category=Babies%20Wears", label: "Babies Wears" },
-  { href: "/shop?category=Electrical%20Materials%20and%20Fittings", label: "Electrical Materials and Fittings" },
-  { href: "/shop?category=Home%20Essentials", label: "Home Essentials" }
-];
+const SHOP_CATEGORY_LINKS = SHOP_CATEGORIES.map((c) => ({ href: c.href, label: c.name }));
 
 const NAV: { href: string; label: string; children?: { href: string; label: string }[] }[] = [
   { href: "/", label: "HOME" },
-  { href: "/shop", label: "SHOP", children: SHOP_CATEGORIES },
+  { href: "/shop", label: "SHOP", children: SHOP_CATEGORY_LINKS },
   { href: "/school", label: "MINI-STORE FOR SCHOOLS" },
   { href: "/contact", label: "CONTACT" }
 ];

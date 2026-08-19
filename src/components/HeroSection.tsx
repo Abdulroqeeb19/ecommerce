@@ -7,9 +7,12 @@ import { ArrowRight, ShieldCheck, Sparkles, Star } from "lucide-react";
 import { useCurrency } from "@/store/currency";
 import { CURRENCY_RATES } from "@/lib/utils";
 import { SLOGAN, MOTTO } from "@/lib/brand";
+import { SHOP_CATEGORY_NAMES as CATEGORY_ORDER } from "@/lib/catalogCategories";
 import { useProducts } from "@/lib/catalog";
 import { cx } from "@/lib/utils";
 import type { Product } from "@/lib/types";
+
+/** Display order for the main shop categories (Babies, then Electrical, then Home Essentials). */
 
 interface HeroItem {
   id: string;
@@ -23,9 +26,6 @@ interface HeroItem {
   save: number;
   callouts: { label: string; tone: string }[];
 }
-
-/** Display order for the main shop categories (Babies, then Electrical, then Home Essentials). */
-const CATEGORY_ORDER = ["Babies Wears", "Electrical Materials and Fittings", "Home Essentials"];
 
 /** Fallback showcase used only while there are no products in the local catalog. */
 const FALLBACK_HERO_ITEMS: HeroItem[] = [

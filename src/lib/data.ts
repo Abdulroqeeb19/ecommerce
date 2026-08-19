@@ -1,5 +1,6 @@
 ﻿import type { Product } from "./types";
 import { SCHOOL_SHOP_ITEMS } from "./schoolItems";
+import { SHOP_CATEGORIES } from "./catalogCategories";
 
 const cimg = (name: string) => `/images/catalog/${name}.png`;
 
@@ -138,10 +139,4 @@ export const SEED_PRODUCTS: Product[] = [
   ...SCHOOL_SHOP_ITEMS
 ];
 
-export const QUICK_FILTER_TABS = ["All", "Home Essentials", "Babies Wears", "Electrical Materials and Fittings"] as const;
-
-export const CAROUSEL_CATEGORIES = [
-  { name: "HOME ESSENTIALS", icon: "utensils", tagline: "Pots, blenders and more", slug: "home-essentials" },
-  { name: "BABIES WEARS", icon: "baby", tagline: "Comfort for little ones", slug: "babies" },
-  { name: "ELECTRICAL MATERIALS AND FITTINGS", icon: "plug", tagline: "Sockets, solar and fittings", slug: "electrical" }
-] as const;
+export const QUICK_FILTER_TABS = ["All", ...SHOP_CATEGORIES.map((c) => c.name)] as const;

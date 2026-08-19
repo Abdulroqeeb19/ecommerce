@@ -4,13 +4,14 @@ import { useMemo } from "react";
 import Link from "next/link";
 import { Zap, ArrowRight, PackageCheck } from "lucide-react";
 import { useProducts } from "@/lib/catalog";
+import { SHOP_CATEGORIES } from "@/lib/catalogCategories";
 import { CatalogImage } from "./CatalogImage";
 
-const CATEGORY_ORDER: { label: string; href: string; badge: string }[] = [
-  { label: "Babies Wears", href: "/shop?category=Babies%20Wears", badge: "Babies Wears" },
-  { label: "Electrical Materials and Fittings", href: "/shop?category=Electrical%20Materials%20and%20Fittings", badge: "Electrical Fittings" },
-  { label: "Home Essentials", href: "/shop?category=Home%20Essentials", badge: "Home Essentials" }
-];
+const CATEGORY_ORDER: { label: string; href: string; badge: string }[] = SHOP_CATEGORIES.map((c) => ({
+  label: c.name,
+  href: c.href,
+  badge: c.name
+}));
 
 const MAX_PER_CATEGORY = 8;
 

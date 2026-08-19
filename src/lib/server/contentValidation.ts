@@ -1,4 +1,5 @@
 import type { CatalogItem, CategoryCard } from "../types";
+import { canonicalCategory, SHOP_CATEGORY_NAMES } from "../catalogCategories";
 
 const MAX_NAME = 120;
 const MAX_TEXT = 500;
@@ -44,6 +45,10 @@ export function validateCatalogItemInput(raw: unknown): { value: CatalogItem; er
   if (!name || name.length > MAX_NAME) return { value: {} as CatalogItem, error: "Item name is required (max 120 chars)" };
   const category = typeof b.category === "string" ? b.category.trim().slice(0, 80) : "";
   if (!category) return { value: {} as CatalogItem, error: "Category is required" };
+  if (!SHOP_CATEGORY_NAMES.includes(category) && canonicalCategory(category) === category) {
+    return { value: {} as CatalogItem, error: `Category must be one of: ${SHOP_CATEGORY_NAMES.join(", ")}` };
+  }
+  const canonicalCategoryName = canonicalCategory(category);
 
   const image = cleanImage(b.image);
   if (!image) return { value: {} as CatalogItem, error: "Image must be a valid /images/ path, absolute URL, or base64 data URL" };
@@ -59,7 +64,7 @@ export function validateCatalogItemInput(raw: unknown): { value: CatalogItem; er
     id: typeof b.id === "string" && b.id ? b.id : undefined as unknown as string,
     name,
     tag: typeof b.tag === "string" ? b.tag.trim().slice(0, 120) : "",
-    category,
+    category: canonicalCategoryName,
     image,
     price,
     sortOrder: Number.isFinite(Number(b.sortOrder)) ? Math.floor(Number(b.sortOrder)) : 0,

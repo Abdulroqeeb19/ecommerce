@@ -7,6 +7,7 @@ import { db, queueOperation, dropPendingProductOps } from "@/lib/db";
 import { useToast } from "@/store/toast";
 import { useProducts } from "@/lib/catalog";
 import { CATEGORIES, MINI_STORE_CATEGORIES, SUPPLY_TYPE_BY_CATEGORY } from "@/lib/types";
+import { SHOP_CATEGORY_NAMES as CATEGORY_ORDER } from "@/lib/catalogCategories";
 import { cx, formatPrice, formatNaira, slugify, uid } from "@/lib/utils";
 import { fileToCompressedDataUrl } from "@/lib/image";
 import { syncAll, pullCatalog } from "@/lib/sync";
@@ -37,13 +38,6 @@ interface FormState {
 }
 
 const isMiniCategory = (c: string) => (MINI_STORE_CATEGORIES as readonly string[]).includes(c);
-
-/** Display order for the main shop categories (Babies first, then Electrical, then Home Essentials). */
-const CATEGORY_ORDER: string[] = [
-  "Babies Wears",
-  "Electrical Materials and Fittings",
-  "Home Essentials"
-];
 
 const categoryRank = (c: string) => {
   const i = CATEGORY_ORDER.indexOf(c);

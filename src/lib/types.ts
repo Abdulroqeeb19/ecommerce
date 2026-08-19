@@ -1,29 +1,15 @@
-export type Category =
-  | "Laptops and Notebooks"
-  | "Smartphones and Accessories"
-  | "Printers and Scanners"
-  | "Office Ergonomics"
-  | "Audio and Headphones"
-  | "Monitors and Displays"
-  | "Networking and Storage"
-  | "Power and UPS"
-  | "Home Essentials"
-  | "Electrical Materials and Fittings"
-  | "Babies Wears";
-
-export const CATEGORIES: Category[] = [
-  "Laptops and Notebooks",
-  "Smartphones and Accessories",
-  "Printers and Scanners",
-  "Office Ergonomics",
-  "Audio and Headphones",
-  "Monitors and Displays",
-  "Networking and Storage",
-  "Power and UPS",
-  "Home Essentials",
+/**
+ * Shop categories for the catalogue. These mirror SHOP_CATEGORIES in
+ * catalogCategories.ts — the shop only carries Babies Wears, Electrical
+ * Materials and Fittings and Home Essentials product lines.
+ */
+export const CATEGORIES = [
+  "Babies Wears",
   "Electrical Materials and Fittings",
-  "Babies Wears"
-];
+  "Home Essentials"
+] as const;
+
+export type Category = (typeof CATEGORIES)[number];
 
 export interface ProductSpec {
   label: string;

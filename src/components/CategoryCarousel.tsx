@@ -16,6 +16,7 @@ import {
   type LucideIcon
 } from "lucide-react";
 import { DEFAULT_CATEGORY_CARDS } from "@/lib/brand";
+import { CATEGORY_CARD_IDS } from "@/lib/catalogCategories";
 import { api } from "@/lib/api";
 import type { CategoryCard } from "@/lib/types";
 
@@ -29,7 +30,7 @@ const ICONS: Record<string, LucideIcon> = {
   baby: Baby
 };
 
-const ACTIVE_CATEGORY_IDS = ["card_babies", "card_electrical", "card_kitchen"];
+const ACTIVE_CATEGORY_IDS = CATEGORY_CARD_IDS;
 
 const byOrder = (a: { id: string }, b: { id: string }) =>
   ACTIVE_CATEGORY_IDS.indexOf(a.id) - ACTIVE_CATEGORY_IDS.indexOf(b.id);

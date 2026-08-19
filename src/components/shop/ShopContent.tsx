@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState, type MouseEvent } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { SlidersHorizontal, Search, X, Sparkles } from "lucide-react";
 import { useProducts } from "@/lib/catalog";
+import { canonicalCategory, SHOP_CATEGORIES } from "@/lib/catalogCategories";
 import { ProductCard } from "@/components/ProductCard";
 import { VariantGroupCard } from "@/components/VariantGroupCard";
 import { HoverSelect } from "@/components/HoverSelect";
@@ -23,10 +24,10 @@ const SORTS: { key: SortKey; label: string }[] = [
   { key: "rating", label: "Top Rated" }
 ];
 
-const CATEGORY_FILTERS = ["All", "Babies Wears", "Electrical Materials and Fittings", "Home Essentials"];
+const CATEGORY_FILTERS = ["All", ...SHOP_CATEGORIES.map((c) => c.name)];
 
 /** Display order for the main shop categories (Babies first, then Electrical, then Home Essentials). */
-const CATEGORY_ORDER: string[] = ["Babies Wears", "Electrical Materials and Fittings", "Home Essentials"];
+const CATEGORY_ORDER: string[] = SHOP_CATEGORIES.map((c) => c.name);
 
 const RATING_FILTERS = [
   { value: 0, label: "Any rating" },
@@ -96,9 +97,11 @@ export function ShopContent() {
   // shared with links from the header/footer/carousels. The page is
   // server-rendered per request (see shop/page.tsx dynamic config), so these
   // search params are populated even on a hard refresh.
+  // Canonicalise the category from the URL: legacy "Kitchen Utensils" links and
+  // any legacy catalogue labels (e.g. "Electrical Fittings") resolve to their
+  // canonical shop category, and unknown values fall back to filtering nothing.
   const rawCategory = params.get("category") || "All";
-  // Backwards-compatible: the old "Kitchen Utensils" category was renamed to "Home Essentials".
-  const category = rawCategory === "Kitchen Utensils" ? "Home Essentials" : rawCategory;
+  const category = canonicalCategory(rawCategory === "Kitchen Utensils" ? "Home Essentials" : rawCategory);
 
   const setCategoryFilter = (c: string) => {
     const sp = new URLSearchParams(params.toString());

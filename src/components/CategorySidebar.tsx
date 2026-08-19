@@ -1,13 +1,19 @@
 ﻿"use client";
 
 import Link from "next/link";
-import { Menu, Baby, Plug, Utensils, ChevronRight } from "lucide-react";
+import { Menu, Baby, Plug, Utensils, Package, ChevronRight, type LucideIcon } from "lucide-react";
+import { SHOP_CATEGORIES } from "@/lib/catalogCategories";
 
-const SIDEBAR_CATEGORIES = [
-  { name: "Babies Wears", icon: Baby },
-  { name: "Electrical Materials and Fittings", icon: Plug },
-  { name: "Home Essentials", icon: Utensils }
-];
+const ICONS: Record<string, LucideIcon> = {
+  baby: Baby,
+  plug: Plug,
+  utensils: Utensils
+};
+
+const SIDEBAR_CATEGORIES = SHOP_CATEGORIES.map((c) => ({
+  name: c.name,
+  icon: ICONS[c.iconKey] || Package
+}));
 
 export function CategorySidebar() {
   return (

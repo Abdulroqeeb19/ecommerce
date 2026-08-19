@@ -101,15 +101,25 @@ export default function AccountPage() {
             </div>
             <div>
               <label className="label">Password</label>
-              <input type="password" className="input" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" required minLength={6} />
+              <input
+                type="password"
+                className="input"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="••••••••"
+                required
+                minLength={mode === "register" ? 12 : 1}
+              />
+              {mode === "register" && (
+                <p className="mt-1 text-xs text-slate-400 dark:text-slate-500">
+                  At least 12 characters with an uppercase letter, a lowercase letter and a number.
+                </p>
+              )}
             </div>
             <button type="submit" disabled={busy} className="btn-primary w-full !py-3">
               {busy ? "Please wait..." : mode === "login" ? "Login" : "Create Account"}
             </button>
           </form>
-          <p className="mt-4 text-xs text-slate-400 dark:text-slate-500 text-center">
-            Demo accounts: admin@gadgetstore.com / Admin@12345 · customer@gadgetstore.com / Cust!B2CSRE8NqH2meDzS
-          </p>
         </div>
       </div>
     );

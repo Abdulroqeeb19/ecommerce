@@ -149,6 +149,12 @@ export async function ensureBootstrap() {
   if (isProd && !process.env.ADMIN_PASSWORD) {
     throw new Error("ADMIN_PASSWORD must be set in production");
   }
+  if (isProd && adminPassword.length < 16) {
+    throw new Error("ADMIN_PASSWORD must be at least 16 characters in production");
+  }
+  if (isProd && process.env.MANAGER_PASSWORD && process.env.MANAGER_PASSWORD.length < 12) {
+    throw new Error("MANAGER_PASSWORD must be at least 12 characters in production");
+  }
   if (!isProd && adminPassword === "Admin@12345") {
     console.warn("[security] Default admin password is in use. Set ADMIN_PASSWORD for any shared deployment.");
   }

@@ -1,0 +1,35 @@
+name: CI Security Gate
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+
+jobs:
+  security:
+    name: audit · typecheck · lint · test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Production dependency audit (fail on high+)
+        run: npm audit --omit=dev --audit-level=high
+
+      - name: Type check
+        run: npx tsc --noEmit
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Tests
+        run: npm test

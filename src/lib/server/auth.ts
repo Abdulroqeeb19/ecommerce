@@ -4,14 +4,17 @@ import { getSessionUser, SESSION_TTL_MS } from "@/lib/server/store";
 import type { User } from "@/lib/types";
 
 export function authCookieName() {
-  return "gh_session";
+  // The __Host- prefix (Secure-only cookies) is used in production to bind the
+  // cookie to the origin host and block cross-site cookies.
+  return process.env.NODE_ENV === "production" ? "__Host-gh_session" : "gh_session";
 }
 
 export function sessionCookieOptions() {
   const production = process.env.NODE_ENV === "production";
   return {
     httpOnly: true,
-    sameSite: production ? "none" as const : "lax" as const,
+    // Lax (not None): the app is same-origin; None would widen the CSRF surface.
+    sameSite: "lax" as const,
     secure: production,
     path: "/",
     maxAge: Math.floor(SESSION_TTL_MS / 1000)

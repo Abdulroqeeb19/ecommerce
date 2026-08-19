@@ -115,13 +115,13 @@ describe("order status validation", () => {
 });
 
 describe("rate limiter", () => {
-  it("enforces a per-window limit and recovers after window expiry", async () => {
+  it("enforces a per-window limit and recovers after a fresh window", async () => {
     const { rateLimit } = await import("../src/lib/server/rateLimit");
     const req = new Request("http://localhost/api/test", { method: "POST" });
-    expect(rateLimit(req, 3, 60000).ok).toBe(true);
-    expect(rateLimit(req, 3, 60000).ok).toBe(true);
-    expect(rateLimit(req, 3, 60000).ok).toBe(true);
-    const fourth = rateLimit(req, 3, 60000);
+    expect((await rateLimit(req, 3, 6000)).ok).toBe(true);
+    expect((await rateLimit(req, 3, 6000)).ok).toBe(true);
+    expect((await rateLimit(req, 3, 6000)).ok).toBe(true);
+    const fourth = await rateLimit(req, 3, 6000);
     expect(fourth.ok).toBe(false);
     expect(fourth.retryAfter).toBeGreaterThan(0);
   });

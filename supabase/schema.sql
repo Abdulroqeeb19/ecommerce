@@ -131,6 +131,39 @@ create table if not exists public.settings (
   "updatedAt" text
 );
 
+-- Rate limiting (distributed, persistent counters for Vercel/serverless)
+create table if not exists public.rate_limits (
+  key text primary key,
+  count integer not null default 0,
+  reset_at bigint not null,
+  "updatedAt" text not null default (now())::text
+);
+create index if not exists rate_limits_reset_idx on public.rate_limits (reset_at);
+
+-- Atomically bumps a rate-limit counter, resetting expired windows, and reports
+-- whether the request is allowed. Called by the app via `sb.rpc("bump_rate_limit")`.
+create or replace function public.bump_rate_limit(p_key text, p_window_ms bigint, p_limit integer)
+returns table(ok boolean, retry_after bigint) language plpgsql as $$
+declare
+  v_count integer;
+  v_reset bigint;
+  v_now bigint := (extract(epoch from now()) * 1000)::bigint;
+begin
+  insert into public.rate_limits (key, count, reset_at, "updatedAt")
+  values (p_key, 1, v_now + p_window_ms, (now())::text)
+  on conflict (key) do update
+    set count = case when public.rate_limits.reset_at < v_now then 1 else public.rate_limits.count + 1 end,
+        reset_at = case when public.rate_limits.reset_at < v_now then v_now + p_window_ms else public.rate_limits.reset_at end,
+        "updatedAt" = (now())::text
+  returning count, reset_at into v_count, v_reset;
+
+  if v_count > p_limit then
+    return query select false, v_reset - v_now;
+  else
+    return query select true, 0::bigint;
+  end if;
+end; $$;
+
 -- Shop-by-category cards (admin-editable home page carousel)
 create table if not exists public.category_cards (
   id text primary key,
@@ -216,6 +249,8 @@ grant all on table public.coupons to service_role;
 grant all on table public.wishlists to service_role;
 grant all on table public.deleted_products to service_role;
 grant all on table public.settings to service_role;
+grant all on table public.rate_limits to service_role;
+grant execute on function public.bump_rate_limit(text, bigint, integer) to service_role;
 grant all on table public.category_cards to service_role;
 grant all on table public.catalog_items to service_role;
 grant all on table public.image_import_jobs to service_role;

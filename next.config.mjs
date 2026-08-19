@@ -15,6 +15,7 @@ const csp = isProd
       "frame-ancestors 'self' https://t.me https://telegram.org https://*.telegram.org",
       "object-src 'none'",
       "form-action 'self'",
+      "upgrade-insecure-requests",
       "img-src 'self' data: blob:" + (supabaseImg ? ` https://${supabaseImg}` : ""),
       "font-src 'self' data:",
       "style-src 'self' 'unsafe-inline'",
@@ -43,6 +44,8 @@ const securityHeaders = [
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
   { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+  { key: "Cross-Origin-Resource-Policy", value: "same-origin" },
+  { key: "X-Frame-Options", value: "DENY" },
   { key: "X-DNS-Prefetch-Control", value: "off" },
   { key: "Content-Security-Policy", value: csp }
 ];

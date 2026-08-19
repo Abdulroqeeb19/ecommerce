@@ -3,7 +3,7 @@ import { validateCoupon } from "@/lib/server/store";
 import { rateLimit } from "@/lib/server/rateLimit";
 
 export async function POST(req: Request) {
-  const rl = rateLimit(req, 20);
+  const rl = await rateLimit(req, 20);
   if (!rl.ok) return NextResponse.json({ error: "Too many requests. Try again later." }, { status: 429 });
 
   let body: unknown;

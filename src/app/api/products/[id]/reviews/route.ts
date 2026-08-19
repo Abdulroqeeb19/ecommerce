@@ -18,7 +18,7 @@ export async function POST(req: Request, { params }: Ctx) {
   const user = await currentUser();
   if (!user) return NextResponse.json({ error: "Authentication required" }, { status: 401 });
 
-  const rl = rateLimit(req, 10);
+  const rl = await rateLimit(req, 10);
   if (!rl.ok) return NextResponse.json({ error: "Too many requests. Try again later." }, { status: 429 });
 
   const { id } = await params;

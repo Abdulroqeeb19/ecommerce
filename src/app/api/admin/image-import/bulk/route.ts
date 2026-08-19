@@ -16,7 +16,7 @@ export async function GET(req: Request) {
   const user = await currentUser();
   const denied = requireRole(user, ["admin"]);
   if (denied) return denied;
-  const rl = rateLimit(req, 60);
+  const rl = await rateLimit(req, 60);
   if (!rl.ok) return NextResponse.json({ error: "Too many requests. Try again later." }, { status: 429 });
 
   const log = await getBulkImportLog();
@@ -36,7 +36,7 @@ export async function POST(req: Request) {
   const user = await currentUser();
   const denied = requireRole(user, ["admin"]);
   if (denied) return denied;
-  const rl = rateLimit(req, 30);
+  const rl = await rateLimit(req, 30);
   if (!rl.ok) return NextResponse.json({ error: "Too many requests. Try again later." }, { status: 429 });
 
   const form = await req.formData();

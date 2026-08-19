@@ -4,7 +4,8 @@ Run every item before any production deployment. Check each box or document why 
 
 ## Environment & Secrets
 - [ ] `NODE_ENV=production` set on the host
-- [ ] `ADMIN_PASSWORD` set to a strong random value (prod build refuses to boot without it)
+- [ ] `ADMIN_PASSWORD` set to a strong value ≥ 16 chars (prod build refuses to boot otherwise)
+- [ ] `MANAGER_PASSWORD` set to a strong value ≥ 12 chars
 - [ ] Demo manager/customer accounts removed or passwords rotated (`MANAGER_EMAILS`, demo seeds)
 - [ ] All notification tokens real: `TELEGRAM_BOT_TOKEN`, `WHATSAPP_TOKEN`, `SENDGRID_API_KEY`, `TWILIO_AUTH_TOKEN`
 - [ ] No real secrets in `.env.example`, `.gitignore` covers `.env*` and `data/*`
@@ -19,13 +20,15 @@ Run every item before any production deployment. Check each box or document why 
 
 ## Headers & CSP
 - [ ] CSP served and page still functions (test every route)
-- [ ] `X-Content-Type-Options: nosniff`, `Referrer-Policy`, `Permissions-Policy`, `X-Frame-Options` present
+- [ ] `X-Content-Type-Options: nosniff`, `Referrer-Policy`, `Permissions-Policy`, `X-Frame-Options`, `Cross-Origin-Resource-Policy` present
 - [ ] Remove dev-mode `unsafe-eval`/`unsafe-inline` from CSP if a production profile is feasible
 
 ## Authentication & Authorization
-- [ ] Login/registration rate limited
+- [ ] Login/registration rate limited (IP) AND per-account lockout after 5 failed attempts (15 min)
+- [ ] Rate limiting is persistent (Supabase `rate_limits` table) — apply `supabase/schema.sql` with the new table + `bump_rate_limit` RPC
 - [ ] Passwords hashed (bcrypt, cost ≥ 10) — no plaintext anywhere
-- [ ] Sessions: httpOnly + SameSite + Secure, server-side store, expiration enforced
+- [ ] Registration policy enforced: min 12 chars + upper/lower/number
+- [ ] Sessions: httpOnly + SameSite=Lax + Secure + `__Host-` prefix in prod, server-side store, expiration enforced
 - [ ] Admin and school-mini-store pages enforce RBAC server-side (no client-role trust)
 - [ ] Default credentials removed from `data/db.json`
 
@@ -41,8 +44,9 @@ Run every item before any production deployment. Check each box or document why 
 - [ ] No CVV/raw card storage
 
 ## Dependencies & Build
-- [ ] `npm audit` — zero critical/high (except documented `xlsx`; replace it)
+- [ ] `npm audit --omit=dev` — zero high/critical (CI gate enforces this on push/PR; see `.github/workflows/ci-security.yml`)
 - [ ] `npx tsc --noEmit` clean
+- [ ] `npm run lint` clean
 - [ ] `npx next build` succeeds
 - [ ] Pin versions in `package.json` / lockfile committed
 

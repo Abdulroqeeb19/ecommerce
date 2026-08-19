@@ -44,7 +44,7 @@ export async function PUT(req: Request) {
   const denied = requireRole(user, ["admin"]);
   if (denied) return denied;
 
-  const rl = rateLimit(req, 30);
+  const rl = await rateLimit(req, 30);
   if (!rl.ok) return NextResponse.json({ error: "Too many requests. Try again later." }, { status: 429 });
 
   let body: unknown;

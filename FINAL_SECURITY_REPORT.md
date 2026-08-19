@@ -31,14 +31,16 @@ brute force, IDOR (future order history), secrets exposure, vulnerable component
 
 ## Security Controls
 - Crypto-random session tokens (32-byte) with server-side expiry.
-- bcrypt password hashing (cost 10–12).
-- httpOnly + SameSite=Lax + Secure(prod) cookies.
+- bcrypt password hashing (cost 12).
+- httpOnly + SameSite=Lax + Secure(prod) cookies with `__Host-` prefix in production.
 - Server-side RBAC (`requireRole`) on all protected APIs.
-- Rate limiting on login/register (10/min), orders (30/min), writes (60/min).
-- Server-side validation of orders (items, qty, stock, prices, status, customer)
-  and products (title, price, stock, specs, tags).
-- Security headers: CSP, HSTS(prod), nosniff, frame, referrer, permissions, COOP.
+- Rate limiting on login/register (10/min), orders (30/min), writes (60/min) — stored in Supabase `rate_limits` (atomic `bump_rate_limit` RPC), with an in-memory fallback for local mode. Distributed and persistent across serverless instances.
+- Per-account brute-force lockout: 5 failed logins → account locked 15 minutes (counters cleared on success).
+- Registration password policy: ≥ 12 chars with uppercase, lowercase and a number. Production bootstrap refuses `ADMIN_PASSWORD` < 16 and `MANAGER_PASSWORD` < 12.
+- Server-side validation of orders (items, qty, stock, prices, status, customer) and products (title, price, stock, specs, tags).
+- Security headers: CSP, HSTS(prod), nosniff, frame, referrer, permissions, COOP, CORP, `X-Frame-Options: DENY`, `upgrade-insecure-requests` (prod).
 - Secret hygiene: `.env*` and `data/*` gitignored; `.env.example` placeholders.
+- Automated CI security gate: `npm audit --omit=dev` (fail on high+), `tsc`, lint, tests on push/PR (`.github/workflows/ci-security.yml`).
 
 ## Authentication
 Cookie sessions, bcrypt, rate-limited login/register, password ≥ 8 chars, UUID user
@@ -87,8 +89,7 @@ App expects a reverse proxy to terminate TLS. Caddy/Nginx/Vercel options,
 renewal, HSTS, and DNS checklist in `SSL_DEPLOYMENT.md`.
 
 ## Dependency Security
-`npm audit --omit=dev` reduced 4 high → 1 high. Patched bundled `postcss` and
-`sharp` via overrides. `xlsx` has no fix (see below).
+`npm audit --omit=dev` now reports **0 vulnerabilities** after `npm audit fix` (patched `dompurify` and the transitive `nanoid` in `postcss`). CI enforces failing on any high+ advisory.
 
 ## Backup Strategy
 Daily encrypted backups of `data/db.json`, retention + verification steps in
@@ -118,23 +119,22 @@ order validation, price tampering, overselling, rate limiting, and registration.
 | Demo admin/manager/customer accounts | High | **Residual (demo)** | Rotate before shared use |
 
 ## Remaining Risks
-- `xlsx@0.18.5` — no patched npm release; replace with SheetJS CE CDN build or
-  `exceljs` before production.
-- JSON-file DB: single-writer; not safe for multi-instance/serverless persistence.
-- In-memory rate limiting resets on restart and is per-process.
-- No MFA, password reset, or account lockout.
+- JSON-file DB: single-writer; not safe for multi-instance/serverless persistence. (Supabase mode recommended for production; the app already supports it.)
+- No MFA, password reset, or account lockout-based session invalidation.
 - No payment gateway; webhook verification not yet exercised.
-- Dev-mode CSP includes `unsafe-inline`/`unsafe-eval`.
+- Dev-mode CSP includes `unsafe-inline`/`unsafe-eval`; production CSP still uses `script-src 'unsafe-inline'` because Next.js 16 streams inline RSC bootstrap scripts. Nonce-based CSP is the remaining hardening step (flagged, not yet implemented).
 - No customer-facing order history yet; add ownership (IDOR) checks when added.
+- `rate_limits` RPC falls back to in-memory buckets if the schema has not been applied — apply `supabase/schema.sql` including `bump_rate_limit` before scaling.
 
 ## Manual Tasks
-- [ ] Set a real `ADMIN_PASSWORD` and rotate all demo credentials.
-- [ ] Replace the `xlsx` dependency or accept the documented risk.
+- [x] Fix current dependency advisories via `npm audit fix` (0 high/critical remaining).
+- [ ] Apply `supabase/schema.sql` (new `rate_limits` table + `bump_rate_limit` RPC) in the Supabase SQL Editor.
+- [ ] Set real `ADMIN_PASSWORD` (≥ 16) and `MANAGER_PASSWORD` (≥ 12) and rotate all demo credentials.
 - [ ] Add a real payment gateway with signed-webhook verification + idempotency.
 - [ ] Add structured logging, monitoring, and alerting.
 - [ ] Migrate to PostgreSQL + connection pooling before scaling.
 - [ ] Add MFA / password reset for real user accounts.
-- [ ] Configure CI: `npm audit`, `tsc --noEmit`, `next build`, secret scanning.
+- [ ] Move to nonce-based CSP for fully strict script-src in production.
 
 ## Production Deployment Checklist
 See `PRODUCTION_SECURITY_CHECKLIST.md`.

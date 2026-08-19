@@ -8,7 +8,7 @@ export async function POST(req: Request) {
   const denied = requireRole(user, ["admin"]);
   if (denied) return denied;
 
-  const rl = rateLimit(req, 5);
+  const rl = await rateLimit(req, 5);
   if (!rl.ok) return NextResponse.json({ error: "Too many test notifications. Try again later." }, { status: 429 });
 
   const body = await req.json().catch(() => ({}));

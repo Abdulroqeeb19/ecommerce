@@ -24,8 +24,8 @@ interface HeroItem {
   callouts: { label: string; tone: string }[];
 }
 
-/** Display order for the main shop categories (Babies, then Electrical, then Kitchen). */
-const CATEGORY_ORDER = ["Babies Wears", "Electrical Materials and Fittings", "Kitchen Utensils"];
+/** Display order for the main shop categories (Babies, then Electrical, then Home Essentials). */
+const CATEGORY_ORDER = ["Babies Wears", "Electrical Materials and Fittings", "Home Essentials"];
 
 /** Fallback showcase used only while there are no products in the local catalog. */
 const FALLBACK_HERO_ITEMS: HeroItem[] = [
@@ -35,7 +35,7 @@ const FALLBACK_HERO_ITEMS: HeroItem[] = [
     name: "POT",
     brand: "Rivo",
     spec: "Stainless Steel Cookware",
-    category: "Kitchen Utensils",
+    category: "Home Essentials",
     image: "/images/catalog/pot.png",
     price: 4500,
     save: 18,
@@ -149,7 +149,7 @@ export function HeroSection() {
   const fmt = (n: number) => new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(n);
 
   // Live slides: featured products first (admin-controlled "Hot Deal"), filled
-  // with an in-stock mix across Babies -> Electrical -> Kitchen so the showcase
+  // with an in-stock mix across Babies -> Electrical -> Home Essentials so the showcase
   // stays populated and always shows the latest uploaded product images.
   const heroItems = useMemo<HeroItem[]>(() => {
     const eligible = (products || []).filter((p) => !p.miniStore && p.image && p.stock > 0);
@@ -224,7 +224,7 @@ export function HeroSection() {
             <Sparkles className="h-4 w-4 text-gold-300" /> Now Stocking
           </span>
           <h1 className="cinem-reveal cinem-reveal-fade-up is-inview font-display text-4xl sm:text-5xl lg:text-[3.4rem] font-extrabold leading-[1.08] tracking-tight">
-            Kitchen Utensils, Babies Wears and Electrical Fittings
+            Home Essentials, Babies Wears and Electrical Fittings
           </h1>
           <p className="cinem-reveal cinem-reveal-fade-up is-inview mt-2 font-display text-2xl sm:text-3xl font-bold">
             <span className="cinem-shimmer-text">{SLOGAN}</span>

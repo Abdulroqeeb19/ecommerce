@@ -6,7 +6,7 @@ import { Menu, Baby, Plug, Utensils, ChevronRight } from "lucide-react";
 const SIDEBAR_CATEGORIES = [
   { name: "Babies Wears", icon: Baby },
   { name: "Electrical Materials and Fittings", icon: Plug },
-  { name: "Kitchen Utensils", icon: Utensils }
+  { name: "Home Essentials", icon: Utensils }
 ];
 
 export function CategorySidebar() {

@@ -5,11 +5,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "AYINDEDUNNY ENTERPRISE — Babies Wears, Electrical Materials and Kitchen",
+    default: "AYINDEDUNNY ENTERPRISE — Babies Wears, Electrical Materials and Home Essentials",
     template: "%s | AYINDEDUNNY ENTERPRISE"
   },
   description:
-    "Offline-first PWA e-commerce for Babies Wears, Electrical Materials and Fittings, and Kitchen Utensils. Includes a mini-store for schools.",
+    "Offline-first PWA e-commerce for Babies Wears, Electrical Materials and Fittings, and Home Essentials. Includes a mini-store for schools.",
   manifest: "/manifest.json",
   applicationName: "AYINDEDUNNY ENTERPRISE",
   icons: {

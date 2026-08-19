@@ -38,11 +38,11 @@ interface FormState {
 
 const isMiniCategory = (c: string) => (MINI_STORE_CATEGORIES as readonly string[]).includes(c);
 
-/** Display order for the main shop categories (Babies first, then Electrical, then Kitchen). */
+/** Display order for the main shop categories (Babies first, then Electrical, then Home Essentials). */
 const CATEGORY_ORDER: string[] = [
   "Babies Wears",
   "Electrical Materials and Fittings",
-  "Kitchen Utensils"
+  "Home Essentials"
 ];
 
 const categoryRank = (c: string) => {
@@ -88,7 +88,7 @@ export function AdminProducts({ miniOnly = false }: { miniOnly?: boolean }) {
     if (miniOnly && miniFilter !== "All") {
       list = list.filter((p) => p.supplyType === (miniFilter === "Groceries" ? "grocery" : "supplies"));
     }
-    // Group by category (Babies -> Electrical -> Kitchen first), alphabetical by title within.
+    // Group by category (Babies -> Electrical -> Home Essentials first), alphabetical by title within.
     return [...list].sort((a, b) => {
       const byCat = categoryRank(a.category) - categoryRank(b.category);
       if (byCat !== 0) return byCat;

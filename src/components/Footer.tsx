@@ -100,8 +100,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/shop?category=Kitchen%20Utensils" className="hover:text-gold-200 transition-colors">
-                  Shop Kitchen Utensils
+                <Link href="/shop?category=Home%20Essentials" className="hover:text-gold-200 transition-colors">
+                  Shop Home Essentials
                 </Link>
               </li>
               <li>

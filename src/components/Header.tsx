@@ -13,7 +13,7 @@ import { CartDrawer } from "./CartDrawer";
 const SHOP_CATEGORIES = [
   { href: "/shop?category=Babies%20Wears", label: "Babies Wears" },
   { href: "/shop?category=Electrical%20Materials%20and%20Fittings", label: "Electrical Materials and Fittings" },
-  { href: "/shop?category=Kitchen%20Utensils", label: "Kitchen Utensils" }
+  { href: "/shop?category=Home%20Essentials", label: "Home Essentials" }
 ];
 
 const NAV: { href: string; label: string; children?: { href: string; label: string }[] }[] = [

@@ -23,10 +23,10 @@ const SORTS: { key: SortKey; label: string }[] = [
   { key: "rating", label: "Top Rated" }
 ];
 
-const CATEGORY_FILTERS = ["All", "Babies Wears", "Electrical Materials and Fittings", "Kitchen Utensils"];
+const CATEGORY_FILTERS = ["All", "Babies Wears", "Electrical Materials and Fittings", "Home Essentials"];
 
-/** Display order for the main shop categories (Babies first, then Electrical, then Kitchen). */
-const CATEGORY_ORDER: string[] = ["Babies Wears", "Electrical Materials and Fittings", "Kitchen Utensils"];
+/** Display order for the main shop categories (Babies first, then Electrical, then Home Essentials). */
+const CATEGORY_ORDER: string[] = ["Babies Wears", "Electrical Materials and Fittings", "Home Essentials"];
 
 const RATING_FILTERS = [
   { value: 0, label: "Any rating" },
@@ -96,7 +96,9 @@ export function ShopContent() {
   // shared with links from the header/footer/carousels. The page is
   // server-rendered per request (see shop/page.tsx dynamic config), so these
   // search params are populated even on a hard refresh.
-  const category = params.get("category") || "All";
+  const rawCategory = params.get("category") || "All";
+  // Backwards-compatible: the old "Kitchen Utensils" category was renamed to "Home Essentials".
+  const category = rawCategory === "Kitchen Utensils" ? "Home Essentials" : rawCategory;
 
   const setCategoryFilter = (c: string) => {
     const sp = new URLSearchParams(params.toString());
@@ -171,7 +173,7 @@ export function ShopContent() {
         list.sort((a, b) => (b.createdAt || "").localeCompare(a.createdAt || ""));
         break;
       default:
-        // Featured first, then grouped by category (Babies -> Electrical -> Kitchen)
+        // Featured first, then grouped by category (Babies -> Electrical -> Home Essentials)
         // and alphabetical by title within each group.
         list.sort((a, b) => {
           const aFeat = Number(b.featured || false) - Number(a.featured || false);
@@ -243,7 +245,7 @@ export function ShopContent() {
           <div className="mt-3 h-1 w-24 rounded-full" style={{ background: "var(--gold-gradient)" }} />
           <p className="mt-3 max-w-xl text-sm text-slate-300">
             {category === "All"
-              ? "Browse every Kitchen Utensil, Babies Wear and Electrical Fitting — order directly on WhatsApp."
+              ? "Browse every Home Essential, Babies Wear and Electrical Fitting — order directly on WhatsApp."
               : `Our ${category} range — order directly on WhatsApp.`}
           </p>
         </div>

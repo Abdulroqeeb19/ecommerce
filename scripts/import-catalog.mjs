@@ -8,7 +8,7 @@
  * Each Excel row becomes one Product row:
  *   - title      = variant label + type/description
  *   - group      = generic product name (used by the shop dropdown card)
- *   - category   = Kitchen Utensils | Electrical Materials and Fittings | Babies Wears
+ *   - category   = Home Essentials (or legacy "Kitchen Utensils") | Electrical Materials and Fittings | Babies Wears
  *   - stock      = qty from sheet
  *   - price      = 0 (Amount column is empty in the sheet - owner fixes prices later)
  *   - image      = mapped catalog image or category placeholder
@@ -85,7 +85,7 @@ function buildProducts(catalog) {
       const variantSlug = slugify(`${v.label} ${v.desc}`.trim());
       const title = [v.label, v.desc].filter(Boolean).join(" - ") || groupName;
       const babyCat = v.baby ? "Babies Wears" : category;
-      const catCode = babyCat === "Kitchen Utensils" ? "k" : babyCat === "Electrical Materials and Fittings" ? "e" : "b";
+      const catCode = babyCat === "Kitchen Utensils" || babyCat === "Home Essentials" ? "k" : babyCat === "Electrical Materials and Fittings" ? "e" : "b";
       const id = `cat_${catCode}_${base}_${i + 1}`;
       products.push({
         id,

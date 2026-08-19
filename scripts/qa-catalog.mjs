@@ -8,7 +8,7 @@ const noGroup = [];
 const dupSlug = [];
 const dupId = [];
 const badCat = new Set();
-const validCats = new Set(["Kitchen Utensils", "Electrical Materials and Fittings", "Babies Wears"]);
+const validCats = new Set(["Home Essentials", "Kitchen Utensils", "Electrical Materials and Fittings", "Babies Wears"]);
 
 for (const p of products) {
   if (byId.has(p.id)) dupId.push(p.id);

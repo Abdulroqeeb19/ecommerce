@@ -8,7 +8,7 @@ export const SEED_PRODUCTS: Product[] = [
     id: "p_kitchen_pot",
     slug: "stainless-cookware-pot",
     title: "Stainless Steel Cookware Pot",
-    category: "Kitchen Utensils",
+    category: "Home Essentials",
     brand: "Rivo",
     price: 38.0,
     stock: 40,
@@ -30,7 +30,7 @@ export const SEED_PRODUCTS: Product[] = [
     id: "p_kitchen_blender",
     slug: "high-speed-kitchen-blender",
     title: "High-Speed Kitchen Blender",
-    category: "Kitchen Utensils",
+    category: "Home Essentials",
     brand: "Binatone",
     price: 52.0,
     oldPrice: 62.0,
@@ -53,7 +53,7 @@ export const SEED_PRODUCTS: Product[] = [
     id: "p_kitchen_cooler",
     slug: "insulated-food-cooler",
     title: "Insulated Food Cooler",
-    category: "Kitchen Utensils",
+    category: "Home Essentials",
     brand: "Thermos",
     price: 29,
     stock: 35,
@@ -138,10 +138,10 @@ export const SEED_PRODUCTS: Product[] = [
   ...SCHOOL_SHOP_ITEMS
 ];
 
-export const QUICK_FILTER_TABS = ["All", "Kitchen Utensils", "Babies Wears", "Electrical Materials and Fittings"] as const;
+export const QUICK_FILTER_TABS = ["All", "Home Essentials", "Babies Wears", "Electrical Materials and Fittings"] as const;
 
 export const CAROUSEL_CATEGORIES = [
-  { name: "KITCHEN UTENSILS", icon: "utensils", tagline: "Pots, blenders and more", slug: "kitchen" },
+  { name: "HOME ESSENTIALS", icon: "utensils", tagline: "Pots, blenders and more", slug: "home-essentials" },
   { name: "BABIES WEARS", icon: "baby", tagline: "Comfort for little ones", slug: "babies" },
   { name: "ELECTRICAL MATERIALS AND FITTINGS", icon: "plug", tagline: "Sockets, solar and fittings", slug: "electrical" }
 ] as const;

@@ -158,7 +158,7 @@ describe("naming & alt text", () => {
 describe("ai vision fallback for junk filenames", () => {
   const catalog: Product[] = [
     makeProduct(),
-    makeProduct({ id: "prd_kettle", slug: "electric-kettle", title: "Electric Kettle 1.8L", brand: "Philips", category: "Kitchen Utensils" }),
+    makeProduct({ id: "prd_kettle", slug: "electric-kettle", title: "Electric Kettle 1.8L", brand: "Philips", category: "Home Essentials" }),
     makeProduct({ id: "prd_bag", slug: "ladies-handbag", title: "Ladies Handbag", brand: "AYINDEDUNNY ENTERPRISE", category: "Bags and Sundries" })
   ];
   const dataUrl = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD";
@@ -174,7 +174,7 @@ describe("ai vision fallback for junk filenames", () => {
       model: "1.8l",
       color: "silver",
       visible_text: [],
-      category: "kitchen utensil",
+      category: "home essential",
       variant: null,
       confidence: 92
     });
@@ -204,7 +204,7 @@ describe("ai vision fallback for junk filenames", () => {
 describe("filename bulk matching (temporary importer)", () => {
   const catalog: Product[] = [
     makeProduct(),
-    makeProduct({ id: "prd_kettle", slug: "electric-kettle", title: "Electric Kettle 1.8L", brand: "Philips", category: "Kitchen Utensils" }),
+    makeProduct({ id: "prd_kettle", slug: "electric-kettle", title: "Electric Kettle 1.8L", brand: "Philips", category: "Home Essentials" }),
     makeProduct({ id: "prd_bag", slug: "ladies-handbag", title: "Ladies Handbag", brand: "AYINDEDUNNY ENTERPRISE", category: "Bags and Sundries" })
   ];
 

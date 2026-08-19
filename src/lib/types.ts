@@ -7,7 +7,7 @@ export type Category =
   | "Monitors and Displays"
   | "Networking and Storage"
   | "Power and UPS"
-  | "Kitchen Utensils"
+  | "Home Essentials"
   | "Electrical Materials and Fittings"
   | "Babies Wears";
 
@@ -20,7 +20,7 @@ export const CATEGORIES: Category[] = [
   "Monitors and Displays",
   "Networking and Storage",
   "Power and UPS",
-  "Kitchen Utensils",
+  "Home Essentials",
   "Electrical Materials and Fittings",
   "Babies Wears"
 ];

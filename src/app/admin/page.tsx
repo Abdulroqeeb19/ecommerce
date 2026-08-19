@@ -13,7 +13,6 @@ import {
   ShieldAlert,
   ShieldCheck,
   Send,
-  Lock,
   Store,
   RefreshCw,
   LayoutGrid,
@@ -27,6 +26,8 @@ import { useMounted } from "@/hooks/useMounted";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "@/lib/db";
 import { api } from "@/lib/api";
+import Link from "next/link";
+import MfaPrompt from "@/components/auth/MfaPrompt";
 import { AdminDashboard } from "@/components/admin/Dashboard";
 import { AdminProducts } from "@/components/admin/Products";
 import { AdminOrders } from "@/components/admin/Orders";
@@ -293,12 +294,17 @@ function AdminLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
+  const [mfaStage, setMfaStage] = useState<{ name?: string } | null>(null);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setBusy(true);
     try {
-      await login(email, password);
+      const res = await login(email, password);
+      if (res.mfaRequired) {
+        setMfaStage({ name: res.name });
+        return;
+      }
       toast("Admin access granted");
     } catch (err) {
       toast((err as Error).message || "Invalid credentials", "error");
@@ -306,6 +312,27 @@ function AdminLogin() {
       setBusy(false);
     }
   };
+
+  if (mfaStage) {
+    return (
+      <div className="mx-auto max-w-md px-4 py-16">
+        <div className="card p-8">
+          <div className="flex items-center gap-3">
+            <div className="rounded-xl bg-skyline-50 dark:bg-skyline-900/40 p-3">
+              <ShieldAlert className="h-6 w-6 text-skyline-700 dark:text-skyline-400" />
+            </div>
+            <div>
+              <h1 className="font-display text-xl font-extrabold text-slateink dark:text-white">Two-step verification</h1>
+              <p className="text-xs text-slate-500 dark:text-slate-400">Confirm it&apos;s really you</p>
+            </div>
+          </div>
+          <div className="mt-6">
+            <MfaPrompt accountName={mfaStage.name} onSuccess={() => setMfaStage(null)} onCancel={() => setMfaStage(null)} />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="mx-auto max-w-md px-4 py-16">
@@ -332,10 +359,9 @@ function AdminLogin() {
             {busy ? "Verifying..." : "Access Admin Portal"}
           </button>
         </form>
-        <div className="mt-4 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-3 text-xs text-slate-600 dark:text-slate-300">
-          <p className="font-bold mb-0.5 flex items-center gap-1"><Lock className="h-3 w-3" /> Demo admin credentials</p>
-          <p>admin@gadgetstore.com / Admin@12345</p>
-        </div>
+        <Link href="/forgot-password" className="mt-3 inline-block text-xs font-semibold text-primary-600 dark:text-primary-400 hover:underline">
+          Forgot your password?
+        </Link>
       </div>
     </div>
   );

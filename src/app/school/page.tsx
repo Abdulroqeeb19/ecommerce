@@ -2,6 +2,7 @@
 
 import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 import {
   GraduationCap,
@@ -19,6 +20,7 @@ import { useOnline } from "@/hooks/useOnline";
 import { useMounted } from "@/hooks/useMounted";
 import { useToast } from "@/store/toast";
 import { useAuth } from "@/store/auth";
+import MfaPrompt from "@/components/auth/MfaPrompt";
 import { CountdownTimer } from "@/components/CountdownTimer";
 import { MiniStorePanel } from "@/components/admin/MiniStorePanel";
 import { Pagination } from "@/components/Pagination";
@@ -497,12 +499,17 @@ function ManagerLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
+  const [mfaStage, setMfaStage] = useState<{ name?: string } | null>(null);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setBusy(true);
     try {
-      await login(email, password);
+      const res = await login(email, password);
+      if (res.mfaRequired) {
+        setMfaStage({ name: res.name });
+        return;
+      }
       toast("Manager access granted");
     } catch (err) {
       toast((err as Error).message || "Access denied", "error");
@@ -521,24 +528,31 @@ function ManagerLogin() {
           Management options are strictly restricted to the <span className="font-bold text-slateink dark:text-white">three authorized mini-store managers</span>.
           Role-Based Access Control (RBAC) prevents unauthorized access to order management, stock updates and offline operations.
         </p>
-        <div className="mt-4 rounded-lg bg-primary-50 border border-primary-100 p-4 text-xs text-primary-700">
-          <p className="font-bold mb-1">Demo manager credentials</p>
-          <p>manager1@gadgetstore.com / manager123</p>
-        </div>
       </div>
-      <form onSubmit={submit} className="space-y-4">
-        <div>
-          <label className="label">Manager Email</label>
-          <input type="email" className="input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="manager1@gadgetstore.com" required />
+      {mfaStage ? (
+        <div className="space-y-4">
+          <MfaPrompt accountName={mfaStage.name} onSuccess={() => setMfaStage(null)} onCancel={() => setMfaStage(null)} />
         </div>
-        <div>
-          <label className="label">Password</label>
-          <input type="password" className="input" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" required />
-        </div>
-        <button type="submit" disabled={busy} className="btn-primary w-full !py-3">
-          {busy ? "Verifying..." : "Login to Manager Panel"}
-        </button>
-      </form>
+      ) : (
+        <form onSubmit={submit} className="space-y-4">
+          <div>
+            <label className="label">Manager Email</label>
+            <input type="email" className="input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="manager1@gadgetstore.com" required />
+          </div>
+          <div>
+            <label className="label">Password</label>
+            <input type="password" className="input" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" required />
+          </div>
+          <button type="submit" disabled={busy} className="btn-primary w-full !py-3">
+            {busy ? "Verifying..." : "Login to Manager Panel"}
+          </button>
+          <p className="text-xs">
+            <Link href="/forgot-password" className="font-semibold text-primary-600 dark:text-primary-400 hover:underline">
+              Forgot your password?
+            </Link>
+          </p>
+        </form>
+      )}
     </div>
   );
 }

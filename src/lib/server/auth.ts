@@ -32,6 +32,31 @@ export async function deleteSessionCookie() {
   });
 }
 
+function mfaCookieName() {
+  return process.env.NODE_ENV === "production" ? "__Host-gh_mfa" : "gh_mfa";
+}
+
+export async function getMfaToken() {
+  return (await cookies()).get(mfaCookieName())?.value;
+}
+
+export async function setMfaCookie(token: string) {
+  (await cookies()).set(mfaCookieName(), token, {
+    httpOnly: true,
+    sameSite: "lax" as const,
+    secure: process.env.NODE_ENV === "production",
+    path: "/",
+    maxAge: 10 * 60
+  });
+}
+
+export async function clearMfaCookie() {
+  (await cookies()).set(mfaCookieName(), "", {
+    ...sessionCookieOptions(),
+    maxAge: 0
+  });
+}
+
 export function publicUser(user: User): Omit<User, "passwordHash"> {
   const { passwordHash, ...safe } = user;
   void passwordHash;

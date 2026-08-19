@@ -191,6 +191,18 @@ export interface User {
   school?: string;
   /** WhatsApp number (with country code) for order notifications to this manager. */
   whatsapp?: string;
+  /** TOTP (authenticator app) secret. Only meaningful when mfaEnabled is true. */
+  mfaSecret?: string;
+  mfaEnabled?: boolean;
+  createdAt: string;
+}
+
+export interface PasswordReset {
+  id: string;
+  userId: string;
+  tokenHash: string;
+  expiresAt: number;
+  consumedAt?: string;
   createdAt: string;
 }
 

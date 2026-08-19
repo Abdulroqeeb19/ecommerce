@@ -129,6 +129,43 @@ async function sendSms(text: string, s: Settings): Promise<boolean> {
   return res.ok;
 }
 
+export async function sendGenericEmail(
+  toEmail: string,
+  subject: string,
+  text: string,
+  fromOverride?: string
+): Promise<boolean> {
+  const s = await loadSettings();
+  if (!s.sendgridApiKey) return false;
+  try {
+    const res = await fetch("https://api.sendgrid.com/v3/mail/send", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${s.sendgridApiKey}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        personalizations: [{ to: [{ email: toEmail }] }],
+        from: { email: fromOverride || s.notifyEmailFrom || "orders@gadgetstore.com" },
+        subject,
+        content: [{ type: "text/plain", value: text }]
+      })
+    });
+    return res.ok;
+  } catch {
+    return false;
+  }
+}
+
+export async function notifyPasswordReset(toEmail: string, resetUrl: string): Promise<boolean> {
+  const text = [
+    "A password reset was requested for your AYINDEDUNNY ENTERPRISE account.",
+    "",
+    `Open this link within 20 minutes to choose a new password:`,
+    resetUrl,
+    "",
+    "If you did not request this, you can safely ignore this email."
+  ].join("\n");
+  return sendGenericEmail(toEmail, "Reset your AYINDEDUNNY ENTERPRISE password", text);
+}
+
 export interface ChannelStatus {
   telegram: boolean;
   whatsapp: boolean;

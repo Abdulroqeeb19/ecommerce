@@ -4,11 +4,12 @@ import crypto from "node:crypto";
 import bcrypt from "bcryptjs";
 import { SEED_PRODUCTS } from "../data";
 import { CATALOG_ITEMS, DEFAULT_CATEGORY_CARDS } from "../brand";
-import type { CatalogItem, CategoryCard, Coupon, NotificationSettings, Order, Product, Review, User } from "../types";
+import type { CatalogItem, CategoryCard, Coupon, NotificationSettings, Order, PasswordReset, Product, Review, User } from "../types";
 import type { ImageImportItem, ImageImportJob } from "../types";
 import * as sb from "./supabase";
 
 export const SESSION_TTL_MS = sb.SESSION_TTL_MS;
+export const PASSWORD_RESET_TTL_MS = sb.PASSWORD_RESET_TTL_MS;
 
 // Backend selection: Supabase when creds are configured and not explicitly disabled.
 const USE_SUPABASE =
@@ -24,7 +25,7 @@ export interface DbShape {
   products: Product[];
   users: User[];
   orders: Order[];
-  sessions: Record<string, { userId: string; expires: number }>;
+  sessions: Record<string, { userId: string; expires: number; status?: "active" | "pending_mfa" }>;
   deleted: string[];
   reviews: Review[];
   coupons: Coupon[];
@@ -34,6 +35,7 @@ export interface DbShape {
   catalogItems: CatalogItem[];
   imageImportJobs: ImageImportJob[];
   imageImportItems: ImageImportItem[];
+  passwordResets: PasswordReset[];
 }
 
 const DB_PATH = process.env.DB_FILE
@@ -55,7 +57,8 @@ const EMPTY_DB: DbShape = {
   categoryCards: [],
   catalogItems: [],
   imageImportJobs: [],
-  imageImportItems: []
+  imageImportItems: [],
+  passwordResets: []
 };
 
 function readDb(): DbShape {
@@ -324,18 +327,18 @@ export async function updateOrderStatus(id: string, status: Order["status"]): Pr
   return o;
 }
 
-export async function createSession(userId: string): Promise<string> {
-  if (USE_SUPABASE) return sb.sbCreateSession(userId);
+export async function createSession(userId: string, status: "active" | "pending_mfa" = "active"): Promise<string> {
+  if (USE_SUPABASE) return sb.sbCreateSession(userId, status);
   const db = getDb();
   const token = crypto.randomBytes(32).toString("hex");
-  db.sessions[token] = { userId, expires: Date.now() + SESSION_TTL_MS };
+  db.sessions[token] = { userId, expires: Date.now() + SESSION_TTL_MS, status };
   saveDb(db);
   return token;
 }
 
-export async function getSessionUser(token?: string): Promise<User | null> {
+export async function getSessionUser(token?: string, opts: { pendingMfa?: boolean } = {}): Promise<User | null> {
   if (!token) return null;
-  if (USE_SUPABASE) return sb.sbGetSessionUser(token);
+  if (USE_SUPABASE) return sb.sbGetSessionUser(token, opts);
   const db = getDb();
   const s = db.sessions[token];
   if (!s) return null;
@@ -344,6 +347,20 @@ export async function getSessionUser(token?: string): Promise<User | null> {
     saveDb(db);
     return null;
   }
+  if (!opts.pendingMfa && s.status === "pending_mfa") return null;
+  return (await findUserById(s.userId)) || null;
+}
+
+export async function activatePendingSession(token: string, budgetMs: number): Promise<User | null> {
+  if (USE_SUPABASE) return sb.sbActivatePendingSession(token, budgetMs);
+  const db = getDb();
+  const s = db.sessions[token];
+  if (!s) return null;
+  if (s.expires < Date.now() || s.status !== "pending_mfa") return null;
+  if (s.expires > Date.now() + budgetMs) return null;
+  s.status = "active";
+  s.expires = Date.now() + SESSION_TTL_MS;
+  saveDb(db);
   return (await findUserById(s.userId)) || null;
 }
 
@@ -353,6 +370,56 @@ export async function destroySession(token?: string) {
   const db = getDb();
   delete db.sessions[token];
   saveDb(db);
+}
+
+export async function updateUser(
+  userId: string,
+  patch: Partial<Pick<User, "passwordHash" | "mfaSecret" | "mfaEnabled" | "name">>
+): Promise<User | undefined> {
+  if (USE_SUPABASE) return sb.sbUpdateUser(userId, patch);
+  const db = getDb();
+  const idx = db.users.findIndex((u) => u.id === userId);
+  if (idx < 0) return undefined;
+  db.users[idx] = { ...db.users[idx], ...patch };
+  saveDb(db);
+  return db.users[idx];
+}
+
+export async function revokeAllSessions(userId: string) {
+  if (USE_SUPABASE) return sb.sbRevokeAllSessions(userId);
+  const db = getDb();
+  for (const key of Object.keys(db.sessions)) {
+    if (db.sessions[key].userId === userId) delete db.sessions[key];
+  }
+  saveDb(db);
+}
+
+export async function createPasswordReset(userId: string): Promise<string> {
+  if (USE_SUPABASE) return sb.sbCreatePasswordReset(userId);
+  const db = getDb();
+  const token = crypto.randomBytes(32).toString("base64url");
+  db.passwordResets.push({
+    id: `prt_${crypto.randomUUID()}`,
+    userId,
+    tokenHash: crypto.createHash("sha256").update(token).digest("hex"),
+    expiresAt: Date.now() + PASSWORD_RESET_TTL_MS,
+    createdAt: new Date().toISOString()
+  });
+  saveDb(db);
+  return token;
+}
+
+export async function consumePasswordReset(token: string): Promise<User | undefined> {
+  if (USE_SUPABASE) return sb.sbConsumePasswordReset(token);
+  const db = getDb();
+  const tokenHash = crypto.createHash("sha256").update(token).digest("hex");
+  const idx = db.passwordResets.findIndex((r) => r.tokenHash === tokenHash);
+  if (idx < 0) return undefined;
+  const reset = db.passwordResets[idx];
+  if (reset.consumedAt || reset.expiresAt < Date.now()) return undefined;
+  reset.consumedAt = new Date().toISOString();
+  saveDb(db);
+  return db.users.find((u) => u.id === reset.userId);
 }
 
 export async function listReviews(productId: string): Promise<Review[]> {

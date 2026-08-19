@@ -1,6 +1,8 @@
 import { describe, it, expect } from "vitest";
 import { validateProductInput } from "../src/lib/server/productValidation";
 import { isValidOrderStatus } from "../src/lib/server/orderValidation";
+import { validatePassword } from "../src/lib/server/passwordPolicy";
+import { generateToptSecret, totpCode, verifyTotp, otpauthUri } from "../src/lib/server/totp";
 
 describe("productValidation", () => {
   const valid = {
@@ -124,5 +126,52 @@ describe("rate limiter", () => {
     const fourth = await rateLimit(req, 3, 6000);
     expect(fourth.ok).toBe(false);
     expect(fourth.retryAfter).toBeGreaterThan(0);
+  });
+});
+
+describe("TOTP (MFA)", () => {
+  it("matches the RFC 6238 SHA1 test vector", () => {
+    // RFC 6238 Appendix B: ASCII secret "12345678901234567890", T = 59s => "94287082" (8-digit).
+    // Base32-encoded (the app's secret format), the last 6 digits are "287082".
+    const secret = "GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ";
+    expect(totpCode(secret, 59000)).toBe("287082");
+  });
+
+  it("verifies a freshly generated code with ±1 step tolerance", () => {
+    const secret = generateToptSecret();
+    const code = totpCode(secret);
+    expect(verifyTotp(secret, code)).toBe(true);
+    expect(verifyTotp(secret, "000000")).toBe(false);
+  });
+
+  it("rejects malformed codes and wrong-length secrets are non-empty base32", () => {
+    const secret = generateToptSecret();
+    expect(secret.length).toBeGreaterThan(20);
+    expect(/^[A-Z2-7]+$/.test(secret)).toBe(true);
+    expect(verifyTotp(secret, "123")).toBe(false);
+    expect(verifyTotp(secret, "abcdef")).toBe(false);
+  });
+
+  it("produces a valid otpauth URI", () => {
+    const uri = otpauthUri("SECRET", "admin@gadgetstore.com", "AYINDEDUNNY ENTERPRISE");
+    expect(uri).toContain("otpauth://totp/");
+    expect(uri).toContain("secret=SECRET");
+    expect(uri).toContain("issuer=AYINDEDUNNY+ENTERPRISE");
+    expect(uri).toContain("period=30");
+    expect(uri).toContain("digits=6");
+  });
+});
+
+describe("password policy", () => {
+  it("accepts a compliant password", () => {
+    expect(validatePassword("CorrectHorseBattery9").ok).toBe(true);
+  });
+
+  it("rejects short, all-lowercase and letter-only passwords", () => {
+    expect(validatePassword("short1A!").ok).toBe(false);
+    expect(validatePassword("alllowercase1").ok).toBe(false);
+    expect(validatePassword("ALLUPPERCASE1").ok).toBe(false);
+    expect(validatePassword("noNumbersHere").ok).toBe(false);
+    expect(validatePassword(1234567890).ok).toBe(false);
   });
 });

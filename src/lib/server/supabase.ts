@@ -9,6 +9,7 @@ import type { CatalogItem, CategoryCard, Coupon, Order, Product, Review, User } 
 import type { ImageImportItem, ImageImportJob } from "../types";
 
 export const SESSION_TTL_MS = 1000 * 60 * 60 * 24 * 7;
+export const PASSWORD_RESET_TTL_MS = 20 * 60 * 1000;
 
 const url = process.env.SUPABASE_URL;
 const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -347,15 +348,15 @@ export async function sbListManagers(): Promise<User[]> {
 
 // --- Sessions ---
 
-export async function sbCreateSession(userId: string): Promise<string> {
+export async function sbCreateSession(userId: string, status: "active" | "pending_mfa" = "active"): Promise<string> {
   await bootstrap();
   const token = crypto.randomBytes(32).toString("hex");
-  const { error } = await getClient().from("sessions").insert({ token, userId, expires: Date.now() + SESSION_TTL_MS });
+  const { error } = await getClient().from("sessions").insert({ token, userId, expires: Date.now() + SESSION_TTL_MS, status });
   if (error) throw new Error(error.message);
   return token;
 }
 
-export async function sbGetSessionUser(token?: string): Promise<User | null> {
+export async function sbGetSessionUser(token?: string, opts: { pendingMfa?: boolean } = {}): Promise<User | null> {
   if (!token) return null;
   await bootstrap();
   const { data: session } = await getClient().from("sessions").select("*").eq("token", token).maybeSingle();
@@ -364,12 +365,67 @@ export async function sbGetSessionUser(token?: string): Promise<User | null> {
     await getClient().from("sessions").delete().eq("token", token);
     return null;
   }
+  if (!opts.pendingMfa && session.status === "pending_mfa") return null;
+  return (await sbFindUserById(session.userId)) || null;
+}
+
+export async function sbActivatePendingSession(token: string, budgetMs: number): Promise<User | null> {
+  await bootstrap();
+  const { data: session } = await getClient().from("sessions").select("*").eq("token", token).maybeSingle();
+  if (!session) return null;
+  if (session.status !== "pending_mfa" || session.expires < Date.now()) return null;
+  if (session.expires > Date.now() + budgetMs) return null;
+  const { error } = await getClient()
+    .from("sessions")
+    .update({ status: "active", expires: Date.now() + SESSION_TTL_MS })
+    .eq("token", token);
+  if (error) return null;
   return (await sbFindUserById(session.userId)) || null;
 }
 
 export async function sbDestroySession(token?: string) {
   if (!token) return;
   await getClient().from("sessions").delete().eq("token", token);
+}
+
+export async function sbUpdateUser(
+  userId: string,
+  patch: Partial<Pick<User, "passwordHash" | "mfaSecret" | "mfaEnabled" | "name">>
+): Promise<User | undefined> {
+  await bootstrap();
+  const { data, error } = await getClient().from("users").update(patch as Record<string, unknown>).eq("id", userId).select().single();
+  if (error) throw new Error(error.message);
+  return data ? rowToUser(data) : undefined;
+}
+
+export async function sbRevokeAllSessions(userId: string) {
+  await getClient().from("sessions").delete().eq("userId", userId);
+}
+
+export async function sbCreatePasswordReset(userId: string): Promise<string> {
+  await bootstrap();
+  const token = crypto.randomBytes(32).toString("base64url");
+  const tokenHash = crypto.createHash("sha256").update(token).digest("hex");
+  const { error } = await getClient().from("password_resets").insert({
+    id: `prt_${crypto.randomUUID()}`,
+    userId,
+    tokenHash,
+    expiresAt: Date.now() + PASSWORD_RESET_TTL_MS,
+    createdAt: new Date().toISOString()
+  });
+  if (error) throw new Error(error.message);
+  return token;
+}
+
+export async function sbConsumePasswordReset(token: string): Promise<User | undefined> {
+  await bootstrap();
+  const tokenHash = crypto.createHash("sha256").update(token).digest("hex");
+  const { data: reset } = await getClient().from("password_resets").select("*").eq("tokenHash", tokenHash).maybeSingle();
+  if (!reset) return undefined;
+  if (reset.consumedAt || reset.expiresAt < Date.now()) return undefined;
+  const { error } = await getClient().from("password_resets").update({ consumedAt: new Date().toISOString() }).eq("id", reset.id);
+  if (error) return undefined;
+  return (await sbFindUserById(reset.userId)) || undefined;
 }
 
 // --- Orders ---

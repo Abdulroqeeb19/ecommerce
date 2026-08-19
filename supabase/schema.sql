@@ -41,6 +41,8 @@ create table if not exists public.users (
   role text not null default 'customer',
   grade text,
   school text,
+  "mfaSecret" text,
+  "mfaEnabled" boolean not null default false,
   "createdAt" text not null
 );
 create index if not exists users_email_idx on public.users (email);
@@ -49,9 +51,26 @@ create index if not exists users_email_idx on public.users (email);
 create table if not exists public.sessions (
   token text primary key,
   "userId" text not null references public.users (id) on delete cascade,
-  expires bigint not null
+  expires bigint not null,
+  status text not null default 'active'
 );
 create index if not exists sessions_user_idx on public.sessions ("userId");
+
+-- Password resets (single-use, hashed tokens with expiry)
+create table if not exists public.password_resets (
+  id text primary key,
+  "userId" text not null references public.users (id) on delete cascade,
+  "tokenHash" text not null unique,
+  "expiresAt" bigint not null,
+  "consumedAt" text,
+  "createdAt" text not null
+);
+create index if not exists password_resets_user_idx on public.password_resets ("userId");
+
+-- Idempotent migration for existing databases (safe to re-run)
+alter table public.users add column if not exists "mfaSecret" text;
+alter table public.users add column if not exists "mfaEnabled" boolean not null default false;
+alter table public.sessions add column if not exists status text not null default 'active';
 
 -- Orders
 create table if not exists public.orders (
@@ -251,6 +270,7 @@ grant all on table public.deleted_products to service_role;
 grant all on table public.settings to service_role;
 grant all on table public.rate_limits to service_role;
 grant execute on function public.bump_rate_limit(text, bigint, integer) to service_role;
+grant all on table public.password_resets to service_role;
 grant all on table public.category_cards to service_role;
 grant all on table public.catalog_items to service_role;
 grant all on table public.image_import_jobs to service_role;

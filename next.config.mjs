@@ -1,3 +1,5 @@
+import { withSentryConfig } from "@sentry/nextjs";
+
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === "production";
 
@@ -6,6 +8,7 @@ const isProd = process.env.NODE_ENV === "production";
 // to its inline RSC bootstrap scripts. The policy below is a static fallback
 // for any request the proxy matcher does not cover.
 const telegramSrc = "https://telegram.org https://*.telegram.org https://api.telegram.org";
+const sentrySrc = "https://*.ingest.sentry.io https://sentry.io";
 // Supabase project host used by the AI Image Importer to serve stored product images.
 const supabaseImg = process.env.SUPABASE_URL ? new URL(process.env.SUPABASE_URL).host : "";
 const csp = isProd
@@ -20,7 +23,7 @@ const csp = isProd
       "font-src 'self' data:",
       "style-src 'self' 'unsafe-inline'",
       "script-src 'self' 'unsafe-inline' " + telegramSrc,
-      "connect-src 'self' " + telegramSrc,
+      "connect-src 'self' " + telegramSrc + " " + sentrySrc,
       "worker-src 'self' blob:",
       "manifest-src 'self'"
     ].join("; ")
@@ -34,7 +37,7 @@ const csp = isProd
       "font-src 'self' data:",
       "style-src 'self' 'unsafe-inline'",
       "script-src 'self' 'unsafe-inline' 'unsafe-eval' " + telegramSrc,
-      "connect-src 'self'",
+      "connect-src 'self' " + sentrySrc,
       "worker-src 'self' blob:",
       "manifest-src 'self'"
     ].join("; ");
@@ -71,4 +74,7 @@ const nextConfig = {
   }
 };
 
-export default nextConfig;
+export default withSentryConfig(nextConfig, {
+  silent: true,
+  telemetry: false
+});

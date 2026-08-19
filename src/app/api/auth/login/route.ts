@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { findUserByEmail, createSession } from "@/lib/server/store";
-import { publicUser, setSessionCookie } from "@/lib/server/auth";
+import { publicUser, setSessionCookie, setMfaCookie } from "@/lib/server/auth";
 import { rateLimit } from "@/lib/server/rateLimit";
 import { getLoginLock, registerLoginFailure, clearLoginFailures } from "@/lib/server/loginGuard";
 
@@ -42,6 +42,14 @@ export async function POST(req: Request) {
   }
 
   await clearLoginFailures(normalizedEmail);
+
+  // Second factor: when the account has MFA enabled, mint a short-lived
+  // "pending MFA" session and let the client present the TOTP code.
+  if (user.mfaEnabled && user.mfaSecret) {
+    const mfaToken = await createSession(user.id, "pending_mfa");
+    await setMfaCookie(mfaToken);
+    return NextResponse.json({ mfaRequired: true, name: user.name, role: user.role });
+  }
 
   const token = await createSession(user.id);
   await setSessionCookie(token);

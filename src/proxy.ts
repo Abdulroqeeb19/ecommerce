@@ -6,6 +6,7 @@ const isProd = process.env.NODE_ENV === "production";
 const supabaseImg = process.env.SUPABASE_URL ? new URL(process.env.SUPABASE_URL).host : "";
 
 const TELEGRAM = "https://telegram.org https://*.telegram.org https://api.telegram.org";
+const SENTRY = "https://*.ingest.sentry.io https://sentry.io";
 
 const shared = [
   "default-src 'self'",
@@ -27,7 +28,7 @@ function buildCsp(nonce: string, telegramClient: boolean): string {
     return [
       ...shared,
       "script-src 'self' 'unsafe-inline' 'unsafe-eval' " + TELEGRAM,
-      "connect-src 'self' " + TELEGRAM
+      "connect-src 'self' " + TELEGRAM + " " + SENTRY
     ].join("; ");
   }
 
@@ -35,7 +36,7 @@ function buildCsp(nonce: string, telegramClient: boolean): string {
     return [
       ...shared,
       `script-src 'self' 'nonce-${nonce}' ${TELEGRAM}`,
-      "connect-src 'self' " + TELEGRAM,
+      "connect-src 'self' " + TELEGRAM + " " + SENTRY,
       "upgrade-insecure-requests"
     ].join("; ");
   }
@@ -43,7 +44,7 @@ function buildCsp(nonce: string, telegramClient: boolean): string {
   return [
     ...shared,
     `script-src 'self' 'nonce-${nonce}' 'unsafe-inline' 'unsafe-eval' ${TELEGRAM}`,
-    "connect-src 'self' ws: " + TELEGRAM
+    "connect-src 'self' ws: " + TELEGRAM + " " + SENTRY
   ].join("; ");
 }
 

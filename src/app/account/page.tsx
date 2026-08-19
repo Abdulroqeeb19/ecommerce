@@ -5,6 +5,8 @@ import Link from "next/link";
 import { User, LogOut, Package, ShieldCheck, GraduationCap } from "lucide-react";
 import { useAuth } from "@/store/auth";
 import { useToast } from "@/store/toast";
+import MfaPrompt from "@/components/auth/MfaPrompt";
+import MfaSettings from "@/components/auth/MfaSettings";
 import { formatPrice, formatDateTime, cx } from "@/lib/utils";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "@/lib/db";
@@ -27,6 +29,7 @@ export default function AccountPage() {
   const [grade, setGrade] = useState("");
   const [school, setSchool] = useState("");
   const [busy, setBusy] = useState(false);
+  const [mfaStage, setMfaStage] = useState<{ name?: string } | null>(null);
 
   const localOrders = useLiveQuery(() => db.orders.toArray(), [], []);
 
@@ -39,7 +42,11 @@ export default function AccountPage() {
     setBusy(true);
     try {
       if (mode === "login") {
-        await login(email, password);
+        const res = await login(email, password);
+        if (res.mfaRequired) {
+          setMfaStage({ name: res.name });
+          return;
+        }
         toast("Welcome back!");
       } else {
         if (!name.trim()) throw new Error("Please enter your name");
@@ -63,7 +70,13 @@ export default function AccountPage() {
           <h1 className="font-display text-2xl font-extrabold text-slateink dark:text-white flex items-center gap-2">
             <User className="h-6 w-6 text-primary-600" /> My Account
           </h1>
-          <div className="mt-5 grid grid-cols-2 rounded-lg bg-slate-100 dark:bg-navy-900 p-1 text-sm font-semibold">
+          {mfaStage ? (
+            <div className="mt-6">
+              <MfaPrompt accountName={mfaStage.name} onSuccess={() => setMfaStage(null)} onCancel={() => setMfaStage(null)} />
+            </div>
+          ) : (
+            <>
+            <div className="mt-5 grid grid-cols-2 rounded-lg bg-slate-100 dark:bg-navy-900 p-1 text-sm font-semibold">
             <button onClick={() => setMode("login")} className={cx("rounded-md py-2 transition-colors", mode === "login" ? "bg-white dark:bg-navy-800 text-primary-700 dark:text-primary-400 shadow" : "text-slate-500 dark:text-slate-400")}>
               Login
             </button>
@@ -119,7 +132,16 @@ export default function AccountPage() {
             <button type="submit" disabled={busy} className="btn-primary w-full !py-3">
               {busy ? "Please wait..." : mode === "login" ? "Login" : "Create Account"}
             </button>
+            {mode === "login" && (
+              <p className="text-xs text-center">
+                <Link href="/forgot-password" className="font-semibold text-primary-600 dark:text-primary-400 hover:underline">
+                  Forgot your password?
+                </Link>
+              </p>
+            )}
           </form>
+            </>
+          )}
         </div>
       </div>
     );
@@ -173,6 +195,11 @@ export default function AccountPage() {
       </div>
 
       <div className="mt-8">
+        {(isAdmin || isManager) && (
+          <div className="mb-8">
+            <MfaSettings />
+          </div>
+        )}
         <h2 className="font-display text-xl font-extrabold text-slateink dark:text-white flex items-center gap-2">
           <Package className="h-5 w-5 text-primary-600" /> My Orders ({sorted.length})
         </h2>

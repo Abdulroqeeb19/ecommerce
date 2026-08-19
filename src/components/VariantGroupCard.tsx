@@ -69,11 +69,20 @@ function VariantRow({ product }: { product: Product }) {
 
   return (
     <div className="px-4 py-3 flex items-center justify-between gap-3">
-      <div className="min-w-0">
-        <p className="text-sm font-semibold text-slateink dark:text-white truncate">{product.title}</p>
-        <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-          {outOfStock ? "Out of stock" : `${product.stock} available · ${formatPrice(product.price)}`}
-        </p>
+      <div className="flex items-center gap-3 min-w-0">
+        <Image
+          src={product.image || "/images/catalog/kitchen-placeholder.svg"}
+          alt={product.title}
+          width={48}
+          height={48}
+          className="h-12 w-12 shrink-0 rounded-lg bg-slate-100 dark:bg-slate-800 object-cover ring-1 ring-slate-100 dark:ring-navy-700"
+        />
+        <div className="min-w-0">
+          <p className="text-sm font-semibold text-slateink dark:text-white truncate">{product.title}</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+            {outOfStock ? "Out of stock" : `${product.stock} available · ${formatPrice(product.price)}`}
+          </p>
+        </div>
       </div>
       <div className="flex items-center gap-1.5 shrink-0">
         <button

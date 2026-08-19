@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
@@ -29,8 +29,21 @@ export default function ProductDetailPage() {
 
   const product = products.find((p) => p.slug === slug);
   const [qty, setQty] = useState(1);
-  const [tab, setTab] = useState<(typeof TABS)[number]>("Description");
+  const [tab, setTab] = useState<(typeof TABS)[number]>(() => {
+    if (typeof window !== "undefined") {
+      const h = window.location.hash.replace("#", "");
+      if ((TABS as readonly string[]).includes(h)) return h as (typeof TABS)[number];
+    }
+    return "Description";
+  });
   const [prevSlug, setPrevSlug] = useState(slug);
+
+  // Keep the active section in the URL hash so it survives a refresh.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const target = tab === "Description" ? window.location.pathname + window.location.search : `#${tab}`;
+    history.replaceState(null, "", target);
+  }, [tab]);
 
   if (prevSlug !== slug) {
     setPrevSlug(slug);

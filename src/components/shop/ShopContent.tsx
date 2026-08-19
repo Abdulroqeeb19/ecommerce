@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, type MouseEvent } from "react";
+import { useEffect, useMemo, useState, type MouseEvent } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { SlidersHorizontal, Search, X, Sparkles } from "lucide-react";
 import { useProducts } from "@/lib/catalog";
@@ -100,11 +100,30 @@ export function ShopContent() {
 
   const setCategoryFilter = (c: string) => {
     const sp = new URLSearchParams(params.toString());
+    sp.delete("page");
     if (c === "All") sp.delete("category");
     else sp.set("category", c);
     const qs = sp.toString();
     router.replace(qs ? `/shop?${qs}` : "/shop", { scroll: false });
   };
+
+  // Page lives in the URL (?page=N) like category, so it survives a refresh
+  // instead of snapping back to the first page of the category.
+  const [page, setPage] = useState<number>(() => {
+    const raw = Number(params.get("page"));
+    return Number.isFinite(raw) && raw > 1 ? raw : 1;
+  });
+
+  useEffect(() => {
+    const cur = Number(params.get("page")) || 1;
+    if (cur !== page) {
+      const sp = new URLSearchParams(params.toString());
+      if (page > 1) sp.set("page", String(page));
+      else sp.delete("page");
+      const qs = sp.toString();
+      router.replace(qs ? `/shop?${qs}` : "/shop", { scroll: false });
+    }
+  }, [page, params, router]);
 
   const [search, setSearch] = useState(params.get("q") || "");
   const [sort, setSort] = useState<SortKey>("featured");
@@ -112,7 +131,6 @@ export function ShopContent() {
   const [brand, setBrand] = useState<string>("All");
   const [minRating, setMinRating] = useState<number>(0);
   const [inStockOnly, setInStockOnly] = useState(false);
-  const [page, setPage] = useState(1);
 
   const brands = useMemo(() => {
     const set = new Set<string>();

@@ -1,7 +1,8 @@
 ﻿"use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
+import { useSearchParams, useRouter } from "next/navigation";
 import {
   GraduationCap,
   CalendarDays,
@@ -44,14 +45,19 @@ type BasketItem = { productId: string; title: string; price: number; qty: number
 
 const PAGE_SIZE = 9;
 
-export default function SchoolPage() {
+function SchoolPage() {
   const { products } = useProducts();
   const online = useOnline();
   const { toast } = useToast();
   const { user, isManager, isAdmin } = useAuth();
   const mounted = useMounted();
+  const params = useSearchParams();
+  const router = useRouter();
 
-  const [grade, setGrade] = useState<"JSS1" | "JSS2" | "JSS3">("JSS1");
+  const [grade, setGrade] = useState<"JSS1" | "JSS2" | "JSS3">(() => {
+    const g = params.get("grade");
+    return g === "JSS1" || g === "JSS2" || g === "JSS3" ? g : "JSS1";
+  });
   const [orderSchedule, setOrderSchedule] = useState<Record<string, number>>({ ...DEFAULT_ORDERING_SCHEDULE });
   const [studentName, setStudentName] = useState("");
   const [studentSchool, setStudentSchool] = useState("");
@@ -59,8 +65,44 @@ export default function SchoolPage() {
   const [basket, setBasket] = useState<BasketItem[]>([]);
   const [placing, setPlacing] = useState(false);
   const [placed, setPlaced] = useState<Order | null>(null);
-  const [supplyFilter, setSupplyFilter] = useState<string>("All");
-  const [page, setPage] = useState(1);
+  const [supplyFilter, setSupplyFilter] = useState<string>(() => params.get("supply") || "All");
+  const [page, setPage] = useState<number>(() => {
+    const raw = Number(params.get("page"));
+    return Number.isFinite(raw) && raw > 1 ? raw : 1;
+  });
+
+  // Section and page survive a refresh via the URL (?grade / ?supply / ?page).
+  const updateUrl = useCallback(
+    (patch: Record<string, string | null>) => {
+      const sp = new URLSearchParams(params.toString());
+      for (const [k, v] of Object.entries(patch)) {
+        if (v == null || v === "" || v === "All") sp.delete(k);
+        else sp.set(k, v);
+      }
+      const qs = sp.toString();
+      router.replace(qs ? `/school?${qs}` : "/school", { scroll: false });
+    },
+    [params, router]
+  );
+
+  useEffect(() => {
+    updateUrl({ grade });
+  }, [grade, updateUrl]);
+
+  useEffect(() => {
+    updateUrl({ supply: supplyFilter });
+  }, [supplyFilter, updateUrl]);
+
+  useEffect(() => {
+    const cur = Number(params.get("page")) || 1;
+    if (cur !== page) {
+      const sp = new URLSearchParams(params.toString());
+      if (page > 1) sp.set("page", String(page));
+      else sp.delete("page");
+      const qs = sp.toString();
+      router.replace(qs ? `/school?${qs}` : "/school", { scroll: false });
+    }
+  }, [page, params, router]);
 
   useEffect(() => {
     api
@@ -432,6 +474,20 @@ export default function SchoolPage() {
         )}
       </section>
     </div>
+  );
+}
+
+export default function SchoolPageRoute() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-screen items-center justify-center text-sm text-slate-500">
+          Loading…
+        </div>
+      }
+    >
+      <SchoolPage />
+    </Suspense>
   );
 }
 

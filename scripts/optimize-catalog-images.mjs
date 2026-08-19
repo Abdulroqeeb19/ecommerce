@@ -6,7 +6,7 @@ const ROOT = path.resolve("public/images/catalog");
 const WEB = path.join(ROOT, "web");
 const PRODUCTS = path.join(ROOT, "products");
 const QUALITY = 84;
-const BRAND = "Gadget Hub";
+const BRAND = "AYINDEDUNNY";
 
 const svgWatermark = (w) => {
   const pillW = Math.max(120, Math.round(w * 0.3));

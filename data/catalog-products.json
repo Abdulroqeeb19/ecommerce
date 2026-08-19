@@ -5000,7 +5000,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/products/cat_e_fan_2.jpg",
+    "image": "/images/catalog/products/cat_e_fan_1.jpg",
     "gallery": [],
     "shortDescription": "Fan - DP-7608",
     "description": "Fan: Foldable Small - DP-7608. In stock. Quantity available: 1.",
@@ -5025,7 +5025,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.961Z",
-    "updatedAt": "2026-08-13T17:27:35.620Z"
+    "updatedAt": "2026-08-19T01:32:39.735Z"
   },
   {
     "id": "cat_e_fan_2",
@@ -6606,7 +6606,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/gas-stove.jpg",
+    "image": "/images/catalog/products/cat_k_gas-stove_1.jpg",
     "gallery": [],
     "shortDescription": "Gas Stove",
     "description": "Gas Stove: Glass. In stock. Quantity available: 1.",
@@ -6627,7 +6627,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.963Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-19T01:32:39.752Z"
   },
   {
     "id": "cat_k_gas-stove_2",
@@ -6640,7 +6640,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/gas-stove.jpg",
+    "image": "/images/catalog/products/cat_k_gas-stove_1.jpg",
     "gallery": [],
     "shortDescription": "Gas Stove",
     "description": "Gas Stove: Single. In stock. Quantity available: 1.",
@@ -6661,7 +6661,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.963Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-19T01:32:39.752Z"
   },
   {
     "id": "cat_k_gas-stove_3",
@@ -6674,7 +6674,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/gas-stove.jpg",
+    "image": "/images/catalog/products/cat_k_gas-stove_1.jpg",
     "gallery": [],
     "shortDescription": "Gas Stove",
     "description": "Gas Stove: Stainless. In stock. Quantity available: 1.",
@@ -6695,7 +6695,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.963Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_ghana-must-go_1",
@@ -6708,7 +6708,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/ghana-must-go.jpg",
+    "image": "/images/catalog/products/cat_k_ghana-must-go_1.jpg",
     "gallery": [],
     "shortDescription": "Ghana Must Go",
     "description": "Ghana Must Go: Big. In stock. Quantity available: 2.",
@@ -6729,7 +6729,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.963Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_ghana-must-go_2",
@@ -6742,7 +6742,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/ghana-must-go.jpg",
+    "image": "/images/catalog/products/cat_k_ghana-must-go_1.jpg",
     "gallery": [],
     "shortDescription": "Ghana Must Go",
     "description": "Ghana Must Go: Liverpool. In stock. Quantity available: 3.",
@@ -6763,7 +6763,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.963Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_glue_1",
@@ -6844,7 +6844,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/griller.jpg",
+    "image": "/images/catalog/products/cat_k_griller_1.jpg",
     "gallery": [],
     "shortDescription": "Griller",
     "description": "Griller: Master Chef - HP408. In stock. Quantity available: 1.",
@@ -6865,7 +6865,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.963Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_e_gum_1",
@@ -6916,7 +6916,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hair-dryer.jpg",
+    "image": "/images/catalog/products/cat_k_hair-dryer_1.jpg",
     "gallery": [],
     "shortDescription": "Hair Dryer - Nil",
     "description": "Hair Dryer: Professional - Nil. In stock. Quantity available: 1.",
@@ -6941,7 +6941,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.963Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hand-grater_1",
@@ -6954,7 +6954,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hand-grater.jpg",
+    "image": "/images/catalog/products/cat_k_hand-grater_1.jpg",
     "gallery": [],
     "shortDescription": "Hand Grater",
     "description": "Hand Grater: 4 Shaped. In stock. Quantity available: 3.",
@@ -6975,7 +6975,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hand-grater_2",
@@ -6988,7 +6988,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hand-grater.jpg",
+    "image": "/images/catalog/products/cat_k_hand-grater_1.jpg",
     "gallery": [],
     "shortDescription": "Hand Grater - Manual",
     "description": "Hand Grater: Beans - Manual. In stock. Quantity available: 2.",
@@ -7013,7 +7013,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hand-grater_3",
@@ -7026,7 +7026,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hand-grater.jpg",
+    "image": "/images/catalog/products/cat_k_hand-grater_1.jpg",
     "gallery": [],
     "shortDescription": "Hand Grater",
     "description": "Hand Grater: Brava Spring Slicer. In stock. Quantity available: 1.",
@@ -7047,7 +7047,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hand-grater_4",
@@ -7060,7 +7060,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hand-grater.jpg",
+    "image": "/images/catalog/products/cat_k_hand-grater_1.jpg",
     "gallery": [],
     "shortDescription": "Hand Grater - Manual",
     "description": "Hand Grater: Chilling and Nuts - Stainless - Manual. In stock. Quantity available: 3.",
@@ -7085,7 +7085,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hand-grater_5",
@@ -7098,7 +7098,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hand-grater.jpg",
+    "image": "/images/catalog/products/cat_k_hand-grater_1.jpg",
     "gallery": [],
     "shortDescription": "Hand Grater - Manual",
     "description": "Hand Grater: Chopper - Manual. In stock. Quantity available: 2.",
@@ -7123,7 +7123,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hand-grater_6",
@@ -7136,7 +7136,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hand-grater.jpg",
+    "image": "/images/catalog/products/cat_k_hand-grater_1.jpg",
     "gallery": [],
     "shortDescription": "Hand Grater",
     "description": "Hand Grater: Flat - Big. In stock. Quantity available: 2.",
@@ -7157,7 +7157,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hand-grater_7",
@@ -7170,7 +7170,7 @@
     "stock": 11,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hand-grater.jpg",
+    "image": "/images/catalog/products/cat_k_hand-grater_1.jpg",
     "gallery": [],
     "shortDescription": "Hand Grater",
     "description": "Hand Grater: Flat Round. In stock. Quantity available: 11.",
@@ -7191,7 +7191,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hand-grater_8",
@@ -7204,7 +7204,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hand-grater.jpg",
+    "image": "/images/catalog/products/cat_k_hand-grater_1.jpg",
     "gallery": [],
     "shortDescription": "Hand Grater",
     "description": "Hand Grater: Genius Nicer Dicer. In stock. Quantity available: 1.",
@@ -7225,7 +7225,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hand-grater_9",
@@ -7238,7 +7238,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hand-grater.jpg",
+    "image": "/images/catalog/products/cat_k_hand-grater_1.jpg",
     "gallery": [],
     "shortDescription": "Hand Grater - Manual",
     "description": "Hand Grater: Hexa - Manual. In stock. Quantity available: 1.",
@@ -7263,7 +7263,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hand-grater_10",
@@ -7276,7 +7276,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hand-grater.jpg",
+    "image": "/images/catalog/products/cat_k_hand-grater_1.jpg",
     "gallery": [],
     "shortDescription": "Hand Grater - Manual",
     "description": "Hand Grater: Manna Chilli - Manual. In stock. Quantity available: 3.",
@@ -7301,7 +7301,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hand-grater_11",
@@ -7314,7 +7314,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hand-grater.jpg",
+    "image": "/images/catalog/products/cat_k_hand-grater_1.jpg",
     "gallery": [],
     "shortDescription": "Hand Grater - Manual",
     "description": "Hand Grater: Manna Wooden - Manual. In stock. Quantity available: 1.",
@@ -7339,7 +7339,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hand-grater_12",
@@ -7352,7 +7352,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hand-grater.jpg",
+    "image": "/images/catalog/products/cat_k_hand-grater_1.jpg",
     "gallery": [],
     "shortDescription": "Hand Grater",
     "description": "Hand Grater: Manual. In stock. Quantity available: 3.",
@@ -7373,7 +7373,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hand-grater_13",
@@ -7386,7 +7386,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hand-grater.jpg",
+    "image": "/images/catalog/products/cat_k_hand-grater_1.jpg",
     "gallery": [],
     "shortDescription": "Hand Grater - 6 Faces",
     "description": "Hand Grater: Okro - 6 Faces. In stock. Quantity available: 3.",
@@ -7411,7 +7411,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hand-grater_14",
@@ -7424,7 +7424,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hand-grater.jpg",
+    "image": "/images/catalog/products/cat_k_hand-grater_1.jpg",
     "gallery": [],
     "shortDescription": "Hand Grater - Manual",
     "description": "Hand Grater: Rashnik Chilli Cutter - Round - Manual. In stock. Quantity available: 2.",
@@ -7449,7 +7449,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hand-grater_15",
@@ -7462,7 +7462,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hand-grater.jpg",
+    "image": "/images/catalog/products/cat_k_hand-grater_1.jpg",
     "gallery": [],
     "shortDescription": "Hand Grater - Manual",
     "description": "Hand Grater: Rashnik Deluxe - Manual. In stock. Quantity available: 1.",
@@ -7487,7 +7487,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.470Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hand-grater_16",
@@ -7500,7 +7500,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hand-grater.jpg",
+    "image": "/images/catalog/products/cat_k_hand-grater_1.jpg",
     "gallery": [],
     "shortDescription": "Hand Grater - Manual",
     "description": "Hand Grater: Rashnik Over Cutter - Manual. In stock. Quantity available: 1.",
@@ -7525,7 +7525,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hand-grater_17",
@@ -7538,7 +7538,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hand-grater.jpg",
+    "image": "/images/catalog/products/cat_k_hand-grater_1.jpg",
     "gallery": [],
     "shortDescription": "Hand Grater",
     "description": "Hand Grater: Round Shape. In stock. Quantity available: 3.",
@@ -7559,7 +7559,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hand-grater_18",
@@ -7572,7 +7572,7 @@
     "stock": 6,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hand-grater.jpg",
+    "image": "/images/catalog/products/cat_k_hand-grater_1.jpg",
     "gallery": [],
     "shortDescription": "Hand Grater",
     "description": "Hand Grater: Small. In stock. Quantity available: 6.",
@@ -7593,7 +7593,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hand-grater_19",
@@ -7606,7 +7606,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hand-grater.jpg",
+    "image": "/images/catalog/products/cat_k_hand-grater_1.jpg",
     "gallery": [],
     "shortDescription": "Hand Grater - Manual",
     "description": "Hand Grater: Supreme Vegetable - Manual. In stock. Quantity available: 2.",
@@ -7631,7 +7631,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hand-mixer_1",
@@ -7644,7 +7644,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hand-mixer.jpg",
+    "image": "/images/catalog/products/cat_k_hand-mixer_1.jpg",
     "gallery": [],
     "shortDescription": "Hand Mixer",
     "description": "Hand Mixer: Scarlett. In stock. Quantity available: 2.",
@@ -7665,7 +7665,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hanger_1",
@@ -7678,7 +7678,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hanger.jpg",
+    "image": "/images/catalog/products/cat_k_hanger_1.jpg",
     "gallery": [],
     "shortDescription": "Hanger",
     "description": "Hanger: for Bag. In stock. Quantity available: 2.",
@@ -7699,7 +7699,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hanger_2",
@@ -7712,7 +7712,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hanger.jpg",
+    "image": "/images/catalog/products/cat_k_hanger_1.jpg",
     "gallery": [],
     "shortDescription": "Hanger",
     "description": "Hanger: For Clothe - Iron. In stock. Quantity available: 1.",
@@ -7733,7 +7733,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hanger_3",
@@ -7746,7 +7746,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hanger.jpg",
+    "image": "/images/catalog/products/cat_k_hanger_1.jpg",
     "gallery": [],
     "shortDescription": "Hanger",
     "description": "Hanger: For Clothe - Plastic. In stock. Quantity available: 3.",
@@ -7767,7 +7767,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hanger_4",
@@ -7780,7 +7780,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hanger.jpg",
+    "image": "/images/catalog/products/cat_k_hanger_1.jpg",
     "gallery": [],
     "shortDescription": "Hanger",
     "description": "Hanger: Iron - Spoon. In stock. Quantity available: 3.",
@@ -7801,7 +7801,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hanger_5",
@@ -7814,7 +7814,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hanger.jpg",
+    "image": "/images/catalog/products/cat_k_hanger_1.jpg",
     "gallery": [],
     "shortDescription": "Hanger",
     "description": "Hanger: Kitchen. In stock. Quantity available: 1.",
@@ -7835,7 +7835,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hanger_6",
@@ -7848,7 +7848,7 @@
     "stock": 6,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hanger.jpg",
+    "image": "/images/catalog/products/cat_k_hanger_1.jpg",
     "gallery": [],
     "shortDescription": "Hanger",
     "description": "Hanger: Pant. In stock. Quantity available: 6.",
@@ -7869,7 +7869,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hanger_7",
@@ -7882,7 +7882,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hanger.jpg",
+    "image": "/images/catalog/products/cat_k_hanger_1.jpg",
     "gallery": [],
     "shortDescription": "Hanger",
     "description": "Hanger: Small for Fridge. In stock. Quantity available: 2.",
@@ -7903,7 +7903,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hanger_8",
@@ -7916,7 +7916,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hanger.jpg",
+    "image": "/images/catalog/products/cat_k_hanger_1.jpg",
     "gallery": [],
     "shortDescription": "Hanger",
     "description": "Hanger: SS - Bathroom - Iron/Plastic. In stock. Quantity available: 1.",
@@ -7937,7 +7937,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hanger_9",
@@ -7950,7 +7950,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hanger.jpg",
+    "image": "/images/catalog/products/cat_k_hanger_1.jpg",
     "gallery": [],
     "shortDescription": "Hanger",
     "description": "Hanger: Wuve - Bathroom - Plastic. In stock. Quantity available: 3.",
@@ -7971,7 +7971,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_holder_1",
@@ -7984,7 +7984,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/holder.jpg",
+    "image": "/images/catalog/products/cat_k_holder_1.jpg",
     "gallery": [],
     "shortDescription": "Holder",
     "description": "Holder: Brush and Tooth Paste. In stock. Quantity available: 3.",
@@ -8005,7 +8005,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hot-plate_1",
@@ -8018,7 +8018,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hot-plate.jpg",
+    "image": "/images/catalog/products/cat_k_hot-plate_1.jpg",
     "gallery": [],
     "shortDescription": "Hot Plate",
     "description": "Hot Plate: Glass - Single. In stock. Quantity available: 1.",
@@ -8039,7 +8039,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hot-plate_2",
@@ -8052,7 +8052,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hot-plate.jpg",
+    "image": "/images/catalog/products/cat_k_hot-plate_1.jpg",
     "gallery": [],
     "shortDescription": "Hot Plate - Single - 1,500 W",
     "description": "Hot Plate: National HP - 100A - Single - 1,500 W. In stock. Quantity available: 1.",
@@ -8077,7 +8077,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hot-plate_3",
@@ -8090,7 +8090,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hot-plate.jpg",
+    "image": "/images/catalog/products/cat_k_hot-plate_1.jpg",
     "gallery": [],
     "shortDescription": "Hot Plate - Double - Flat",
     "description": "Hot Plate: Rashnik - Double - Flat. In stock. Quantity available: 1.",
@@ -8115,7 +8115,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hot-plate_4",
@@ -8128,7 +8128,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hot-plate.jpg",
+    "image": "/images/catalog/products/cat_k_hot-plate_1.jpg",
     "gallery": [],
     "shortDescription": "Hot Plate - Double - Ring",
     "description": "Hot Plate: Rashnik - Double - Ring. In stock. Quantity available: 1.",
@@ -8153,7 +8153,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_hot-plate_5",
@@ -8166,7 +8166,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/hot-plate.jpg",
+    "image": "/images/catalog/products/cat_k_hot-plate_1.jpg",
     "gallery": [],
     "shortDescription": "Hot Plate - Single - 1000W",
     "description": "Hot Plate: Rashnik - RN - 4076B - Single - 1000W. In stock. Quantity available: 2.",
@@ -8191,7 +8191,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_ice-bucket_1",
@@ -8204,7 +8204,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/ice-bucket.jpg",
+    "image": "/images/catalog/products/cat_k_ice-bucket_1.jpg",
     "gallery": [],
     "shortDescription": "Ice Bucket",
     "description": "Ice Bucket: Standard. In stock. Quantity available: 1.",
@@ -8225,7 +8225,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_e_iron-electric_1",
@@ -8424,7 +8424,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/jug.jpg",
+    "image": "/images/catalog/products/cat_k_jug_1.jpg",
     "gallery": [],
     "shortDescription": "Jug",
     "description": "Jug: Flower with Cups. In stock. Quantity available: 2.",
@@ -8445,7 +8445,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_jug_2",
@@ -8458,7 +8458,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/jug.jpg",
+    "image": "/images/catalog/products/cat_k_jug_1.jpg",
     "gallery": [],
     "shortDescription": "Jug - Glass - Big",
     "description": "Jug: Hana - Glass - Big. In stock. Quantity available: 1.",
@@ -8483,7 +8483,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_jug_3",
@@ -8496,7 +8496,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/jug.jpg",
+    "image": "/images/catalog/products/cat_k_jug_1.jpg",
     "gallery": [],
     "shortDescription": "Jug - Glass - Small 3 Pcs",
     "description": "Jug: Hana - Glass - Small 3 Pcs. In stock. Quantity available: 1.",
@@ -8521,7 +8521,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_jug_4",
@@ -8534,7 +8534,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/jug.jpg",
+    "image": "/images/catalog/products/cat_k_jug_1.jpg",
     "gallery": [],
     "shortDescription": "Jug - Jug and Cup - 7 Pcs",
     "description": "Jug: Hana - Jug and Cup - 7 Pcs. In stock. Quantity available: 2.",
@@ -8559,7 +8559,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_jug_5",
@@ -8572,7 +8572,7 @@
     "stock": 4,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/jug.jpg",
+    "image": "/images/catalog/products/cat_k_jug_1.jpg",
     "gallery": [],
     "shortDescription": "Jug - 4 in 1",
     "description": "Jug: Huiluong - 4 in 1. In stock. Quantity available: 4.",
@@ -8597,7 +8597,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_jug_6",
@@ -8610,7 +8610,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/jug.jpg",
+    "image": "/images/catalog/products/cat_k_jug_1.jpg",
     "gallery": [],
     "shortDescription": "Jug - 2.4L",
     "description": "Jug: JDSMP - 2.4L. In stock. Quantity available: 1.",
@@ -8635,7 +8635,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_jug_7",
@@ -8648,7 +8648,7 @@
     "stock": 6,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/jug.jpg",
+    "image": "/images/catalog/products/cat_k_jug_1.jpg",
     "gallery": [],
     "shortDescription": "Jug",
     "description": "Jug: Lemon with Cups. In stock. Quantity available: 6.",
@@ -8669,7 +8669,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_jug_8",
@@ -8682,7 +8682,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/jug.jpg",
+    "image": "/images/catalog/products/cat_k_jug_1.jpg",
     "gallery": [],
     "shortDescription": "Jug",
     "description": "Jug: Salvin. In stock. Quantity available: 1.",
@@ -8703,7 +8703,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_jug_9",
@@ -8716,7 +8716,7 @@
     "stock": 4,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/jug.jpg",
+    "image": "/images/catalog/products/cat_k_jug_1.jpg",
     "gallery": [],
     "shortDescription": "Jug - Plastic with Cups",
     "description": "Jug: Salvin - Plastic with Cups. In stock. Quantity available: 4.",
@@ -8741,7 +8741,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_jug_10",
@@ -8754,7 +8754,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/jug.jpg",
+    "image": "/images/catalog/products/cat_k_jug_1.jpg",
     "gallery": [],
     "shortDescription": "Jug - Unbreakable with Cups",
     "description": "Jug: SMP - Unbreakable with Cups. In stock. Quantity available: 2.",
@@ -8779,7 +8779,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.964Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_jug_11",
@@ -8792,7 +8792,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/jug.jpg",
+    "image": "/images/catalog/products/cat_k_jug_1.jpg",
     "gallery": [],
     "shortDescription": "Jug - Unbreakable with Cups/Handle",
     "description": "Jug: SMP - Unbreakable with Cups/Handle. In stock. Quantity available: 2.",
@@ -8817,7 +8817,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_jug_12",
@@ -8830,7 +8830,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/jug.jpg",
+    "image": "/images/catalog/products/cat_k_jug_1.jpg",
     "gallery": [],
     "shortDescription": "Jug",
     "description": "Jug: Stainless. In stock. Quantity available: 1.",
@@ -8851,7 +8851,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_jug_13",
@@ -8864,7 +8864,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/jug.jpg",
+    "image": "/images/catalog/products/cat_k_jug_1.jpg",
     "gallery": [],
     "shortDescription": "Jug",
     "description": "Jug: Yeecome. In stock. Quantity available: 1.",
@@ -8885,7 +8885,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_juicer_1",
@@ -8898,7 +8898,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/juicer.jpg",
+    "image": "/images/catalog/products/cat_k_juicer_1.jpg",
     "gallery": [],
     "shortDescription": "Juicer",
     "description": "Juicer: Manual. In stock. Quantity available: 2.",
@@ -8919,7 +8919,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_juicer_2",
@@ -8932,7 +8932,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/juicer.jpg",
+    "image": "/images/catalog/products/cat_k_juicer_1.jpg",
     "gallery": [],
     "shortDescription": "Juicer",
     "description": "Juicer: Rechargeable. In stock. Quantity available: 1.",
@@ -8953,7 +8953,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_kettle_1",
@@ -8966,7 +8966,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/kettle.jpg",
+    "image": "/images/catalog/products/cat_k_kettle_1.jpg",
     "gallery": [],
     "shortDescription": "Kettle - Electric",
     "description": "Kettle: Crown Star - 5L - Electric. In stock. Quantity available: 1.",
@@ -8991,7 +8991,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_kettle_2",
@@ -9004,7 +9004,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/kettle.jpg",
+    "image": "/images/catalog/products/cat_k_kettle_1.jpg",
     "gallery": [],
     "shortDescription": "Kettle - 3L - Whistling Kettle",
     "description": "Kettle: Manna - ZBH03 - 3L - Whistling Kettle. In stock. Quantity available: 1.",
@@ -9029,7 +9029,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_kettle_3",
@@ -9042,7 +9042,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/kettle.jpg",
+    "image": "/images/catalog/products/cat_k_kettle_1.jpg",
     "gallery": [],
     "shortDescription": "Kettle - 4L - Whistling Kettle",
     "description": "Kettle: SMP - SK03 - 4L - Whistling Kettle. In stock. Quantity available: 2.",
@@ -9067,7 +9067,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_kettle_4",
@@ -9080,7 +9080,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/kettle.jpg",
+    "image": "/images/catalog/products/cat_k_kettle_1.jpg",
     "gallery": [],
     "shortDescription": "Kettle - 3L",
     "description": "Kettle: Tower - Alluminium - 3L. In stock. Quantity available: 3.",
@@ -9105,7 +9105,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_kettle_5",
@@ -9118,7 +9118,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/kettle.jpg",
+    "image": "/images/catalog/products/cat_k_kettle_1.jpg",
     "gallery": [],
     "shortDescription": "Kettle - 3L",
     "description": "Kettle: Tower - Stainless - 3L. In stock. Quantity available: 2.",
@@ -9143,7 +9143,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_kitchen-spoon_1",
@@ -9156,7 +9156,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/kitchen-spoon.jpg",
+    "image": "/images/catalog/products/cat_k_kitchen-spoon_1.jpg",
     "gallery": [],
     "shortDescription": "Kitchen Spoon - 6 Pcs",
     "description": "Kitchen Spoon: Kiko - 6 Pcs. In stock. Quantity available: 2.",
@@ -9181,7 +9181,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_kitchen-spoon_2",
@@ -9194,7 +9194,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/kitchen-spoon.jpg",
+    "image": "/images/catalog/products/cat_k_kitchen-spoon_1.jpg",
     "gallery": [],
     "shortDescription": "Kitchen Spoon - 4 Pcs",
     "description": "Kitchen Spoon: Kitchenware - 4 Pcs. In stock. Quantity available: 1.",
@@ -9219,7 +9219,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.753Z"
   },
   {
     "id": "cat_k_kitchen-spoon_3",
@@ -9232,7 +9232,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/kitchen-spoon.jpg",
+    "image": "/images/catalog/products/cat_k_kitchen-spoon_1.jpg",
     "gallery": [],
     "shortDescription": "Kitchen Spoon",
     "description": "Kitchen Spoon: Original - 2 in 1. In stock. Quantity available: 2.",
@@ -9253,7 +9253,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_kitchen-spoon_4",
@@ -9266,7 +9266,7 @@
     "stock": 4,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/kitchen-spoon.jpg",
+    "image": "/images/catalog/products/cat_k_kitchen-spoon_1.jpg",
     "gallery": [],
     "shortDescription": "Kitchen Spoon",
     "description": "Kitchen Spoon: Original - Single. In stock. Quantity available: 4.",
@@ -9287,7 +9287,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_kitchen-spoon_5",
@@ -9300,7 +9300,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/kitchen-spoon.jpg",
+    "image": "/images/catalog/products/cat_k_kitchen-spoon_1.jpg",
     "gallery": [],
     "shortDescription": "Kitchen Spoon - 32 Pcs",
     "description": "Kitchen Spoon: Paradiso - 32 Pcs. In stock. Quantity available: 1.",
@@ -9325,7 +9325,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_kitchen-spoon_6",
@@ -9338,7 +9338,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/kitchen-spoon.jpg",
+    "image": "/images/catalog/products/cat_k_kitchen-spoon_1.jpg",
     "gallery": [],
     "shortDescription": "Kitchen Spoon - 7 Pcs",
     "description": "Kitchen Spoon: Paradiso - 7 Pcs. In stock. Quantity available: 2.",
@@ -9363,7 +9363,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_kitchen-spoon_7",
@@ -9376,7 +9376,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/kitchen-spoon.jpg",
+    "image": "/images/catalog/products/cat_k_kitchen-spoon_1.jpg",
     "gallery": [],
     "shortDescription": "Kitchen Spoon - 6 in 1",
     "description": "Kitchen Spoon: Rubber - 6 in 1. In stock. Quantity available: 1.",
@@ -9401,7 +9401,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_kitchen-spoon_8",
@@ -9414,7 +9414,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/kitchen-spoon.jpg",
+    "image": "/images/catalog/products/cat_k_kitchen-spoon_1.jpg",
     "gallery": [],
     "shortDescription": "Kitchen Spoon - 5 in 1",
     "description": "Kitchen Spoon: Tianmu Boutique - Kitchen Suit - 5 in 1. In stock. Quantity available: 1.",
@@ -9439,7 +9439,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_kitchen-spoon_9",
@@ -9452,7 +9452,7 @@
     "stock": 6,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/kitchen-spoon.jpg",
+    "image": "/images/catalog/products/cat_k_kitchen-spoon_1.jpg",
     "gallery": [],
     "shortDescription": "Kitchen Spoon",
     "description": "Kitchen Spoon: Various. In stock. Quantity available: 6.",
@@ -9473,7 +9473,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_kitchen-spoon_10",
@@ -9486,7 +9486,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/kitchen-spoon.jpg",
+    "image": "/images/catalog/products/cat_k_kitchen-spoon_1.jpg",
     "gallery": [],
     "shortDescription": "Kitchen Spoon - 12 Pcs",
     "description": "Kitchen Spoon: Yi Guan - 12 Pcs. In stock. Quantity available: 1.",
@@ -9511,7 +9511,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_knife_1",
@@ -9524,7 +9524,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/knife.jpg",
+    "image": "/images/catalog/products/cat_k_knife_3.jpg",
     "gallery": [],
     "shortDescription": "Knife",
     "description": "Knife: Butcher Knife - 2011. In stock. Quantity available: 3.",
@@ -9545,7 +9545,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_knife_2",
@@ -9558,7 +9558,7 @@
     "stock": 9,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/knife.jpg",
+    "image": "/images/catalog/products/cat_k_knife_3.jpg",
     "gallery": [],
     "shortDescription": "Knife",
     "description": "Knife: Butcher Knife - JP125# / 6 inch. In stock. Quantity available: 9.",
@@ -9579,7 +9579,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_knife_3",
@@ -9592,7 +9592,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/knife.jpg",
+    "image": "/images/catalog/products/cat_k_knife_3.jpg",
     "gallery": [],
     "shortDescription": "Knife - Fruit Knife Set",
     "description": "Knife: China - Fruit Knife Set. In stock. Quantity available: 3.",
@@ -9617,7 +9617,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_knife_4",
@@ -9630,7 +9630,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/knife.jpg",
+    "image": "/images/catalog/products/cat_k_knife_3.jpg",
     "gallery": [],
     "shortDescription": "Knife - Nil",
     "description": "Knife: Forging Family - 6 Pcs - Nil. In stock. Quantity available: 1.",
@@ -9655,7 +9655,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_knife_5",
@@ -9668,7 +9668,7 @@
     "stock": 5,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/knife.jpg",
+    "image": "/images/catalog/products/cat_k_knife_3.jpg",
     "gallery": [],
     "shortDescription": "Knife",
     "description": "Knife: Kitchen Knife - 7 inch. In stock. Quantity available: 5.",
@@ -9689,7 +9689,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_knife_6",
@@ -9702,7 +9702,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/knife.jpg",
+    "image": "/images/catalog/products/cat_k_knife_3.jpg",
     "gallery": [],
     "shortDescription": "Knife - Single",
     "description": "Knife: Rashnik - Single. In stock. Quantity available: 2.",
@@ -9727,7 +9727,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.965Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_e_knife-switch_1",
@@ -10316,7 +10316,7 @@
     "stock": 21,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/lunch-box.jpg",
+    "image": "/images/catalog/products/cat_k_lunch-box_5.jpg",
     "gallery": [],
     "shortDescription": "Lunch Box",
     "description": "Lunch Box: Canada. In stock. Quantity available: 21.",
@@ -10337,7 +10337,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.969Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_lunch-box_2",
@@ -10350,7 +10350,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/lunch-box.jpg",
+    "image": "/images/catalog/products/cat_k_lunch-box_5.jpg",
     "gallery": [],
     "shortDescription": "Lunch Box - 1L",
     "description": "Lunch Box: China - 1L. In stock. Quantity available: 1.",
@@ -10375,7 +10375,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.969Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_lunch-box_3",
@@ -10388,7 +10388,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/lunch-box.jpg",
+    "image": "/images/catalog/products/cat_k_lunch-box_5.jpg",
     "gallery": [],
     "shortDescription": "Lunch Box - 2L",
     "description": "Lunch Box: China - 2L. In stock. Quantity available: 2.",
@@ -10413,7 +10413,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.969Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_lunch-box_4",
@@ -10426,7 +10426,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/lunch-box.jpg",
+    "image": "/images/catalog/products/cat_k_lunch-box_5.jpg",
     "gallery": [],
     "shortDescription": "Lunch Box",
     "description": "Lunch Box: IQIX. In stock. Quantity available: 1.",
@@ -10447,7 +10447,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.969Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_lunch-box_5",
@@ -10460,7 +10460,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/lunch-box.jpg",
+    "image": "/images/catalog/products/cat_k_lunch-box_5.jpg",
     "gallery": [],
     "shortDescription": "Lunch Box - 2L",
     "description": "Lunch Box: Multifuntional - Electric - 2L. In stock. Quantity available: 1.",
@@ -10485,7 +10485,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.969Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_lunch-box_6",
@@ -10498,7 +10498,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/lunch-box.jpg",
+    "image": "/images/catalog/products/cat_k_lunch-box_5.jpg",
     "gallery": [],
     "shortDescription": "Lunch Box",
     "description": "Lunch Box: Single. In stock. Quantity available: 1.",
@@ -10519,7 +10519,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.969Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_lunch-box_7",
@@ -10532,7 +10532,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/lunch-box.jpg",
+    "image": "/images/catalog/products/cat_k_lunch-box_5.jpg",
     "gallery": [],
     "shortDescription": "Lunch Box",
     "description": "Lunch Box: With Divider. In stock. Quantity available: 1.",
@@ -10553,7 +10553,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.969Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_massager_1",
@@ -10600,7 +10600,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/microwave.jpg",
+    "image": "/images/catalog/products/cat_k_microwave_1.jpg",
     "gallery": [],
     "shortDescription": "Microwave - H20MOBS11",
     "description": "Microwave: Hisence - H20MOBS11. In stock. Quantity available: 1.",
@@ -10625,7 +10625,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.969Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_mopping-stick_1",
@@ -10638,7 +10638,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/mopping-stick.jpg",
+    "image": "/images/catalog/products/cat_k_mopping-stick_1.jpg",
     "gallery": [],
     "shortDescription": "Mopping Stick",
     "description": "Mopping Stick: Big. In stock. Quantity available: 3.",
@@ -10659,7 +10659,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.969Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_mopping-stick_2",
@@ -10672,7 +10672,7 @@
     "stock": 4,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/mopping-stick.jpg",
+    "image": "/images/catalog/products/cat_k_mopping-stick_1.jpg",
     "gallery": [],
     "shortDescription": "Mopping Stick",
     "description": "Mopping Stick: Medium. In stock. Quantity available: 4.",
@@ -10693,7 +10693,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.969Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_mopping-stick_3",
@@ -10706,7 +10706,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/mopping-stick.jpg",
+    "image": "/images/catalog/products/cat_k_mopping-stick_1.jpg",
     "gallery": [],
     "shortDescription": "Mopping Stick",
     "description": "Mopping Stick: Small. In stock. Quantity available: 3.",
@@ -10727,7 +10727,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.969Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_mug_1",
@@ -10740,7 +10740,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/mug.jpg",
+    "image": "/images/catalog/products/cat_k_mug_1.jpg",
     "gallery": [],
     "shortDescription": "Mug - With Spoon",
     "description": "Mug: Coffee Break - With Spoon. In stock. Quantity available: 3.",
@@ -10765,7 +10765,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.969Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_mug_2",
@@ -10778,7 +10778,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/mug.jpg",
+    "image": "/images/catalog/products/cat_k_mug_1.jpg",
     "gallery": [],
     "shortDescription": "Mug",
     "description": "Mug: Emel with Spoons. In stock. Quantity available: 1.",
@@ -10799,7 +10799,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.969Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_mug_3",
@@ -10812,7 +10812,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/mug.jpg",
+    "image": "/images/catalog/products/cat_k_mug_1.jpg",
     "gallery": [],
     "shortDescription": "Mug - Single",
     "description": "Mug: Hana - Single. In stock. Quantity available: 3.",
@@ -10837,7 +10837,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.969Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_mug_4",
@@ -10850,7 +10850,7 @@
     "stock": 5,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/mug.jpg",
+    "image": "/images/catalog/products/cat_k_mug_1.jpg",
     "gallery": [],
     "shortDescription": "Mug - Single",
     "description": "Mug: SMP - Single. In stock. Quantity available: 5.",
@@ -10875,7 +10875,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.969Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_e_nail_1",
@@ -10956,7 +10956,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/napkin.jpg",
+    "image": "/images/catalog/products/cat_k_napkin_1.jpg",
     "gallery": [],
     "shortDescription": "Napkin - 3 in 1",
     "description": "Napkin: Kitchen - 3 in 1. In stock. Quantity available: 1.",
@@ -10981,7 +10981,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.969Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_nylon_1",
@@ -10994,7 +10994,7 @@
     "stock": 50,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/nylon.jpg",
+    "image": "/images/catalog/products/cat_k_nylon_1.jpg",
     "gallery": [],
     "shortDescription": "Nylon",
     "description": "Nylon: Takeaway. In stock. Quantity available: 50.",
@@ -11015,7 +11015,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.969Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_parker_1",
@@ -11028,7 +11028,7 @@
     "stock": 11,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/parker.jpg",
+    "image": "/images/catalog/products/cat_k_parker_1.jpg",
     "gallery": [],
     "shortDescription": "Parker",
     "description": "Parker: Standard. In stock. Quantity available: 11.",
@@ -11049,7 +11049,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.969Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_e_pattress-box_1",
@@ -11096,7 +11096,7 @@
     "stock": 13,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/peg.jpg",
+    "image": "/images/catalog/products/cat_k_peg_1.jpg",
     "gallery": [],
     "shortDescription": "Peg",
     "description": "Peg: Sunbelt for Clothe. In stock. Quantity available: 13.",
@@ -11117,7 +11117,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_peg_2",
@@ -11130,7 +11130,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/peg.jpg",
+    "image": "/images/catalog/products/cat_k_peg_1.jpg",
     "gallery": [],
     "shortDescription": "Peg",
     "description": "Peg: XRZ - Big. In stock. Quantity available: 1.",
@@ -11151,7 +11151,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_peg_3",
@@ -11164,7 +11164,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/peg.jpg",
+    "image": "/images/catalog/products/cat_k_peg_1.jpg",
     "gallery": [],
     "shortDescription": "Peg",
     "description": "Peg: XRZ - Small. In stock. Quantity available: 3.",
@@ -11185,7 +11185,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_e_phone-stand_1",
@@ -11232,7 +11232,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/plate.jpg",
+    "image": "/images/catalog/products/cat_k_plate_1.jpg",
     "gallery": [],
     "shortDescription": "Plate",
     "description": "Plate: Ceramic Plate with Spoon. In stock. Quantity available: 1.",
@@ -11253,7 +11253,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_plate_2",
@@ -11266,7 +11266,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/plate.jpg",
+    "image": "/images/catalog/products/cat_k_plate_1.jpg",
     "gallery": [],
     "shortDescription": "Plate - 5 Pcs",
     "description": "Plate: China - 5 Pcs. In stock. Quantity available: 1.",
@@ -11291,7 +11291,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_plate_3",
@@ -11304,7 +11304,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/plate.jpg",
+    "image": "/images/catalog/products/cat_k_plate_1.jpg",
     "gallery": [],
     "shortDescription": "Plate - 4 Pcs",
     "description": "Plate: China - Deqin - 4 Pcs. In stock. Quantity available: 1.",
@@ -11329,7 +11329,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_plate_4",
@@ -11342,7 +11342,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/plate.jpg",
+    "image": "/images/catalog/products/cat_k_plate_1.jpg",
     "gallery": [],
     "shortDescription": "Plate - Dinner Set - 10 Pcs White",
     "description": "Plate: Cran Berry - Dinner Set - 10 Pcs White. In stock. Quantity available: 1.",
@@ -11367,7 +11367,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_plate_5",
@@ -11380,7 +11380,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/plate.jpg",
+    "image": "/images/catalog/products/cat_k_plate_1.jpg",
     "gallery": [],
     "shortDescription": "Plate - Dinner Set - 4 Pcs",
     "description": "Plate: Happy Family - Dinner Set - 4 Pcs. In stock. Quantity available: 1.",
@@ -11405,7 +11405,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_plate_6",
@@ -11418,7 +11418,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/plate.jpg",
+    "image": "/images/catalog/products/cat_k_plate_1.jpg",
     "gallery": [],
     "shortDescription": "Plate - Dinner Set - 3 Pcs",
     "description": "Plate: SMP - Dinner Set - 3 Pcs. In stock. Quantity available: 1.",
@@ -11443,7 +11443,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_plate_7",
@@ -11456,7 +11456,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/plate.jpg",
+    "image": "/images/catalog/products/cat_k_plate_1.jpg",
     "gallery": [],
     "shortDescription": "Plate - Dinner Set - 6 Pcs",
     "description": "Plate: SMP - Dinner Set - 6 Pcs. In stock. Quantity available: 1.",
@@ -11481,7 +11481,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_plate_8",
@@ -11494,7 +11494,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/plate.jpg",
+    "image": "/images/catalog/products/cat_k_plate_1.jpg",
     "gallery": [],
     "shortDescription": "Plate - Dinner Set - 6 Pcs",
     "description": "Plate: Square - Dinner Set - 6 Pcs. In stock. Quantity available: 1.",
@@ -11519,7 +11519,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_plate-rack_1",
@@ -11532,7 +11532,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/plate-rack.jpg",
+    "image": "/images/catalog/products/cat_k_plate-rack_1.jpg",
     "gallery": [],
     "shortDescription": "Plate Rack",
     "description": "Plate Rack: Concept Fashion - Multipurpose. In stock. Quantity available: 1.",
@@ -11553,7 +11553,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_plate-rack_2",
@@ -11566,7 +11566,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/plate-rack.jpg",
+    "image": "/images/catalog/products/cat_k_plate-rack_1.jpg",
     "gallery": [],
     "shortDescription": "Plate Rack",
     "description": "Plate Rack: Maximus. In stock. Quantity available: 1.",
@@ -11587,7 +11587,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_plate-rack_3",
@@ -11600,7 +11600,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/plate-rack.jpg",
+    "image": "/images/catalog/products/cat_k_plate-rack_1.jpg",
     "gallery": [],
     "shortDescription": "Plate Rack",
     "description": "Plate Rack: Multifunctional. In stock. Quantity available: 1.",
@@ -11621,7 +11621,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_plate-rack_4",
@@ -11634,7 +11634,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/plate-rack.jpg",
+    "image": "/images/catalog/products/cat_k_plate-rack_1.jpg",
     "gallery": [],
     "shortDescription": "Plate Rack",
     "description": "Plate Rack: Multifunctional - Table. In stock. Quantity available: 2.",
@@ -11655,7 +11655,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_plate-rack_5",
@@ -11668,7 +11668,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/plate-rack.jpg",
+    "image": "/images/catalog/products/cat_k_plate-rack_1.jpg",
     "gallery": [],
     "shortDescription": "Plate Rack",
     "description": "Plate Rack: Pentagon. In stock. Quantity available: 2.",
@@ -11689,7 +11689,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_plate-rack_6",
@@ -11702,7 +11702,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/plate-rack.jpg",
+    "image": "/images/catalog/products/cat_k_plate-rack_1.jpg",
     "gallery": [],
     "shortDescription": "Plate Rack",
     "description": "Plate Rack: Plate - 2 Steps. In stock. Quantity available: 1.",
@@ -11723,7 +11723,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_plate-rack_7",
@@ -11736,7 +11736,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/plate-rack.jpg",
+    "image": "/images/catalog/products/cat_k_plate-rack_1.jpg",
     "gallery": [],
     "shortDescription": "Plate Rack",
     "description": "Plate Rack: QDR-247. In stock. Quantity available: 1.",
@@ -11757,7 +11757,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_plate-rack_8",
@@ -11770,7 +11770,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/plate-rack.jpg",
+    "image": "/images/catalog/products/cat_k_plate-rack_1.jpg",
     "gallery": [],
     "shortDescription": "Plate Rack",
     "description": "Plate Rack: QDR-252+. In stock. Quantity available: 1.",
@@ -11791,7 +11791,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_plate-rack_9",
@@ -11804,7 +11804,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/plate-rack.jpg",
+    "image": "/images/catalog/products/cat_k_plate-rack_1.jpg",
     "gallery": [],
     "shortDescription": "Plate Rack",
     "description": "Plate Rack: Rashnik - RN-1602. In stock. Quantity available: 1.",
@@ -11825,7 +11825,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_plate-rack_10",
@@ -11838,7 +11838,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/plate-rack.jpg",
+    "image": "/images/catalog/products/cat_k_plate-rack_1.jpg",
     "gallery": [],
     "shortDescription": "Plate Rack",
     "description": "Plate Rack: Rashnik - RN-1603. In stock. Quantity available: 2.",
@@ -11859,7 +11859,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_plate-rack_11",
@@ -11872,7 +11872,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/plate-rack.jpg",
+    "image": "/images/catalog/products/cat_k_plate-rack_1.jpg",
     "gallery": [],
     "shortDescription": "Plate Rack",
     "description": "Plate Rack: Rashnik - RN-1606. In stock. Quantity available: 1.",
@@ -11893,7 +11893,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_plate-rack_12",
@@ -11906,7 +11906,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/plate-rack.jpg",
+    "image": "/images/catalog/products/cat_k_plate-rack_1.jpg",
     "gallery": [],
     "shortDescription": "Plate Rack",
     "description": "Plate Rack: Rashnik - RN-1607. In stock. Quantity available: 1.",
@@ -11927,7 +11927,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.471Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_plate-rack_13",
@@ -11940,7 +11940,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/plate-rack.jpg",
+    "image": "/images/catalog/products/cat_k_plate-rack_1.jpg",
     "gallery": [],
     "shortDescription": "Plate Rack",
     "description": "Plate Rack: Rashnik - RN-1636. In stock. Quantity available: 1.",
@@ -11961,7 +11961,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_plate-rack_14",
@@ -11974,7 +11974,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/plate-rack.jpg",
+    "image": "/images/catalog/products/cat_k_plate-rack_1.jpg",
     "gallery": [],
     "shortDescription": "Plate Rack",
     "description": "Plate Rack: Salvin - Big. In stock. Quantity available: 2.",
@@ -11995,7 +11995,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_plate-rack_15",
@@ -12008,7 +12008,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/plate-rack.jpg",
+    "image": "/images/catalog/products/cat_k_plate-rack_1.jpg",
     "gallery": [],
     "shortDescription": "Plate Rack",
     "description": "Plate Rack: Salvin - Small. In stock. Quantity available: 2.",
@@ -12029,7 +12029,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_plate-rack_16",
@@ -12042,7 +12042,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/plate-rack.jpg",
+    "image": "/images/catalog/products/cat_k_plate-rack_1.jpg",
     "gallery": [],
     "shortDescription": "Plate Rack",
     "description": "Plate Rack: Salvin with Cover. In stock. Quantity available: 3.",
@@ -12063,7 +12063,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_e_plug_1",
@@ -12144,7 +12144,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/pot.jpg",
+    "image": "/images/catalog/products/cat_k_pot_3.jpg",
     "gallery": [],
     "shortDescription": "Pot - 7 in 1",
     "description": "Pot: Casserole S-6022 - 7 in 1. In stock. Quantity available: 2.",
@@ -12169,7 +12169,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_pot_2",
@@ -12182,7 +12182,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/pot.jpg",
+    "image": "/images/catalog/products/cat_k_pot_3.jpg",
     "gallery": [],
     "shortDescription": "Pot - 3 in 1",
     "description": "Pot: Casserole S-6024 - 3 in 1. In stock. Quantity available: 1.",
@@ -12207,7 +12207,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_pot_3",
@@ -12220,7 +12220,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/pot.jpg",
+    "image": "/images/catalog/products/cat_k_pot_3.jpg",
     "gallery": [],
     "shortDescription": "Pot - 6 pcs",
     "description": "Pot: Dzire - DZ-5127 - 6 pcs. In stock. Quantity available: 1.",
@@ -12245,7 +12245,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_pot_4",
@@ -12258,7 +12258,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/pot.jpg",
+    "image": "/images/catalog/products/cat_k_pot_3.jpg",
     "gallery": [],
     "shortDescription": "Pot - 3 in 1",
     "description": "Pot: Hoffner - 3 in 1. In stock. Quantity available: 1.",
@@ -12283,7 +12283,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_pot_5",
@@ -12296,7 +12296,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/pot.jpg",
+    "image": "/images/catalog/products/cat_k_pot_3.jpg",
     "gallery": [],
     "shortDescription": "Pot - 3 in 1 with Fry Pan",
     "description": "Pot: Hoffner - 801 (Non-Stick) - 3 in 1 with Fry Pan. In stock. Quantity available: 1.",
@@ -12321,7 +12321,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_pot_6",
@@ -12334,7 +12334,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/pot.jpg",
+    "image": "/images/catalog/products/cat_k_pot_3.jpg",
     "gallery": [],
     "shortDescription": "Pot - 4 in 1",
     "description": "Pot: Hoffner - Heavy Pot - 4 in 1. In stock. Quantity available: 1.",
@@ -12359,7 +12359,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_pot_7",
@@ -12372,7 +12372,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/pot.jpg",
+    "image": "/images/catalog/products/cat_k_pot_3.jpg",
     "gallery": [],
     "shortDescription": "Pot - 3 in 1",
     "description": "Pot: Hoffner - Non Stick - 3 in 1. In stock. Quantity available: 1.",
@@ -12397,7 +12397,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_pot_8",
@@ -12410,7 +12410,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/pot.jpg",
+    "image": "/images/catalog/products/cat_k_pot_3.jpg",
     "gallery": [],
     "shortDescription": "Pot - 3 in 1",
     "description": "Pot: Hoffner's - 3401 - 3 in 1. In stock. Quantity available: 1.",
@@ -12435,7 +12435,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_pot_9",
@@ -12448,7 +12448,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/pot.jpg",
+    "image": "/images/catalog/products/cat_k_pot_3.jpg",
     "gallery": [],
     "shortDescription": "Pot - 5 in 1",
     "description": "Pot: Kinelco - KN-5SP2 - Belli - 5 in 1. In stock. Quantity available: 1.",
@@ -12473,7 +12473,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_pot_10",
@@ -12486,7 +12486,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/pot.jpg",
+    "image": "/images/catalog/products/cat_k_pot_3.jpg",
     "gallery": [],
     "shortDescription": "Pot - 4 in 1",
     "description": "Pot: Kinelco - KN-6016 - 4 in 1. In stock. Quantity available: 1.",
@@ -12511,7 +12511,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_pot_11",
@@ -12524,7 +12524,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/pot.jpg",
+    "image": "/images/catalog/products/cat_k_pot_3.jpg",
     "gallery": [],
     "shortDescription": "Pot - 4A",
     "description": "Pot: Kitchenmate - 4 Pcs - 4A. In stock. Quantity available: 2.",
@@ -12549,7 +12549,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_pot_12",
@@ -12562,7 +12562,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/pot.jpg",
+    "image": "/images/catalog/products/cat_k_pot_3.jpg",
     "gallery": [],
     "shortDescription": "Pot - 4B",
     "description": "Pot: Kitchenmate - 4 Pcs - 4B. In stock. Quantity available: 1.",
@@ -12587,7 +12587,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_pot_13",
@@ -12600,7 +12600,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/pot.jpg",
+    "image": "/images/catalog/products/cat_k_pot_3.jpg",
     "gallery": [],
     "shortDescription": "Pot - 3C",
     "description": "Pot: Picasso - 3C. In stock. Quantity available: 1.",
@@ -12625,7 +12625,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_pot_14",
@@ -12638,7 +12638,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/pot.jpg",
+    "image": "/images/catalog/products/cat_k_pot_3.jpg",
     "gallery": [],
     "shortDescription": "Pot - 4A",
     "description": "Pot: Picasso - 4 Pcs - 4A. In stock. Quantity available: 1.",
@@ -12663,7 +12663,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_pot_15",
@@ -12676,7 +12676,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/pot.jpg",
+    "image": "/images/catalog/products/cat_k_pot_3.jpg",
     "gallery": [],
     "shortDescription": "Pot - 5 in 1",
     "description": "Pot: Rashnik - RN-4852 - 5 in 1. In stock. Quantity available: 1.",
@@ -12701,7 +12701,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_pot_16",
@@ -12714,7 +12714,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/pot.jpg",
+    "image": "/images/catalog/products/cat_k_pot_3.jpg",
     "gallery": [],
     "shortDescription": "Pot - 1 in 1",
     "description": "Pot: Soupy Pan - 1 in 1. In stock. Quantity available: 1.",
@@ -12739,7 +12739,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_pot_17",
@@ -12752,7 +12752,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/pot.jpg",
+    "image": "/images/catalog/products/cat_k_pot_3.jpg",
     "gallery": [],
     "shortDescription": "Pot - 7 in 1",
     "description": "Pot: Tornado - 7 in 1. In stock. Quantity available: 1.",
@@ -12777,7 +12777,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_pot_18",
@@ -12790,7 +12790,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/pot.jpg",
+    "image": "/images/catalog/products/cat_k_pot_3.jpg",
     "gallery": [],
     "shortDescription": "Pot - 5 in 1",
     "description": "Pot: Tower Classic - 5 in 1. In stock. Quantity available: 1.",
@@ -12815,7 +12815,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.970Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_pot_19",
@@ -12828,7 +12828,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/pot.jpg",
+    "image": "/images/catalog/products/cat_k_pot_3.jpg",
     "gallery": [],
     "shortDescription": "Pot - 5 in 1",
     "description": "Pot: Tower Gold - 5 in 1. In stock. Quantity available: 1.",
@@ -12853,7 +12853,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_pot_20",
@@ -12866,7 +12866,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/pot.jpg",
+    "image": "/images/catalog/products/cat_k_pot_3.jpg",
     "gallery": [],
     "shortDescription": "Pot",
     "description": "Pot: Tower Trim - Bigi. In stock. Quantity available: 3.",
@@ -12887,7 +12887,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_pressure-pot_1",
@@ -12934,7 +12934,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/rack.jpg",
+    "image": "/images/catalog/products/cat_k_rack_1.jpg",
     "gallery": [],
     "shortDescription": "Rack",
     "description": "Rack: Egg. In stock. Quantity available: 1.",
@@ -12955,7 +12955,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_rack_2",
@@ -12968,7 +12968,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/rack.jpg",
+    "image": "/images/catalog/products/cat_k_rack_1.jpg",
     "gallery": [],
     "shortDescription": "Rack - 6 Pcs",
     "description": "Rack: Spice - 6 Pcs. In stock. Quantity available: 1.",
@@ -12993,7 +12993,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_e_radio_1",
@@ -13082,7 +13082,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/rice-cooker.jpg",
+    "image": "/images/catalog/products/cat_k_rice-cooker_1.jpg",
     "gallery": [],
     "shortDescription": "Rice Cooker",
     "description": "Rice Cooker: Binatone - 1.8L. In stock. Quantity available: 1.",
@@ -13103,7 +13103,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_rice-cooker_2",
@@ -13116,7 +13116,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/rice-cooker.jpg",
+    "image": "/images/catalog/products/cat_k_rice-cooker_1.jpg",
     "gallery": [],
     "shortDescription": "Rice Cooker",
     "description": "Rice Cooker: Master Chef - 1.8L. In stock. Quantity available: 1.",
@@ -13137,7 +13137,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.754Z"
   },
   {
     "id": "cat_k_rice-cooker_3",
@@ -13150,7 +13150,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/rice-cooker.jpg",
+    "image": "/images/catalog/products/cat_k_rice-cooker_1.jpg",
     "gallery": [],
     "shortDescription": "Rice Cooker",
     "description": "Rice Cooker: Master Chef - 3L. In stock. Quantity available: 1.",
@@ -13171,7 +13171,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_sandwich-maker_1",
@@ -13184,7 +13184,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/sandwich-maker.jpg",
+    "image": "/images/catalog/products/cat_k_sandwich-maker_1.jpg",
     "gallery": [],
     "shortDescription": "Sandwich Maker - 2 Face",
     "description": "Sandwich Maker: Maximus - 2 Face. In stock. Quantity available: 1.",
@@ -13209,7 +13209,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_scissors_1",
@@ -13222,7 +13222,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/scissors.jpg",
+    "image": "/images/catalog/products/cat_k_scissors_1.jpg",
     "gallery": [],
     "shortDescription": "Scissors",
     "description": "Scissors: Multiprupose Kitchen Suit. In stock. Quantity available: 2.",
@@ -13243,7 +13243,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_scissors_2",
@@ -13256,7 +13256,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/scissors.jpg",
+    "image": "/images/catalog/products/cat_k_scissors_1.jpg",
     "gallery": [],
     "shortDescription": "Scissors",
     "description": "Scissors: Standard. In stock. Quantity available: 2.",
@@ -13277,7 +13277,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_e_screw-driver_1",
@@ -13358,7 +13358,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/shapner.jpg",
+    "image": "/images/catalog/products/cat_k_shapner_1.jpg",
     "gallery": [],
     "shortDescription": "Shapner",
     "description": "Shapner: Knife. In stock. Quantity available: 2.",
@@ -13379,7 +13379,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_shaving-stick_1",
@@ -13392,7 +13392,7 @@
     "stock": 7,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/shaving-stick.jpg",
+    "image": "/images/catalog/products/cat_k_shaving-stick_1.jpg",
     "gallery": [],
     "shortDescription": "Shaving Stick",
     "description": "Shaving Stick: Single. In stock. Quantity available: 7.",
@@ -13413,7 +13413,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_shoe-rack_1",
@@ -13426,7 +13426,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/shoe-rack.jpg",
+    "image": "/images/catalog/products/cat_k_shoe-rack_1.jpg",
     "gallery": [],
     "shortDescription": "Shoe Rack",
     "description": "Shoe Rack: 2 Layers. In stock. Quantity available: 1.",
@@ -13447,7 +13447,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_shoe-rack_2",
@@ -13460,7 +13460,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/shoe-rack.jpg",
+    "image": "/images/catalog/products/cat_k_shoe-rack_1.jpg",
     "gallery": [],
     "shortDescription": "Shoe Rack",
     "description": "Shoe Rack: 3 Layers. In stock. Quantity available: 2.",
@@ -13481,7 +13481,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_shoe-rack_3",
@@ -13494,7 +13494,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/shoe-rack.jpg",
+    "image": "/images/catalog/products/cat_k_shoe-rack_1.jpg",
     "gallery": [],
     "shortDescription": "Shoe Rack - 5 Layers",
     "description": "Shoe Rack: Plastic - 5 Layers. In stock. Quantity available: 2.",
@@ -13519,7 +13519,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_sieve_1",
@@ -13710,7 +13710,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/soap-case.jpg",
+    "image": "/images/catalog/products/cat_k_soap-case_1.jpg",
     "gallery": [],
     "shortDescription": "Soap Case - 2 in 1",
     "description": "Soap Case: Bath Collection - 2 in 1. In stock. Quantity available: 2.",
@@ -13735,7 +13735,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_soap-case_2",
@@ -13748,7 +13748,7 @@
     "stock": 8,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/soap-case.jpg",
+    "image": "/images/catalog/products/cat_k_soap-case_1.jpg",
     "gallery": [],
     "shortDescription": "Soap Case - Single",
     "description": "Soap Case: Bath Collection - Single. In stock. Quantity available: 8.",
@@ -13773,7 +13773,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_soap-case_3",
@@ -13786,7 +13786,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/soap-case.jpg",
+    "image": "/images/catalog/products/cat_k_soap-case_1.jpg",
     "gallery": [],
     "shortDescription": "Soap Case",
     "description": "Soap Case: Meisier. In stock. Quantity available: 2.",
@@ -13807,7 +13807,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_soap-case_4",
@@ -13820,7 +13820,7 @@
     "stock": 6,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/soap-case.jpg",
+    "image": "/images/catalog/products/cat_k_soap-case_1.jpg",
     "gallery": [],
     "shortDescription": "Soap Case",
     "description": "Soap Case: Salvin. In stock. Quantity available: 6.",
@@ -13841,7 +13841,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_soap-case_5",
@@ -13854,7 +13854,7 @@
     "stock": 5,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/soap-case.jpg",
+    "image": "/images/catalog/products/cat_k_soap-case_1.jpg",
     "gallery": [],
     "shortDescription": "Soap Case",
     "description": "Soap Case: Sun Belt. In stock. Quantity available: 5.",
@@ -13875,7 +13875,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_e_socket_1",
@@ -13994,7 +13994,7 @@
     "stock": 5,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/sponge.jpg",
+    "image": "/images/catalog/products/cat_k_sponge_1.jpg",
     "gallery": [],
     "shortDescription": "Sponge",
     "description": "Sponge: Bathing. In stock. Quantity available: 5.",
@@ -14015,7 +14015,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_sponge_2",
@@ -14028,7 +14028,7 @@
     "stock": 11,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/sponge.jpg",
+    "image": "/images/catalog/products/cat_k_sponge_1.jpg",
     "gallery": [],
     "shortDescription": "Sponge",
     "description": "Sponge: Clothe for Plate. In stock. Quantity available: 11.",
@@ -14049,7 +14049,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_sponge_3",
@@ -14062,7 +14062,7 @@
     "stock": 38,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/sponge.jpg",
+    "image": "/images/catalog/products/cat_k_sponge_1.jpg",
     "gallery": [],
     "shortDescription": "Sponge",
     "description": "Sponge: Iron for Plate and Pot. In stock. Quantity available: 38.",
@@ -14083,7 +14083,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_b_spoon_1",
@@ -14136,7 +14136,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/products/cat_b_spoon_2.jpeg",
+    "image": "/images/catalog/products/cat_b_spoon_1.jpg",
     "gallery": [],
     "shortDescription": "Spoon",
     "description": "Spoon: Children - Swuzzy. In stock. Quantity available: 3.",
@@ -14159,7 +14159,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T17:27:35.620Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_spoon_3",
@@ -14172,7 +14172,7 @@
     "stock": 4,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/spoon.jpg",
+    "image": "/images/catalog/products/cat_k_spoon_3.jpg",
     "gallery": [],
     "shortDescription": "Spoon",
     "description": "Spoon: Gold (Spoon and Folk). In stock. Quantity available: 4.",
@@ -14193,7 +14193,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_spoon_4",
@@ -14206,7 +14206,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/spoon.jpg",
+    "image": "/images/catalog/products/cat_k_spoon_3.jpg",
     "gallery": [],
     "shortDescription": "Spoon",
     "description": "Spoon: Heavy. In stock. Quantity available: 1.",
@@ -14227,7 +14227,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_spoon_5",
@@ -14240,7 +14240,7 @@
     "stock": 7,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/spoon.jpg",
+    "image": "/images/catalog/products/cat_k_spoon_3.jpg",
     "gallery": [],
     "shortDescription": "Spoon",
     "description": "Spoon: Ordinary. In stock. Quantity available: 7.",
@@ -14261,7 +14261,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_spoon_6",
@@ -14274,7 +14274,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/spoon.jpg",
+    "image": "/images/catalog/products/cat_k_spoon_3.jpg",
     "gallery": [],
     "shortDescription": "Spoon",
     "description": "Spoon: Silver - Pieces. In stock. Quantity available: 2.",
@@ -14295,7 +14295,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_spoon_7",
@@ -14308,7 +14308,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/spoon.jpg",
+    "image": "/images/catalog/products/cat_k_spoon_3.jpg",
     "gallery": [],
     "shortDescription": "Spoon",
     "description": "Spoon: Takeaway. In stock. Quantity available: 2.",
@@ -14329,7 +14329,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_spoon-holder_1",
@@ -14342,7 +14342,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/spoon-holder.jpg",
+    "image": "/images/catalog/products/cat_k_spoon-holder_1.jpg",
     "gallery": [],
     "shortDescription": "Spoon Holder",
     "description": "Spoon Holder: China. In stock. Quantity available: 1.",
@@ -14363,7 +14363,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.971Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_stock-pot_1",
@@ -14376,7 +14376,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/stock-pot.jpg",
+    "image": "/images/catalog/products/cat_k_stock-pot_1.jpg",
     "gallery": [],
     "shortDescription": "Stock Pot - 4 in 1",
     "description": "Stock Pot: IPHIE - 4 in 1. In stock. Quantity available: 1.",
@@ -14401,7 +14401,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_e_switch_1",
@@ -14516,7 +14516,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/takeaway-plate.jpg",
+    "image": "/images/catalog/products/cat_k_takeaway-plate_1.jpg",
     "gallery": [],
     "shortDescription": "Takeaway Plate",
     "description": "Takeaway Plate: Standard. In stock. Quantity available: 1.",
@@ -14537,7 +14537,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_tissue_1",
@@ -14550,7 +14550,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/tissue.jpg",
+    "image": "/images/catalog/products/cat_k_tissue_1.jpg",
     "gallery": [],
     "shortDescription": "Tissue",
     "description": "Tissue: Standard. In stock. Quantity available: 2.",
@@ -14571,7 +14571,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_tommy-trimmer_1",
@@ -14584,7 +14584,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/tommy-trimmer.jpg",
+    "image": "/images/catalog/products/cat_k_tommy-trimmer_1.jpg",
     "gallery": [],
     "shortDescription": "Tommy Trimmer",
     "description": "Tommy Trimmer: Standard. In stock. Quantity available: 2.",
@@ -14605,7 +14605,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_e_torchlight_1",
@@ -15094,7 +15094,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/towel.jpg",
+    "image": "/images/catalog/products/cat_k_towel_1.jpg",
     "gallery": [],
     "shortDescription": "Towel",
     "description": "Towel: 3 in 1. In stock. Quantity available: 1.",
@@ -15115,7 +15115,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_tray_1",
@@ -15370,7 +15370,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/trolley.jpg",
+    "image": "/images/catalog/products/cat_k_trolley_1.jpeg",
     "gallery": [],
     "shortDescription": "Trolley",
     "description": "Trolley: Big. In stock. Quantity available: 2.",
@@ -15391,7 +15391,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_trolley_2",
@@ -15404,7 +15404,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/trolley.jpg",
+    "image": "/images/catalog/products/cat_k_trolley_1.jpeg",
     "gallery": [],
     "shortDescription": "Trolley",
     "description": "Trolley: Small. In stock. Quantity available: 2.",
@@ -15425,7 +15425,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_e_tv-guide_1",
@@ -15472,7 +15472,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/umbrella.jpg",
+    "image": "/images/catalog/products/cat_k_umbrella_1.jpg",
     "gallery": [],
     "shortDescription": "Umbrella",
     "description": "Umbrella: Big - Long. In stock. Quantity available: 3.",
@@ -15493,7 +15493,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_umbrella_2",
@@ -15506,7 +15506,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/umbrella.jpg",
+    "image": "/images/catalog/products/cat_k_umbrella_1.jpg",
     "gallery": [],
     "shortDescription": "Umbrella",
     "description": "Umbrella: Big - Short. In stock. Quantity available: 2.",
@@ -15527,7 +15527,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_umbrella_3",
@@ -15540,7 +15540,7 @@
     "stock": 4,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/umbrella.jpg",
+    "image": "/images/catalog/products/cat_k_umbrella_1.jpg",
     "gallery": [],
     "shortDescription": "Umbrella",
     "description": "Umbrella: Bottled - Short. In stock. Quantity available: 4.",
@@ -15561,7 +15561,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_unbreakable-dish_1",
@@ -15574,7 +15574,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/unbreakable-dish.jpg",
+    "image": "/images/catalog/products/cat_k_unbreakable-dish_1.jpg",
     "gallery": [],
     "shortDescription": "Unbreakable Dish",
     "description": "Unbreakable Dish: 2 in 1. In stock. Quantity available: 2.",
@@ -15595,7 +15595,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_unbreakable-dish_2",
@@ -15608,7 +15608,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/unbreakable-dish.jpg",
+    "image": "/images/catalog/products/cat_k_unbreakable-dish_1.jpg",
     "gallery": [],
     "shortDescription": "Unbreakable Dish",
     "description": "Unbreakable Dish: 2 in 1 - Greeen. In stock. Quantity available: 2.",
@@ -15629,7 +15629,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_unbreakable-dish_3",
@@ -15642,7 +15642,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/unbreakable-dish.jpg",
+    "image": "/images/catalog/products/cat_k_unbreakable-dish_1.jpg",
     "gallery": [],
     "shortDescription": "Unbreakable Dish",
     "description": "Unbreakable Dish: 2 in 1 with Tray. In stock. Quantity available: 2.",
@@ -15663,7 +15663,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_unbreakable-dish_4",
@@ -15676,7 +15676,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/unbreakable-dish.jpg",
+    "image": "/images/catalog/products/cat_k_unbreakable-dish_1.jpg",
     "gallery": [],
     "shortDescription": "Unbreakable Dish",
     "description": "Unbreakable Dish: 2 in 1 with Tray - Brown. In stock. Quantity available: 1.",
@@ -15697,7 +15697,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_unbreakable-dish_5",
@@ -15710,7 +15710,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/unbreakable-dish.jpg",
+    "image": "/images/catalog/products/cat_k_unbreakable-dish_1.jpg",
     "gallery": [],
     "shortDescription": "Unbreakable Dish",
     "description": "Unbreakable Dish: 3 in 1. In stock. Quantity available: 3.",
@@ -15731,7 +15731,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_unbreakable-dish_6",
@@ -15744,7 +15744,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/unbreakable-dish.jpg",
+    "image": "/images/catalog/products/cat_k_unbreakable-dish_1.jpg",
     "gallery": [],
     "shortDescription": "Unbreakable Dish",
     "description": "Unbreakable Dish: 3 in 1 with Tray. In stock. Quantity available: 2.",
@@ -15765,7 +15765,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_unbreakable-dish_7",
@@ -15778,7 +15778,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/unbreakable-dish.jpg",
+    "image": "/images/catalog/products/cat_k_unbreakable-dish_1.jpg",
     "gallery": [],
     "shortDescription": "Unbreakable Dish - 3 in 1",
     "description": "Unbreakable Dish: Fish - 3 in 1. In stock. Quantity available: 2.",
@@ -15803,7 +15803,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.972Z",
-    "updatedAt": "2026-08-13T05:25:16.472Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_unbreakable-plate_1",
@@ -16564,7 +16564,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/unbreakable-tray.jpg",
+    "image": "/images/catalog/products/cat_k_unbreakable-tray_1.jpeg",
     "gallery": [],
     "shortDescription": "Unbreakable Tray",
     "description": "Unbreakable Tray: Big. In stock. Quantity available: 2.",
@@ -16585,7 +16585,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_wardrope_1",
@@ -16598,7 +16598,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/wardrope.jpg",
+    "image": "/images/catalog/products/cat_k_wardrope_1.jpg",
     "gallery": [],
     "shortDescription": "Wardrope - Nil",
     "description": "Wardrope: Wonder Home - Nil. In stock. Quantity available: 1.",
@@ -16623,7 +16623,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_water-bottle_1",
@@ -16636,7 +16636,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-bottle.jpg",
+    "image": "/images/catalog/products/cat_k_water-bottle_1.jpg",
     "gallery": [],
     "shortDescription": "Water Bottle",
     "description": "Water Bottle: Cool. In stock. Quantity available: 1.",
@@ -16657,7 +16657,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_water-bottle_2",
@@ -16670,7 +16670,7 @@
     "stock": 4,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-bottle.jpg",
+    "image": "/images/catalog/products/cat_k_water-bottle_1.jpg",
     "gallery": [],
     "shortDescription": "Water Bottle",
     "description": "Water Bottle: Generation - Big with Sieve. In stock. Quantity available: 4.",
@@ -16691,7 +16691,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_water-bottle_3",
@@ -16704,7 +16704,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-bottle.jpg",
+    "image": "/images/catalog/products/cat_k_water-bottle_1.jpg",
     "gallery": [],
     "shortDescription": "Water Bottle",
     "description": "Water Bottle: Generation - Small with Sieve. In stock. Quantity available: 1.",
@@ -16725,7 +16725,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_water-bottle_4",
@@ -16738,7 +16738,7 @@
     "stock": 7,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-bottle.jpg",
+    "image": "/images/catalog/products/cat_k_water-bottle_1.jpg",
     "gallery": [],
     "shortDescription": "Water Bottle",
     "description": "Water Bottle: Green. In stock. Quantity available: 7.",
@@ -16759,7 +16759,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_water-bottle_5",
@@ -16772,7 +16772,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-bottle.jpg",
+    "image": "/images/catalog/products/cat_k_water-bottle_1.jpg",
     "gallery": [],
     "shortDescription": "Water Bottle",
     "description": "Water Bottle: Motivational. In stock. Quantity available: 1.",
@@ -16793,7 +16793,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_water-bottle_6",
@@ -16806,7 +16806,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-bottle.jpg",
+    "image": "/images/catalog/products/cat_k_water-bottle_1.jpg",
     "gallery": [],
     "shortDescription": "Water Bottle - 600ML",
     "description": "Water Bottle: S-8520 - 600ML. In stock. Quantity available: 3.",
@@ -16831,7 +16831,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_water-bottle_7",
@@ -16844,7 +16844,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-bottle.jpg",
+    "image": "/images/catalog/products/cat_k_water-bottle_1.jpg",
     "gallery": [],
     "shortDescription": "Water Bottle",
     "description": "Water Bottle: Salvin - Hot and Cold. In stock. Quantity available: 2.",
@@ -16865,7 +16865,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_water-bottle_8",
@@ -16878,7 +16878,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-bottle.jpg",
+    "image": "/images/catalog/products/cat_k_water-bottle_1.jpg",
     "gallery": [],
     "shortDescription": "Water Bottle",
     "description": "Water Bottle: Salvin - Small. In stock. Quantity available: 1.",
@@ -16899,7 +16899,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_water-bottle_9",
@@ -16912,7 +16912,7 @@
     "stock": 6,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-bottle.jpg",
+    "image": "/images/catalog/products/cat_k_water-bottle_1.jpg",
     "gallery": [],
     "shortDescription": "Water Bottle",
     "description": "Water Bottle: Salvin - transparent. In stock. Quantity available: 6.",
@@ -16933,7 +16933,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_water-bottle_10",
@@ -16946,7 +16946,7 @@
     "stock": 7,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-bottle.jpg",
+    "image": "/images/catalog/products/cat_k_water-bottle_1.jpg",
     "gallery": [],
     "shortDescription": "Water Bottle",
     "description": "Water Bottle: Salvin with Straw. In stock. Quantity available: 7.",
@@ -16967,7 +16967,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_water-bottle_11",
@@ -16980,7 +16980,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-bottle.jpg",
+    "image": "/images/catalog/products/cat_k_water-bottle_1.jpg",
     "gallery": [],
     "shortDescription": "Water Bottle",
     "description": "Water Bottle: Sport Bottle. In stock. Quantity available: 2.",
@@ -17001,7 +17001,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_water-bottle_12",
@@ -17014,7 +17014,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-bottle.jpg",
+    "image": "/images/catalog/products/cat_k_water-bottle_1.jpg",
     "gallery": [],
     "shortDescription": "Water Bottle - 1.2L",
     "description": "Water Bottle: The Kettle - 1.2L. In stock. Quantity available: 1.",
@@ -17039,7 +17039,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_water-flask_1",
@@ -17052,7 +17052,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-flask.jpg",
+    "image": "/images/catalog/products/cat_k_water-flask_1.jpg",
     "gallery": [],
     "shortDescription": "Water Flask - 1L",
     "description": "Water Flask: China - 1L. In stock. Quantity available: 1.",
@@ -17077,7 +17077,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_water-flask_2",
@@ -17090,7 +17090,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-flask.jpg",
+    "image": "/images/catalog/products/cat_k_water-flask_1.jpg",
     "gallery": [],
     "shortDescription": "Water Flask - 400ML",
     "description": "Water Flask: China - Leinuo - 400ML. In stock. Quantity available: 2.",
@@ -17115,7 +17115,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_water-flask_3",
@@ -17128,7 +17128,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-flask.jpg",
+    "image": "/images/catalog/products/cat_k_water-flask_1.jpg",
     "gallery": [],
     "shortDescription": "Water Flask - 500ML",
     "description": "Water Flask: China - School - 500ML. In stock. Quantity available: 3.",
@@ -17153,7 +17153,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_water-flask_4",
@@ -17166,7 +17166,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-flask.jpg",
+    "image": "/images/catalog/products/cat_k_water-flask_1.jpg",
     "gallery": [],
     "shortDescription": "Water Flask - 1L",
     "description": "Water Flask: China - Vacuum - 1L. In stock. Quantity available: 2.",
@@ -17191,7 +17191,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_water-flask_5",
@@ -17204,7 +17204,7 @@
     "stock": 3,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-flask.jpg",
+    "image": "/images/catalog/products/cat_k_water-flask_1.jpg",
     "gallery": [],
     "shortDescription": "Water Flask - 700ML",
     "description": "Water Flask: China - Vacuum - 700ML. In stock. Quantity available: 3.",
@@ -17229,7 +17229,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_water-flask_6",
@@ -17242,7 +17242,7 @@
     "stock": 2,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-flask.jpg",
+    "image": "/images/catalog/products/cat_k_water-flask_1.jpg",
     "gallery": [],
     "shortDescription": "Water Flask - 500ML",
     "description": "Water Flask: China - Vacuum Cup - 500ML. In stock. Quantity available: 2.",
@@ -17267,7 +17267,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_water-flask_7",
@@ -17280,7 +17280,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-flask.jpg",
+    "image": "/images/catalog/products/cat_k_water-flask_1.jpg",
     "gallery": [],
     "shortDescription": "Water Flask - 800ML",
     "description": "Water Flask: Inox Bottle - 800ML. In stock. Quantity available: 1.",
@@ -17305,7 +17305,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.755Z"
   },
   {
     "id": "cat_k_water-flask_8",
@@ -17318,7 +17318,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-flask.jpg",
+    "image": "/images/catalog/products/cat_k_water-flask_1.jpg",
     "gallery": [],
     "shortDescription": "Water Flask - 300ML",
     "description": "Water Flask: Leinuo - 300ML. In stock. Quantity available: 1.",
@@ -17343,7 +17343,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.758Z"
   },
   {
     "id": "cat_k_water-flask_9",
@@ -17356,7 +17356,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-flask.jpg",
+    "image": "/images/catalog/products/cat_k_water-flask_1.jpg",
     "gallery": [],
     "shortDescription": "Water Flask - 600ML",
     "description": "Water Flask: Magic Cook - 600ML. In stock. Quantity available: 1.",
@@ -17381,7 +17381,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.758Z"
   },
   {
     "id": "cat_k_water-flask_10",
@@ -17394,7 +17394,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-flask.jpg",
+    "image": "/images/catalog/products/cat_k_water-flask_1.jpg",
     "gallery": [],
     "shortDescription": "Water Flask - 4L",
     "description": "Water Flask: Magic Cook - VF9435 - 4L. In stock. Quantity available: 1.",
@@ -17419,7 +17419,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.758Z"
   },
   {
     "id": "cat_k_water-flask_11",
@@ -17432,7 +17432,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-flask.jpg",
+    "image": "/images/catalog/products/cat_k_water-flask_1.jpg",
     "gallery": [],
     "shortDescription": "Water Flask - 1.2L",
     "description": "Water Flask: Master Chef - 6055 - 1.2L. In stock. Quantity available: 1.",
@@ -17457,7 +17457,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.758Z"
   },
   {
     "id": "cat_k_water-flask_12",
@@ -17470,7 +17470,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-flask.jpg",
+    "image": "/images/catalog/products/cat_k_water-flask_1.jpg",
     "gallery": [],
     "shortDescription": "Water Flask - 2L",
     "description": "Water Flask: Master Chef - F912 - 2L. In stock. Quantity available: 1.",
@@ -17495,7 +17495,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.758Z"
   },
   {
     "id": "cat_k_water-flask_13",
@@ -17508,7 +17508,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-flask.jpg",
+    "image": "/images/catalog/products/cat_k_water-flask_1.jpg",
     "gallery": [],
     "shortDescription": "Water Flask - 400ML",
     "description": "Water Flask: Smart Cup - LED - 400ML. In stock. Quantity available: 1.",
@@ -17533,7 +17533,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.758Z"
   },
   {
     "id": "cat_k_water-flask_14",
@@ -17546,7 +17546,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-flask.jpg",
+    "image": "/images/catalog/products/cat_k_water-flask_1.jpg",
     "gallery": [],
     "shortDescription": "Water Flask - 800ML",
     "description": "Water Flask: SMP - 800ML. In stock. Quantity available: 1.",
@@ -17571,7 +17571,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.758Z"
   },
   {
     "id": "cat_k_water-flask_15",
@@ -17584,7 +17584,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/water-flask.jpg",
+    "image": "/images/catalog/products/cat_k_water-flask_1.jpg",
     "gallery": [],
     "shortDescription": "Water Flask - 500ML",
     "description": "Water Flask: Vacuum Bottle with 2 Cups - 500ML. In stock. Quantity available: 1.",
@@ -17609,7 +17609,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.758Z"
   },
   {
     "id": "cat_k_yam-pounder_1",
@@ -17622,7 +17622,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/yam-pounder.jpg",
+    "image": "/images/catalog/products/cat_k_yam-pounder_1.jpg",
     "gallery": [],
     "shortDescription": "Yam Pounder - Nil",
     "description": "Yam Pounder: Kenwood - 3L - Nil. In stock. Quantity available: 1.",
@@ -17647,7 +17647,7 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.758Z"
   },
   {
     "id": "cat_k_yam-pounder_2",
@@ -17660,7 +17660,7 @@
     "stock": 1,
     "rating": 0,
     "reviews": 0,
-    "image": "/images/catalog/web/yam-pounder.jpg",
+    "image": "/images/catalog/products/cat_k_yam-pounder_1.jpg",
     "gallery": [],
     "shortDescription": "Yam Pounder - Nil",
     "description": "Yam Pounder: Kenwood - 5L - Nil. In stock. Quantity available: 1.",
@@ -17685,6 +17685,6 @@
     ],
     "miniStore": false,
     "createdAt": "2026-08-09T06:02:05.973Z",
-    "updatedAt": "2026-08-13T05:25:16.473Z"
+    "updatedAt": "2026-08-19T01:32:39.758Z"
   }
 ]

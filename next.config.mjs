@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === "production";
 
-// NOTE: we intentionally avoid a script hash + nonce here. Next.js streams
-// inline RSC bootstrap scripts in varied form, so a fixed hash would force
-// 'unsafe-inline' to be ignored (per CSP rules) and break hydration.
-// Keeping script-src as 'self' + 'unsafe-inline' is required for the app to run.
-const telegramSrc = "https://telegram.org https://*.telegram.org";
+// NOTE: the strict per-request CSP (with a nonce) is served from src/proxy.ts,
+// which overrides this header on HTML requests so Next.js can apply the nonce
+// to its inline RSC bootstrap scripts. The policy below is a static fallback
+// for any request the proxy matcher does not cover.
+const telegramSrc = "https://telegram.org https://*.telegram.org https://api.telegram.org";
 // Supabase project host used by the AI Image Importer to serve stored product images.
 const supabaseImg = process.env.SUPABASE_URL ? new URL(process.env.SUPABASE_URL).host : "";
 const csp = isProd

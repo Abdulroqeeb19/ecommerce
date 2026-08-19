@@ -19,9 +19,10 @@ Run every item before any production deployment. Check each box or document why 
 - [ ] Secure cookies verified (`Secure` flag) — see `SSL_DEPLOYMENT.md`
 
 ## Headers & CSP
-- [ ] CSP served and page still functions (test every route)
-- [ ] `X-Content-Type-Options: nosniff`, `Referrer-Policy`, `Permissions-Policy`, `X-Frame-Options`, `Cross-Origin-Resource-Policy` present
-- [ ] Remove dev-mode `unsafe-eval`/`unsafe-inline` from CSP if a production profile is feasible
+- [x] CSP served and page still functions (test every route) — verified on prod build smoke test
+- [x] `X-Content-Type-Options: nosniff`, `Referrer-Policy`, `Permissions-Policy`, `X-Frame-Options`, `Cross-Origin-Resource-Policy` present
+- [x] Strict nonce-based CSP: `script-src 'self' 'nonce-<per-request>'` (no `unsafe-inline`) served via `src/proxy.ts`; the Telegram Mini App route `/tg` keeps a legacy permissive policy because the webview injects its own SDK
+- [ ] Monitor browser CSP violation reports after deploy (no reporting endpoint configured yet)
 
 ## Authentication & Authorization
 - [ ] Login/registration rate limited (IP) AND per-account lockout after 5 failed attempts (15 min)

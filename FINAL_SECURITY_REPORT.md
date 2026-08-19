@@ -38,7 +38,7 @@ brute force, IDOR (future order history), secrets exposure, vulnerable component
 - Per-account brute-force lockout: 5 failed logins → account locked 15 minutes (counters cleared on success).
 - Registration password policy: ≥ 12 chars with uppercase, lowercase and a number. Production bootstrap refuses `ADMIN_PASSWORD` < 16 and `MANAGER_PASSWORD` < 12.
 - Server-side validation of orders (items, qty, stock, prices, status, customer) and products (title, price, stock, specs, tags).
-- Security headers: CSP, HSTS(prod), nosniff, frame, referrer, permissions, COOP, CORP, `X-Frame-Options: DENY`, `upgrade-insecure-requests` (prod).
+- Security headers: strict nonce-based CSP (per-request nonce via `src/proxy.ts`, no `unsafe-inline` on scripts), HSTS(prod), nosniff, frame, referrer, permissions, COOP, CORP, `X-Frame-Options: DENY`, `upgrade-insecure-requests` (prod). The Telegram Mini App route `/tg` keeps a legacy permissive CSP because Telegram's webview injects its SDK inline and cannot carry our nonce.
 - Secret hygiene: `.env*` and `data/*` gitignored; `.env.example` placeholders.
 - Automated CI security gate: `npm audit --omit=dev` (fail on high+), `tsc`, lint, tests on push/PR (`.github/workflows/ci-security.yml`).
 
@@ -122,7 +122,8 @@ order validation, price tampering, overselling, rate limiting, and registration.
 - JSON-file DB: single-writer; not safe for multi-instance/serverless persistence. (Supabase mode recommended for production; the app already supports it.)
 - No MFA, password reset, or account lockout-based session invalidation.
 - No payment gateway; webhook verification not yet exercised.
-- Dev-mode CSP includes `unsafe-inline`/`unsafe-eval`; production CSP still uses `script-src 'unsafe-inline'` because Next.js 16 streams inline RSC bootstrap scripts. Nonce-based CSP is the remaining hardening step (flagged, not yet implemented).
+- Dev-mode CSP includes `unsafe-inline`/`unsafe-eval`; production uses a strict nonce-based CSP with no `unsafe-inline` on scripts. The `/tg` Telegram Mini App route intentionally keeps the legacy permissive script policy (webview-injected SDK). Nonce CSP forces dynamic rendering on every route (no static page caching).
+- No CSP violation reporting endpoint yet — consider a `report-uri`/report-to collector to catch regressions.
 - No customer-facing order history yet; add ownership (IDOR) checks when added.
 - `rate_limits` RPC falls back to in-memory buckets if the schema has not been applied — apply `supabase/schema.sql` including `bump_rate_limit` before scaling.
 
@@ -134,7 +135,7 @@ order validation, price tampering, overselling, rate limiting, and registration.
 - [ ] Add structured logging, monitoring, and alerting.
 - [ ] Migrate to PostgreSQL + connection pooling before scaling.
 - [ ] Add MFA / password reset for real user accounts.
-- [ ] Move to nonce-based CSP for fully strict script-src in production.
+- [ ] Add a CSP violation reporting endpoint (`report-uri`/report-to) and watch it post-deploy.
 
 ## Production Deployment Checklist
 See `PRODUCTION_SECURITY_CHECKLIST.md`.

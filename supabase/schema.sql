@@ -161,7 +161,16 @@ create index if not exists rate_limits_reset_idx on public.rate_limits (reset_at
 
 -- Atomically bumps a rate-limit counter, resetting expired windows, and reports
 -- whether the request is allowed. Called by the app via `sb.rpc("bump_rate_limit")`.
-create or replace function public.bump_rate_limit(p_key text, p_window_ms bigint, p_limit integer)
+--
+-- NOTE ON RE-RUNS: older deployments shipped this function as
+-- bump_rate_limit(p_key, p_limit, p_window_ms) with a body that referenced the
+-- bare identifiers `count` / `reset_at`. Postgres 15 rejects that body at runtime
+-- ("column reference \"count\" is ambiguous") and CREATE OR REPLACE refuses to change
+-- the input parameter order. Drop the legacy signatures first so the re-created
+-- function below always matches the app's call: { p_key, p_window_ms, p_limit }.
+drop function if exists public.bump_rate_limit(text, integer, bigint);
+drop function if exists public.bump_rate_limit(text, bigint, integer);
+create function public.bump_rate_limit(p_key text, p_window_ms bigint, p_limit integer)
 returns table(ok boolean, retry_after bigint) language plpgsql as $$
 declare
   v_count integer;

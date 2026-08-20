@@ -23,7 +23,7 @@ export function SearchBar() {
       <HoverSelect
         value={category}
         onChange={setCategory}
-        options={["All Categories", "Babies Wears", "Electrical Materials and Fittings", "Home Essentials"].map((c) => ({ value: c, label: c }))}
+        options={["All Categories", "Baby and Kids Essentials", "Electrical Materials and Fittings", "Home Essentials"].map((c) => ({ value: c, label: c }))}
         ariaLabel="Select category"
         className="hidden sm:block"
         triggerClassName="h-full bg-slate-100 dark:bg-slate-800 border border-r-0 border-slate-200 dark:border-slate-700 rounded-l-lg px-4 text-sm text-slate-600 dark:text-slate-300 min-w-44"
@@ -32,7 +32,7 @@ export function SearchBar() {
       <input
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search babies wears, electrical materials, home essentials..."
+        placeholder="Search baby and kids essentials, electrical materials, home essentials..."
         className="flex-1 min-w-0 border border-slate-200 dark:border-navy-700 sm:border-l-0 px-4 py-3 text-sm outline-none focus:border-primary-500 bg-white dark:bg-navy-800 dark:text-slate-100"
       />
       <button

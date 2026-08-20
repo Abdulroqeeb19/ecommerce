@@ -43,7 +43,7 @@ export function InStockTicker() {
             <Zap className="h-6 w-6 text-amber-500 animate-pulse" /> Hot Right Now <span className="text-primary-600">· In Stock</span>
           </h2>
           <div className="mt-2 h-1 w-16 rounded-full" style={{ background: "var(--gold-gradient)" }} />
-          <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">Home Essentials, Babies Wears and Electrical Fittings streaming by — hover to pause, click to shop.</p>
+          <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">Baby and Kids Essentials, Home Essentials and Electrical Fittings streaming by — hover to pause, click to shop.</p>
         </div>
         <Link href="/shop" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-600 hover:text-primary-700 flex-shrink-0">
           View all in stock <ArrowRight className="h-4 w-4" />

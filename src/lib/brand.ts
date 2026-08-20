@@ -9,7 +9,7 @@ export const BRAND_PHONES = ["08033004595", "09050983636"];
 
 export const WHATSAPP_NUMBER = "2348033004595";
 
-export const SLOGAN = "We Deal with all types of Home Essentials, Babies Wears and Electrical Fittings";
+export const SLOGAN = "We Deal with all types of Baby and Kids Essentials, Home Essentials and Electrical Fittings";
 
 export const MOTTO = "supply of strong, reliable and quality products at affordable cost";
 
@@ -46,10 +46,10 @@ export const CATALOG_ITEMS: CatalogItemShape[] = [
   { id: "cat_blender", name: "BLENDER", tag: "Blender", category: "Home Essentials", image: CATALOG_IMAGE("blender"), sortOrder: 3, active: true },
   { id: "cat_spoon", name: "SPOON", tag: "Spoon", category: "Home Essentials", image: CATALOG_IMAGE("spoon"), sortOrder: 4, active: true },
   { id: "cat_cooler", name: "COOLER", tag: "Cooler", category: "Home Essentials", image: CATALOG_IMAGE("cooler"), sortOrder: 5, active: true },
-  { id: "cat_shoe", name: "SHOE", tag: "Shoe", category: "Babies Wears", image: CATALOG_IMAGE("shoe"), sortOrder: 6, active: true },
-  { id: "cat_bag", name: "BAG", tag: "Bag", category: "Babies Wears", image: CATALOG_IMAGE("bag"), sortOrder: 7, active: true },
-  { id: "cat_singlet", name: "SINGLET", tag: "Singlet", category: "Babies Wears", image: CATALOG_IMAGE("singlet"), sortOrder: 8, active: true },
-  { id: "cat_babies_wear", name: "BABIES WEAR", tag: "Babies Wear", category: "Babies Wears", image: CATALOG_IMAGE("babies-wear"), sortOrder: 9, active: true },
+  { id: "cat_shoe", name: "SHOE", tag: "Shoe", category: "Baby and Kids Essentials", image: CATALOG_IMAGE("shoe"), sortOrder: 6, active: true },
+  { id: "cat_bag", name: "BAG", tag: "Bag", category: "Baby and Kids Essentials", image: CATALOG_IMAGE("bag"), sortOrder: 7, active: true },
+  { id: "cat_singlet", name: "SINGLET", tag: "Singlet", category: "Baby and Kids Essentials", image: CATALOG_IMAGE("singlet"), sortOrder: 8, active: true },
+  { id: "cat_babies_wear", name: "BABY & KIDS", tag: "Baby & Kids", category: "Baby and Kids Essentials", image: CATALOG_IMAGE("babies-wear"), sortOrder: 9, active: true },
   { id: "cat_solar", name: "SOLAR", tag: "Solar", category: "Electrical Materials and Fittings", image: CATALOG_IMAGE("solar"), sortOrder: 10, active: true },
   { id: "cat_sockets", name: "SOCKETS", tag: "Sockets", category: "Electrical Materials and Fittings", image: CATALOG_IMAGE("sockets"), sortOrder: 11, active: true }
 ];

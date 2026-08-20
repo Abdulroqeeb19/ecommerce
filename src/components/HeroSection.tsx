@@ -12,7 +12,7 @@ import { useProducts } from "@/lib/catalog";
 import { cx } from "@/lib/utils";
 import type { Product } from "@/lib/types";
 
-/** Display order for the main shop categories (Babies, then Electrical, then Home Essentials). */
+/** Display order for the main shop categories (Baby & Kids, then Electrical, then Home Essentials). */
 
 interface HeroItem {
   id: string;
@@ -50,7 +50,7 @@ const FALLBACK_HERO_ITEMS: HeroItem[] = [
     name: "SINGLET",
     brand: "TinyTots",
     spec: "100% Soft Cotton",
-    category: "Babies Wears",
+    category: "Baby and Kids Essentials",
     image: "/images/catalog/singlet.png",
     price: 3000,
     save: 20,
@@ -149,7 +149,7 @@ export function HeroSection() {
   const fmt = (n: number) => new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(n);
 
   // Live slides: featured products first (admin-controlled "Hot Deal"), filled
-  // with an in-stock mix across Babies -> Electrical -> Home Essentials so the showcase
+  // with an in-stock mix across Baby & Kids -> Electrical -> Home Essentials so the showcase
   // stays populated and always shows the latest uploaded product images.
   const heroItems = useMemo<HeroItem[]>(() => {
     const eligible = (products || []).filter((p) => !p.miniStore && p.image && p.stock > 0);
@@ -224,7 +224,7 @@ export function HeroSection() {
             <Sparkles className="h-4 w-4 text-gold-300" /> Now Stocking
           </span>
           <h1 className="cinem-reveal cinem-reveal-fade-up is-inview font-display text-4xl sm:text-5xl lg:text-[3.4rem] font-extrabold leading-[1.08] tracking-tight">
-            Home Essentials, Babies Wears and Electrical Fittings
+            Baby and Kids Essentials, Home Essentials and Electrical Fittings
           </h1>
           <p className="cinem-reveal cinem-reveal-fade-up is-inview mt-2 font-display text-2xl sm:text-3xl font-bold">
             <span className="cinem-shimmer-text">{SLOGAN}</span>

@@ -26,7 +26,7 @@ const SORTS: { key: SortKey; label: string }[] = [
 
 const CATEGORY_FILTERS = ["All", ...SHOP_CATEGORIES.map((c) => c.name)];
 
-/** Display order for the main shop categories (Babies first, then Electrical, then Home Essentials). */
+/** Display order for the main shop categories (Baby & Kids first, then Electrical, then Home Essentials). */
 const CATEGORY_ORDER: string[] = SHOP_CATEGORIES.map((c) => c.name);
 
 const RATING_FILTERS = [
@@ -176,7 +176,7 @@ export function ShopContent() {
         list.sort((a, b) => (b.createdAt || "").localeCompare(a.createdAt || ""));
         break;
       default:
-        // Featured first, then grouped by category (Babies -> Electrical -> Home Essentials)
+        // Featured first, then grouped by category (Baby & Kids -> Electrical -> Home Essentials)
         // and alphabetical by title within each group.
         list.sort((a, b) => {
           const aFeat = Number(b.featured || false) - Number(a.featured || false);
@@ -248,7 +248,7 @@ export function ShopContent() {
           <div className="mt-3 h-1 w-24 rounded-full" style={{ background: "var(--gold-gradient)" }} />
           <p className="mt-3 max-w-xl text-sm text-slate-300">
             {category === "All"
-              ? "Browse every Home Essential, Babies Wear and Electrical Fitting — order directly on WhatsApp."
+              ? "Browse every Baby and Kids Essential, Home Essential and Electrical Fitting — order directly on WhatsApp."
               : `Our ${category} range — order directly on WhatsApp.`}
           </p>
         </div>

@@ -90,8 +90,8 @@ export function Footer() {
             <h3 className="text-gold-200 font-bold text-sm uppercase tracking-wider mb-4">Quick Links</h3>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link href="/shop?category=Babies%20Wears" className="hover:text-gold-200 transition-colors">
-                  Shop Babies Wears
+                <Link href="/shop?category=Baby%20and%20Kids%20Essentials" className="hover:text-gold-200 transition-colors">
+                  Shop Baby & Kids Essentials
                 </Link>
               </li>
               <li>

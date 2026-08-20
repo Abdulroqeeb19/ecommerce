@@ -8,11 +8,11 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: {
-    default: "AYINDEDUNNY ENTERPRISE — Babies Wears, Electrical Materials and Home Essentials",
+    default: "AYINDEDUNNY ENTERPRISE — Baby and Kids Essentials, Electrical Materials and Home Essentials",
     template: "%s | AYINDEDUNNY ENTERPRISE"
   },
   description:
-    "Offline-first PWA e-commerce for Babies Wears, Electrical Materials and Fittings, and Home Essentials. Includes a mini-store for schools.",
+    "Offline-first PWA e-commerce for Baby and Kids Essentials, Electrical Materials and Fittings, and Home Essentials. Includes a mini-store for schools.",
   manifest: "/manifest.json",
   applicationName: "AYINDEDUNNY ENTERPRISE",
   icons: {

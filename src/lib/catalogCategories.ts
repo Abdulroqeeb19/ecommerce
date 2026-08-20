@@ -1,7 +1,7 @@
 export interface ShopCategory {
   /** Canonical Product.category value. Everything else derives from this. */
   name: string;
-  /** Display order in the shop (Babies first, then Electrical, then Home Essentials). */
+  /** Display order in the shop (Baby & Kids first, then Electrical, then Home Essentials). */
   order: number;
   /** Icon key mapped to a lucide icon by UI components. */
   iconKey: "baby" | "plug" | "utensils";
@@ -20,22 +20,27 @@ export interface ShopCategory {
 /**
  * Single source of truth for the shop categories and catalogues.
  *
- * The product catalogue is divided into exactly three categories — "Babies
- * Wears", "Electrical Materials and Fittings" and "Home Essentials". All UI
+ * The product catalogue is divided into exactly three categories — "Baby and
+ * Kids Essentials", "Electrical Materials and Fittings" and "Home Essentials". All UI
  * (sidebars, filters, headers, home carousels), the admin catalog drop-downs
  * and the category-card seeding derive from this list so the site stays
  * consistent as things change.
  */
 export const SHOP_CATEGORIES: ShopCategory[] = [
   {
-    name: "Babies Wears",
+    name: "Baby and Kids Essentials",
     order: 1,
     iconKey: "baby",
     tagline: "Comfort for your little ones",
     image: "/images/catalog/babies-wear.png",
-    href: `/shop?category=${encodeURIComponent("Babies Wears")}`,
+    href: `/shop?category=${encodeURIComponent("Baby and Kids Essentials")}`,
     cardId: "card_babies",
-    aliases: ["Babies Wears", "Babies Wears and Footwear", "Bags and Sundries"]
+    aliases: [
+      "Baby and Kids Essentials",
+      "Babies Wears",
+      "Babies Wears and Footwear",
+      "Bags and Sundries"
+    ]
   },
   {
     name: "Electrical Materials and Fittings",

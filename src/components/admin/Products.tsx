@@ -82,7 +82,7 @@ export function AdminProducts({ miniOnly = false }: { miniOnly?: boolean }) {
     if (miniOnly && miniFilter !== "All") {
       list = list.filter((p) => p.supplyType === (miniFilter === "Groceries" ? "grocery" : "supplies"));
     }
-    // Group by category (Babies -> Electrical -> Home Essentials first), alphabetical by title within.
+    // Group by category (Baby & Kids -> Electrical -> Home Essentials first), alphabetical by title within.
     return [...list].sort((a, b) => {
       const byCat = categoryRank(a.category) - categoryRank(b.category);
       if (byCat !== 0) return byCat;

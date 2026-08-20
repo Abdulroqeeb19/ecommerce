@@ -1,10 +1,10 @@
 /**
  * Shop categories for the catalogue. These mirror SHOP_CATEGORIES in
- * catalogCategories.ts — the shop only carries Babies Wears, Electrical
- * Materials and Fittings and Home Essentials product lines.
+ * catalogCategories.ts — the shop only carries Baby and Kids Essentials,
+ * Electrical Materials and Fittings and Home Essentials product lines.
  */
 export const CATEGORIES = [
-  "Babies Wears",
+  "Baby and Kids Essentials",
   "Electrical Materials and Fittings",
   "Home Essentials"
 ] as const;
